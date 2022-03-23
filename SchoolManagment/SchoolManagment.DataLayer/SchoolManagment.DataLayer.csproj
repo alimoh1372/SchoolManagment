@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\BaseRepository.cs" />
     <Compile Include="DatabaseModel\AcademyYear.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
