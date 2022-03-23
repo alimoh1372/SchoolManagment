@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace SchoolManagment.App
 {
-    public partial class Form1 : Form
+    public partial class GradeForm : Form
     {
-        public Form1()
+        public GradeForm()
         {
             InitializeComponent();
-        }
-
-        private void btnGradeInformation_Click(object sender, EventArgs e)
-        {
-            GradeForm frmGrade = new GradeForm();
-            frmGrade.ShowDialog();
         }
     }
 }

@@ -108,6 +108,7 @@
             this.btnGradeInformation.Size = new System.Drawing.Size(180, 22);
             this.btnGradeInformation.Text = "مقطع";
             this.btnGradeInformation.ToolTipText = "مدیریت مقاطع تحصیلی اصلی(دبیرستان،راهنمایی،ابتدایی) اعم از حذف و اضافه و ویرایش ";
+            this.btnGradeInformation.Click += new System.EventHandler(this.btnGradeInformation_Click);
             // 
             // btnUnderGradeInformation
             // 
