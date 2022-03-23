@@ -1,4 +1,4 @@
-﻿namespace SchoolManagment
+﻿namespace SchoolManagment.App
 {
     partial class Form1
     {

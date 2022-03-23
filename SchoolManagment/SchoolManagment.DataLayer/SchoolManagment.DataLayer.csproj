@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +50,125 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseModel\AcademyYear.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Calender.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Class.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Day.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\DayAlternate.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Field.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\FieldsOfNewYearInUnGradute.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Grade.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Lesson.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\LessonsOfFileldsOfNewYearInUngrade.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Permission.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Personal.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DatabaseModel\Role.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\SchoolManagementDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolManagementDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\SchoolManagementDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\SchoolManagementDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolManagementDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\ScoreOfStudentsForLesson.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Student.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\sysdiagram.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Teacher.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TeacherTeachLessonAccordingToCalender.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TeacherTeachLessonAccToCalenderInClass.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TeacherTeachsLessonsOfNewYearInUnGrade.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TimeAlterNate.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TypeDay.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\UnderGradute.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\UnderGradutesInNewAcademyYear.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolManagementDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="DatabaseModel\SchoolManagementDbModel.edmx.diagram">
+      <DependentUpon>SchoolManagementDbModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseModel\SchoolManagementDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolManagementDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolManagementDbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DatabaseModel\SchoolManagementDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolManagementDbModel.edmx</DependentUpon>
+      <LastGenOutput>SchoolManagementDbModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

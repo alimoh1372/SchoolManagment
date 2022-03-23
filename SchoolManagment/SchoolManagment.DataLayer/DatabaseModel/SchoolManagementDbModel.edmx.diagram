@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3bbd886b8624fd383929d7810df8779" Name="Diagram1" ZoomLevel="121">
+        <EntityTypeShape EntityType="SchoolManagmentModel.AcademyYear" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Calender" Width="1.5" PointX="15" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Class" Width="1.5" PointX="17.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.DayAlternate" Width="1.5" PointX="18" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Day" Width="1.5" PointX="20.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Field" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Grade" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Lesson" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Permission" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Personal" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Role" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" Width="1.5" PointX="17.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="21.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Student" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Teacher" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Width="1.5" PointX="17.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="19.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Width="1.5" PointX="15" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TimeAlterNate" Width="1.5" PointX="22.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TypeDay" Width="1.5" PointX="18" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradute" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_AcademyYear" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Days_Calender" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_Classes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Days_DayAlternate" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TypeDays_Days" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Fields_UnderGradutes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_Fields" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Lessons_Fields" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Students_Grades" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Grades_Grades1" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_UnderGradutes_Grades" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_Students_UnderGradutes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_UnderGradutes" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.PersonalRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.RolePermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.TeacherCanTeachLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolManagmentModel.TimeInDayAlternate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
