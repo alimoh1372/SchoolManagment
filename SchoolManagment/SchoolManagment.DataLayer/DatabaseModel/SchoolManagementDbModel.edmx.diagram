@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolManagmentModel.Permission" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolManagmentModel.Personal" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Role" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Role" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" Width="1.5" PointX="17.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="21.75" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolManagmentModel.Student" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />

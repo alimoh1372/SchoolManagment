@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManagment.DataLayer
 {
-    interface IUnitOfWork
+    interface IUnitOfWork:IDisposable
     {
-
+        IGradeRepository GradeRepository { get; }
         int Save();
 
        

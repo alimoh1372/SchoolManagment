@@ -9,11 +9,11 @@ using SchoolManagment.DataLayer.DatabaseModel;
 
 namespace SchoolManagment.DataLayer
 {
-    public class BaseRepository<TEntity> where TEntity : class, IBaseRepository<TEntity>
+    public class BaseRepository<TEntity>  :  IBaseRepository<TEntity> where TEntity:class
     {
-        private SchoolManagmentEntities _db;
+        protected readonly SchoolManagmentEntities _db;
 
-        private DbSet<TEntity> _dbSet;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public BaseRepository(SchoolManagmentEntities db)
         {
@@ -43,7 +43,7 @@ namespace SchoolManagment.DataLayer
             TEntity entity = GetById(id);
             Delete(entity);
         }
-        void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             if (_db.Entry(entity).State == EntityState.Detached)
             {
@@ -52,7 +52,7 @@ namespace SchoolManagment.DataLayer
             }
             _db.Entry(entity).State = EntityState.Deleted;
         }
-        void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             if (_db.Entry(entity).State == EntityState.Detached)
             {

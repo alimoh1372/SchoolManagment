@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\SchoolManagment.DataLayer\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\SchoolManagment.DataLayer\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolManagment.DataLayer\SchoolManagment.DataLayer.csproj">
+      <Project>{78dd2f8e-fc7f-42eb-98f9-d004ddd9d160}</Project>
+      <Name>SchoolManagment.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolManagment.Utility\SchoolManagment.Utility.csproj">
       <Project>{2a34cd6e-08cb-43ef-88f8-c3e2736a0674}</Project>
       <Name>SchoolManagment.Utility</Name>

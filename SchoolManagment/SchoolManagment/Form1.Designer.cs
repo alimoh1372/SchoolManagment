@@ -95,7 +95,7 @@
             this.btnPersonalManage.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPersonalManage.Name = "btnPersonalManage";
             this.btnPersonalManage.ShowShortcutKeys = false;
-            this.btnPersonalManage.Size = new System.Drawing.Size(180, 22);
+            this.btnPersonalManage.Size = new System.Drawing.Size(171, 22);
             this.btnPersonalManage.Text = "پرسنل";
             this.btnPersonalManage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPersonalManage.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
@@ -105,7 +105,7 @@
             // 
             this.btnGradeInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnGradeInformation.Name = "btnGradeInformation";
-            this.btnGradeInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnGradeInformation.Size = new System.Drawing.Size(171, 22);
             this.btnGradeInformation.Text = "مقطع";
             this.btnGradeInformation.ToolTipText = "مدیریت مقاطع تحصیلی اصلی(دبیرستان،راهنمایی،ابتدایی) اعم از حذف و اضافه و ویرایش ";
             this.btnGradeInformation.Click += new System.EventHandler(this.btnGradeInformation_Click);
@@ -114,14 +114,14 @@
             // 
             this.btnUnderGradeInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUnderGradeInformation.Name = "btnUnderGradeInformation";
-            this.btnUnderGradeInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnUnderGradeInformation.Size = new System.Drawing.Size(171, 22);
             this.btnUnderGradeInformation.Text = "زیرمقطع";
             this.btnUnderGradeInformation.ToolTipText = "مدیریت اطلاعات زیر مقطع ها(پایه های هر مقطع) اعم از حذف و اضافه و ویرایش آنها";
             // 
             // btnAcademyYearInformation
             // 
             this.btnAcademyYearInformation.Name = "btnAcademyYearInformation";
-            this.btnAcademyYearInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnAcademyYearInformation.Size = new System.Drawing.Size(171, 22);
             this.btnAcademyYearInformation.Text = "سال تحصیلی";
             this.btnAcademyYearInformation.ToolTipText = "مدیریت سال های تحصیلی،حذف، اضافه و ویرایش آنها";
             // 
@@ -129,7 +129,7 @@
             // 
             this.btnFileldsInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnFileldsInformation.Name = "btnFileldsInformation";
-            this.btnFileldsInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnFileldsInformation.Size = new System.Drawing.Size(171, 22);
             this.btnFileldsInformation.Text = "رشته های تحصیلی";
             this.btnFileldsInformation.ToolTipText = "مدیریت اطلاعات مربوط به رشته های تحصیلی موجود در هر زیرمقطع، حذف و اضافه و ویرایش" +
     " آن";
@@ -138,28 +138,28 @@
             // 
             this.btnLessonInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnLessonInformation.Name = "btnLessonInformation";
-            this.btnLessonInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnLessonInformation.Size = new System.Drawing.Size(171, 22);
             this.btnLessonInformation.Text = "درس";
             this.btnLessonInformation.ToolTipText = "مدیریت اطلاعات مربوط به درس های هر رشته و مقاطع-حذف ، اضافه و ویرایش";
             // 
             // btnStudentInformation
             // 
             this.btnStudentInformation.Name = "btnStudentInformation";
-            this.btnStudentInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnStudentInformation.Size = new System.Drawing.Size(171, 22);
             this.btnStudentInformation.Text = "دانش آموز";
             this.btnStudentInformation.ToolTipText = "مدیریت اطلاعات مربوط به دانش آموزان ،حذف و اضافه و ویرایش";
             // 
             // btnTeacherInfo
             // 
             this.btnTeacherInfo.Name = "btnTeacherInfo";
-            this.btnTeacherInfo.Size = new System.Drawing.Size(180, 22);
+            this.btnTeacherInfo.Size = new System.Drawing.Size(171, 22);
             this.btnTeacherInfo.Text = "معلم";
             this.btnTeacherInfo.ToolTipText = "مدیریت اطلاعات مربوط به معلمان-حذف و اضافه و ویرایش آن";
             // 
             // btnClassroomInformation
             // 
             this.btnClassroomInformation.Name = "btnClassroomInformation";
-            this.btnClassroomInformation.Size = new System.Drawing.Size(180, 22);
+            this.btnClassroomInformation.Size = new System.Drawing.Size(171, 22);
             this.btnClassroomInformation.Text = "کلاس";
             this.btnClassroomInformation.ToolTipText = "مدیریت اطلاعات مربوط به کلاس های مدرسه ،حذف ، اضافه و ویرایش";
             // 
@@ -177,6 +177,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "مدیریت مدرسه";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.mnStManagmentInfo.ResumeLayout(false);
             this.mnStManagmentInfo.PerformLayout();
             this.ResumeLayout(false);

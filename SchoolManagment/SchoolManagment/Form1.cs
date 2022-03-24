@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SchoolManagment.DataLayer.DatabaseModel;
 
 namespace SchoolManagment.App
 {
@@ -21,6 +22,11 @@ namespace SchoolManagment.App
         {
             GradeForm frmGrade = new GradeForm();
             frmGrade.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

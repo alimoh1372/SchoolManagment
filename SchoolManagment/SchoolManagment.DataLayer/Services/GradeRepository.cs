@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,19 +7,27 @@ using SchoolManagment.DataLayer.DatabaseModel;
 
 namespace SchoolManagment.DataLayer
 {
-    public class GradeRepository : IGradeRepository
+    //public class CountryRepository : GenericRepository<Country>
+    //{
+    //    public CountryRepository(MainContext context) : base(context) { }
+
+    //    public virtual Country GetByCode(string code)
+    //    {
+    //        return dbSet.Where(c => c.Code == code).First();
+    //    }
+    //}
+    public class GradeRepository : BaseRepository<Grade>,IGradeRepository
     {
-        private SchoolManagmentEntities _db;
-        private DbSet<Grade>_dbSet;
-            
-        public GradeRepository(SchoolManagmentEntities db)
+        public GradeRepository(SchoolManagmentEntities db):base(db)
         {
-            _db = db;
-            _dbSet = db.Set<Grade>();
+
         }
-        public string GetNameById(object id)
+
+        public virtual string GetNameById(object id)
         {
-          return  _dbSet.Find(id).GradeName;
+           return _db.Grades.Find(id).GradeName;
         }
+
+
     }
 }

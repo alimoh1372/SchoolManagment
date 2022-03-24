@@ -8,7 +8,7 @@ using SchoolManagment.DataLayer.DatabaseModel;
 
 namespace SchoolManagment.DataLayer
 {
-    public interface IBaseRepository<TEntity>
+    public interface IBaseRepository<TEntity>where TEntity:class
     {
         TEntity GetById(object id);
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null);
