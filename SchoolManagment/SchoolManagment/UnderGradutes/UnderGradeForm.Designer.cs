@@ -28,24 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnderGradeForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUpdateSelectedUnderGrade = new System.Windows.Forms.Button();
             this.btnDeleteSelectedUnderGradute = new System.Windows.Forms.Button();
             this.btnAddNewUnderGradute = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtFkUnGradutePrequestisUnGradutePrequestis = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUnGraduteName = new System.Windows.Forms.TextBox();
             this.txtFkGradeId = new System.Windows.Forms.ComboBox();
+            this.txtUnGradutePrequestis = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtUnGraduteName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUnderGradutes = new System.Windows.Forms.DataGridView();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.PkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnGraduteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkUnGradutePrequestis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkUnGradutePrequestis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,7 +110,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtFkGradeId);
-            this.groupBox3.Controls.Add(this.txtFkUnGradutePrequestisUnGradutePrequestis);
+            this.groupBox3.Controls.Add(this.txtUnGradutePrequestis);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtUnGraduteName);
@@ -116,23 +121,23 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
-            // txtFkUnGradutePrequestisUnGradutePrequestis
+            // txtFkGradeId
             // 
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.FormattingEnabled = true;
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.Location = new System.Drawing.Point(47, 104);
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.Name = "txtFkUnGradutePrequestisUnGradutePrequestis";
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.Size = new System.Drawing.Size(271, 21);
-            this.txtFkUnGradutePrequestisUnGradutePrequestis.TabIndex = 3;
+            this.txtFkGradeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtFkGradeId.FormattingEnabled = true;
+            this.txtFkGradeId.Location = new System.Drawing.Point(47, 116);
+            this.txtFkGradeId.Name = "txtFkGradeId";
+            this.txtFkGradeId.Size = new System.Drawing.Size(271, 21);
+            this.txtFkGradeId.TabIndex = 5;
             // 
-            // label2
+            // txtUnGradutePrequestis
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "پیشنیاز زیرمقطع :";
+            this.txtUnGradutePrequestis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtUnGradutePrequestis.FormattingEnabled = true;
+            this.txtUnGradutePrequestis.Location = new System.Drawing.Point(47, 182);
+            this.txtUnGradutePrequestis.Name = "txtUnGradutePrequestis";
+            this.txtUnGradutePrequestis.Size = new System.Drawing.Size(271, 21);
+            this.txtUnGradutePrequestis.TabIndex = 3;
             // 
             // label1
             // 
@@ -143,6 +148,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "نام زیرمقطع :";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(138, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(183, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "مقطع تحصیلی مربوط به این زیر مقطع :";
+            // 
             // txtUnGraduteName
             // 
             this.txtUnGraduteName.Location = new System.Drawing.Point(47, 45);
@@ -150,23 +164,14 @@
             this.txtUnGraduteName.Size = new System.Drawing.Size(271, 21);
             this.txtUnGraduteName.TabIndex = 0;
             // 
-            // txtFkGradeId
+            // label2
             // 
-            this.txtFkGradeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtFkGradeId.FormattingEnabled = true;
-            this.txtFkGradeId.Location = new System.Drawing.Point(47, 165);
-            this.txtFkGradeId.Name = "txtFkGradeId";
-            this.txtFkGradeId.Size = new System.Drawing.Size(271, 21);
-            this.txtFkGradeId.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(138, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "مقطع تحصیلی مربوط به این زیر مقطع :";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(232, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "پیشنیاز زیرمقطع :";
             // 
             // groupBox1
             // 
@@ -187,14 +192,35 @@
             this.dgvUnderGradutes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PkUnGraduteId,
             this.UnGraduteName,
-            this.FkUnGradutePrequestis,
-            this.FkGradeId});
+            this.FkGradeId,
+            this.FkUnGradutePrequestis});
             this.dgvUnderGradutes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUnderGradutes.Location = new System.Drawing.Point(3, 17);
             this.dgvUnderGradutes.Name = "dgvUnderGradutes";
             this.dgvUnderGradutes.ReadOnly = true;
             this.dgvUnderGradutes.Size = new System.Drawing.Size(528, 406);
             this.dgvUnderGradutes.TabIndex = 0;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator1.ControlToValidate = this.txtUnGraduteName;
+            this.requiredFieldValidator1.ErrorMessage = "لطفا نام زیر مقطع را انتخاب نمائید. این مورد الزامی است.";
+            this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator2.ControlToValidate = this.txtUnGradutePrequestis;
+            this.requiredFieldValidator2.ErrorMessage = "لطفا نام مقطع را انتخاب نمائید. این مورد الزامی میباشد.";
+            this.requiredFieldValidator2.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator2.Icon")));
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator3.ControlToValidate = this.txtFkGradeId;
+            this.requiredFieldValidator3.ErrorMessage = "لطفا نام مقطع تحصیلی را انتخاب نمائید.این مورد الزامی میباشد.";
+            this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
             // 
             // PkUnGraduteId
             // 
@@ -211,19 +237,19 @@
             this.UnGraduteName.Name = "UnGraduteName";
             this.UnGraduteName.ReadOnly = true;
             // 
-            // FkUnGradutePrequestis
-            // 
-            this.FkUnGradutePrequestis.DataPropertyName = "FkUnGradutePrequestis";
-            this.FkUnGradutePrequestis.HeaderText = " پیشنیاز";
-            this.FkUnGradutePrequestis.Name = "FkUnGradutePrequestis";
-            this.FkUnGradutePrequestis.ReadOnly = true;
-            // 
             // FkGradeId
             // 
             this.FkGradeId.DataPropertyName = "FkGradeId";
             this.FkGradeId.HeaderText = "مقطع تحصیلی این زیر مقطع";
             this.FkGradeId.Name = "FkGradeId";
             this.FkGradeId.ReadOnly = true;
+            // 
+            // FkUnGradutePrequestis
+            // 
+            this.FkUnGradutePrequestis.DataPropertyName = "FkUnGradutePrequestis";
+            this.FkUnGradutePrequestis.HeaderText = " پیشنیاز";
+            this.FkUnGradutePrequestis.Name = "FkUnGradutePrequestis";
+            this.FkUnGradutePrequestis.ReadOnly = true;
             // 
             // UnderGradeForm
             // 
@@ -256,16 +282,19 @@
         private System.Windows.Forms.Button btnAddNewUnderGradute;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox txtFkGradeId;
-        private System.Windows.Forms.ComboBox txtFkUnGradutePrequestisUnGradutePrequestis;
+        private System.Windows.Forms.ComboBox txtUnGradutePrequestis;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUnGraduteName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUnderGradutes;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator2;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator3;
         private System.Windows.Forms.DataGridViewTextBoxColumn PkUnGraduteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnGraduteName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGradutePrequestis;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkGradeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGradutePrequestis;
     }
 }

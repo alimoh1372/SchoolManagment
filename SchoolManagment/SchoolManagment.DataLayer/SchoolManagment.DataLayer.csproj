@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\IUnitOfWork.cs" />
+    <Compile Include="Repositories\IUnderGraduteRepository.cs" />
     <Compile Include="Repositories\IGradeRepository.cs" />
     <Compile Include="Services\BaseRepository.cs" />
     <Compile Include="DatabaseModel\AcademyYear.cs">
@@ -147,6 +148,7 @@
     </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Services\GradeRepository.cs" />
+    <Compile Include="UnderGraduteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
