@@ -10,5 +10,6 @@ namespace SchoolManagment.DataLayer
     {
 
         string GetNameById(object id);
+        int GetIdByName(string gradeName);
     }
 }
