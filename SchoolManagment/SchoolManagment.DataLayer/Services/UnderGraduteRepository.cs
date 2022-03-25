@@ -12,7 +12,7 @@ namespace SchoolManagment.DataLayer
         {
 
         }
-
+        //Get The Id of UnderGradute By Id
         public virtual int GetIdByName(string UnderGraduteName)
         {
             if (UnderGraduteName == "بدون پیشنیاز")
@@ -25,7 +25,7 @@ namespace SchoolManagment.DataLayer
             }
 
         }
-
+        //Get The Name Of UnderGradute by Id
         public virtual string GetNameById(int id)
         {
             if (Convert.ToInt32(id) == 0 || id.ToString() == string.Empty)

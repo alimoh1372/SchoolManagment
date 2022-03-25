@@ -44,13 +44,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUnderGradutes = new System.Windows.Forms.DataGridView();
-            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
-            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
-            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.PkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnGraduteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGradutePrequestis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,6 +79,7 @@
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "به روز رسانی صفحه و اطلاعات";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnUpdateSelectedUnderGrade
             // 
@@ -106,6 +107,7 @@
             this.btnAddNewUnderGradute.TabIndex = 1;
             this.btnAddNewUnderGradute.Text = "افزودن زیر مقطع  جدید";
             this.btnAddNewUnderGradute.UseVisualStyleBackColor = true;
+            this.btnAddNewUnderGradute.Click += new System.EventHandler(this.btnAddNewUnderGradute_Click);
             // 
             // groupBox3
             // 
@@ -201,6 +203,35 @@
             this.dgvUnderGradutes.Size = new System.Drawing.Size(528, 406);
             this.dgvUnderGradutes.TabIndex = 0;
             // 
+            // PkUnGraduteId
+            // 
+            this.PkUnGraduteId.DataPropertyName = "PkUnGraduteId";
+            this.PkUnGraduteId.HeaderText = "کد مقطع";
+            this.PkUnGraduteId.Name = "PkUnGraduteId";
+            this.PkUnGraduteId.ReadOnly = true;
+            this.PkUnGraduteId.Visible = false;
+            // 
+            // UnGraduteName
+            // 
+            this.UnGraduteName.DataPropertyName = "UnGraduteName";
+            this.UnGraduteName.HeaderText = "نام زیرمقطع";
+            this.UnGraduteName.Name = "UnGraduteName";
+            this.UnGraduteName.ReadOnly = true;
+            // 
+            // FkGradeId
+            // 
+            this.FkGradeId.DataPropertyName = "FkGradeIdString";
+            this.FkGradeId.HeaderText = "مقطع تحصیلی این زیر مقطع";
+            this.FkGradeId.Name = "FkGradeId";
+            this.FkGradeId.ReadOnly = true;
+            // 
+            // FkUnGradutePrequestis
+            // 
+            this.FkUnGradutePrequestis.DataPropertyName = "FkUnGradutePrequestisString";
+            this.FkUnGradutePrequestis.HeaderText = " پیشنیاز";
+            this.FkUnGradutePrequestis.Name = "FkUnGradutePrequestis";
+            this.FkUnGradutePrequestis.ReadOnly = true;
+            // 
             // requiredFieldValidator1
             // 
             this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
@@ -222,35 +253,6 @@
             this.requiredFieldValidator3.ErrorMessage = "لطفا نام مقطع تحصیلی را انتخاب نمائید.این مورد الزامی میباشد.";
             this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
             // 
-            // PkUnGraduteId
-            // 
-            this.PkUnGraduteId.DataPropertyName = "PkUnGraduteId";
-            this.PkUnGraduteId.HeaderText = "کد مقطع";
-            this.PkUnGraduteId.Name = "PkUnGraduteId";
-            this.PkUnGraduteId.ReadOnly = true;
-            this.PkUnGraduteId.Visible = false;
-            // 
-            // UnGraduteName
-            // 
-            this.UnGraduteName.DataPropertyName = "UnGraduteName";
-            this.UnGraduteName.HeaderText = "نام زیرمقطع";
-            this.UnGraduteName.Name = "UnGraduteName";
-            this.UnGraduteName.ReadOnly = true;
-            // 
-            // FkGradeId
-            // 
-            this.FkGradeId.DataPropertyName = "FkGradeId";
-            this.FkGradeId.HeaderText = "مقطع تحصیلی این زیر مقطع";
-            this.FkGradeId.Name = "FkGradeId";
-            this.FkGradeId.ReadOnly = true;
-            // 
-            // FkUnGradutePrequestis
-            // 
-            this.FkUnGradutePrequestis.DataPropertyName = "FkUnGradutePrequestis";
-            this.FkUnGradutePrequestis.HeaderText = " پیشنیاز";
-            this.FkUnGradutePrequestis.Name = "FkUnGradutePrequestis";
-            this.FkUnGradutePrequestis.ReadOnly = true;
-            // 
             // UnderGradeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +266,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مدیریت اطلاعات زیر مقطع ها";
+            this.Load += new System.EventHandler(this.UnderGradeForm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

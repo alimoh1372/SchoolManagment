@@ -27,6 +27,18 @@ namespace SchoolManagment.DataLayer
                 return _gradeRepository;
             }
         }
+        private IUnderGraduteRepository _underGraduteRepository;
+        public IUnderGraduteRepository UnderGraduteRepository
+        {
+            get
+            {
+                if (_underGraduteRepository==null)
+                {
+                    _underGraduteRepository = new UnderGraduteRepository(_db);
+                }
+                return _underGraduteRepository;
+            }
+        }
 
         public void Dispose()
         {

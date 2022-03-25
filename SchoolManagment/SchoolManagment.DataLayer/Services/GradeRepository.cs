@@ -35,7 +35,7 @@ namespace SchoolManagment.DataLayer
             }
         }
 
-        public virtual string GetNameById(object id)
+        public virtual string GetNameById(int id)
         {
             if (Convert.ToInt32(id)==0 || id.ToString()==string.Empty)
             {

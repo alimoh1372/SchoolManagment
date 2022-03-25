@@ -9,7 +9,7 @@ namespace SchoolManagment.DataLayer
     public interface IGradeRepository:IBaseRepository <Grade>
     {
 
-        string GetNameById(object id);
+        string GetNameById(int id);
         int GetIdByName(string gradeName);
     }
 }

@@ -148,7 +148,7 @@
     </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Services\GradeRepository.cs" />
-    <Compile Include="UnderGraduteRepository.cs" />
+    <Compile Include="Services\UnderGraduteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">

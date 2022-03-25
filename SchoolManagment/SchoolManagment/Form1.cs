@@ -17,16 +17,19 @@ namespace SchoolManagment.App
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
         private void btnGradeInformation_Click(object sender, EventArgs e)
         {
             GradeForm frmGrade = new GradeForm();
             frmGrade.ShowDialog();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnUnderGradeInformation_Click(object sender, EventArgs e)
         {
-            
+            UnderGradeForm frmUnderGrade = new UnderGradeForm();
+            frmUnderGrade.ShowDialog();
         }
     }
 }

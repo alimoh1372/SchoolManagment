@@ -9,6 +9,7 @@ namespace SchoolManagment.DataLayer
     interface IUnitOfWork:IDisposable
     {
         IGradeRepository GradeRepository { get; }
+        IUnderGraduteRepository UnderGraduteRepository { get; }
         int Save();
 
        

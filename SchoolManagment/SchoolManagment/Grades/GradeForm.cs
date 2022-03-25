@@ -112,7 +112,7 @@ namespace SchoolManagment.App
                         {
                             int result;
                             oldGradeName = grade.GradeName;
-                            oldGradePrereuqust = db.GradeRepository.GetNameById(grade.FkGradePrequiestis);
+                            oldGradePrereuqust = db.GradeRepository.GetNameById(grade.FkGradePrequiestis.GetValueOrDefault());
                             string UpdateAttempString = "آیا از ثبت تغییرات زیر مطمئن هستید؟" + "\n" + "نام مقطع قبلی:" + "\"" + oldGradeName + "\"" + "نام مقطع جدید:" + "\"" + txtGradeName.Text + "\"" +
                                 "\n" + "پیشنیاز قبلی:" + "\"" + oldGradePrereuqust + "\"" + "پیشنیاز جدید :" + "\"" + txtPrereustisGrade.Text + "\"";
                             if (RtlMessageBox.Show(UpdateAttempString, "تغییر اطلاعات مقطع تحصیلی", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
