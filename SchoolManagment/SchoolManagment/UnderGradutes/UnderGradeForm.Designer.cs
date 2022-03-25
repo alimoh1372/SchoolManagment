@@ -89,6 +89,7 @@
             this.btnUpdateSelectedUnderGrade.TabIndex = 3;
             this.btnUpdateSelectedUnderGrade.Text = "ثبت ویرایش انجام شده روی یک زیرمقطع";
             this.btnUpdateSelectedUnderGrade.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedUnderGrade.Click += new System.EventHandler(this.btnUpdateSelectedUnderGrade_Click);
             // 
             // btnDeleteSelectedUnderGradute
             // 
@@ -98,6 +99,7 @@
             this.btnDeleteSelectedUnderGradute.TabIndex = 2;
             this.btnDeleteSelectedUnderGradute.Text = "حذف زیر مقطع انتخاب شده";
             this.btnDeleteSelectedUnderGradute.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedUnderGradute.Click += new System.EventHandler(this.btnDeleteSelectedUnderGradute_Click);
             // 
             // btnAddNewUnderGradute
             // 
@@ -202,6 +204,7 @@
             this.dgvUnderGradutes.ReadOnly = true;
             this.dgvUnderGradutes.Size = new System.Drawing.Size(528, 406);
             this.dgvUnderGradutes.TabIndex = 0;
+            this.dgvUnderGradutes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnderGradutes_CellClick);
             // 
             // PkUnGraduteId
             // 
