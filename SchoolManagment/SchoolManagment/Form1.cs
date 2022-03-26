@@ -31,5 +31,12 @@ namespace SchoolManagment.App
             UnderGradeForm frmUnderGrade = new UnderGradeForm();
             frmUnderGrade.ShowDialog();
         }
+
+        private void btnAcademyYearInformation_Click(object sender, EventArgs e)
+        {
+            AcademyYearForm frmAcademyYear = new AcademyYearForm();
+            frmAcademyYear.ShowDialog();
+            
+        }
     }
 }

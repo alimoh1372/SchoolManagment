@@ -125,6 +125,7 @@
             this.btnAcademyYearInformation.Size = new System.Drawing.Size(180, 22);
             this.btnAcademyYearInformation.Text = "سال تحصیلی";
             this.btnAcademyYearInformation.ToolTipText = "مدیریت سال های تحصیلی،حذف، اضافه و ویرایش آنها";
+            this.btnAcademyYearInformation.Click += new System.EventHandler(this.btnAcademyYearInformation_Click);
             // 
             // btnFileldsInformation
             // 
