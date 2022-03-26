@@ -53,6 +53,20 @@ namespace SchoolManagment.DataLayer
                 return _academyYearRepository;
             }
         }
+
+        private IFieldRepository _fieldRepository;
+
+        public IFieldRepository FieldRepository
+        {
+            get
+            {
+                if (_fieldRepository == null)
+                {
+                    _fieldRepository = new FieldRepository(_db);
+                }
+                return _fieldRepository;
+            }
+        }
         public void Dispose()
         {
             _db.Dispose();

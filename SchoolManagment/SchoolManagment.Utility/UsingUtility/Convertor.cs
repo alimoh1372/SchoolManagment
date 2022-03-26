@@ -13,7 +13,7 @@ namespace SchoolManagment.Utility
         {
             PersianCalendar pc = new PersianCalendar();
 
-            return pc.GetYear(pdt).ToString("0000") + "/" + pc.GetMonth(pdt).ToString("00") + "/" + pc.GetMonth(pdt).ToString("00");
+            return pc.GetYear(pdt).ToString("0000") + "/" + pc.GetMonth(pdt).ToString("00") + "/" + pc.GetDayOfMonth(pdt).ToString("00");
         }
         public static DateTime PersianStringShortDateToDateTime(this string persianStringDate)
         {

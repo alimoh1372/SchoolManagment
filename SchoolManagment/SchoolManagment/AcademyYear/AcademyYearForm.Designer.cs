@@ -46,16 +46,17 @@
             this.txtAcademyYearName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvAcademyYears = new System.Windows.Forms.DataGridView();
-            this.AcademyYearId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberOfDaysOfYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNumberOfDaysOfYear = new System.Windows.Forms.TextBox();
             this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator4 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.AcademyYearId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberOfDaysOfYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,6 +96,7 @@
             this.btnUpdateSelectedAcademyYear.TabIndex = 3;
             this.btnUpdateSelectedAcademyYear.Text = "تبت ویرایش انجام شده روی یک سال تحصیلی";
             this.btnUpdateSelectedAcademyYear.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedAcademyYear.Click += new System.EventHandler(this.btnUpdateSelectedAcademyYear_Click);
             // 
             // btnDeleteSelectedAcademyYear
             // 
@@ -104,6 +106,7 @@
             this.btnDeleteSelectedAcademyYear.TabIndex = 2;
             this.btnDeleteSelectedAcademyYear.Text = "حذف سال تحصیلی انتخاب شده";
             this.btnDeleteSelectedAcademyYear.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedAcademyYear.Click += new System.EventHandler(this.btnDeleteSelectedAcademyYear_Click);
             // 
             // btnAddNewAcademyYear
             // 
@@ -362,41 +365,6 @@
             this.dgvAcademyYears.TabIndex = 0;
             this.dgvAcademyYears.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAcademyYears_CellClick);
             // 
-            // AcademyYearId
-            // 
-            this.AcademyYearId.HeaderText = "کد سال تحصیلی";
-            this.AcademyYearId.Name = "AcademyYearId";
-            this.AcademyYearId.ReadOnly = true;
-            this.AcademyYearId.Visible = false;
-            // 
-            // AcademyYearName
-            // 
-            this.AcademyYearName.DataPropertyName = "AcademyYearName";
-            this.AcademyYearName.HeaderText = "نام سال تحصیلی";
-            this.AcademyYearName.Name = "AcademyYearName";
-            this.AcademyYearName.ReadOnly = true;
-            // 
-            // StartDate
-            // 
-            this.StartDate.DataPropertyName = "StartDate";
-            this.StartDate.HeaderText = "تاریخ شروع سال تحصیلی";
-            this.StartDate.Name = "StartDate";
-            this.StartDate.ReadOnly = true;
-            // 
-            // EndDate
-            // 
-            this.EndDate.DataPropertyName = "EndDate";
-            this.EndDate.HeaderText = "تاریخ پایان سال تحصیلی";
-            this.EndDate.Name = "EndDate";
-            this.EndDate.ReadOnly = true;
-            // 
-            // NumberOfDaysOfYear
-            // 
-            this.NumberOfDaysOfYear.DataPropertyName = "NumberOfDaysOfYear";
-            this.NumberOfDaysOfYear.HeaderText = "تعداد روزهای این سال تحصیلی";
-            this.NumberOfDaysOfYear.Name = "NumberOfDaysOfYear";
-            this.NumberOfDaysOfYear.ReadOnly = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -434,6 +402,49 @@
             this.requiredFieldValidator3.ControlToValidate = this.txtEndDateText;
             this.requiredFieldValidator3.ErrorMessage = "لطفا تاریخ پایان را از لیست باز شونده انتخاب نمائید.این مورد الزامی میباشد.";
             this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
+            // 
+            // requiredFieldValidator4
+            // 
+            this.requiredFieldValidator4.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator4.ControlToValidate = this.txtNumberOfDaysOfYear;
+            this.requiredFieldValidator4.ErrorMessage = "لطفا تاریخ شروع و پایان سال تحصیلی هر دومورد انتخاب گردد.";
+            this.requiredFieldValidator4.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator4.Icon")));
+            // 
+            // AcademyYearId
+            // 
+            this.AcademyYearId.DataPropertyName = "AcademyYearId";
+            this.AcademyYearId.HeaderText = "کد سال تحصیلی";
+            this.AcademyYearId.Name = "AcademyYearId";
+            this.AcademyYearId.ReadOnly = true;
+            this.AcademyYearId.Visible = false;
+            // 
+            // AcademyYearName
+            // 
+            this.AcademyYearName.DataPropertyName = "AcademyYearName";
+            this.AcademyYearName.HeaderText = "نام سال تحصیلی";
+            this.AcademyYearName.Name = "AcademyYearName";
+            this.AcademyYearName.ReadOnly = true;
+            // 
+            // StartDate
+            // 
+            this.StartDate.DataPropertyName = "StartDate";
+            this.StartDate.HeaderText = "تاریخ شروع سال تحصیلی";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.ReadOnly = true;
+            // 
+            // EndDate
+            // 
+            this.EndDate.DataPropertyName = "EndDate";
+            this.EndDate.HeaderText = "تاریخ پایان سال تحصیلی";
+            this.EndDate.Name = "EndDate";
+            this.EndDate.ReadOnly = true;
+            // 
+            // NumberOfDaysOfYear
+            // 
+            this.NumberOfDaysOfYear.DataPropertyName = "NumberOfDaysOfYear";
+            this.NumberOfDaysOfYear.HeaderText = "تعداد روزهای این سال تحصیلی";
+            this.NumberOfDaysOfYear.Name = "NumberOfDaysOfYear";
+            this.NumberOfDaysOfYear.ReadOnly = true;
             // 
             // AcademyYearForm
             // 
@@ -476,15 +487,16 @@
         private BehComponents.DateTimePickerX txtDtStartDate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvAcademyYears;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfDaysOfYear;
         private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
         private ValidationComponents.RequiredFieldValidator requiredFieldValidator2;
         private ValidationComponents.RequiredFieldValidator requiredFieldValidator3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNumberOfDaysOfYear;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfDaysOfYear;
     }
 }
