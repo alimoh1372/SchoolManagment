@@ -33,6 +33,8 @@ namespace SchoolManagment.App
         {
             IEnumerable<UnderGradutesViewModel> underGradutesViewModels;
             IEnumerable<Grade> grades;
+            txtFkGradeId.Items.Clear();
+            txtUnGradutePrequestis.Items.Clear();
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
                 IEnumerable<UnderGradute> underGradutes = db.UnderGraduteRepository.Get();

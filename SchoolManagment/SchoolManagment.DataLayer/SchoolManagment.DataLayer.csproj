@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\AcademyYearRepository.cs" />
     <Compile Include="Context\IUnitOfWork.cs" />
+    <Compile Include="Repositories\IAcademyYearRepository.cs" />
     <Compile Include="Repositories\IUnderGraduteRepository.cs" />
     <Compile Include="Repositories\IGradeRepository.cs" />
     <Compile Include="Services\BaseRepository.cs" />

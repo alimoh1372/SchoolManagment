@@ -10,6 +10,7 @@ namespace SchoolManagment.DataLayer
     {
         IGradeRepository GradeRepository { get; }
         IUnderGraduteRepository UnderGraduteRepository { get; }
+        IAcademyYearRepository AcademyYearRepository { get; }
         int Save();
 
        
