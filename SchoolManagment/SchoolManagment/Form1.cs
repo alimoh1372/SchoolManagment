@@ -38,5 +38,11 @@ namespace SchoolManagment.App
             frmAcademyYear.ShowDialog();
             
         }
+
+        private void btnFileldsInformation_Click(object sender, EventArgs e)
+        {
+            FormField formField = new FormField();
+            formField.ShowDialog();
+        }
     }
 }

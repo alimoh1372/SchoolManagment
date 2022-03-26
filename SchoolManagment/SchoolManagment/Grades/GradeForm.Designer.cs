@@ -36,6 +36,7 @@
             this.GradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkGradePrequiestisString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUpdateSelectedGrade = new System.Windows.Forms.Button();
             this.btnDeleteSelectedGrade = new System.Windows.Forms.Button();
             this.btnAddNewGrade = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGradeName = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.groupBox1.SuspendLayout();
@@ -116,6 +116,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "جزئیات مقطع";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(6, 350);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(171, 53);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "به روز رسانی صفحه و اطلاعات";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnUpdateSelectedGrade
             // 
@@ -192,16 +202,6 @@
             this.txtGradeName.Name = "txtGradeName";
             this.txtGradeName.Size = new System.Drawing.Size(271, 21);
             this.txtGradeName.TabIndex = 0;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(6, 350);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(171, 53);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.Text = "به روز رسانی صفحه و اطلاعات";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // requiredFieldValidator1
             // 

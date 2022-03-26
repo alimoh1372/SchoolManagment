@@ -182,5 +182,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolManagment.ViewModel\SchoolManagment.ViewModel.csproj">
+      <Project>{4ce02685-e78c-495d-a85b-7390aed59827}</Project>
+      <Name>SchoolManagment.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -135,6 +135,7 @@
             this.btnFileldsInformation.Text = "رشته های تحصیلی";
             this.btnFileldsInformation.ToolTipText = "مدیریت اطلاعات مربوط به رشته های تحصیلی موجود در هر زیرمقطع، حذف و اضافه و ویرایش" +
     " آن";
+            this.btnFileldsInformation.Click += new System.EventHandler(this.btnFileldsInformation_Click);
             // 
             // btnLessonInformation
             // 

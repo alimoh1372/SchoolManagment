@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldViewModel\FieldViewModel.cs" />
     <Compile Include="GradeViewModel\GradeGridViewModel.cs" />
     <Compile Include="GradeViewModel\IGradeGridViewModel.cs" />
+    <Compile Include="FieldViewModel\IFieldViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\UnderGradutesViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\IUnderGradutesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
