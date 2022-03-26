@@ -202,6 +202,7 @@
             this.dgvUnderGradutes.Location = new System.Drawing.Point(3, 17);
             this.dgvUnderGradutes.Name = "dgvUnderGradutes";
             this.dgvUnderGradutes.ReadOnly = true;
+            this.dgvUnderGradutes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvUnderGradutes.Size = new System.Drawing.Size(528, 406);
             this.dgvUnderGradutes.TabIndex = 0;
             this.dgvUnderGradutes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnderGradutes_CellClick);
