@@ -32,22 +32,24 @@ namespace SchoolManagment.App
         {
             txtFieldName.Text = string.Empty;
             txtFKUnGraduteId.Items.Clear();
-            txtFKUnGraduteId.DisplayMember = "FKUnGraduteIdString";
-            txtFKUnGraduteId.ValueMember = "FKUnGraduteId";
+            txtFKUnGraduteId.DisplayMember = "UnGraduteName";
+            txtFKUnGraduteId.ValueMember = "PkUnGraduteId";
             dgvFields.AutoGenerateColumns = false;
             IEnumerable<IFieldViewModel> fieldViewModels;
-            using (UnitOfWork db=new UnitOfWork(new SchoolManagmentEntities()))
+            IEnumerable<IUnderGradutesViewModel> underGradutesViewModels;
+            using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
                 fieldViewModels = db.FieldRepository.FillFieldViewModel();
+                underGradutesViewModels = db.UnderGraduteRepository.FillUnderGradutesViewModel();
                 dgvFields.DataSource = fieldViewModels.ToList();
-                txtFKUnGraduteId.Items.AddRange(fieldViewModels.ToArray());
-                txtFKUnGraduteId.SelectedIndex=0;
+                txtFKUnGraduteId.Items.AddRange(underGradutesViewModels.ToArray());
+                txtFKUnGraduteId.SelectedIndex = 0;
             }
         }
 
         private void dgvFields_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
     }
 }

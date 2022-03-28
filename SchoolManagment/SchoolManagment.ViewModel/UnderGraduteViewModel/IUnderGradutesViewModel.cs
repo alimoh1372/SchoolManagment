@@ -10,7 +10,7 @@ namespace SchoolManagment.ViewModel
     {
          int PkUnGraduteId { get; set; }
 
-        int FkUnGradutePrequestis { get; set; }
+        int ? FkUnGradutePrequestis { get; set; }
 
         string FkUnGradutePrequestisString { get; set; }
 
