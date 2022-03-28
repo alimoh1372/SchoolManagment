@@ -87,6 +87,7 @@
             this.btnUpdateSelectedField.TabIndex = 3;
             this.btnUpdateSelectedField.Text = "ثبت ویرایش انجام شده روی یک رشته";
             this.btnUpdateSelectedField.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedField.Click += new System.EventHandler(this.btnUpdateSelectedField_Click);
             // 
             // btnDeleteSelectedField
             // 
@@ -96,6 +97,7 @@
             this.btnDeleteSelectedField.TabIndex = 2;
             this.btnDeleteSelectedField.Text = "حذف رشته انتخاب شده";
             this.btnDeleteSelectedField.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedField.Click += new System.EventHandler(this.btnDeleteSelectedField_Click);
             // 
             // btnAddNewField
             // 
@@ -105,6 +107,7 @@
             this.btnAddNewField.TabIndex = 1;
             this.btnAddNewField.Text = "افزودن رشته جدید";
             this.btnAddNewField.UseVisualStyleBackColor = true;
+            this.btnAddNewField.Click += new System.EventHandler(this.btnAddNewField_Click);
             // 
             // groupBox3
             // 
@@ -192,6 +195,7 @@
             // 
             // FKUnGraduteId
             // 
+            this.FKUnGraduteId.DataPropertyName = "FKUnGraduteId";
             this.FKUnGraduteId.HeaderText = "کد زیرمقطع";
             this.FKUnGraduteId.Name = "FKUnGraduteId";
             this.FKUnGraduteId.ReadOnly = true;
