@@ -34,6 +34,14 @@ namespace SchoolManagment.DataLayer
 
             return query.ToList();
         }
+
+        public IEnumerable<TEntity> GetIncludeEntity<LEntity>(Expression<Func<TEntity, LEntity>> include)
+        {
+            var query = _dbSet.Include(include);
+            return query;
+        }
+       
+
         public virtual void Insert(TEntity entity)
         {
             _dbSet.Add(entity);
@@ -60,5 +68,6 @@ namespace SchoolManagment.DataLayer
             }
             _db.Entry(entity).State = EntityState.Modified;
         }
+
     }
 }

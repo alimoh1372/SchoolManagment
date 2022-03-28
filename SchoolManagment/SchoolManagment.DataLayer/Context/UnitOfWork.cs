@@ -32,7 +32,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_underGraduteRepository==null)
+                if (_underGraduteRepository == null)
                 {
                     _underGraduteRepository = new UnderGraduteRepository(_db);
                 }
@@ -42,11 +42,11 @@ namespace SchoolManagment.DataLayer
 
         private IAcademyYearRepository _academyYearRepository;
 
-        public  IAcademyYearRepository AcademyYearRepository
+        public IAcademyYearRepository AcademyYearRepository
         {
             get
             {
-                if (_academyYearRepository==null)
+                if (_academyYearRepository == null)
                 {
                     _academyYearRepository = new AcademyYearRepository(_db);
                 }
@@ -65,6 +65,19 @@ namespace SchoolManagment.DataLayer
                     _fieldRepository = new FieldRepository(_db);
                 }
                 return _fieldRepository;
+            }
+        }
+
+        private ILessonRepository _lessonRepository { get; set; }
+        public ILessonRepository LessonRepository
+        {
+            get
+            {
+                if (_lessonRepository==null)
+                {
+                    _lessonRepository = new LessonRepository(_db);
+                }
+                return _lessonRepository;
             }
         }
         public void Dispose()
