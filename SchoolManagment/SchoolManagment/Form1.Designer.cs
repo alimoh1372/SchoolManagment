@@ -152,6 +152,7 @@
             this.btnStudentInformation.Size = new System.Drawing.Size(180, 22);
             this.btnStudentInformation.Text = "دانش آموز";
             this.btnStudentInformation.ToolTipText = "مدیریت اطلاعات مربوط به دانش آموزان ،حذف و اضافه و ویرایش";
+            this.btnStudentInformation.Click += new System.EventHandler(this.btnStudentInformation_Click);
             // 
             // btnTeacherInfo
             // 

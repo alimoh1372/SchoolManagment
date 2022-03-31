@@ -50,5 +50,11 @@ namespace SchoolManagment.App
             FormLesson frmLesson = new FormLesson();
             frmLesson.ShowDialog();
         }
+
+        private void btnStudentInformation_Click(object sender, EventArgs e)
+        {
+            FormStudent frmStudent = new FormStudent();
+            frmStudent.ShowDialog();
+        }
     }
 }

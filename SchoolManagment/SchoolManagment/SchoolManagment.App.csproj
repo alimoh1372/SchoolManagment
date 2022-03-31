@@ -73,10 +73,10 @@
     <Compile Include="Field\FormField.Designer.cs">
       <DependentUpon>FormField.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStudent.cs">
+    <Compile Include="Student\FormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStudent.Designer.cs">
+    <Compile Include="Student\FormStudent.Designer.cs">
       <DependentUpon>FormStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Lesson\FormLesson.cs">
@@ -138,7 +138,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStudent.resx">
+    <EmbeddedResource Include="Student\FormStudent.resx">
       <DependentUpon>FormStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lesson\FormLesson.resx">

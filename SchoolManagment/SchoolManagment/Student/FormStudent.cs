@@ -16,5 +16,23 @@ namespace SchoolManagment.App
         {
             InitializeComponent();
         }
+
+        private void FormStudent_Load(object sender, EventArgs e)
+        {
+            ReloadDataAndForm();
+        }
+
+
+
+
+
+
+
+        private void ReloadDataAndForm()
+        {
+            
+        }
+
+
     }
 }

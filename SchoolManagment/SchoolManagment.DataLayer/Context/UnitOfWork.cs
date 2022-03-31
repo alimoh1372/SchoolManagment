@@ -73,11 +73,23 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_lessonRepository==null)
+                if (_lessonRepository == null)
                 {
                     _lessonRepository = new LessonRepository(_db);
                 }
                 return _lessonRepository;
+            }
+        }
+        private IStudentRepository _studentRepository;
+        public IStudentRepository StudentRepository
+        {
+            get
+            {
+                if (_studentRepository == null)
+                {
+                    _studentRepository = new StudentRepository(_db);
+                }
+                return _studentRepository;
             }
         }
         public void Dispose()

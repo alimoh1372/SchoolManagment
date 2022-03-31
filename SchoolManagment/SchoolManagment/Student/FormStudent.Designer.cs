@@ -34,14 +34,14 @@
             this.btnDeleteSelectedLesson = new System.Windows.Forms.Button();
             this.btnAddNewLesson = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtFkLastPassedUgraduteId = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtStudentNationCode = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtFkFileldId = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtStudentNationCode = new System.Windows.Forms.MaskedTextBox();
-            this.txtFkLastPassedUgraduteId = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLessons = new System.Windows.Forms.DataGridView();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,6 +123,43 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
+            // txtFkLastPassedUgraduteId
+            // 
+            this.txtFkLastPassedUgraduteId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtFkLastPassedUgraduteId.FormattingEnabled = true;
+            this.txtFkLastPassedUgraduteId.Location = new System.Drawing.Point(48, 238);
+            this.txtFkLastPassedUgraduteId.Name = "txtFkLastPassedUgraduteId";
+            this.txtFkLastPassedUgraduteId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFkLastPassedUgraduteId.Size = new System.Drawing.Size(271, 21);
+            this.txtFkLastPassedUgraduteId.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(123, 208);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(198, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "آخرین مقطع تحصیلی که پاس شده است :";
+            // 
+            // txtStudentNationCode
+            // 
+            this.txtStudentNationCode.Location = new System.Drawing.Point(48, 105);
+            this.txtStudentNationCode.Mask = "000-00000-00";
+            this.txtStudentNationCode.Name = "txtStudentNationCode";
+            this.txtStudentNationCode.Size = new System.Drawing.Size(271, 21);
+            this.txtStudentNationCode.TabIndex = 1;
+            this.txtStudentNationCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(253, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "شماره ملی :";
+            // 
             // txtFkFileldId
             // 
             this.txtFkFileldId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -157,43 +194,6 @@
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(271, 21);
             this.txtStudentName.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(253, 75);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "شماره ملی :";
-            // 
-            // txtStudentNationCode
-            // 
-            this.txtStudentNationCode.Location = new System.Drawing.Point(48, 105);
-            this.txtStudentNationCode.Mask = "000-00000-00";
-            this.txtStudentNationCode.Name = "txtStudentNationCode";
-            this.txtStudentNationCode.Size = new System.Drawing.Size(271, 21);
-            this.txtStudentNationCode.TabIndex = 1;
-            this.txtStudentNationCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtFkLastPassedUgraduteId
-            // 
-            this.txtFkLastPassedUgraduteId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtFkLastPassedUgraduteId.FormattingEnabled = true;
-            this.txtFkLastPassedUgraduteId.Location = new System.Drawing.Point(48, 238);
-            this.txtFkLastPassedUgraduteId.Name = "txtFkLastPassedUgraduteId";
-            this.txtFkLastPassedUgraduteId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtFkLastPassedUgraduteId.Size = new System.Drawing.Size(271, 21);
-            this.txtFkLastPassedUgraduteId.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(123, 208);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(198, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "آخرین مقطع تحصیلی که پاس شده است :";
             // 
             // groupBox1
             // 
@@ -282,6 +282,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مدیریت اطلاعات دانش آموزان";
+            this.Load += new System.EventHandler(this.FormStudent_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\StudentRepository.cs" />
+    <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Services\LessonRepository.cs" />
     <Compile Include="Repositories\ILessonRepository.cs" />
     <Compile Include="Services\FieldRepository.cs" />
