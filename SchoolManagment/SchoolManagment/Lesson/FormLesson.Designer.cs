@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLesson));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUpdateSelectedLesson = new System.Windows.Forms.Button();
             this.btnDeleteSelectedLesson = new System.Windows.Forms.Button();
             this.btnAddNewLesson = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtLessonUnits = new System.Windows.Forms.NumericUpDown();
             this.txtFkFileldId = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLessonName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtLessonUnits = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLessons = new System.Windows.Forms.DataGridView();
             this.PKLessonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +49,9 @@
             this.LessonUnits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkFileldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkFileldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.rangeValidator1 = new ValidationComponents.RangeValidator(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLessonUnits)).BeginInit();
@@ -77,6 +82,7 @@
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "به روز رسانی صفحه و اطلاعات";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnUpdateSelectedLesson
             // 
@@ -104,6 +110,7 @@
             this.btnAddNewLesson.TabIndex = 1;
             this.btnAddNewLesson.Text = "افزودن درس جدید";
             this.btnAddNewLesson.UseVisualStyleBackColor = true;
+            this.btnAddNewLesson.Click += new System.EventHandler(this.btnAddNewLesson_Click);
             // 
             // groupBox3
             // 
@@ -119,6 +126,14 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
+            // txtLessonUnits
+            // 
+            this.txtLessonUnits.Location = new System.Drawing.Point(198, 107);
+            this.txtLessonUnits.Name = "txtLessonUnits";
+            this.txtLessonUnits.Size = new System.Drawing.Size(120, 21);
+            this.txtLessonUnits.TabIndex = 6;
+            this.txtLessonUnits.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
             // txtFkFileldId
             // 
             this.txtFkFileldId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -128,6 +143,15 @@
             this.txtFkFileldId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFkFileldId.Size = new System.Drawing.Size(271, 21);
             this.txtFkFileldId.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(260, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "تعداد واحد :";
             // 
             // label2
             // 
@@ -153,23 +177,6 @@
             this.txtLessonName.Name = "txtLessonName";
             this.txtLessonName.Size = new System.Drawing.Size(271, 21);
             this.txtLessonName.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(260, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "تعداد واحد :";
-            // 
-            // txtLessonUnits
-            // 
-            this.txtLessonUnits.Location = new System.Drawing.Point(198, 107);
-            this.txtLessonUnits.Name = "txtLessonUnits";
-            this.txtLessonUnits.Size = new System.Drawing.Size(120, 21);
-            this.txtLessonUnits.TabIndex = 6;
-            this.txtLessonUnits.ThousandsSeparator = true;
             // 
             // groupBox1
             // 
@@ -200,9 +207,11 @@
             this.dgvLessons.ReadOnly = true;
             this.dgvLessons.Size = new System.Drawing.Size(407, 430);
             this.dgvLessons.TabIndex = 0;
+            this.dgvLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLessons_CellClick);
             // 
             // PKLessonId
             // 
+            this.PKLessonId.DataPropertyName = "PKLessonId";
             this.PKLessonId.HeaderText = "کد درس";
             this.PKLessonId.Name = "PKLessonId";
             this.PKLessonId.ReadOnly = true;
@@ -210,18 +219,21 @@
             // 
             // LessonName
             // 
+            this.LessonName.DataPropertyName = "LessonName";
             this.LessonName.HeaderText = "نام درس";
             this.LessonName.Name = "LessonName";
             this.LessonName.ReadOnly = true;
             // 
             // LessonUnits
             // 
+            this.LessonUnits.DataPropertyName = "LessonUnits";
             this.LessonUnits.HeaderText = "تعداد واحد درس";
             this.LessonUnits.Name = "LessonUnits";
             this.LessonUnits.ReadOnly = true;
             // 
             // FkFileldId
             // 
+            this.FkFileldId.DataPropertyName = "FkFileldId";
             this.FkFileldId.HeaderText = "کد رشته ی درس";
             this.FkFileldId.Name = "FkFileldId";
             this.FkFileldId.ReadOnly = true;
@@ -229,9 +241,34 @@
             // 
             // FkFileldIdString
             // 
+            this.FkFileldIdString.DataPropertyName = "FkFileldIdString";
             this.FkFileldIdString.HeaderText = "رشته ی درس";
             this.FkFileldIdString.Name = "FkFileldIdString";
             this.FkFileldIdString.ReadOnly = true;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator1.ControlToValidate = this.txtLessonName;
+            this.requiredFieldValidator1.ErrorMessage = "این مورد الزامی میباشد لطفا آن را تکمیل فرمائید.با تشکر";
+            this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator3.ControlToValidate = this.txtFkFileldId;
+            this.requiredFieldValidator3.ErrorMessage = "این مورد الزامی میباشد.لطفا یک مقدار از لیست باز شونده برای آن انتخاب نمائید.";
+            this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
+            // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.CancelFocusChangeWhenInvalid = false;
+            this.rangeValidator1.ControlToValidate = this.txtLessonUnits;
+            this.rangeValidator1.ErrorMessage = "مقدار 1 الی 100 مورد قبول میباشد لطفا وارد نمائید.";
+            this.rangeValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("rangeValidator1.Icon")));
+            this.rangeValidator1.MaximumValue = "100";
+            this.rangeValidator1.MinimumValue = "1";
+            this.rangeValidator1.Type = ValidationComponents.ValidationDataType.Integer;
             // 
             // FormLesson
             // 
@@ -278,5 +315,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LessonUnits;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldIdString;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator3;
+        private ValidationComponents.RangeValidator rangeValidator1;
     }
 }

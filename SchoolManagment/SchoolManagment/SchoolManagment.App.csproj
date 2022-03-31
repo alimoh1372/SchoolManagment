@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BehComponents">
-      <HintPath>C:\Users\A.R.I\Downloads\PersianCalender\PersianCalender\bin\Debug\BehComponents.dll</HintPath>
+    <Reference Include="BehComponents, Version=2.2.0.0, Culture=neutral, PublicKeyToken=a36ced8ede3e7af7, processorArchitecture=MSIL">
+      <HintPath>..\packages\BehComponent.1.0.0\lib\net20\BehComponents.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\SchoolManagment.DataLayer\bin\Debug\EntityFramework.dll</HintPath>
@@ -73,10 +73,10 @@
     <Compile Include="Field\FormField.Designer.cs">
       <DependentUpon>FormField.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLesson.cs">
+    <Compile Include="Lesson\FormLesson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLesson.Designer.cs">
+    <Compile Include="Lesson\FormLesson.Designer.cs">
       <DependentUpon>FormLesson.cs</DependentUpon>
     </Compile>
     <Compile Include="Grades\GradeForm.cs">
@@ -132,7 +132,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLesson.resx">
+    <EmbeddedResource Include="Lesson\FormLesson.resx">
       <DependentUpon>FormLesson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Grades\GradeForm.resx">
@@ -151,6 +151,7 @@
     <EmbeddedResource Include="UnderGradutes\UnderGradeForm.resx">
       <DependentUpon>UnderGradeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -197,12 +197,12 @@ namespace SchoolManagment.App
 
         private void txtDtStartDate_SelectedDateChanged(DateTime selectedDateTime, BehComponents.PersianDateTime selectedPersianDateTime)
         {
-            txtStartDateText.Text = txtDtStartDate.GetSelectedDateInDateTime().ToString("yyyy/MM/dd");
+            txtStartDateText.Text = txtDtStartDate.GetSelectedDateInDateTime().DateTimeToPersianStringShortDate();
         }
 
         private void txtDtEndDate_SelectedDateChanged(DateTime selectedDateTime, BehComponents.PersianDateTime selectedPersianDateTime)
         {
-            txtEndDateText.Text = txtDtEndDate.GetSelectedDateInDateTime().ToString("yyyy/MM/dd");
+            txtEndDateText.Text = txtDtEndDate.GetSelectedDateInDateTime().DateTimeToPersianStringShortDate();
         }
 
         private void txtStartDateText_TextChanged(object sender, EventArgs e)

@@ -144,6 +144,7 @@
             this.btnLessonInformation.Size = new System.Drawing.Size(180, 22);
             this.btnLessonInformation.Text = "درس";
             this.btnLessonInformation.ToolTipText = "مدیریت اطلاعات مربوط به درس های هر رشته و مقاطع-حذف ، اضافه و ویرایش";
+            this.btnLessonInformation.Click += new System.EventHandler(this.btnLessonInformation_Click);
             // 
             // btnStudentInformation
             // 

@@ -44,5 +44,11 @@ namespace SchoolManagment.App
             FormField formField = new FormField();
             formField.ShowDialog();
         }
+
+        private void btnLessonInformation_Click(object sender, EventArgs e)
+        {
+            FormLesson frmLesson = new FormLesson();
+            frmLesson.ShowDialog();
+        }
     }
 }
