@@ -92,6 +92,7 @@
             this.btnUpdateSelectedLesson.TabIndex = 3;
             this.btnUpdateSelectedLesson.Text = "ثبت ویرایش انجام شده روی یک درس";
             this.btnUpdateSelectedLesson.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedLesson.Click += new System.EventHandler(this.btnUpdateSelectedLesson_Click);
             // 
             // btnDeleteSelectedLesson
             // 
@@ -101,6 +102,7 @@
             this.btnDeleteSelectedLesson.TabIndex = 2;
             this.btnDeleteSelectedLesson.Text = "حذف درس انتخاب شده";
             this.btnDeleteSelectedLesson.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedLesson.Click += new System.EventHandler(this.btnDeleteSelectedLesson_Click);
             // 
             // btnAddNewLesson
             // 

@@ -123,7 +123,7 @@ namespace SchoolManagment.App
                         {
                             ReloadDataAndForm();
 
-                        }
+                        }           
                         else
                         {
                             attemMessage = "خطا در هنگام ثبت ویرایش سال تحصیلی در پایگاه داده،لطفا مجددا تلاش نمائید.یا با ادمین خود تماس حاصل فرمائید." +
