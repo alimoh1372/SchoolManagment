@@ -19,5 +19,7 @@ namespace SchoolManagment.ViewModel
         string FkGradeIdString { get; set; }
 
         string UnGraduteName { get; set; }
+
+        
     }
 }

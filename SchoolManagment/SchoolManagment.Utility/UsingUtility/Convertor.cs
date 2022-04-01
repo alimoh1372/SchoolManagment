@@ -29,5 +29,6 @@ namespace SchoolManagment.Utility
             DateTime milEndDateTime = EndDate.PersianStringShortDateToDateTime();
             return Convert.ToInt32((milEndDateTime - milStartDatetime).TotalDays)+1;
         }
+
     }
 }

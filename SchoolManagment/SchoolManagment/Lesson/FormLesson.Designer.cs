@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLessonName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvLessons = new System.Windows.Forms.DataGridView();
+            this.dgvLesson = new System.Windows.Forms.DataGridView();
             this.PKLessonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LessonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LessonUnits = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +56,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLessonUnits)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLessons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -182,7 +182,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvLessons);
+            this.groupBox1.Controls.Add(this.dgvLesson);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -191,25 +191,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست درس های ثبت شده :";
             // 
-            // dgvLessons
+            // dgvLesson
             // 
-            this.dgvLessons.AllowUserToAddRows = false;
-            this.dgvLessons.AllowUserToDeleteRows = false;
-            this.dgvLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvLesson.AllowUserToAddRows = false;
+            this.dgvLesson.AllowUserToDeleteRows = false;
+            this.dgvLesson.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLesson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLesson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PKLessonId,
             this.LessonName,
             this.LessonUnits,
             this.FkFileldId,
             this.FkFileldIdString});
-            this.dgvLessons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLessons.Location = new System.Drawing.Point(3, 17);
-            this.dgvLessons.Name = "dgvLessons";
-            this.dgvLessons.ReadOnly = true;
-            this.dgvLessons.Size = new System.Drawing.Size(407, 430);
-            this.dgvLessons.TabIndex = 0;
-            this.dgvLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLessons_CellClick);
+            this.dgvLesson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLesson.Location = new System.Drawing.Point(3, 17);
+            this.dgvLesson.Name = "dgvLesson";
+            this.dgvLesson.ReadOnly = true;
+            this.dgvLesson.Size = new System.Drawing.Size(407, 430);
+            this.dgvLesson.TabIndex = 0;
+            this.dgvLesson.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLessons_CellClick);
             // 
             // PKLessonId
             // 
@@ -291,7 +291,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLessonUnits)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLessons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,7 +311,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLessonName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvLessons;
+        private System.Windows.Forms.DataGridView dgvLesson;
         private System.Windows.Forms.DataGridViewTextBoxColumn PKLessonId;
         private System.Windows.Forms.DataGridViewTextBoxColumn LessonName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LessonUnits;

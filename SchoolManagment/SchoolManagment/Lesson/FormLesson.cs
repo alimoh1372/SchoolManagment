@@ -19,7 +19,7 @@ namespace SchoolManagment.App
         public FormLesson()
         {
             InitializeComponent();
-            dgvLessons.AutoGenerateColumns = false;
+            dgvLesson.AutoGenerateColumns = false;
         }
 
         private void FormLesson_Load(object sender, EventArgs e)
@@ -67,18 +67,18 @@ namespace SchoolManagment.App
         {
             string attemMessage;
             int result;
-            if (dgvLessons.CurrentRow.Cells.Count > 0 && dgvLessons.CurrentRow.Cells["LessonName"].Value.ToString() == txtLessonName.Text && BaseValidator.IsFormValid(this.components))
+            if (dgvLesson.CurrentRow.Cells.Count > 0 && dgvLesson.CurrentRow.Cells["LessonName"].Value.ToString() == txtLessonName.Text && BaseValidator.IsFormValid(this.components))
             {
 
                 attemMessage = "آیا از حذف درس با مشخصات زیر مطمئن هستید؟" + "\n" +
-                       "نام درس :" + dgvLessons.CurrentRow.Cells["LessonName"].Value.ToString() + "\n" +
-                       "تعداد واحد :" + dgvLessons.CurrentRow.Cells["LessonUnits"].Value.ToString() + "\n" +
-                       "نام رشته :" + dgvLessons.CurrentRow.Cells["FkFileldIdString"].Value.ToString();
+                       "نام درس :" + dgvLesson.CurrentRow.Cells["LessonName"].Value.ToString() + "\n" +
+                       "تعداد واحد :" + dgvLesson.CurrentRow.Cells["LessonUnits"].Value.ToString() + "\n" +
+                       "نام رشته :" + dgvLesson.CurrentRow.Cells["FkFileldIdString"].Value.ToString();
                 if (RtlMessageBox.Show(attemMessage, "حذف درس", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
                     {
-                        db.LessonRepository.Delete(Convert.ToInt32(dgvLessons.CurrentRow.Cells["PKLessonId"].Value));
+                        db.LessonRepository.Delete(Convert.ToInt32(dgvLesson.CurrentRow.Cells["PKLessonId"].Value));
                         result = db.Save();
                         if (result > 0)
                         {
@@ -108,14 +108,14 @@ namespace SchoolManagment.App
             string oldLeUnitString;
             string oldLeFlString;
             int result;
-            if (dgvLessons.CurrentRow.Cells.Count > 0 && BaseValidator.IsFormValid(this.components))
+            if (dgvLesson.CurrentRow.Cells.Count > 0 && BaseValidator.IsFormValid(this.components))
             {
                 using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
                 {
-                    Lesson lesson = db.LessonRepository.GetById(Convert.ToInt32(dgvLessons.CurrentRow.Cells["PKLessonId"].Value));
+                    Lesson lesson = db.LessonRepository.GetById(Convert.ToInt32(dgvLesson.CurrentRow.Cells["PKLessonId"].Value));
                    oldLeName = lesson.LessonName;
                     oldLeUnitString = lesson.LessonUnits.ToString();
-                    oldLeFlString = dgvLessons.CurrentRow.Cells["FkFileldIdString"].Value.ToString();
+                    oldLeFlString = dgvLesson.CurrentRow.Cells["FkFileldIdString"].Value.ToString();
                     attemMessage = "آیا از ثبت تغییرات ذیر مطمئن هستید؟" + "\n" +
                       oldLeName + "==>" + txtLessonName.Text + "\n" +
                       oldLeUnitString.ToString() + "==>" + txtLessonUnits.Value + "\n" +
@@ -168,7 +168,7 @@ namespace SchoolManagment.App
             {
                 IEnumerable<LessonViewModel> lessonViewModels = db.LessonRepository.FillViewModel();
                 IEnumerable<Field> fields = db.FieldRepository.Get();
-                dgvLessons.DataSource = lessonViewModels.ToList();
+                dgvLesson.DataSource = lessonViewModels.ToList();
                 txtFkFileldId.DataSource = fields.ToList();
             }
             txtFkFileldId.SelectedIndex = 0;
@@ -176,11 +176,11 @@ namespace SchoolManagment.App
 
         private void dgvLessons_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLessons.SelectedCells.Count > 0)
+            if (dgvLesson.SelectedCells.Count > 0)
             {
-                txtLessonName.Text = dgvLessons.CurrentRow.Cells["LessonName"].Value.ToString();
-                txtLessonUnits.Value = Convert.ToInt32(dgvLessons.CurrentRow.Cells["LessonUnits"].Value.ToString());
-                txtFkFileldId.SelectedValue = Convert.ToInt32(dgvLessons.CurrentRow.Cells["FkFileldId"].Value.ToString());
+                txtLessonName.Text = dgvLesson.CurrentRow.Cells["LessonName"].Value.ToString();
+                txtLessonUnits.Value = Convert.ToInt32(dgvLesson.CurrentRow.Cells["LessonUnits"].Value.ToString());
+                txtFkFileldId.SelectedValue = Convert.ToInt32(dgvLesson.CurrentRow.Cells["FkFileldId"].Value.ToString());
             }
 
         }

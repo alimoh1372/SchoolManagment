@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStudent));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUpdateSelectedLesson = new System.Windows.Forms.Button();
@@ -43,17 +45,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvLessons = new System.Windows.Forms.DataGridView();
+            this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentNationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkLastPassedUgraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkStudentFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkStudentFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkLastPassedUgraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkLastPassedUgraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator4 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLessons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -79,6 +86,7 @@
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "به روز رسانی صفحه و اطلاعات";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnUpdateSelectedLesson
             // 
@@ -106,6 +114,7 @@
             this.btnAddNewLesson.TabIndex = 1;
             this.btnAddNewLesson.Text = "افزودن دانش آموز جدید";
             this.btnAddNewLesson.UseVisualStyleBackColor = true;
+            this.btnAddNewLesson.Click += new System.EventHandler(this.btnAddNewLesson_Click);
             // 
             // groupBox3
             // 
@@ -144,6 +153,7 @@
             // 
             // txtStudentNationCode
             // 
+            this.txtStudentNationCode.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.txtStudentNationCode.Location = new System.Drawing.Point(48, 105);
             this.txtStudentNationCode.Mask = "000-00000-00";
             this.txtStudentNationCode.Name = "txtStudentNationCode";
@@ -197,7 +207,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvLessons);
+            this.groupBox1.Controls.Add(this.dgvStudent);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -206,25 +216,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست دانش آموزان ثبت شده :";
             // 
-            // dgvLessons
+            // dgvStudent
             // 
-            this.dgvLessons.AllowUserToAddRows = false;
-            this.dgvLessons.AllowUserToDeleteRows = false;
-            this.dgvLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStudent.AllowUserToAddRows = false;
+            this.dgvStudent.AllowUserToDeleteRows = false;
+            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
             this.StudentName,
             this.StudentNationCode,
-            this.FkLastPassedUgraduteId,
             this.FkStudentFieldId,
-            this.FkStudentFieldIdString});
-            this.dgvLessons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLessons.Location = new System.Drawing.Point(3, 17);
-            this.dgvLessons.Name = "dgvLessons";
-            this.dgvLessons.ReadOnly = true;
-            this.dgvLessons.Size = new System.Drawing.Size(510, 430);
-            this.dgvLessons.TabIndex = 0;
+            this.FkStudentFieldIdString,
+            this.FkLastPassedUgraduteId,
+            this.FkLastPassedUgraduteIdString});
+            this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStudent.Location = new System.Drawing.Point(3, 17);
+            this.dgvStudent.Name = "dgvStudent";
+            this.dgvStudent.ReadOnly = true;
+            this.dgvStudent.Size = new System.Drawing.Size(510, 430);
+            this.dgvStudent.TabIndex = 0;
+            this.dgvStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellClick);
             // 
             // StudentId
             // 
@@ -248,13 +260,6 @@
             this.StudentNationCode.Name = "StudentNationCode";
             this.StudentNationCode.ReadOnly = true;
             // 
-            // FkLastPassedUgraduteId
-            // 
-            this.FkLastPassedUgraduteId.DataPropertyName = "FkLastPassedUgraduteId";
-            this.FkLastPassedUgraduteId.HeaderText = "آخرین زیرمقطع گذرانده شده";
-            this.FkLastPassedUgraduteId.Name = "FkLastPassedUgraduteId";
-            this.FkLastPassedUgraduteId.ReadOnly = true;
-            // 
             // FkStudentFieldId
             // 
             this.FkStudentFieldId.DataPropertyName = "FkStudentFieldId";
@@ -265,9 +270,53 @@
             // 
             // FkStudentFieldIdString
             // 
+            this.FkStudentFieldIdString.DataPropertyName = "FkStudentFieldIdString";
             this.FkStudentFieldIdString.HeaderText = "رشته دانش آموز";
             this.FkStudentFieldIdString.Name = "FkStudentFieldIdString";
             this.FkStudentFieldIdString.ReadOnly = true;
+            // 
+            // FkLastPassedUgraduteId
+            // 
+            this.FkLastPassedUgraduteId.DataPropertyName = "FkLastPassedUgraduteId";
+            this.FkLastPassedUgraduteId.HeaderText = "کد آخرین زیرمقطع گذرانده شده";
+            this.FkLastPassedUgraduteId.Name = "FkLastPassedUgraduteId";
+            this.FkLastPassedUgraduteId.ReadOnly = true;
+            this.FkLastPassedUgraduteId.Visible = false;
+            // 
+            // FkLastPassedUgraduteIdString
+            // 
+            this.FkLastPassedUgraduteIdString.DataPropertyName = "FkLastPassedUgraduteIdString";
+            this.FkLastPassedUgraduteIdString.HeaderText = "آخرین زیرمقطع گدرانده شده";
+            this.FkLastPassedUgraduteIdString.Name = "FkLastPassedUgraduteIdString";
+            this.FkLastPassedUgraduteIdString.ReadOnly = true;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator1.ControlToValidate = this.txtStudentName;
+            this.requiredFieldValidator1.ErrorMessage = "این مورد الزامی میباشد.لطفا نام دانش آموز را وارد نمائید.";
+            this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator2.ControlToValidate = this.txtStudentNationCode;
+            this.requiredFieldValidator2.ErrorMessage = "این مورد الزامی میباشد.لطفا کد ملی دانش آموز را وارد نمائید.";
+            this.requiredFieldValidator2.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator2.Icon")));
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator3.ControlToValidate = this.txtFkFileldId;
+            this.requiredFieldValidator3.ErrorMessage = "این مورد الزامی میباشد.لطفا از لیست بازشونده یک مقدار انتخاب شود.";
+            this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
+            // 
+            // requiredFieldValidator4
+            // 
+            this.requiredFieldValidator4.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator4.ControlToValidate = this.txtFkLastPassedUgraduteId;
+            this.requiredFieldValidator4.ErrorMessage = "این مورد الزامی میباشد.لطفا یک مورد از لیست بازشونده انتخاب گردد.";
+            this.requiredFieldValidator4.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator4.Icon")));
             // 
             // FormStudent
             // 
@@ -287,7 +336,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLessons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -309,12 +358,17 @@
         private System.Windows.Forms.ComboBox txtFkLastPassedUgraduteId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvLessons;
+        private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentNationCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkLastPassedUgraduteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentFieldId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentFieldIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkLastPassedUgraduteId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkLastPassedUgraduteIdString;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator2;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator3;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator4;
     }
 }
