@@ -59,7 +59,8 @@ namespace SchoolManagment.App
 
         private void btnTeacherInfo_Click(object sender, EventArgs e)
         {
-
+            FormTeacher frmTeacher = new FormTeacher();
+            frmTeacher.ShowDialog();
         }
     }
 }
