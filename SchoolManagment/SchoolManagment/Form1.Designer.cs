@@ -168,6 +168,7 @@
             this.btnClassroomInformation.Size = new System.Drawing.Size(180, 22);
             this.btnClassroomInformation.Text = "کلاس";
             this.btnClassroomInformation.ToolTipText = "مدیریت اطلاعات مربوط به کلاس های مدرسه ،حذف ، اضافه و ویرایش";
+            this.btnClassroomInformation.Click += new System.EventHandler(this.btnClassroomInformation_Click);
             // 
             // Form1
             // 

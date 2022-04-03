@@ -105,7 +105,21 @@ namespace SchoolManagment.DataLayer
                 return _teacherRepository;
             }
         }
-       
+
+        private IClassRepository _classRepository;
+
+        public IClassRepository ClassRepository
+        {
+            get
+            {
+                if (_classRepository==null)
+                {
+                    _classRepository = new ClassRepository(_db);
+                }
+                return _classRepository;
+            }
+        }
+
         public void Dispose()
         {
             _db.Dispose();

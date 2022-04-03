@@ -62,5 +62,11 @@ namespace SchoolManagment.App
             FormTeacher frmTeacher = new FormTeacher();
             frmTeacher.ShowDialog();
         }
+
+        private void btnClassroomInformation_Click(object sender, EventArgs e)
+        {
+            FormClass frmClass = new FormClass();
+            frmClass.ShowDialog();
+        }
     }
 }
