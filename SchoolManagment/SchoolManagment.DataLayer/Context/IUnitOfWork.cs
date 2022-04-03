@@ -14,6 +14,7 @@ namespace SchoolManagment.DataLayer
         IFieldRepository FieldRepository { get; }
         ILessonRepository LessonRepository { get; }
         IStudentRepository StudentRepository { get; }
+        ITeacherRepository TeacherRepository { get; }
         int Save();
 
        

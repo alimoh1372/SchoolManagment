@@ -160,6 +160,7 @@
             this.btnTeacherInfo.Size = new System.Drawing.Size(180, 22);
             this.btnTeacherInfo.Text = "معلم";
             this.btnTeacherInfo.ToolTipText = "مدیریت اطلاعات مربوط به معلمان-حذف و اضافه و ویرایش آن";
+            this.btnTeacherInfo.Click += new System.EventHandler(this.btnTeacherInfo_Click);
             // 
             // btnClassroomInformation
             // 

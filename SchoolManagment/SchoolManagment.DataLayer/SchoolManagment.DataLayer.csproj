@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\ITeacherRepository.cs" />
     <Compile Include="Services\StudentRepository.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Services\LessonRepository.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Services\GradeRepository.cs" />
     <Compile Include="Services\UnderGraduteRepository.cs" />
+    <Compile Include="Services\TeacherRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
