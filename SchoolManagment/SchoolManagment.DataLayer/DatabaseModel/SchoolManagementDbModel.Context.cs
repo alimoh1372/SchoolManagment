@@ -36,7 +36,9 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<LessonsOfFileldsOfNewYearInUngrade> LessonsOfFileldsOfNewYearInUngrades { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<PersonalRole> PersonalRoles { get; set; }
         public virtual DbSet<Personal> Personals { get; set; }
+        public virtual DbSet<RolePermission> RolePermissions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<ScoreOfStudentsForLesson> ScoreOfStudentsForLessons { get; set; }
         public virtual DbSet<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses { get; set; }
@@ -47,6 +49,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public virtual DbSet<TeacherTeachLessonAccToCalenderInClass> TeacherTeachLessonAccToCalenderInClasses { get; set; }
         public virtual DbSet<TeacherTeachsLessonsOfNewYearInUnGrade> TeacherTeachsLessonsOfNewYearInUnGrades { get; set; }
         public virtual DbSet<TimeAlterNate> TimeAlterNates { get; set; }
+        public virtual DbSet<TimeInDayAlternate> TimeInDayAlternates { get; set; }
         public virtual DbSet<TypeDay> TypeDays { get; set; }
         public virtual DbSet<UnderGradute> UnderGradutes { get; set; }
         public virtual DbSet<UnderGradutesInNewAcademyYear> UnderGradutesInNewAcademyYears { get; set; }

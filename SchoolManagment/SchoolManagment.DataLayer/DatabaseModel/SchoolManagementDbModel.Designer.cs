@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\TAMRIN\SchoolManagment\SchoolManagment\SchoolManagment.DataLayer\DatabaseModel\SchoolManagementDbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\mohammadzade\example and practices\SchoolManagment\SchoolManagment\SchoolManagment\SchoolManagment.DataLayer\DatabaseModel\SchoolManagementDbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

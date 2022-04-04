@@ -17,7 +17,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TimeAlterNate()
         {
-            this.Days = new HashSet<Day>();
+            this.TimeInDayAlternates = new HashSet<TimeInDayAlternate>();
         }
     
         public byte PkTimeId { get; set; }
@@ -25,6 +25,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public System.TimeSpan ToTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Day> Days { get; set; }
+        public virtual ICollection<TimeInDayAlternate> TimeInDayAlternates { get; set; }
     }
 }

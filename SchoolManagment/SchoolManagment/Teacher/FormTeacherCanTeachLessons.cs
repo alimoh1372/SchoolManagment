@@ -88,7 +88,7 @@ namespace SchoolManagment.App
                 using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
                 {
                    teacherCanTeachLessonViewModels= db.TeacherRepository.FillLessonsThatTeacherCanTeach(Convert.ToInt32(lblSelectedTeacherId.Text)).ToList();
-                    lVSelectedLesson.Items.AddRange(teacherCanTeachLessonViewModels.ToArray())
+                    //lVSelectedLesson.Items.AddRange(teacherCanTeachLessonViewModels.ToArray());
                 }
             }
         }

@@ -17,7 +17,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personal()
         {
-            this.Roles = new HashSet<Role>();
+            this.PersonalRoles = new HashSet<PersonalRole>();
         }
     
         public int PkPersonalId { get; set; }
@@ -28,6 +28,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public string PersonalDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<PersonalRole> PersonalRoles { get; set; }
     }
 }

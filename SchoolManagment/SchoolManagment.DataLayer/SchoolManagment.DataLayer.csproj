@@ -53,7 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseModel\PersonalRole.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\RolePermission.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModel\TeacherCanTeachLesson.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\TimeInDayAlternate.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\ClassRepository.cs" />

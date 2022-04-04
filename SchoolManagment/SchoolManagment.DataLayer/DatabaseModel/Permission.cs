@@ -17,13 +17,13 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Permission()
         {
-            this.Roles = new HashSet<Role>();
+            this.RolePermissions = new HashSet<RolePermission>();
         }
     
         public int PkPermissionId { get; set; }
         public string PermissionName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<RolePermission> RolePermissions { get; set; }
     }
 }

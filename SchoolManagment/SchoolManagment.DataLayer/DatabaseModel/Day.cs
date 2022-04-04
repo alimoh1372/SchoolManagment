@@ -17,7 +17,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Day()
         {
-            this.TimeAlterNates = new HashSet<TimeAlterNate>();
+            this.TimeInDayAlternates = new HashSet<TimeInDayAlternate>();
         }
     
         public int DayId { get; set; }
@@ -27,8 +27,8 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     
         public virtual Calender Calender { get; set; }
         public virtual DayAlternate DayAlternate { get; set; }
-        public virtual TypeDay TypeDay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TimeAlterNate> TimeAlterNates { get; set; }
+        public virtual ICollection<TimeInDayAlternate> TimeInDayAlternates { get; set; }
+        public virtual TypeDay TypeDay { get; set; }
     }
 }

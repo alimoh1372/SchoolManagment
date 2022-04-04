@@ -95,13 +95,11 @@
           <Property Name="PkPermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PermissionName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SchoolManagment.dbo.PersonalRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PersonalRoles">
           <Key>
-            <PropertyRef Name="FkPersonId" />
-            <PropertyRef Name="FkRoleId" />
+            <PropertyRef Name="PKPersonalRoles" />
           </Key>
+          <Property Name="PKPersonalRoles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkPersonId" Type="int" Nullable="false" />
           <Property Name="FkRoleId" Type="int" Nullable="false" />
         </EntityType>
@@ -116,13 +114,11 @@ warning 6002: The table/view 'SchoolManagment.dbo.PersonalRoles' does not have a
           <Property Name="PersonalJob" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PersonalDescription" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SchoolManagment.dbo.RolePermissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="RolePermissions">
           <Key>
-            <PropertyRef Name="fkRoleId" />
-            <PropertyRef Name="fkPermission" />
+            <PropertyRef Name="PKRolePermissions" />
           </Key>
+          <Property Name="PKRolePermissions" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fkRoleId" Type="int" Nullable="false" />
           <Property Name="fkPermission" Type="int" Nullable="false" />
         </EntityType>
@@ -210,13 +206,11 @@ warning 6002: The table/view 'SchoolManagment.dbo.RolePermissions' does not have
           <Property Name="FromTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="ToTime" Type="time" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TimeInDayAlternate">
           <Key>
-            <PropertyRef Name="FkDayId" />
-            <PropertyRef Name="FkTimeAlternate" />
+            <PropertyRef Name="PKTimeInDayAlternate" />
           </Key>
+          <Property Name="PKTimeInDayAlternate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkDayId" Type="int" Nullable="false" />
           <Property Name="FkTimeAlternate" Type="tinyint" Nullable="false" />
         </EntityType>
@@ -664,7 +658,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LessonsOfFileldsOfNewYearInUngrade" EntityType="Self.LessonsOfFileldsOfNewYearInUngrade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalRoles" EntityType="Self.PersonalRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personals" EntityType="Self.Personals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScoreOfStudentsForLessons" EntityType="Self.ScoreOfStudentsForLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntityType="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
@@ -675,27 +671,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySet Name="TeacherTeachLessonAccToCalenderInClass" EntityType="Self.TeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="Self.TeacherTeachsLessonsOfNewYearInUnGrades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeAlterNate" EntityType="Self.TimeAlterNate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeInDayAlternate" EntityType="Self.TimeInDayAlternate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeDays" EntityType="Self.TypeDays" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnderGradutes" EntityType="Self.UnderGradutes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnderGradutesInNewAcademyYear" EntityType="Self.UnderGradutesInNewAcademyYear" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PersonalRoles" EntityType="Self.PersonalRoles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PersonalRoles].[FkPersonId] AS [FkPersonId], 
-    [PersonalRoles].[FkRoleId] AS [FkRoleId]
-    FROM [dbo].[PersonalRoles] AS [PersonalRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RolePermissions].[fkRoleId] AS [fkRoleId], 
-    [RolePermissions].[fkPermission] AS [fkPermission]
-    FROM [dbo].[RolePermissions] AS [RolePermissions]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TimeInDayAlternate" EntityType="Self.TimeInDayAlternate" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TimeInDayAlternate].[FkDayId] AS [FkDayId], 
-    [TimeInDayAlternate].[FkTimeAlternate] AS [FkTimeAlternate]
-    FROM [dbo].[TimeInDayAlternate] AS [TimeInDayAlternate]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Days_Calender" Association="Self.FK_Days_Calender">
             <End Role="Calender" EntitySet="Calender" />
             <End Role="Days" EntitySet="Days" />
@@ -849,7 +828,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySet Name="Lessons" EntityType="SchoolManagmentModel.Lesson" />
           <EntitySet Name="LessonsOfFileldsOfNewYearInUngrades" EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" />
           <EntitySet Name="Permissions" EntityType="SchoolManagmentModel.Permission" />
+          <EntitySet Name="PersonalRoles" EntityType="SchoolManagmentModel.PersonalRole" />
           <EntitySet Name="Personals" EntityType="SchoolManagmentModel.Personal" />
+          <EntitySet Name="RolePermissions" EntityType="SchoolManagmentModel.RolePermission" />
           <EntitySet Name="Roles" EntityType="SchoolManagmentModel.Role" />
           <EntitySet Name="ScoreOfStudentsForLessons" EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" />
           <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
@@ -860,6 +841,7 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySet Name="TeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" />
           <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" />
           <EntitySet Name="TimeAlterNates" EntityType="SchoolManagmentModel.TimeAlterNate" />
+          <EntitySet Name="TimeInDayAlternates" EntityType="SchoolManagmentModel.TimeInDayAlternate" />
           <EntitySet Name="TypeDays" EntityType="SchoolManagmentModel.TypeDay" />
           <EntitySet Name="UnderGradutes" EntityType="SchoolManagmentModel.UnderGradute" />
           <EntitySet Name="UnderGradutesInNewAcademyYears" EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" />
@@ -882,6 +864,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <AssociationSet Name="FK_Days_DayAlternate" Association="SchoolManagmentModel.FK_Days_DayAlternate">
             <End Role="DayAlternate" EntitySet="DayAlternates" />
             <End Role="Day" EntitySet="Days" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TimeInDayAlternate_Days" Association="SchoolManagmentModel.FK_TimeInDayAlternate_Days">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternates" />
           </AssociationSet>
           <AssociationSet Name="FK_TypeDays_Days" Association="SchoolManagmentModel.FK_TypeDays_Days">
             <End Role="TypeDay" EntitySet="TypeDays" />
@@ -931,6 +917,22 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
             <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
           </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Permissions" Association="SchoolManagmentModel.FK_RolePermissions_Permissions">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="RolePermission" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalRoles_Personals" Association="SchoolManagmentModel.FK_PersonalRoles_Personals">
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="PersonalRole" EntitySet="PersonalRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalRoles_Roles" Association="SchoolManagmentModel.FK_PersonalRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="PersonalRole" EntitySet="PersonalRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_Roles" Association="SchoolManagmentModel.FK_RolePermissions_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RolePermission" EntitySet="RolePermissions" />
+          </AssociationSet>
           <AssociationSet Name="FK_ScoreOfStudentsForLessons_Students" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students">
             <End Role="Student" EntitySet="Students" />
             <End Role="ScoreOfStudentsForLesson" EntitySet="ScoreOfStudentsForLessons" />
@@ -967,6 +969,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
             <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
           </AssociationSet>
+          <AssociationSet Name="FK_TimeInDayAlternate_TimeAlterNate" Association="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate">
+            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
+            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternates" />
+          </AssociationSet>
           <AssociationSet Name="FK_UnderGradutes_UnderGradutes" Association="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes">
             <End Role="UnderGradute" EntitySet="UnderGradutes" />
             <End Role="UnderGradute1" EntitySet="UnderGradutes" />
@@ -974,18 +980,6 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <AssociationSet Name="FK_UnderGradutesInNewAcademyYear_UnderGradutes" Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_UnderGradutes">
             <End Role="UnderGradute" EntitySet="UnderGradutes" />
             <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
-          </AssociationSet>
-          <AssociationSet Name="PersonalRoles" Association="SchoolManagmentModel.PersonalRoles">
-            <End Role="Personal" EntitySet="Personals" />
-            <End Role="Role" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="RolePermissions" Association="SchoolManagmentModel.RolePermissions">
-            <End Role="Permission" EntitySet="Permissions" />
-            <End Role="Role" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="TimeInDayAlternate" Association="SchoolManagmentModel.TimeInDayAlternate">
-            <End Role="Day" EntitySet="Days" />
-            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AcademyYear">
@@ -1036,8 +1030,8 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="FkDayAlternate" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_Days_Calender" FromRole="Day" ToRole="Calender" />
           <NavigationProperty Name="DayAlternate" Relationship="SchoolManagmentModel.FK_Days_DayAlternate" FromRole="Day" ToRole="DayAlternate" />
+          <NavigationProperty Name="TimeInDayAlternates" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_Days" FromRole="Day" ToRole="TimeInDayAlternate" />
           <NavigationProperty Name="TypeDay" Relationship="SchoolManagmentModel.FK_TypeDays_Days" FromRole="Day" ToRole="TypeDay" />
-          <NavigationProperty Name="TimeAlterNates" Relationship="SchoolManagmentModel.TimeInDayAlternate" FromRole="Day" ToRole="TimeAlterNate" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -1102,7 +1096,17 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </Key>
           <Property Name="PkPermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PermissionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Roles" Relationship="SchoolManagmentModel.RolePermissions" FromRole="Permission" ToRole="Role" />
+          <NavigationProperty Name="RolePermissions" Relationship="SchoolManagmentModel.FK_RolePermissions_Permissions" FromRole="Permission" ToRole="RolePermission" />
+        </EntityType>
+        <EntityType Name="PersonalRole">
+          <Key>
+            <PropertyRef Name="PKPersonalRoles" />
+          </Key>
+          <Property Name="PKPersonalRoles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkPersonId" Type="Int32" Nullable="false" />
+          <Property Name="FkRoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal" Relationship="SchoolManagmentModel.FK_PersonalRoles_Personals" FromRole="PersonalRole" ToRole="Personal" />
+          <NavigationProperty Name="Role" Relationship="SchoolManagmentModel.FK_PersonalRoles_Roles" FromRole="PersonalRole" ToRole="Role" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
@@ -1114,7 +1118,17 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PersonalPass" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
           <Property Name="PersonalJob" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PersonalDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Roles" Relationship="SchoolManagmentModel.PersonalRoles" FromRole="Personal" ToRole="Role" />
+          <NavigationProperty Name="PersonalRoles" Relationship="SchoolManagmentModel.FK_PersonalRoles_Personals" FromRole="Personal" ToRole="PersonalRole" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="PKRolePermissions" />
+          </Key>
+          <Property Name="PKRolePermissions" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fkRoleId" Type="Int32" Nullable="false" />
+          <Property Name="fkPermission" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="SchoolManagmentModel.FK_RolePermissions_Permissions" FromRole="RolePermission" ToRole="Permission" />
+          <NavigationProperty Name="Role" Relationship="SchoolManagmentModel.FK_RolePermissions_Roles" FromRole="RolePermission" ToRole="Role" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1122,8 +1136,8 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </Key>
           <Property Name="PkRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Personals" Relationship="SchoolManagmentModel.PersonalRoles" FromRole="Role" ToRole="Personal" />
-          <NavigationProperty Name="Permissions" Relationship="SchoolManagmentModel.RolePermissions" FromRole="Role" ToRole="Permission" />
+          <NavigationProperty Name="PersonalRoles" Relationship="SchoolManagmentModel.FK_PersonalRoles_Roles" FromRole="Role" ToRole="PersonalRole" />
+          <NavigationProperty Name="RolePermissions" Relationship="SchoolManagmentModel.FK_RolePermissions_Roles" FromRole="Role" ToRole="RolePermission" />
         </EntityType>
         <EntityType Name="ScoreOfStudentsForLesson">
           <Key>
@@ -1223,7 +1237,17 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkTimeId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FromTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="ToTime" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.TimeInDayAlternate" FromRole="TimeAlterNate" ToRole="Day" />
+          <NavigationProperty Name="TimeInDayAlternates" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate" FromRole="TimeAlterNate" ToRole="TimeInDayAlternate" />
+        </EntityType>
+        <EntityType Name="TimeInDayAlternate">
+          <Key>
+            <PropertyRef Name="PKTimeInDayAlternate" />
+          </Key>
+          <Property Name="PKTimeInDayAlternate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkDayId" Type="Int32" Nullable="false" />
+          <Property Name="FkTimeAlternate" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Day" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_Days" FromRole="TimeInDayAlternate" ToRole="Day" />
+          <NavigationProperty Name="TimeAlterNate" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate" FromRole="TimeInDayAlternate" ToRole="TimeAlterNate" />
         </EntityType>
         <EntityType Name="TypeDay">
           <Key>
@@ -1316,6 +1340,18 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             </Principal>
             <Dependent Role="Day">
               <PropertyRef Name="FkDayAlternate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TimeInDayAlternate_Days">
+          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TimeInDayAlternate" Role="TimeInDayAlternate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="DayId" />
+            </Principal>
+            <Dependent Role="TimeInDayAlternate">
+              <PropertyRef Name="FkDayId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1463,6 +1499,54 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RolePermissions_Permissions">
+          <End Type="SchoolManagmentModel.Permission" Role="Permission" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.RolePermission" Role="RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PkPermissionId" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="fkPermission" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalRoles_Personals">
+          <End Type="SchoolManagmentModel.Personal" Role="Personal" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.PersonalRole" Role="PersonalRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="PkPersonalId" />
+            </Principal>
+            <Dependent Role="PersonalRole">
+              <PropertyRef Name="FkPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalRoles_Roles">
+          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.PersonalRole" Role="PersonalRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="PkRoleId" />
+            </Principal>
+            <Dependent Role="PersonalRole">
+              <PropertyRef Name="FkRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_Roles">
+          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.RolePermission" Role="RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="PkRoleId" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="fkRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ScoreOfStudentsForLessons_Students">
           <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="1" />
           <End Type="SchoolManagmentModel.ScoreOfStudentsForLesson" Role="ScoreOfStudentsForLesson" Multiplicity="*" />
@@ -1571,6 +1655,18 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TimeInDayAlternate_TimeAlterNate">
+          <End Type="SchoolManagmentModel.TimeAlterNate" Role="TimeAlterNate" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TimeInDayAlternate" Role="TimeInDayAlternate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeAlterNate">
+              <PropertyRef Name="PkTimeId" />
+            </Principal>
+            <Dependent Role="TimeInDayAlternate">
+              <PropertyRef Name="FkTimeAlternate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UnderGradutes_UnderGradutes">
           <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="0..1" />
           <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute1" Multiplicity="*" />
@@ -1595,19 +1691,7 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PersonalRoles">
-          <End Type="SchoolManagmentModel.Personal" Role="Personal" Multiplicity="*" />
-          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="*" />
-        </Association>
-        <Association Name="RolePermissions">
-          <End Type="SchoolManagmentModel.Permission" Role="Permission" Multiplicity="*" />
-          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="*" />
-        </Association>
-        <Association Name="TimeInDayAlternate">
-          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
-          <End Type="SchoolManagmentModel.TimeAlterNate" Role="TimeAlterNate" Multiplicity="*" />
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1714,6 +1798,15 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PersonalRoles">
+            <EntityTypeMapping TypeName="SchoolManagmentModel.PersonalRole">
+              <MappingFragment StoreEntitySet="PersonalRoles">
+                <ScalarProperty Name="FkRoleId" ColumnName="FkRoleId" />
+                <ScalarProperty Name="FkPersonId" ColumnName="FkPersonId" />
+                <ScalarProperty Name="PKPersonalRoles" ColumnName="PKPersonalRoles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Personal">
               <MappingFragment StoreEntitySet="Personals">
@@ -1723,6 +1816,15 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
                 <ScalarProperty Name="PersonalUserName" ColumnName="PersonalUserName" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="PkPersonalId" ColumnName="PkPersonalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissions">
+            <EntityTypeMapping TypeName="SchoolManagmentModel.RolePermission">
+              <MappingFragment StoreEntitySet="RolePermissions">
+                <ScalarProperty Name="fkPermission" ColumnName="fkPermission" />
+                <ScalarProperty Name="fkRoleId" ColumnName="fkRoleId" />
+                <ScalarProperty Name="PKRolePermissions" ColumnName="PKRolePermissions" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1820,6 +1922,15 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TimeInDayAlternates">
+            <EntityTypeMapping TypeName="SchoolManagmentModel.TimeInDayAlternate">
+              <MappingFragment StoreEntitySet="TimeInDayAlternate">
+                <ScalarProperty Name="FkTimeAlternate" ColumnName="FkTimeAlternate" />
+                <ScalarProperty Name="FkDayId" ColumnName="FkDayId" />
+                <ScalarProperty Name="PKTimeInDayAlternate" ColumnName="PKTimeInDayAlternate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TypeDays">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TypeDay">
               <MappingFragment StoreEntitySet="TypeDays">
@@ -1847,30 +1958,6 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PersonalRoles" TypeName="SchoolManagmentModel.PersonalRoles" StoreEntitySet="PersonalRoles">
-            <EndProperty Name="Role">
-              <ScalarProperty Name="PkRoleId" ColumnName="FkRoleId" />
-            </EndProperty>
-            <EndProperty Name="Personal">
-              <ScalarProperty Name="PkPersonalId" ColumnName="FkPersonId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="RolePermissions" TypeName="SchoolManagmentModel.RolePermissions" StoreEntitySet="RolePermissions">
-            <EndProperty Name="Role">
-              <ScalarProperty Name="PkRoleId" ColumnName="fkRoleId" />
-            </EndProperty>
-            <EndProperty Name="Permission">
-              <ScalarProperty Name="PkPermissionId" ColumnName="fkPermission" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="TimeInDayAlternate" TypeName="SchoolManagmentModel.TimeInDayAlternate" StoreEntitySet="TimeInDayAlternate">
-            <EndProperty Name="TimeAlterNate">
-              <ScalarProperty Name="PkTimeId" ColumnName="FkTimeAlternate" />
-            </EndProperty>
-            <EndProperty Name="Day">
-              <ScalarProperty Name="DayId" ColumnName="FkDayId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
