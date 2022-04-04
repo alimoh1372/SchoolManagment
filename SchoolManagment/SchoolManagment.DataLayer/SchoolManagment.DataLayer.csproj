@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseModel\TeacherCanTeachLesson.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\ClassRepository.cs" />
     <Compile Include="Repositories\IClassRepository.cs" />
     <Compile Include="Repositories\ITeacherRepository.cs" />
@@ -131,9 +134,6 @@
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseModel\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs">
-      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseModel\sysdiagram.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseModel\Teacher.cs">

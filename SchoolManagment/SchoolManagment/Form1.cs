@@ -68,5 +68,11 @@ namespace SchoolManagment.App
             FormClass frmClass = new FormClass();
             frmClass.ShowDialog();
         }
+
+        private void درسهایقابلتدریسمعلمToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTeacherCanTeachLessons formTeacherCanTeachLessons = new FormTeacherCanTeachLessons();
+            formTeacherCanTeachLessons.ShowDialog();
+        }
     }
 }

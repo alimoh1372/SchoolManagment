@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UsingStringUtility.cs" />
+    <Compile Include="UsingUtility\UsingStringUtility.cs" />
     <Compile Include="UsingUtility\Convertor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MessageBox\RtlMessageBox.cs" />

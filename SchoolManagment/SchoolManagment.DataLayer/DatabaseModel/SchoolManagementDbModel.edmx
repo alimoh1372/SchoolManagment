@@ -162,23 +162,11 @@ warning 6002: The table/view 'SchoolManagment.dbo.RolePermissions' does not have
           <Property Name="StudentNationCode" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="StudentName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SchoolManagment.dbo.TeacherCanTeachLessons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TeacherCanTeachLessons">
           <Key>
-            <PropertyRef Name="FkTeacherId" />
-            <PropertyRef Name="FkLessonId" />
+            <PropertyRef Name="PkTeacherCanTeachLessons" />
           </Key>
+          <Property Name="PkTeacherCanTeachLessons" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkTeacherId" Type="int" Nullable="false" />
           <Property Name="FkLessonId" Type="int" Nullable="false" />
         </EntityType>
@@ -681,7 +669,7 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySet Name="ScoreOfStudentsForLessons" EntityType="Self.ScoreOfStudentsForLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntityType="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherCanTeachLessons" EntityType="Self.TeacherCanTeachLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherTeachLessonAccordingToCalender" EntityType="Self.TeacherTeachLessonAccordingToCalender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherTeachLessonAccToCalenderInClass" EntityType="Self.TeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
@@ -701,12 +689,6 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
     [RolePermissions].[fkRoleId] AS [fkRoleId], 
     [RolePermissions].[fkPermission] AS [fkPermission]
     FROM [dbo].[RolePermissions] AS [RolePermissions]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TeacherCanTeachLessons" EntityType="Self.TeacherCanTeachLessons" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TeacherCanTeachLessons].[FkTeacherId] AS [FkTeacherId], 
-    [TeacherCanTeachLessons].[FkLessonId] AS [FkLessonId]
-    FROM [dbo].[TeacherCanTeachLessons] AS [TeacherCanTeachLessons]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TimeInDayAlternate" EntityType="Self.TimeInDayAlternate" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -855,43 +837,194 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolManagmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SchoolManagmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcademyYears" EntityType="SchoolManagmentModel.AcademyYear" />
+          <EntitySet Name="Calenders" EntityType="SchoolManagmentModel.Calender" />
+          <EntitySet Name="Classes" EntityType="SchoolManagmentModel.Class" />
+          <EntitySet Name="DayAlternates" EntityType="SchoolManagmentModel.DayAlternate" />
+          <EntitySet Name="Days" EntityType="SchoolManagmentModel.Day" />
+          <EntitySet Name="Fields" EntityType="SchoolManagmentModel.Field" />
+          <EntitySet Name="FieldsOfNewYearInUnGradutes" EntityType="SchoolManagmentModel.FieldsOfNewYearInUnGradute" />
+          <EntitySet Name="Grades" EntityType="SchoolManagmentModel.Grade" />
+          <EntitySet Name="Lessons" EntityType="SchoolManagmentModel.Lesson" />
+          <EntitySet Name="LessonsOfFileldsOfNewYearInUngrades" EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" />
+          <EntitySet Name="Permissions" EntityType="SchoolManagmentModel.Permission" />
+          <EntitySet Name="Personals" EntityType="SchoolManagmentModel.Personal" />
+          <EntitySet Name="Roles" EntityType="SchoolManagmentModel.Role" />
+          <EntitySet Name="ScoreOfStudentsForLessons" EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" />
+          <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+          <EntitySet Name="Students" EntityType="SchoolManagmentModel.Student" />
+          <EntitySet Name="TeacherCanTeachLessons" EntityType="SchoolManagmentModel.TeacherCanTeachLesson" />
+          <EntitySet Name="Teachers" EntityType="SchoolManagmentModel.Teacher" />
+          <EntitySet Name="TeacherTeachLessonAccordingToCalenders" EntityType="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" />
+          <EntitySet Name="TeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" />
+          <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" />
+          <EntitySet Name="TimeAlterNates" EntityType="SchoolManagmentModel.TimeAlterNate" />
+          <EntitySet Name="TypeDays" EntityType="SchoolManagmentModel.TypeDay" />
+          <EntitySet Name="UnderGradutes" EntityType="SchoolManagmentModel.UnderGradute" />
+          <EntitySet Name="UnderGradutesInNewAcademyYears" EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" />
+          <AssociationSet Name="FK_UnderGradutesInNewAcademyYear_AcademyYear" Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_AcademyYear">
+            <End Role="AcademyYear" EntitySet="AcademyYears" />
+            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Days_Calender" Association="SchoolManagmentModel.FK_Days_Calender">
+            <End Role="Calender" EntitySet="Calenders" />
+            <End Role="Day" EntitySet="Days" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachLessonAccordingToCalender_Calender" Association="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender">
+            <End Role="Calender" EntitySet="Calenders" />
+            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachLessonAccToCalenderInClass_Classes" Association="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_Classes">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Days_DayAlternate" Association="SchoolManagmentModel.FK_Days_DayAlternate">
+            <End Role="DayAlternate" EntitySet="DayAlternates" />
+            <End Role="Day" EntitySet="Days" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeDays_Days" Association="SchoolManagmentModel.FK_TypeDays_Days">
+            <End Role="TypeDay" EntitySet="TypeDays" />
+            <End Role="Day" EntitySet="Days" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fields_UnderGradutes" Association="SchoolManagmentModel.FK_Fields_UnderGradutes">
+            <End Role="UnderGradute" EntitySet="UnderGradutes" />
+            <End Role="Field" EntitySet="Fields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldsOfNewYearInUnGradutes_Fields" Association="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_Fields">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="FieldsOfNewYearInUnGradute" EntitySet="FieldsOfNewYearInUnGradutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Fields" Association="SchoolManagmentModel.FK_Lessons_Fields">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="Lesson" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Grades" Association="SchoolManagmentModel.FK_Students_Grades">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" Association="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear">
+            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
+            <End Role="FieldsOfNewYearInUnGradute" EntitySet="FieldsOfNewYearInUnGradutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" Association="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes">
+            <End Role="FieldsOfNewYearInUnGradute" EntitySet="FieldsOfNewYearInUnGradutes" />
+            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_Grades1" Association="SchoolManagmentModel.FK_Grades_Grades1">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="Grade1" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnderGradutes_Grades" Association="SchoolManagmentModel.FK_UnderGradutes_Grades">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="UnderGradute" EntitySet="UnderGradutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" Association="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons">
+            <End Role="Lesson" EntitySet="Lessons" />
+            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCanTeachLessons_Lessons" Association="SchoolManagmentModel.FK_TeacherCanTeachLessons_Lessons">
+            <End Role="Lesson" EntitySet="Lessons" />
+            <End Role="TeacherCanTeachLesson" EntitySet="TeacherCanTeachLessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" Association="SchoolManagmentModel.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade">
+            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
+            <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScoreOfStudentsForLessons_Students" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ScoreOfStudentsForLesson" EntitySet="ScoreOfStudentsForLessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
+            <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+            <End Role="ScoreOfStudentsForLesson" EntitySet="ScoreOfStudentsForLessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass">
+            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_UnderGradutes" Association="SchoolManagmentModel.FK_Students_UnderGradutes">
+            <End Role="UnderGradute" EntitySet="UnderGradutes" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherCanTeachLessons_Teachers" Association="SchoolManagmentModel.FK_TeacherCanTeachLessons_Teachers">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherCanTeachLesson" EntitySet="TeacherCanTeachLessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachLesson_Teachers" Association="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" Association="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson">
+            <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" Association="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender">
+            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
+            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnderGradutes_UnderGradutes" Association="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes">
+            <End Role="UnderGradute" EntitySet="UnderGradutes" />
+            <End Role="UnderGradute1" EntitySet="UnderGradutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnderGradutesInNewAcademyYear_UnderGradutes" Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_UnderGradutes">
+            <End Role="UnderGradute" EntitySet="UnderGradutes" />
+            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
+          </AssociationSet>
+          <AssociationSet Name="PersonalRoles" Association="SchoolManagmentModel.PersonalRoles">
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="RolePermissions" Association="SchoolManagmentModel.RolePermissions">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="TimeInDayAlternate" Association="SchoolManagmentModel.TimeInDayAlternate">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AcademyYear">
           <Key>
             <PropertyRef Name="AcademyYearId" />
           </Key>
           <Property Name="AcademyYearId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AcademyYearName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AcademyYearName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NumberOfDaysOfYear" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="UnderGradutesInNewAcademyYears" Relationship="Self.FK_UnderGradutesInNewAcademyYear_AcademyYear" FromRole="AcademyYear" ToRole="UnderGradutesInNewAcademyYear" />
+          <NavigationProperty Name="UnderGradutesInNewAcademyYears" Relationship="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_AcademyYear" FromRole="AcademyYear" ToRole="UnderGradutesInNewAcademyYear" />
         </EntityType>
         <EntityType Name="Calender">
           <Key>
             <PropertyRef Name="CalenderId" />
           </Key>
           <Property Name="CalenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CalenderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Days" Relationship="Self.FK_Days_Calender" FromRole="Calender" ToRole="Days" />
-          <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="Self.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="Calender" ToRole="TeacherTeachLessonAccordingToCalender" />
+          <Property Name="CalenderName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_Days_Calender" FromRole="Calender" ToRole="Day" />
+          <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="Calender" ToRole="TeacherTeachLessonAccordingToCalender" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="PkClassId" />
           </Key>
           <Property Name="PkClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClassLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClassLocation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ClassCapacity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="Self.FK_TeacherTeachLessonAccToCalenderInClass_Classes" FromRole="Classes" ToRole="TeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_Classes" FromRole="Class" ToRole="TeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="DayAlternate">
           <Key>
             <PropertyRef Name="PkDayAlternateId" />
           </Key>
           <Property Name="PkDayAlternateId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DayAlternateDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Days" Relationship="Self.FK_Days_DayAlternate" FromRole="DayAlternate" ToRole="Days" />
+          <Property Name="DayAlternateDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_Days_DayAlternate" FromRole="DayAlternate" ToRole="Day" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -901,10 +1034,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="FkCalenderId" Type="Int32" Nullable="false" />
           <Property Name="FkTypeDayId" Type="Byte" Nullable="false" />
           <Property Name="FkDayAlternate" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Calender" Relationship="Self.FK_Days_Calender" FromRole="Days" ToRole="Calender" />
-          <NavigationProperty Name="DayAlternate" Relationship="Self.FK_Days_DayAlternate" FromRole="Days" ToRole="DayAlternate" />
-          <NavigationProperty Name="TypeDay" Relationship="Self.FK_TypeDays_Days" FromRole="Days" ToRole="TypeDays" />
-          <NavigationProperty Name="TimeAlterNates" Relationship="Self.TimeInDayAlternate" FromRole="Days" ToRole="TimeAlterNate" />
+          <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_Days_Calender" FromRole="Day" ToRole="Calender" />
+          <NavigationProperty Name="DayAlternate" Relationship="SchoolManagmentModel.FK_Days_DayAlternate" FromRole="Day" ToRole="DayAlternate" />
+          <NavigationProperty Name="TypeDay" Relationship="SchoolManagmentModel.FK_TypeDays_Days" FromRole="Day" ToRole="TypeDay" />
+          <NavigationProperty Name="TimeAlterNates" Relationship="SchoolManagmentModel.TimeInDayAlternate" FromRole="Day" ToRole="TimeAlterNate" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -912,11 +1045,11 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </Key>
           <Property Name="PkFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FKUnGraduteId" Type="Int32" Nullable="false" />
-          <Property Name="FieldName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UnderGradute" Relationship="Self.FK_Fields_UnderGradutes" FromRole="Fields" ToRole="UnderGradutes" />
-          <NavigationProperty Name="FieldsOfNewYearInUnGradutes" Relationship="Self.FK_FieldsOfNewYearInUnGradutes_Fields" FromRole="Fields" ToRole="FieldsOfNewYearInUnGradutes" />
-          <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Fields" FromRole="Fields" ToRole="Lessons" />
-          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Grades" FromRole="Fields" ToRole="Students" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UnderGradute" Relationship="SchoolManagmentModel.FK_Fields_UnderGradutes" FromRole="Field" ToRole="UnderGradute" />
+          <NavigationProperty Name="FieldsOfNewYearInUnGradutes" Relationship="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_Fields" FromRole="Field" ToRole="FieldsOfNewYearInUnGradute" />
+          <NavigationProperty Name="Lessons" Relationship="SchoolManagmentModel.FK_Lessons_Fields" FromRole="Field" ToRole="Lesson" />
+          <NavigationProperty Name="Students" Relationship="SchoolManagmentModel.FK_Students_Grades" FromRole="Field" ToRole="Student" />
         </EntityType>
         <EntityType Name="FieldsOfNewYearInUnGradute">
           <Key>
@@ -925,9 +1058,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkFieldsOfNewYearInUnGradutesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkFieldId" Type="Int32" Nullable="false" />
           <Property Name="FkUnGradutesInNewYearId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Field" Relationship="Self.FK_FieldsOfNewYearInUnGradutes_Fields" FromRole="FieldsOfNewYearInUnGradutes" ToRole="Fields" />
-          <NavigationProperty Name="UnderGradutesInNewAcademyYear" Relationship="Self.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" FromRole="FieldsOfNewYearInUnGradutes" ToRole="UnderGradutesInNewAcademyYear" />
-          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrades" Relationship="Self.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" FromRole="FieldsOfNewYearInUnGradutes" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
+          <NavigationProperty Name="Field" Relationship="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_Fields" FromRole="FieldsOfNewYearInUnGradute" ToRole="Field" />
+          <NavigationProperty Name="UnderGradutesInNewAcademyYear" Relationship="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" FromRole="FieldsOfNewYearInUnGradute" ToRole="UnderGradutesInNewAcademyYear" />
+          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrades" Relationship="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" FromRole="FieldsOfNewYearInUnGradute" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
         </EntityType>
         <EntityType Name="Grade">
           <Key>
@@ -935,10 +1068,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </Key>
           <Property Name="PkGradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkGradePrequiestis" Type="Int32" />
-          <Property Name="GradeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Grades1" Relationship="Self.FK_Grades_Grades1" FromRole="Grades" ToRole="Grades1" />
-          <NavigationProperty Name="Grade1" Relationship="Self.FK_Grades_Grades1" FromRole="Grades1" ToRole="Grades" />
-          <NavigationProperty Name="UnderGradutes" Relationship="Self.FK_UnderGradutes_Grades" FromRole="Grades" ToRole="UnderGradutes" />
+          <Property Name="GradeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Grades1" Relationship="SchoolManagmentModel.FK_Grades_Grades1" FromRole="Grade" ToRole="Grade1" />
+          <NavigationProperty Name="Grade1" Relationship="SchoolManagmentModel.FK_Grades_Grades1" FromRole="Grade1" ToRole="Grade" />
+          <NavigationProperty Name="UnderGradutes" Relationship="SchoolManagmentModel.FK_UnderGradutes_Grades" FromRole="Grade" ToRole="UnderGradute" />
         </EntityType>
         <EntityType Name="Lesson">
           <Key>
@@ -946,11 +1079,11 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </Key>
           <Property Name="PKLessonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkFileldId" Type="Int32" Nullable="false" />
-          <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LessonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LessonUnits" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Field" Relationship="Self.FK_Lessons_Fields" FromRole="Lessons" ToRole="Fields" />
-          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrades" Relationship="Self.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" FromRole="Lessons" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
-          <NavigationProperty Name="Teachers" Relationship="Self.TeacherCanTeachLessons" FromRole="Lessons" ToRole="Teachers" />
+          <NavigationProperty Name="Field" Relationship="SchoolManagmentModel.FK_Lessons_Fields" FromRole="Lesson" ToRole="Field" />
+          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrades" Relationship="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" FromRole="Lesson" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
+          <NavigationProperty Name="TeacherCanTeachLessons" Relationship="SchoolManagmentModel.FK_TeacherCanTeachLessons_Lessons" FromRole="Lesson" ToRole="TeacherCanTeachLesson" />
         </EntityType>
         <EntityType Name="LessonsOfFileldsOfNewYearInUngrade">
           <Key>
@@ -959,38 +1092,38 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkLessonOfFieldOfNewYearInUnGradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkFieldOfNewYearInUnGraduteId" Type="Int32" Nullable="false" />
           <Property Name="FkLessonId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FieldsOfNewYearInUnGradute" Relationship="Self.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="FieldsOfNewYearInUnGradutes" />
-          <NavigationProperty Name="Lesson" Relationship="Self.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="Lessons" />
-          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrades" Relationship="Self.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          <NavigationProperty Name="FieldsOfNewYearInUnGradute" Relationship="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="FieldsOfNewYearInUnGradute" />
+          <NavigationProperty Name="Lesson" Relationship="SchoolManagmentModel.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="Lesson" />
+          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrades" Relationship="SchoolManagmentModel.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" FromRole="LessonsOfFileldsOfNewYearInUngrade" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="PkPermissionId" />
           </Key>
           <Property Name="PkPermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PermissionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Roles" Relationship="Self.RolePermissions" FromRole="Permissions" ToRole="Roles" />
+          <Property Name="PermissionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="SchoolManagmentModel.RolePermissions" FromRole="Permission" ToRole="Role" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="PkPersonalId" />
           </Key>
           <Property Name="PkPersonalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PersonalUserName" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PersonalPass" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PersonalJob" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalUserName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="PersonalPass" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="PersonalJob" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PersonalDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Roles" Relationship="Self.PersonalRoles" FromRole="Personals" ToRole="Roles" />
+          <NavigationProperty Name="Roles" Relationship="SchoolManagmentModel.PersonalRoles" FromRole="Personal" ToRole="Role" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="PkRoleId" />
           </Key>
           <Property Name="PkRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Personals" Relationship="Self.PersonalRoles" FromRole="Roles" ToRole="Personals" />
-          <NavigationProperty Name="Permissions" Relationship="Self.RolePermissions" FromRole="Roles" ToRole="Permissions" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personals" Relationship="SchoolManagmentModel.PersonalRoles" FromRole="Role" ToRole="Personal" />
+          <NavigationProperty Name="Permissions" Relationship="SchoolManagmentModel.RolePermissions" FromRole="Role" ToRole="Permission" />
         </EntityType>
         <EntityType Name="ScoreOfStudentsForLesson">
           <Key>
@@ -999,9 +1132,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkScoreOfStudentsForLessons" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkStudentId" Type="Int32" Nullable="false" />
           <Property Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" Type="Int32" Nullable="false" />
-          <Property Name="ScoreOfLesson" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_ScoreOfStudentsForLessons_Students" FromRole="ScoreOfStudentsForLessons" ToRole="Students" />
-          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="Self.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="ScoreOfStudentsForLessons" ToRole="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          <Property Name="ScoreOfLesson" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+          <NavigationProperty Name="Student" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" FromRole="ScoreOfStudentsForLesson" ToRole="Student" />
+          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="ScoreOfStudentsForLesson" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1012,8 +1145,8 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="FkTeacherTeachLessonAccToCalenderInClass" Type="Int32" Nullable="false" />
           <Property Name="DateOfDay" Type="DateTime" Precision="0" />
           <Property Name="StudentPresent" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="Students" />
-          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClass" Relationship="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="TeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="Student" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="Student" />
+          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClass" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="TeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -1022,32 +1155,32 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkStudentFieldId" Type="Int32" Nullable="false" />
           <Property Name="FkLastPassedUgraduteId" Type="Int32" />
-          <Property Name="StudentNationCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Field" Relationship="Self.FK_Students_Grades" FromRole="Students" ToRole="Fields" />
-          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="Self.FK_ScoreOfStudentsForLessons_Students" FromRole="Students" ToRole="ScoreOfStudentsForLessons" />
-          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" Relationship="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="Students" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
-          <NavigationProperty Name="UnderGradute" Relationship="Self.FK_Students_UnderGradutes" FromRole="Students" ToRole="UnderGradutes" />
+          <Property Name="StudentNationCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Field" Relationship="SchoolManagmentModel.FK_Students_Grades" FromRole="Student" ToRole="Field" />
+          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" FromRole="Student" ToRole="ScoreOfStudentsForLesson" />
+          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="Student" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="UnderGradute" Relationship="SchoolManagmentModel.FK_Students_UnderGradutes" FromRole="Student" ToRole="UnderGradute" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="TeacherCanTeachLesson">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="PkTeacherCanTeachLessons" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PkTeacherCanTeachLessons" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkTeacherId" Type="Int32" Nullable="false" />
+          <Property Name="FkLessonId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lesson" Relationship="SchoolManagmentModel.FK_TeacherCanTeachLessons_Lessons" FromRole="TeacherCanTeachLesson" ToRole="Lesson" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolManagmentModel.FK_TeacherCanTeachLessons_Teachers" FromRole="TeacherCanTeachLesson" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="TeacherId" />
           </Key>
           <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TeacherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TeacherEducation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrades" Relationship="Self.FK_TeacherTeachLesson_Teachers" FromRole="Teachers" ToRole="TeacherTeachsLessonsOfNewYearInUnGrades" />
-          <NavigationProperty Name="Lessons" Relationship="Self.TeacherCanTeachLessons" FromRole="Teachers" ToRole="Lessons" />
+          <NavigationProperty Name="TeacherCanTeachLessons" Relationship="SchoolManagmentModel.FK_TeacherCanTeachLessons_Teachers" FromRole="Teacher" ToRole="TeacherCanTeachLesson" />
+          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrades" Relationship="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers" FromRole="Teacher" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
         </EntityType>
         <EntityType Name="TeacherTeachLessonAccordingToCalender">
           <Key>
@@ -1056,9 +1189,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PKTeacherTeachLessonAccordingToCalender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FKTeacherTeachLessonId" Type="Int32" Nullable="false" />
           <Property Name="FkCalenderId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Calender" Relationship="Self.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="Calender" />
-          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="Self.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachsLessonsOfNewYearInUnGrades" />
-          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="Self.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="Calender" />
+          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
+          <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="TeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1067,9 +1200,9 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkTeacherTeachLessonAccToCalInClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkTeacherTeachLessonAccToCalId" Type="Int32" Nullable="false" />
           <Property Name="FkClassId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_TeacherTeachLessonAccToCalenderInClass_Classes" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="Classes" />
-          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" Relationship="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
-          <NavigationProperty Name="TeacherTeachLessonAccordingToCalender" Relationship="Self.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="TeacherTeachLessonAccordingToCalender" />
+          <NavigationProperty Name="Class" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_Classes" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="Class" />
+          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="TeacherTeachLessonAccordingToCalender" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccToCalenderInClass" ToRole="TeacherTeachLessonAccordingToCalender" />
         </EntityType>
         <EntityType Name="TeacherTeachsLessonsOfNewYearInUnGrade">
           <Key>
@@ -1078,10 +1211,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="TeacherTeachLessonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkTeacherId" Type="Int32" Nullable="false" />
           <Property Name="FkLessonOfFieldsOfNewYearInUnGrade" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrade" Relationship="Self.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" FromRole="TeacherTeachsLessonsOfNewYearInUnGrades" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
-          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="Self.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="TeacherTeachsLessonsOfNewYearInUnGrades" ToRole="ScoreOfStudentsForLessons" />
-          <NavigationProperty Name="Teacher" Relationship="Self.FK_TeacherTeachLesson_Teachers" FromRole="TeacherTeachsLessonsOfNewYearInUnGrades" ToRole="Teachers" />
-          <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="Self.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachsLessonsOfNewYearInUnGrades" ToRole="TeacherTeachLessonAccordingToCalender" />
+          <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrade" Relationship="SchoolManagmentModel.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
+          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="ScoreOfStudentsForLesson" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="Teacher" />
+          <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="TeacherTeachLessonAccordingToCalender" />
         </EntityType>
         <EntityType Name="TimeAlterNate">
           <Key>
@@ -1090,15 +1223,15 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkTimeId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FromTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="ToTime" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Days" Relationship="Self.TimeInDayAlternate" FromRole="TimeAlterNate" ToRole="Days" />
+          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.TimeInDayAlternate" FromRole="TimeAlterNate" ToRole="Day" />
         </EntityType>
         <EntityType Name="TypeDay">
           <Key>
             <PropertyRef Name="PkTypeOfdayId" />
           </Key>
           <Property Name="PkTypeOfdayId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeOfDayDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Days" Relationship="Self.FK_TypeDays_Days" FromRole="TypeDays" ToRole="Days" />
+          <Property Name="TypeOfDayDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_TypeDays_Days" FromRole="TypeDay" ToRole="Day" />
         </EntityType>
         <EntityType Name="UnderGradute">
           <Key>
@@ -1107,13 +1240,13 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkUnGraduteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkUnGradutePrequestis" Type="Int32" />
           <Property Name="FkGradeId" Type="Int32" Nullable="false" />
-          <Property Name="UnGraduteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Fields" Relationship="Self.FK_Fields_UnderGradutes" FromRole="UnderGradutes" ToRole="Fields" />
-          <NavigationProperty Name="Grade" Relationship="Self.FK_UnderGradutes_Grades" FromRole="UnderGradutes" ToRole="Grades" />
-          <NavigationProperty Name="Students" Relationship="Self.FK_Students_UnderGradutes" FromRole="UnderGradutes" ToRole="Students" />
-          <NavigationProperty Name="UnderGradutes1" Relationship="Self.FK_UnderGradutes_UnderGradutes" FromRole="UnderGradutes" ToRole="UnderGradutes1" />
-          <NavigationProperty Name="UnderGradute1" Relationship="Self.FK_UnderGradutes_UnderGradutes" FromRole="UnderGradutes1" ToRole="UnderGradutes" />
-          <NavigationProperty Name="UnderGradutesInNewAcademyYears" Relationship="Self.FK_UnderGradutesInNewAcademyYear_UnderGradutes" FromRole="UnderGradutes" ToRole="UnderGradutesInNewAcademyYear" />
+          <Property Name="UnGraduteName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fields" Relationship="SchoolManagmentModel.FK_Fields_UnderGradutes" FromRole="UnderGradute" ToRole="Field" />
+          <NavigationProperty Name="Grade" Relationship="SchoolManagmentModel.FK_UnderGradutes_Grades" FromRole="UnderGradute" ToRole="Grade" />
+          <NavigationProperty Name="Students" Relationship="SchoolManagmentModel.FK_Students_UnderGradutes" FromRole="UnderGradute" ToRole="Student" />
+          <NavigationProperty Name="UnderGradutes1" Relationship="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes" FromRole="UnderGradute" ToRole="UnderGradute1" />
+          <NavigationProperty Name="UnderGradute1" Relationship="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes" FromRole="UnderGradute1" ToRole="UnderGradute" />
+          <NavigationProperty Name="UnderGradutesInNewAcademyYears" Relationship="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_UnderGradutes" FromRole="UnderGradute" ToRole="UnderGradutesInNewAcademyYear" />
         </EntityType>
         <EntityType Name="UnderGradutesInNewAcademyYear">
           <Key>
@@ -1122,13 +1255,13 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <Property Name="PkUnderGraduteInAcademyYearId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkAcademyYearId" Type="Int32" Nullable="false" />
           <Property Name="FkUnGraduteId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AcademyYear" Relationship="Self.FK_UnderGradutesInNewAcademyYear_AcademyYear" FromRole="UnderGradutesInNewAcademyYear" ToRole="AcademyYear" />
-          <NavigationProperty Name="FieldsOfNewYearInUnGradutes" Relationship="Self.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" FromRole="UnderGradutesInNewAcademyYear" ToRole="FieldsOfNewYearInUnGradutes" />
-          <NavigationProperty Name="UnderGradute" Relationship="Self.FK_UnderGradutesInNewAcademyYear_UnderGradutes" FromRole="UnderGradutesInNewAcademyYear" ToRole="UnderGradutes" />
+          <NavigationProperty Name="AcademyYear" Relationship="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_AcademyYear" FromRole="UnderGradutesInNewAcademyYear" ToRole="AcademyYear" />
+          <NavigationProperty Name="FieldsOfNewYearInUnGradutes" Relationship="SchoolManagmentModel.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" FromRole="UnderGradutesInNewAcademyYear" ToRole="FieldsOfNewYearInUnGradute" />
+          <NavigationProperty Name="UnderGradute" Relationship="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_UnderGradutes" FromRole="UnderGradutesInNewAcademyYear" ToRole="UnderGradute" />
         </EntityType>
         <Association Name="FK_UnderGradutesInNewAcademyYear_AcademyYear">
-          <End Role="AcademyYear" Type="Self.AcademyYear" Multiplicity="1" />
-          <End Role="UnderGradutesInNewAcademyYear" Type="Self.UnderGradutesInNewAcademyYear" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.AcademyYear" Role="AcademyYear" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Role="UnderGradutesInNewAcademyYear" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AcademyYear">
               <PropertyRef Name="AcademyYearId" />
@@ -1139,20 +1272,20 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Days_Calender">
-          <End Role="Calender" Type="Self.Calender" Multiplicity="1" />
-          <End Role="Days" Type="Self.Day" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">
               <PropertyRef Name="CalenderId" />
             </Principal>
-            <Dependent Role="Days">
+            <Dependent Role="Day">
               <PropertyRef Name="FkCalenderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_Calender">
-          <End Role="Calender" Type="Self.Calender" Multiplicity="1" />
-          <End Role="TeacherTeachLessonAccordingToCalender" Type="Self.TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Role="TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">
               <PropertyRef Name="CalenderId" />
@@ -1163,10 +1296,10 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccToCalenderInClass_Classes">
-          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
-          <End Role="TeacherTeachLessonAccToCalenderInClass" Type="Self.TeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Role="TeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Classes">
+            <Principal Role="Class">
               <PropertyRef Name="PkClassId" />
             </Principal>
             <Dependent Role="TeacherTeachLessonAccToCalenderInClass">
@@ -1175,94 +1308,94 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Days_DayAlternate">
-          <End Role="DayAlternate" Type="Self.DayAlternate" Multiplicity="1" />
-          <End Role="Days" Type="Self.Day" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.DayAlternate" Role="DayAlternate" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DayAlternate">
               <PropertyRef Name="PkDayAlternateId" />
             </Principal>
-            <Dependent Role="Days">
+            <Dependent Role="Day">
               <PropertyRef Name="FkDayAlternate" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TypeDays_Days">
-          <End Role="TypeDays" Type="Self.TypeDay" Multiplicity="1" />
-          <End Role="Days" Type="Self.Day" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TypeDay" Role="TypeDay" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeDays">
+            <Principal Role="TypeDay">
               <PropertyRef Name="PkTypeOfdayId" />
             </Principal>
-            <Dependent Role="Days">
+            <Dependent Role="Day">
               <PropertyRef Name="FkTypeDayId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Fields_UnderGradutes">
-          <End Role="UnderGradutes" Type="Self.UnderGradute" Multiplicity="1" />
-          <End Role="Fields" Type="Self.Field" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Field" Role="Field" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UnderGradutes">
+            <Principal Role="UnderGradute">
               <PropertyRef Name="PkUnGraduteId" />
             </Principal>
-            <Dependent Role="Fields">
+            <Dependent Role="Field">
               <PropertyRef Name="FKUnGraduteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FieldsOfNewYearInUnGradutes_Fields">
-          <End Role="Fields" Type="Self.Field" Multiplicity="1" />
-          <End Role="FieldsOfNewYearInUnGradutes" Type="Self.FieldsOfNewYearInUnGradute" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Field" Role="Field" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Role="FieldsOfNewYearInUnGradute" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Fields">
+            <Principal Role="Field">
               <PropertyRef Name="PkFieldId" />
             </Principal>
-            <Dependent Role="FieldsOfNewYearInUnGradutes">
+            <Dependent Role="FieldsOfNewYearInUnGradute">
               <PropertyRef Name="FkFieldId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Lessons_Fields">
-          <End Role="Fields" Type="Self.Field" Multiplicity="1" />
-          <End Role="Lessons" Type="Self.Lesson" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Field" Role="Field" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Lesson" Role="Lesson" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Fields">
+            <Principal Role="Field">
               <PropertyRef Name="PkFieldId" />
             </Principal>
-            <Dependent Role="Lessons">
+            <Dependent Role="Lesson">
               <PropertyRef Name="FkFileldId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Students_Grades">
-          <End Role="Fields" Type="Self.Field" Multiplicity="1" />
-          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Field" Role="Field" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Fields">
+            <Principal Role="Field">
               <PropertyRef Name="PkFieldId" />
             </Principal>
-            <Dependent Role="Students">
+            <Dependent Role="Student">
               <PropertyRef Name="FkStudentFieldId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear">
-          <End Role="UnderGradutesInNewAcademyYear" Type="Self.UnderGradutesInNewAcademyYear" Multiplicity="1" />
-          <End Role="FieldsOfNewYearInUnGradutes" Type="Self.FieldsOfNewYearInUnGradute" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Role="UnderGradutesInNewAcademyYear" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Role="FieldsOfNewYearInUnGradute" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnderGradutesInNewAcademyYear">
               <PropertyRef Name="PkUnderGraduteInAcademyYearId" />
             </Principal>
-            <Dependent Role="FieldsOfNewYearInUnGradutes">
+            <Dependent Role="FieldsOfNewYearInUnGradute">
               <PropertyRef Name="FkUnGradutesInNewYearId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes">
-          <End Role="FieldsOfNewYearInUnGradutes" Type="Self.FieldsOfNewYearInUnGradute" Multiplicity="1" />
-          <End Role="LessonsOfFileldsOfNewYearInUngrade" Type="Self.LessonsOfFileldsOfNewYearInUngrade" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Role="FieldsOfNewYearInUnGradute" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Role="LessonsOfFileldsOfNewYearInUngrade" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FieldsOfNewYearInUnGradutes">
+            <Principal Role="FieldsOfNewYearInUnGradute">
               <PropertyRef Name="PkFieldsOfNewYearInUnGradutesId" />
             </Principal>
             <Dependent Role="LessonsOfFileldsOfNewYearInUngrade">
@@ -1271,34 +1404,34 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Grades_Grades1">
-          <End Role="Grades" Type="Self.Grade" Multiplicity="0..1" />
-          <End Role="Grades1" Type="Self.Grade" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Grade" Role="Grade" Multiplicity="0..1" />
+          <End Type="SchoolManagmentModel.Grade" Role="Grade1" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Grades">
+            <Principal Role="Grade">
               <PropertyRef Name="PkGradeId" />
             </Principal>
-            <Dependent Role="Grades1">
+            <Dependent Role="Grade1">
               <PropertyRef Name="FkGradePrequiestis" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UnderGradutes_Grades">
-          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
-          <End Role="UnderGradutes" Type="Self.UnderGradute" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Grades">
+            <Principal Role="Grade">
               <PropertyRef Name="PkGradeId" />
             </Principal>
-            <Dependent Role="UnderGradutes">
+            <Dependent Role="UnderGradute">
               <PropertyRef Name="FkGradeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LessonsOfFileldsOfNewYearInUngrade_Lessons">
-          <End Role="Lessons" Type="Self.Lesson" Multiplicity="1" />
-          <End Role="LessonsOfFileldsOfNewYearInUngrade" Type="Self.LessonsOfFileldsOfNewYearInUngrade" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Lesson" Role="Lesson" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Role="LessonsOfFileldsOfNewYearInUngrade" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Lessons">
+            <Principal Role="Lesson">
               <PropertyRef Name="PKLessonId" />
             </Principal>
             <Dependent Role="LessonsOfFileldsOfNewYearInUngrade">
@@ -1306,47 +1439,59 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TeacherCanTeachLessons_Lessons">
+          <End Type="SchoolManagmentModel.Lesson" Role="Lesson" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherCanTeachLesson" Role="TeacherCanTeachLesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="PKLessonId" />
+            </Principal>
+            <Dependent Role="TeacherCanTeachLesson">
+              <PropertyRef Name="FkLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade">
-          <End Role="LessonsOfFileldsOfNewYearInUngrade" Type="Self.LessonsOfFileldsOfNewYearInUngrade" Multiplicity="1" />
-          <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" Type="Self.TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Role="LessonsOfFileldsOfNewYearInUngrade" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Role="TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LessonsOfFileldsOfNewYearInUngrade">
               <PropertyRef Name="PkLessonOfFieldOfNewYearInUnGradeId" />
             </Principal>
-            <Dependent Role="TeacherTeachsLessonsOfNewYearInUnGrades">
+            <Dependent Role="TeacherTeachsLessonsOfNewYearInUnGrade">
               <PropertyRef Name="FkLessonOfFieldsOfNewYearInUnGrade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ScoreOfStudentsForLessons_Students">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
-          <End Role="ScoreOfStudentsForLessons" Type="Self.ScoreOfStudentsForLesson" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.ScoreOfStudentsForLesson" Role="ScoreOfStudentsForLesson" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
+            <Principal Role="Student">
               <PropertyRef Name="StudentId" />
             </Principal>
-            <Dependent Role="ScoreOfStudentsForLessons">
+            <Dependent Role="ScoreOfStudentsForLesson">
               <PropertyRef Name="FkStudentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-          <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" Type="Self.TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="1" />
-          <End Role="ScoreOfStudentsForLessons" Type="Self.ScoreOfStudentsForLesson" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Role="TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.ScoreOfStudentsForLesson" Role="ScoreOfStudentsForLesson" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrades">
+            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrade">
               <PropertyRef Name="TeacherTeachLessonId" />
             </Principal>
-            <Dependent Role="ScoreOfStudentsForLessons">
+            <Dependent Role="ScoreOfStudentsForLesson">
               <PropertyRef Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Type="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
+            <Principal Role="Student">
               <PropertyRef Name="StudentId" />
             </Principal>
             <Dependent Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
@@ -1355,8 +1500,8 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass">
-          <End Role="TeacherTeachLessonAccToCalenderInClass" Type="Self.TeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
-          <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Type="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Role="TeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TeacherTeachLessonAccToCalenderInClass">
               <PropertyRef Name="PkTeacherTeachLessonAccToCalInClassId" />
@@ -1367,34 +1512,46 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Students_UnderGradutes">
-          <End Role="UnderGradutes" Type="Self.UnderGradute" Multiplicity="0..1" />
-          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="0..1" />
+          <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UnderGradutes">
+            <Principal Role="UnderGradute">
               <PropertyRef Name="PkUnGraduteId" />
             </Principal>
-            <Dependent Role="Students">
+            <Dependent Role="Student">
               <PropertyRef Name="FkLastPassedUgraduteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeacherTeachLesson_Teachers">
-          <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" Type="Self.TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="*" />
+        <Association Name="FK_TeacherCanTeachLessons_Teachers">
+          <End Type="SchoolManagmentModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherCanTeachLesson" Role="TeacherCanTeachLesson" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Teachers">
+            <Principal Role="Teacher">
               <PropertyRef Name="TeacherId" />
             </Principal>
-            <Dependent Role="TeacherTeachsLessonsOfNewYearInUnGrades">
+            <Dependent Role="TeacherCanTeachLesson">
+              <PropertyRef Name="FkTeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherTeachLesson_Teachers">
+          <End Type="SchoolManagmentModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Role="TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="TeacherTeachsLessonsOfNewYearInUnGrade">
               <PropertyRef Name="FkTeacherId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson">
-          <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" Type="Self.TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="1" />
-          <End Role="TeacherTeachLessonAccordingToCalender" Type="Self.TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Role="TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Role="TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrades">
+            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrade">
               <PropertyRef Name="TeacherTeachLessonId" />
             </Principal>
             <Dependent Role="TeacherTeachLessonAccordingToCalender">
@@ -1403,8 +1560,8 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender">
-          <End Role="TeacherTeachLessonAccordingToCalender" Type="Self.TeacherTeachLessonAccordingToCalender" Multiplicity="1" />
-          <End Role="TeacherTeachLessonAccToCalenderInClass" Type="Self.TeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Role="TeacherTeachLessonAccordingToCalender" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Role="TeacherTeachLessonAccToCalenderInClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TeacherTeachLessonAccordingToCalender">
               <PropertyRef Name="PKTeacherTeachLessonAccordingToCalender" />
@@ -1415,22 +1572,22 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UnderGradutes_UnderGradutes">
-          <End Role="UnderGradutes" Type="Self.UnderGradute" Multiplicity="0..1" />
-          <End Role="UnderGradutes1" Type="Self.UnderGradute" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="0..1" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute1" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UnderGradutes">
+            <Principal Role="UnderGradute">
               <PropertyRef Name="PkUnGraduteId" />
             </Principal>
-            <Dependent Role="UnderGradutes1">
+            <Dependent Role="UnderGradute1">
               <PropertyRef Name="FkUnGradutePrequestis" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UnderGradutesInNewAcademyYear_UnderGradutes">
-          <End Role="UnderGradutes" Type="Self.UnderGradute" Multiplicity="1" />
-          <End Role="UnderGradutesInNewAcademyYear" Type="Self.UnderGradutesInNewAcademyYear" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Role="UnderGradutesInNewAcademyYear" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UnderGradutes">
+            <Principal Role="UnderGradute">
               <PropertyRef Name="PkUnGraduteId" />
             </Principal>
             <Dependent Role="UnderGradutesInNewAcademyYear">
@@ -1439,168 +1596,17 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           </ReferentialConstraint>
         </Association>
         <Association Name="PersonalRoles">
-          <End Role="Personals" Type="Self.Personal" Multiplicity="*" />
-          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Personal" Role="Personal" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="*" />
         </Association>
         <Association Name="RolePermissions">
-          <End Role="Permissions" Type="Self.Permission" Multiplicity="*" />
-          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
-        </Association>
-        <Association Name="TeacherCanTeachLessons">
-          <End Role="Lessons" Type="Self.Lesson" Multiplicity="*" />
-          <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Role" Role="Role" Multiplicity="*" />
         </Association>
         <Association Name="TimeInDayAlternate">
-          <End Role="Days" Type="Self.Day" Multiplicity="*" />
-          <End Role="TimeAlterNate" Type="Self.TimeAlterNate" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.TimeAlterNate" Role="TimeAlterNate" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="SchoolManagmentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AcademyYears" EntityType="Self.AcademyYear" />
-          <EntitySet Name="Calenders" EntityType="Self.Calender" />
-          <EntitySet Name="Classes" EntityType="Self.Class" />
-          <EntitySet Name="DayAlternates" EntityType="Self.DayAlternate" />
-          <EntitySet Name="Days" EntityType="Self.Day" />
-          <EntitySet Name="Fields" EntityType="Self.Field" />
-          <EntitySet Name="FieldsOfNewYearInUnGradutes" EntityType="Self.FieldsOfNewYearInUnGradute" />
-          <EntitySet Name="Grades" EntityType="Self.Grade" />
-          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
-          <EntitySet Name="LessonsOfFileldsOfNewYearInUngrades" EntityType="Self.LessonsOfFileldsOfNewYearInUngrade" />
-          <EntitySet Name="Permissions" EntityType="Self.Permission" />
-          <EntitySet Name="Personals" EntityType="Self.Personal" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="ScoreOfStudentsForLessons" EntityType="Self.ScoreOfStudentsForLesson" />
-          <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" EntityType="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
-          <EntitySet Name="TeacherTeachLessonAccordingToCalenders" EntityType="Self.TeacherTeachLessonAccordingToCalender" />
-          <EntitySet Name="TeacherTeachLessonAccToCalenderInClasses" EntityType="Self.TeacherTeachLessonAccToCalenderInClass" />
-          <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="Self.TeacherTeachsLessonsOfNewYearInUnGrade" />
-          <EntitySet Name="TimeAlterNates" EntityType="Self.TimeAlterNate" />
-          <EntitySet Name="TypeDays" EntityType="Self.TypeDay" />
-          <EntitySet Name="UnderGradutes" EntityType="Self.UnderGradute" />
-          <EntitySet Name="UnderGradutesInNewAcademyYears" EntityType="Self.UnderGradutesInNewAcademyYear" />
-          <AssociationSet Name="FK_UnderGradutesInNewAcademyYear_AcademyYear" Association="Self.FK_UnderGradutesInNewAcademyYear_AcademyYear">
-            <End Role="AcademyYear" EntitySet="AcademyYears" />
-            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Days_Calender" Association="Self.FK_Days_Calender">
-            <End Role="Calender" EntitySet="Calenders" />
-            <End Role="Days" EntitySet="Days" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachLessonAccordingToCalender_Calender" Association="Self.FK_TeacherTeachLessonAccordingToCalender_Calender">
-            <End Role="Calender" EntitySet="Calenders" />
-            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachLessonAccToCalenderInClass_Classes" Association="Self.FK_TeacherTeachLessonAccToCalenderInClass_Classes">
-            <End Role="Classes" EntitySet="Classes" />
-            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Days_DayAlternate" Association="Self.FK_Days_DayAlternate">
-            <End Role="DayAlternate" EntitySet="DayAlternates" />
-            <End Role="Days" EntitySet="Days" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TypeDays_Days" Association="Self.FK_TypeDays_Days">
-            <End Role="TypeDays" EntitySet="TypeDays" />
-            <End Role="Days" EntitySet="Days" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fields_UnderGradutes" Association="Self.FK_Fields_UnderGradutes">
-            <End Role="UnderGradutes" EntitySet="UnderGradutes" />
-            <End Role="Fields" EntitySet="Fields" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FieldsOfNewYearInUnGradutes_Fields" Association="Self.FK_FieldsOfNewYearInUnGradutes_Fields">
-            <End Role="Fields" EntitySet="Fields" />
-            <End Role="FieldsOfNewYearInUnGradutes" EntitySet="FieldsOfNewYearInUnGradutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Lessons_Fields" Association="Self.FK_Lessons_Fields">
-            <End Role="Fields" EntitySet="Fields" />
-            <End Role="Lessons" EntitySet="Lessons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Students_Grades" Association="Self.FK_Students_Grades">
-            <End Role="Fields" EntitySet="Fields" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear" Association="Self.FK_FieldsOfNewYearInUnGradutes_UnderGradutesInNewAcademyYear">
-            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
-            <End Role="FieldsOfNewYearInUnGradutes" EntitySet="FieldsOfNewYearInUnGradutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes" Association="Self.FK_LessonsOfFileldsOfNewYearInUngrade_FieldsOfNewYearInUnGradutes">
-            <End Role="FieldsOfNewYearInUnGradutes" EntitySet="FieldsOfNewYearInUnGradutes" />
-            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Grades_Grades1" Association="Self.FK_Grades_Grades1">
-            <End Role="Grades" EntitySet="Grades" />
-            <End Role="Grades1" EntitySet="Grades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UnderGradutes_Grades" Association="Self.FK_UnderGradutes_Grades">
-            <End Role="Grades" EntitySet="Grades" />
-            <End Role="UnderGradutes" EntitySet="UnderGradutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LessonsOfFileldsOfNewYearInUngrade_Lessons" Association="Self.FK_LessonsOfFileldsOfNewYearInUngrade_Lessons">
-            <End Role="Lessons" EntitySet="Lessons" />
-            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" Association="Self.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade">
-            <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrades" />
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_Students" Association="Self.FK_ScoreOfStudentsForLessons_Students">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="ScoreOfStudentsForLessons" EntitySet="ScoreOfStudentsForLessons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" Association="Self.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
-            <End Role="ScoreOfStudentsForLessons" EntitySet="ScoreOfStudentsForLessons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" Association="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" Association="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass">
-            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
-            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Students_UnderGradutes" Association="Self.FK_Students_UnderGradutes">
-            <End Role="UnderGradutes" EntitySet="UnderGradutes" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachLesson_Teachers" Association="Self.FK_TeacherTeachLesson_Teachers">
-            <End Role="Teachers" EntitySet="Teachers" />
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" Association="Self.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson">
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
-            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" Association="Self.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender">
-            <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
-            <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UnderGradutes_UnderGradutes" Association="Self.FK_UnderGradutes_UnderGradutes">
-            <End Role="UnderGradutes" EntitySet="UnderGradutes" />
-            <End Role="UnderGradutes1" EntitySet="UnderGradutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UnderGradutesInNewAcademyYear_UnderGradutes" Association="Self.FK_UnderGradutesInNewAcademyYear_UnderGradutes">
-            <End Role="UnderGradutes" EntitySet="UnderGradutes" />
-            <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
-          </AssociationSet>
-          <AssociationSet Name="PersonalRoles" Association="Self.PersonalRoles">
-            <End Role="Personals" EntitySet="Personals" />
-            <End Role="Roles" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="RolePermissions" Association="Self.RolePermissions">
-            <End Role="Permissions" EntitySet="Permissions" />
-            <End Role="Roles" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="TeacherCanTeachLessons" Association="Self.TeacherCanTeachLessons">
-            <End Role="Lessons" EntitySet="Lessons" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
-          <AssociationSet Name="TimeInDayAlternate" Association="Self.TimeInDayAlternate">
-            <End Role="Days" EntitySet="Days" />
-            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1610,269 +1616,259 @@ warning 6002: The table/view 'SchoolManagment.dbo.TimeInDayAlternate' does not h
           <EntitySetMapping Name="AcademyYears">
             <EntityTypeMapping TypeName="SchoolManagmentModel.AcademyYear">
               <MappingFragment StoreEntitySet="AcademyYear">
-                <ScalarProperty Name="AcademyYearId" ColumnName="AcademyYearId" />
-                <ScalarProperty Name="AcademyYearName" ColumnName="AcademyYearName" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="NumberOfDaysOfYear" ColumnName="NumberOfDaysOfYear" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="AcademyYearName" ColumnName="AcademyYearName" />
+                <ScalarProperty Name="AcademyYearId" ColumnName="AcademyYearId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Calenders">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Calender">
               <MappingFragment StoreEntitySet="Calender">
-                <ScalarProperty Name="CalenderId" ColumnName="CalenderId" />
                 <ScalarProperty Name="CalenderName" ColumnName="CalenderName" />
+                <ScalarProperty Name="CalenderId" ColumnName="CalenderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Classes">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Class">
               <MappingFragment StoreEntitySet="Classes">
-                <ScalarProperty Name="PkClassId" ColumnName="PkClassId" />
-                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
-                <ScalarProperty Name="ClassLocation" ColumnName="ClassLocation" />
                 <ScalarProperty Name="ClassCapacity" ColumnName="ClassCapacity" />
+                <ScalarProperty Name="ClassLocation" ColumnName="ClassLocation" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="PkClassId" ColumnName="PkClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DayAlternates">
             <EntityTypeMapping TypeName="SchoolManagmentModel.DayAlternate">
               <MappingFragment StoreEntitySet="DayAlternate">
-                <ScalarProperty Name="PkDayAlternateId" ColumnName="PkDayAlternateId" />
                 <ScalarProperty Name="DayAlternateDescription" ColumnName="DayAlternateDescription" />
+                <ScalarProperty Name="PkDayAlternateId" ColumnName="PkDayAlternateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Days">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Day">
               <MappingFragment StoreEntitySet="Days">
-                <ScalarProperty Name="DayId" ColumnName="DayId" />
-                <ScalarProperty Name="FkCalenderId" ColumnName="FkCalenderId" />
-                <ScalarProperty Name="FkTypeDayId" ColumnName="FkTypeDayId" />
                 <ScalarProperty Name="FkDayAlternate" ColumnName="FkDayAlternate" />
+                <ScalarProperty Name="FkTypeDayId" ColumnName="FkTypeDayId" />
+                <ScalarProperty Name="FkCalenderId" ColumnName="FkCalenderId" />
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fields">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Field">
               <MappingFragment StoreEntitySet="Fields">
-                <ScalarProperty Name="PkFieldId" ColumnName="PkFieldId" />
-                <ScalarProperty Name="FKUnGraduteId" ColumnName="FKUnGraduteId" />
                 <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FKUnGraduteId" ColumnName="FKUnGraduteId" />
+                <ScalarProperty Name="PkFieldId" ColumnName="PkFieldId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FieldsOfNewYearInUnGradutes">
             <EntityTypeMapping TypeName="SchoolManagmentModel.FieldsOfNewYearInUnGradute">
               <MappingFragment StoreEntitySet="FieldsOfNewYearInUnGradutes">
-                <ScalarProperty Name="PkFieldsOfNewYearInUnGradutesId" ColumnName="PkFieldsOfNewYearInUnGradutesId" />
-                <ScalarProperty Name="FkFieldId" ColumnName="FkFieldId" />
                 <ScalarProperty Name="FkUnGradutesInNewYearId" ColumnName="FkUnGradutesInNewYearId" />
+                <ScalarProperty Name="FkFieldId" ColumnName="FkFieldId" />
+                <ScalarProperty Name="PkFieldsOfNewYearInUnGradutesId" ColumnName="PkFieldsOfNewYearInUnGradutesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grades">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Grade">
               <MappingFragment StoreEntitySet="Grades">
-                <ScalarProperty Name="PkGradeId" ColumnName="PkGradeId" />
-                <ScalarProperty Name="FkGradePrequiestis" ColumnName="FkGradePrequiestis" />
                 <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="FkGradePrequiestis" ColumnName="FkGradePrequiestis" />
+                <ScalarProperty Name="PkGradeId" ColumnName="PkGradeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lessons">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Lesson">
               <MappingFragment StoreEntitySet="Lessons">
-                <ScalarProperty Name="PKLessonId" ColumnName="PKLessonId" />
-                <ScalarProperty Name="FkFileldId" ColumnName="FkFileldId" />
-                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
                 <ScalarProperty Name="LessonUnits" ColumnName="LessonUnits" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="FkFileldId" ColumnName="FkFileldId" />
+                <ScalarProperty Name="PKLessonId" ColumnName="PKLessonId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LessonsOfFileldsOfNewYearInUngrades">
             <EntityTypeMapping TypeName="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade">
               <MappingFragment StoreEntitySet="LessonsOfFileldsOfNewYearInUngrade">
-                <ScalarProperty Name="PkLessonOfFieldOfNewYearInUnGradeId" ColumnName="PkLessonOfFieldOfNewYearInUnGradeId" />
-                <ScalarProperty Name="FkFieldOfNewYearInUnGraduteId" ColumnName="FkFieldOfNewYearInUnGraduteId" />
                 <ScalarProperty Name="FkLessonId" ColumnName="FkLessonId" />
+                <ScalarProperty Name="FkFieldOfNewYearInUnGraduteId" ColumnName="FkFieldOfNewYearInUnGraduteId" />
+                <ScalarProperty Name="PkLessonOfFieldOfNewYearInUnGradeId" ColumnName="PkLessonOfFieldOfNewYearInUnGradeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Permissions">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Permission">
               <MappingFragment StoreEntitySet="Permissions">
-                <ScalarProperty Name="PkPermissionId" ColumnName="PkPermissionId" />
                 <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="PkPermissionId" ColumnName="PkPermissionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Personal">
               <MappingFragment StoreEntitySet="Personals">
-                <ScalarProperty Name="PkPersonalId" ColumnName="PkPersonalId" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="PersonalUserName" ColumnName="PersonalUserName" />
-                <ScalarProperty Name="PersonalPass" ColumnName="PersonalPass" />
-                <ScalarProperty Name="PersonalJob" ColumnName="PersonalJob" />
                 <ScalarProperty Name="PersonalDescription" ColumnName="PersonalDescription" />
+                <ScalarProperty Name="PersonalJob" ColumnName="PersonalJob" />
+                <ScalarProperty Name="PersonalPass" ColumnName="PersonalPass" />
+                <ScalarProperty Name="PersonalUserName" ColumnName="PersonalUserName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PkPersonalId" ColumnName="PkPersonalId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Role">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="PkRoleId" ColumnName="PkRoleId" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="PkRoleId" ColumnName="PkRoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ScoreOfStudentsForLessons">
             <EntityTypeMapping TypeName="SchoolManagmentModel.ScoreOfStudentsForLesson">
               <MappingFragment StoreEntitySet="ScoreOfStudentsForLessons">
-                <ScalarProperty Name="PkScoreOfStudentsForLessons" ColumnName="PkScoreOfStudentsForLessons" />
-                <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
-                <ScalarProperty Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" ColumnName="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
                 <ScalarProperty Name="ScoreOfLesson" ColumnName="ScoreOfLesson" />
+                <ScalarProperty Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" ColumnName="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
+                <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
+                <ScalarProperty Name="PkScoreOfStudentsForLessons" ColumnName="PkScoreOfStudentsForLessons" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses">
             <EntityTypeMapping TypeName="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
               <MappingFragment StoreEntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
-                <ScalarProperty Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" ColumnName="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
-                <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
-                <ScalarProperty Name="FkTeacherTeachLessonAccToCalenderInClass" ColumnName="FkTeacherTeachLessonAccToCalenderInClass" />
-                <ScalarProperty Name="DateOfDay" ColumnName="DateOfDay" />
                 <ScalarProperty Name="StudentPresent" ColumnName="StudentPresent" />
+                <ScalarProperty Name="DateOfDay" ColumnName="DateOfDay" />
+                <ScalarProperty Name="FkTeacherTeachLessonAccToCalenderInClass" ColumnName="FkTeacherTeachLessonAccToCalenderInClass" />
+                <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
+                <ScalarProperty Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" ColumnName="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Student">
               <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="FkStudentFieldId" ColumnName="FkStudentFieldId" />
-                <ScalarProperty Name="FkLastPassedUgraduteId" ColumnName="FkLastPassedUgraduteId" />
-                <ScalarProperty Name="StudentNationCode" ColumnName="StudentNationCode" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentNationCode" ColumnName="StudentNationCode" />
+                <ScalarProperty Name="FkLastPassedUgraduteId" ColumnName="FkLastPassedUgraduteId" />
+                <ScalarProperty Name="FkStudentFieldId" ColumnName="FkStudentFieldId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SchoolManagmentModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="TeacherCanTeachLessons">
+            <EntityTypeMapping TypeName="SchoolManagmentModel.TeacherCanTeachLesson">
+              <MappingFragment StoreEntitySet="TeacherCanTeachLessons">
+                <ScalarProperty Name="FkLessonId" ColumnName="FkLessonId" />
+                <ScalarProperty Name="FkTeacherId" ColumnName="FkTeacherId" />
+                <ScalarProperty Name="PkTeacherCanTeachLessons" ColumnName="PkTeacherCanTeachLessons" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teachers">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Teacher">
               <MappingFragment StoreEntitySet="Teachers">
-                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
                 <ScalarProperty Name="TeacherEducation" ColumnName="TeacherEducation" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherTeachLessonAccordingToCalenders">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender">
               <MappingFragment StoreEntitySet="TeacherTeachLessonAccordingToCalender">
-                <ScalarProperty Name="PKTeacherTeachLessonAccordingToCalender" ColumnName="PKTeacherTeachLessonAccordingToCalender" />
-                <ScalarProperty Name="FKTeacherTeachLessonId" ColumnName="FKTeacherTeachLessonId" />
                 <ScalarProperty Name="FkCalenderId" ColumnName="FkCalenderId" />
+                <ScalarProperty Name="FKTeacherTeachLessonId" ColumnName="FKTeacherTeachLessonId" />
+                <ScalarProperty Name="PKTeacherTeachLessonAccordingToCalender" ColumnName="PKTeacherTeachLessonAccordingToCalender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherTeachLessonAccToCalenderInClasses">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass">
               <MappingFragment StoreEntitySet="TeacherTeachLessonAccToCalenderInClass">
-                <ScalarProperty Name="PkTeacherTeachLessonAccToCalInClassId" ColumnName="PkTeacherTeachLessonAccToCalInClassId" />
-                <ScalarProperty Name="FkTeacherTeachLessonAccToCalId" ColumnName="FkTeacherTeachLessonAccToCalId" />
                 <ScalarProperty Name="FkClassId" ColumnName="FkClassId" />
+                <ScalarProperty Name="FkTeacherTeachLessonAccToCalId" ColumnName="FkTeacherTeachLessonAccToCalId" />
+                <ScalarProperty Name="PkTeacherTeachLessonAccToCalInClassId" ColumnName="PkTeacherTeachLessonAccToCalInClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherTeachsLessonsOfNewYearInUnGrades">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade">
               <MappingFragment StoreEntitySet="TeacherTeachsLessonsOfNewYearInUnGrades">
-                <ScalarProperty Name="TeacherTeachLessonId" ColumnName="TeacherTeachLessonId" />
-                <ScalarProperty Name="FkTeacherId" ColumnName="FkTeacherId" />
                 <ScalarProperty Name="FkLessonOfFieldsOfNewYearInUnGrade" ColumnName="FkLessonOfFieldsOfNewYearInUnGrade" />
+                <ScalarProperty Name="FkTeacherId" ColumnName="FkTeacherId" />
+                <ScalarProperty Name="TeacherTeachLessonId" ColumnName="TeacherTeachLessonId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TimeAlterNates">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TimeAlterNate">
               <MappingFragment StoreEntitySet="TimeAlterNate">
-                <ScalarProperty Name="PkTimeId" ColumnName="PkTimeId" />
-                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
                 <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="PkTimeId" ColumnName="PkTimeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeDays">
             <EntityTypeMapping TypeName="SchoolManagmentModel.TypeDay">
               <MappingFragment StoreEntitySet="TypeDays">
-                <ScalarProperty Name="PkTypeOfdayId" ColumnName="PkTypeOfdayId" />
                 <ScalarProperty Name="TypeOfDayDescription" ColumnName="TypeOfDayDescription" />
+                <ScalarProperty Name="PkTypeOfdayId" ColumnName="PkTypeOfdayId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnderGradutes">
             <EntityTypeMapping TypeName="SchoolManagmentModel.UnderGradute">
               <MappingFragment StoreEntitySet="UnderGradutes">
-                <ScalarProperty Name="PkUnGraduteId" ColumnName="PkUnGraduteId" />
-                <ScalarProperty Name="FkUnGradutePrequestis" ColumnName="FkUnGradutePrequestis" />
-                <ScalarProperty Name="FkGradeId" ColumnName="FkGradeId" />
                 <ScalarProperty Name="UnGraduteName" ColumnName="UnGraduteName" />
+                <ScalarProperty Name="FkGradeId" ColumnName="FkGradeId" />
+                <ScalarProperty Name="FkUnGradutePrequestis" ColumnName="FkUnGradutePrequestis" />
+                <ScalarProperty Name="PkUnGraduteId" ColumnName="PkUnGraduteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnderGradutesInNewAcademyYears">
             <EntityTypeMapping TypeName="SchoolManagmentModel.UnderGradutesInNewAcademyYear">
               <MappingFragment StoreEntitySet="UnderGradutesInNewAcademyYear">
-                <ScalarProperty Name="PkUnderGraduteInAcademyYearId" ColumnName="PkUnderGraduteInAcademyYearId" />
-                <ScalarProperty Name="FkAcademyYearId" ColumnName="FkAcademyYearId" />
                 <ScalarProperty Name="FkUnGraduteId" ColumnName="FkUnGraduteId" />
+                <ScalarProperty Name="FkAcademyYearId" ColumnName="FkAcademyYearId" />
+                <ScalarProperty Name="PkUnderGraduteInAcademyYearId" ColumnName="PkUnderGraduteInAcademyYearId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="PersonalRoles" TypeName="SchoolManagmentModel.PersonalRoles" StoreEntitySet="PersonalRoles">
-            <EndProperty Name="Personals">
-              <ScalarProperty Name="PkPersonalId" ColumnName="FkPersonId" />
-            </EndProperty>
-            <EndProperty Name="Roles">
+            <EndProperty Name="Role">
               <ScalarProperty Name="PkRoleId" ColumnName="FkRoleId" />
+            </EndProperty>
+            <EndProperty Name="Personal">
+              <ScalarProperty Name="PkPersonalId" ColumnName="FkPersonId" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="RolePermissions" TypeName="SchoolManagmentModel.RolePermissions" StoreEntitySet="RolePermissions">
-            <EndProperty Name="Permissions">
-              <ScalarProperty Name="PkPermissionId" ColumnName="fkPermission" />
-            </EndProperty>
-            <EndProperty Name="Roles">
+            <EndProperty Name="Role">
               <ScalarProperty Name="PkRoleId" ColumnName="fkRoleId" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="TeacherCanTeachLessons" TypeName="SchoolManagmentModel.TeacherCanTeachLessons" StoreEntitySet="TeacherCanTeachLessons">
-            <EndProperty Name="Lessons">
-              <ScalarProperty Name="PKLessonId" ColumnName="FkLessonId" />
-            </EndProperty>
-            <EndProperty Name="Teachers">
-              <ScalarProperty Name="TeacherId" ColumnName="FkTeacherId" />
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="PkPermissionId" ColumnName="fkPermission" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="TimeInDayAlternate" TypeName="SchoolManagmentModel.TimeInDayAlternate" StoreEntitySet="TimeInDayAlternate">
-            <EndProperty Name="Days">
-              <ScalarProperty Name="DayId" ColumnName="FkDayId" />
-            </EndProperty>
             <EndProperty Name="TimeAlterNate">
               <ScalarProperty Name="PkTimeId" ColumnName="FkTimeAlternate" />
+            </EndProperty>
+            <EndProperty Name="Day">
+              <ScalarProperty Name="DayId" ColumnName="FkDayId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

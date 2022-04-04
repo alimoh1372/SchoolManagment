@@ -18,7 +18,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public Lesson()
         {
             this.LessonsOfFileldsOfNewYearInUngrades = new HashSet<LessonsOfFileldsOfNewYearInUngrade>();
-            this.Teachers = new HashSet<Teacher>();
+            this.TeacherCanTeachLessons = new HashSet<TeacherCanTeachLesson>();
         }
     
         public int PKLessonId { get; set; }
@@ -30,6 +30,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonsOfFileldsOfNewYearInUngrade> LessonsOfFileldsOfNewYearInUngrades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<TeacherCanTeachLesson> TeacherCanTeachLessons { get; set; }
     }
 }

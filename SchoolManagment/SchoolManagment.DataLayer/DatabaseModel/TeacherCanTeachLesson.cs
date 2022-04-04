@@ -12,12 +12,13 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class TeacherCanTeachLesson
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int PkTeacherCanTeachLessons { get; set; }
+        public int FkTeacherId { get; set; }
+        public int FkLessonId { get; set; }
+    
+        public virtual Lesson Lesson { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

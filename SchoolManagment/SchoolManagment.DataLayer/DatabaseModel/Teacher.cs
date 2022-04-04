@@ -17,8 +17,8 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Teacher()
         {
+            this.TeacherCanTeachLessons = new HashSet<TeacherCanTeachLesson>();
             this.TeacherTeachsLessonsOfNewYearInUnGrades = new HashSet<TeacherTeachsLessonsOfNewYearInUnGrade>();
-            this.Lessons = new HashSet<Lesson>();
         }
     
         public int TeacherId { get; set; }
@@ -26,8 +26,8 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public string TeacherEducation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeacherTeachsLessonsOfNewYearInUnGrade> TeacherTeachsLessonsOfNewYearInUnGrades { get; set; }
+        public virtual ICollection<TeacherCanTeachLesson> TeacherCanTeachLessons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lesson> Lessons { get; set; }
+        public virtual ICollection<TeacherTeachsLessonsOfNewYearInUnGrade> TeacherTeachsLessonsOfNewYearInUnGrades { get; set; }
     }
 }

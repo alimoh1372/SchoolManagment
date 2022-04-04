@@ -41,7 +41,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public virtual DbSet<ScoreOfStudentsForLesson> ScoreOfStudentsForLessons { get; set; }
         public virtual DbSet<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses { get; set; }
         public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TeacherCanTeachLesson> TeacherCanTeachLessons { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<TeacherTeachLessonAccordingToCalender> TeacherTeachLessonAccordingToCalenders { get; set; }
         public virtual DbSet<TeacherTeachLessonAccToCalenderInClass> TeacherTeachLessonAccToCalenderInClasses { get; set; }

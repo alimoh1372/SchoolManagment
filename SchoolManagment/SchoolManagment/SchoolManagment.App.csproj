@@ -79,6 +79,12 @@
     <Compile Include="Class\FormClass.Designer.cs">
       <DependentUpon>FormClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\FormTeacherCanTeachLessons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teacher\FormTeacherCanTeachLessons.Designer.cs">
+      <DependentUpon>FormTeacherCanTeachLessons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\FormTeacher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\FormClass.resx">
       <DependentUpon>FormClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teacher\FormTeacherCanTeachLessons.resx">
+      <DependentUpon>FormTeacherCanTeachLessons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Teacher\FormTeacher.resx">
       <DependentUpon>FormTeacher.cs</DependentUpon>
