@@ -41,7 +41,8 @@
             this.btnStudentInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTeacherInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClassroomInformation = new System.Windows.Forms.ToolStripMenuItem();
-            this.درسهایقابلتدریسمعلمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCalender = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStManagmentInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,8 @@
             this.btnStudentInformation,
             this.btnTeacherInfo,
             this.btnClassroomInformation,
-            this.درسهایقابلتدریسمعلمToolStripMenuItem});
+            this.ToolStripMenuItem,
+            this.btnCalender});
             this.tlstManagMentInfo.Name = "tlstManagMentInfo";
             this.tlstManagMentInfo.Size = new System.Drawing.Size(99, 20);
             this.tlstManagMentInfo.Text = "مدیریت اطلاعات";
@@ -172,12 +174,18 @@
             this.btnClassroomInformation.ToolTipText = "مدیریت اطلاعات مربوط به کلاس های مدرسه ،حذف ، اضافه و ویرایش";
             this.btnClassroomInformation.Click += new System.EventHandler(this.btnClassroomInformation_Click);
             // 
-            // درسهایقابلتدریسمعلمToolStripMenuItem
+            // ToolStripMenuItem
             // 
-            this.درسهایقابلتدریسمعلمToolStripMenuItem.Name = "درسهایقابلتدریسمعلمToolStripMenuItem";
-            this.درسهایقابلتدریسمعلمToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.درسهایقابلتدریسمعلمToolStripMenuItem.Text = "درسهای قابل تدریس معلم";
-            this.درسهایقابلتدریسمعلمToolStripMenuItem.Click += new System.EventHandler(this.درسهایقابلتدریسمعلمToolStripMenuItem_Click);
+            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItem.Text = "درسهای قابل تدریس معلم";
+            this.ToolStripMenuItem.Click += new System.EventHandler(this.درسهایقابلتدریسمعلمToolStripMenuItem_Click);
+            // 
+            // btnCalender
+            // 
+            this.btnCalender.Name = "btnCalender";
+            this.btnCalender.Size = new System.Drawing.Size(207, 22);
+            this.btnCalender.Text = "تقویم آموزشی";
             // 
             // Form1
             // 
@@ -216,7 +224,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnStudentInformation;
         private System.Windows.Forms.ToolStripMenuItem btnTeacherInfo;
         private System.Windows.Forms.ToolStripMenuItem btnClassroomInformation;
-        private System.Windows.Forms.ToolStripMenuItem درسهایقابلتدریسمعلمToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnCalender;
     }
 }
 
