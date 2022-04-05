@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTeacherCanTeachLessons));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtTeacherSearchInAllColumn = new System.Windows.Forms.TextBox();
+            this.txtTeacherFilter = new System.Windows.Forms.TextBox();
             this.dgvTeacher = new System.Windows.Forms.DataGridView();
             this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,12 @@
             this.txtSelectedTeacehrEducation = new System.Windows.Forms.TextBox();
             this.lblSelectedTeacherId = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lVSelectedLesson = new System.Windows.Forms.ListView();
+            this.dgvSelectedLessons = new System.Windows.Forms.DataGridView();
+            this.PKLessonId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LessonName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LessonUnits1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkFileldId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkFileldIdString1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSelectedTeacherName = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -56,14 +61,14 @@
             this.FkFileldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddToSelectedList = new System.Windows.Forms.Button();
             this.DeleteFromSelectedLesson = new System.Windows.Forms.Button();
-            this.PKLessonId1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lessonString = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedLessons)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).BeginInit();
@@ -82,7 +87,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtTeacherSearchInAllColumn);
+            this.groupBox2.Controls.Add(this.txtTeacherFilter);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 17);
             this.groupBox2.Name = "groupBox2";
@@ -91,12 +96,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "جست و جو";
             // 
-            // txtTeacherSearchInAllColumn
+            // txtTeacherFilter
             // 
-            this.txtTeacherSearchInAllColumn.Location = new System.Drawing.Point(50, 20);
-            this.txtTeacherSearchInAllColumn.Name = "txtTeacherSearchInAllColumn";
-            this.txtTeacherSearchInAllColumn.Size = new System.Drawing.Size(275, 21);
-            this.txtTeacherSearchInAllColumn.TabIndex = 0;
+            this.txtTeacherFilter.Location = new System.Drawing.Point(50, 20);
+            this.txtTeacherFilter.Name = "txtTeacherFilter";
+            this.txtTeacherFilter.Size = new System.Drawing.Size(275, 21);
+            this.txtTeacherFilter.TabIndex = 0;
+            this.txtTeacherFilter.TextChanged += new System.EventHandler(this.txtTeacherFilter_TextChanged);
             // 
             // dgvTeacher
             // 
@@ -140,6 +146,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnRefresh);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.txtSelectedTeacehrEducation);
             this.groupBox3.Controls.Add(this.lblSelectedTeacherId);
@@ -182,26 +189,69 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.lVSelectedLesson);
+            this.groupBox5.Controls.Add(this.dgvSelectedLessons);
             this.groupBox5.Location = new System.Drawing.Point(0, 17);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(418, 234);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "لیست درس های انتخاب شده";
+            this.groupBox5.Text = "لیست درسهایی که این معلم میتواند درس بدهد....";
             // 
-            // lVSelectedLesson
+            // dgvSelectedLessons
             // 
-            this.lVSelectedLesson.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.dgvSelectedLessons.AllowUserToAddRows = false;
+            this.dgvSelectedLessons.AllowUserToDeleteRows = false;
+            this.dgvSelectedLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSelectedLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectedLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PKLessonId1,
-            this.lessonString});
-            this.lVSelectedLesson.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lVSelectedLesson.HideSelection = false;
-            this.lVSelectedLesson.Location = new System.Drawing.Point(3, 17);
-            this.lVSelectedLesson.Name = "lVSelectedLesson";
-            this.lVSelectedLesson.Size = new System.Drawing.Size(412, 214);
-            this.lVSelectedLesson.TabIndex = 0;
-            this.lVSelectedLesson.UseCompatibleStateImageBehavior = false;
+            this.LessonName1,
+            this.LessonUnits1,
+            this.FkFileldId1,
+            this.FkFileldIdString1});
+            this.dgvSelectedLessons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelectedLessons.Location = new System.Drawing.Point(3, 17);
+            this.dgvSelectedLessons.Name = "dgvSelectedLessons";
+            this.dgvSelectedLessons.ReadOnly = true;
+            this.dgvSelectedLessons.Size = new System.Drawing.Size(412, 214);
+            this.dgvSelectedLessons.TabIndex = 3;
+            // 
+            // PKLessonId1
+            // 
+            this.PKLessonId1.DataPropertyName = "PKLessonId";
+            this.PKLessonId1.HeaderText = "کد درس";
+            this.PKLessonId1.Name = "PKLessonId1";
+            this.PKLessonId1.ReadOnly = true;
+            this.PKLessonId1.Visible = false;
+            // 
+            // LessonName1
+            // 
+            this.LessonName1.DataPropertyName = "LessonName";
+            this.LessonName1.HeaderText = "نام درس";
+            this.LessonName1.Name = "LessonName1";
+            this.LessonName1.ReadOnly = true;
+            // 
+            // LessonUnits1
+            // 
+            this.LessonUnits1.DataPropertyName = "LessonUnits";
+            this.LessonUnits1.HeaderText = "تعداد واحد درس";
+            this.LessonUnits1.Name = "LessonUnits1";
+            this.LessonUnits1.ReadOnly = true;
+            // 
+            // FkFileldId1
+            // 
+            this.FkFileldId1.DataPropertyName = "FkFileldId";
+            this.FkFileldId1.HeaderText = "کد رشته ی درس";
+            this.FkFileldId1.Name = "FkFileldId1";
+            this.FkFileldId1.ReadOnly = true;
+            this.FkFileldId1.Visible = false;
+            // 
+            // FkFileldIdString1
+            // 
+            this.FkFileldIdString1.DataPropertyName = "FkFileldIdString";
+            this.FkFileldIdString1.HeaderText = "رشته ی درس";
+            this.FkFileldIdString1.Name = "FkFileldIdString1";
+            this.FkFileldIdString1.ReadOnly = true;
             // 
             // label1
             // 
@@ -248,6 +298,7 @@
             this.txtFilterLessons.Name = "txtFilterLessons";
             this.txtFilterLessons.Size = new System.Drawing.Size(275, 21);
             this.txtFilterLessons.TabIndex = 0;
+            this.txtFilterLessons.TextChanged += new System.EventHandler(this.txtFilterLessons_TextChanged);
             // 
             // dgvLesson
             // 
@@ -322,14 +373,7 @@
             this.DeleteFromSelectedLesson.TabIndex = 11;
             this.DeleteFromSelectedLesson.Text = "حذف درس ";
             this.DeleteFromSelectedLesson.UseVisualStyleBackColor = true;
-            // 
-            // PKLessonId1
-            // 
-            this.PKLessonId1.Text = "کد درس";
-            // 
-            // lessonString
-            // 
-            this.lessonString.Text = "نام درس";
+            this.DeleteFromSelectedLesson.Click += new System.EventHandler(this.DeleteFromSelectedLesson_Click);
             // 
             // requiredFieldValidator1
             // 
@@ -337,6 +381,16 @@
             this.requiredFieldValidator1.ControlToValidate = this.txtSelectedTeacherName;
             this.requiredFieldValidator1.ErrorMessage = "لطفا یک معلم از لیست معلم ها انتخاب شود.این مورد الزامی میباشد.";
             this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(448, 181);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(232, 54);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "بازنشانی صفحه";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FormTeacherCanTeachLessons
             // 
@@ -362,6 +416,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedLessons)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -374,7 +429,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtTeacherSearchInAllColumn;
+        private System.Windows.Forms.TextBox txtTeacherFilter;
         private System.Windows.Forms.DataGridView dgvTeacher;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName;
@@ -389,7 +444,6 @@
         private System.Windows.Forms.TextBox txtSelectedTeacherName;
         private System.Windows.Forms.Button btnAddToSelectedList;
         private System.Windows.Forms.Button DeleteFromSelectedLesson;
-        private System.Windows.Forms.ListView lVSelectedLesson;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtFilterLessons;
         private System.Windows.Forms.DataGridView dgvLesson;
@@ -398,8 +452,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LessonUnits;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldIdString;
-        private System.Windows.Forms.ColumnHeader PKLessonId1;
-        private System.Windows.Forms.ColumnHeader lessonString;
         private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private System.Windows.Forms.DataGridView dgvSelectedLessons;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PKLessonId1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LessonName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LessonUnits1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldId1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkFileldIdString1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

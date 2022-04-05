@@ -120,6 +120,19 @@ namespace SchoolManagment.DataLayer
             }
         }
 
+        private ITeacherCanTeachLessonRepository _teacherCanTeachLessonRepository;
+
+        public ITeacherCanTeachLessonRepository TeacherCanTeachLessonRepository
+        {
+            get
+            {
+                if (_teacherCanTeachLessonRepository==null)
+                {
+                    _teacherCanTeachLessonRepository = new TeacherCanTeachLessonRepository(_db);
+                }
+                return _teacherCanTeachLessonRepository;
+            }
+        }
         public void Dispose()
         {
             _db.Dispose();

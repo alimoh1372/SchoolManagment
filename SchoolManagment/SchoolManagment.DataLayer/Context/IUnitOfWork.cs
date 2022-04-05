@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagment.DataLayer
 {
-    interface IUnitOfWork:IDisposable
+    interface IUnitOfWork : IDisposable
     {
         IGradeRepository GradeRepository { get; }
         IUnderGraduteRepository UnderGraduteRepository { get; }
@@ -16,6 +16,8 @@ namespace SchoolManagment.DataLayer
         IStudentRepository StudentRepository { get; }
         ITeacherRepository TeacherRepository { get; }
         IClassRepository ClassRepository { get; }
+        ITeacherCanTeachLessonRepository TeacherCanTeachLessonRepository{get;}
+
         int Save();
 
        

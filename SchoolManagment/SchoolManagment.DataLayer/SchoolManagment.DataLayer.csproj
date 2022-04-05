@@ -65,6 +65,7 @@
     <Compile Include="DatabaseModel\TimeInDayAlternate.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\ITeacherCanTeachLessonRepository.cs" />
     <Compile Include="Services\ClassRepository.cs" />
     <Compile Include="Repositories\IClassRepository.cs" />
     <Compile Include="Repositories\ITeacherRepository.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Services\GradeRepository.cs" />
     <Compile Include="Services\UnderGraduteRepository.cs" />
     <Compile Include="Services\TeacherRepository.cs" />
+    <Compile Include="Services\TeacherCanTeachLessonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">

@@ -49,11 +49,10 @@
     <Compile Include="StudentViewModel\IStudentViewModel.cs" />
     <Compile Include="LessonViewModel\ILessonViewModel.cs" />
     <Compile Include="LessonViewModel\LessonViewModel.cs" />
-    <Compile Include="TeacherCanTeachViewModel\ITeacherCanTeachLessonViewModel.cs" />
-    <Compile Include="TeacherCanTeachViewModel\TeacherCanTeachLessonViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\UnderGradutesViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\IUnderGradutesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

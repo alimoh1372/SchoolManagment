@@ -16,14 +16,19 @@ namespace SchoolManagment.DataLayer
 
         }
 
-        public IEnumerable<TeacherCanTeachLessonViewModel> FillLessonsThatTeacherCanTeach(int teacherId)
+        public IEnumerable<LessonViewModel> FillLessonsOfTeacherThatCantTeach(int teacherId)
         {
-            IEnumerable<TeacherCanTeachLessonViewModel> teacherCanTeachLessonViewModels;
-           teacherCanTeachLessonViewModels= _db.TeacherCanTeachLessons.Include(tcan => tcan.Lesson).Include(le=>le.Lesson.Field).Where(tcan => tcan.FkTeacherId == teacherId).Select(tcan=>new TeacherCanTeachLessonViewModel() {
-               PKLessonId1=tcan.FkLessonId,
-               lessonString=tcan.Lesson.LessonName+"-"+tcan.Lesson.Field.FieldName
+            IEnumerable<LessonViewModel> lessonViewModels;
+           lessonViewModels= _db.TeacherCanTeachLessons.Where(tc => tc.FkTeacherId == teacherId).Include(tc => tc.Lesson).Include(tc=>tc.Lesson.Field).Select(tc => new LessonViewModel()
+            {
+                PKLessonId=tc.FkLessonId,
+                LessonName=tc.Lesson.LessonName,
+                LessonUnits=tc.Lesson.LessonUnits,
+                FkFileldId=tc.Lesson.FkFileldId,
+                FkFileldIdString=tc.Lesson.Field.FieldName
+                
             });
-            return teacherCanTeachLessonViewModels;
+            return lessonViewModels;
         }
     }
 }

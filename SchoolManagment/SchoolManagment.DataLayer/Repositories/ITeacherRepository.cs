@@ -10,6 +10,6 @@ namespace SchoolManagment.DataLayer
 {
   public  interface ITeacherRepository :IBaseRepository<Teacher>
     {
-        IEnumerable<TeacherCanTeachLessonViewModel> FillLessonsThatTeacherCanTeach( int id);
+       IEnumerable<LessonViewModel> FillLessonsOfTeacherThatCantTeach(int teacherId);
     }
 }
