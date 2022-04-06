@@ -79,10 +79,10 @@
     <Compile Include="Class\FormClass.Designer.cs">
       <DependentUpon>FormClass.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCalender.cs">
+    <Compile Include="Calender\FormCalender.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCalender.Designer.cs">
+    <Compile Include="Calender\FormCalender.Designer.cs">
       <DependentUpon>FormCalender.cs</DependentUpon>
     </Compile>
     <Compile Include="Teacher\FormTeacherCanTeachLessons.cs">
@@ -155,6 +155,9 @@
     </Compile>
     <EmbeddedResource Include="AcademyYear\AcademyYearForm.resx">
       <DependentUpon>AcademyYearForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calender\FormCalender.resx">
+      <DependentUpon>FormCalender.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Field\FormField.resx">
       <DependentUpon>FormField.cs</DependentUpon>
