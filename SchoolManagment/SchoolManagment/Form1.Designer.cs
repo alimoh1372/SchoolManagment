@@ -41,8 +41,15 @@
             this.btnStudentInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTeacherInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClassroomInformation = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TeacherCanTeachLessons = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCalender = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsManagmentNewAcademyYear = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnUnderGradutesInNewAcademyYear = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFieldsOfNewYearInUnGradutes = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLessonsOfFileldsOfNewYearInUngrade = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTeacherTeachLessonAccordingToCalender = new System.Windows.Forms.ToolStripMenuItem();
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStManagmentInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +75,8 @@
             this.mnStManagmentInfo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnStManagmentInfo.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.mnStManagmentInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlstManagMentInfo});
+            this.tlstManagMentInfo,
+            this.tlsManagmentNewAcademyYear});
             this.mnStManagmentInfo.Location = new System.Drawing.Point(0, 0);
             this.mnStManagmentInfo.Name = "mnStManagmentInfo";
             this.mnStManagmentInfo.Size = new System.Drawing.Size(852, 24);
@@ -87,7 +95,7 @@
             this.btnStudentInformation,
             this.btnTeacherInfo,
             this.btnClassroomInformation,
-            this.ToolStripMenuItem,
+            this.TeacherCanTeachLessons,
             this.btnCalender});
             this.tlstManagMentInfo.Name = "tlstManagMentInfo";
             this.tlstManagMentInfo.Size = new System.Drawing.Size(99, 20);
@@ -174,12 +182,12 @@
             this.btnClassroomInformation.ToolTipText = "مدیریت اطلاعات مربوط به کلاس های مدرسه ،حذف ، اضافه و ویرایش";
             this.btnClassroomInformation.Click += new System.EventHandler(this.btnClassroomInformation_Click);
             // 
-            // ToolStripMenuItem
+            // TeacherCanTeachLessons
             // 
-            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
-            this.ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.ToolStripMenuItem.Text = "درسهای قابل تدریس معلم";
-            this.ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            this.TeacherCanTeachLessons.Name = "TeacherCanTeachLessons";
+            this.TeacherCanTeachLessons.Size = new System.Drawing.Size(207, 22);
+            this.TeacherCanTeachLessons.Text = "درسهای قابل تدریس معلم";
+            this.TeacherCanTeachLessons.Click += new System.EventHandler(this.TeacherCanTeachLessons_Click);
             // 
             // btnCalender
             // 
@@ -187,6 +195,55 @@
             this.btnCalender.Size = new System.Drawing.Size(207, 22);
             this.btnCalender.Text = "تقویم آموزشی";
             this.btnCalender.Click += new System.EventHandler(this.btnCalender_Click);
+            // 
+            // tlsManagmentNewAcademyYear
+            // 
+            this.tlsManagmentNewAcademyYear.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUnderGradutesInNewAcademyYear,
+            this.btnFieldsOfNewYearInUnGradutes,
+            this.btnLessonsOfFileldsOfNewYearInUngrade,
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades,
+            this.btnTeacherTeachLessonAccordingToCalender,
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem});
+            this.tlsManagmentNewAcademyYear.Name = "tlsManagmentNewAcademyYear";
+            this.tlsManagmentNewAcademyYear.Size = new System.Drawing.Size(155, 20);
+            this.tlsManagmentNewAcademyYear.Text = "مدیریت سال تحصیلی جدید";
+            // 
+            // btnUnderGradutesInNewAcademyYear
+            // 
+            this.btnUnderGradutesInNewAcademyYear.Name = "btnUnderGradutesInNewAcademyYear";
+            this.btnUnderGradutesInNewAcademyYear.Size = new System.Drawing.Size(309, 22);
+            this.btnUnderGradutesInNewAcademyYear.Text = "زیرمقطع ها";
+            // 
+            // btnFieldsOfNewYearInUnGradutes
+            // 
+            this.btnFieldsOfNewYearInUnGradutes.Name = "btnFieldsOfNewYearInUnGradutes";
+            this.btnFieldsOfNewYearInUnGradutes.Size = new System.Drawing.Size(309, 22);
+            this.btnFieldsOfNewYearInUnGradutes.Text = "رشته های قابل ارائه زیرمقطع";
+            // 
+            // btnLessonsOfFileldsOfNewYearInUngrade
+            // 
+            this.btnLessonsOfFileldsOfNewYearInUngrade.Name = "btnLessonsOfFileldsOfNewYearInUngrade";
+            this.btnLessonsOfFileldsOfNewYearInUngrade.Size = new System.Drawing.Size(309, 22);
+            this.btnLessonsOfFileldsOfNewYearInUngrade.Text = "درس های قابل ارائه رشته";
+            // 
+            // btnTeacherTeachsLessonsOfNewYearInUnGrades
+            // 
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Name = "btnTeacherTeachsLessonsOfNewYearInUnGrades";
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Size = new System.Drawing.Size(309, 22);
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Text = "انتخاب معلم برای درس قابل ارائه";
+            // 
+            // btnTeacherTeachLessonAccordingToCalender
+            // 
+            this.btnTeacherTeachLessonAccordingToCalender.Name = "btnTeacherTeachLessonAccordingToCalender";
+            this.btnTeacherTeachLessonAccordingToCalender.Size = new System.Drawing.Size(309, 22);
+            this.btnTeacherTeachLessonAccordingToCalender.Text = "تقویم برای درس ارائه شده(بعد از انتخاب معلم)";
+            // 
+            // انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem
+            // 
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Name = "انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem";
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
             // 
             // Form1
             // 
@@ -225,8 +282,15 @@
         private System.Windows.Forms.ToolStripMenuItem btnStudentInformation;
         private System.Windows.Forms.ToolStripMenuItem btnTeacherInfo;
         private System.Windows.Forms.ToolStripMenuItem btnClassroomInformation;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TeacherCanTeachLessons;
         private System.Windows.Forms.ToolStripMenuItem btnCalender;
+        private System.Windows.Forms.ToolStripMenuItem tlsManagmentNewAcademyYear;
+        private System.Windows.Forms.ToolStripMenuItem btnUnderGradutesInNewAcademyYear;
+        private System.Windows.Forms.ToolStripMenuItem btnFieldsOfNewYearInUnGradutes;
+        private System.Windows.Forms.ToolStripMenuItem btnLessonsOfFileldsOfNewYearInUngrade;
+        private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachsLessonsOfNewYearInUnGrades;
+        private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachLessonAccordingToCalender;
+        private System.Windows.Forms.ToolStripMenuItem انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem;
     }
 }
 

@@ -35,6 +35,8 @@ namespace SchoolManagment.App
 
         private void ReloadDataAndForm()
         {
+            txtCalenderName.Text = string.Empty;
+            txtCalenderDescription.Text = string.Empty;
             IEnumerable<CalenderViewModel> _calenderViewModel;
             if (txtTypeDay.DataSource == null)
             {
@@ -86,8 +88,9 @@ namespace SchoolManagment.App
                     }
                 }
                 txtTimeAlternate.DataSource = _timeAlterNateViewModels.ToList();
-                txtTimeAlternate.SelectedIndex = 0;
+                
             }
+            txtTimeAlternate.SelectedIndex = 0;
 
             using (CalenderHandler calenderHandler = new CalenderHandler())
             {

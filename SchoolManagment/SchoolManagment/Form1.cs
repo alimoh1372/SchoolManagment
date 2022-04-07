@@ -69,7 +69,7 @@ namespace SchoolManagment.App
             frmClass.ShowDialog();
         }
 
-        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TeacherCanTeachLessons_Click(object sender, EventArgs e)
         {
             FormTeacherCanTeachLessons formTeacherCanTeachLessons = new FormTeacherCanTeachLessons();
             formTeacherCanTeachLessons.ShowDialog();

@@ -41,20 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalenderViewModel.cs" />
-    <Compile Include="FieldViewModel\FieldViewModel.cs" />
-    <Compile Include="GradeViewModel\GradeGridViewModel.cs" />
-    <Compile Include="GradeViewModel\IGradeGridViewModel.cs" />
-    <Compile Include="FieldViewModel\IFieldViewModel.cs" />
-    <Compile Include="ICalenderViewModel.cs" />
-    <Compile Include="TimeAlterNateViewModel\ITimeAlterNateViewModel.cs" />
-    <Compile Include="StudentViewModel\StudentViewModel.cs" />
-    <Compile Include="StudentViewModel\IStudentViewModel.cs" />
-    <Compile Include="LessonViewModel\ILessonViewModel.cs" />
-    <Compile Include="LessonViewModel\LessonViewModel.cs" />
-    <Compile Include="TimeAlterNateViewModel\TimeAlterNateViewModel.cs" />
-    <Compile Include="UnderGraduteViewModel\UnderGradutesViewModel.cs" />
-    <Compile Include="UnderGraduteViewModel\IUnderGradutesViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\CalenderViewMode\CalenderViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\FieldViewModel\FieldViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\GradeViewModel\GradeGridViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\GradeViewModel\IGradeGridViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\FieldViewModel\IFieldViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\CalenderViewMode\ICalenderViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\TimeAlterNateViewModel\ITimeAlterNateViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\StudentViewModel\StudentViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\StudentViewModel\IStudentViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\LessonViewModel\ILessonViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\LessonViewModel\LessonViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\TimeAlterNateViewModel\TimeAlterNateViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\UnderGraduteViewModel\UnderGradutesViewModel.cs" />
+    <Compile Include="ManagementInfoMeno\UnderGraduteViewModel\IUnderGradutesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

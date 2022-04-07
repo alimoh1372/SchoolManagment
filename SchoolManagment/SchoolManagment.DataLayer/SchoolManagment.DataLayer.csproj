@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\CalenderRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\CalenderRepository.cs" />
     <Compile Include="DatabaseModel\PersonalRole.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
@@ -63,27 +63,27 @@
     <Compile Include="DatabaseModel\TeacherCanTeachLesson.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\ICalenderRepository.cs" />
-    <Compile Include="Services\DayAlternateRepository.cs" />
-    <Compile Include="Repositories\IDayAlternateRepository.cs" />
-    <Compile Include="Repositories\ITimeAlterNateRepository.cs" />
-    <Compile Include="Repositories\ITypeDayRepository.cs" />
-    <Compile Include="Repositories\ITeacherCanTeachLessonRepository.cs" />
-    <Compile Include="Services\ClassRepository.cs" />
-    <Compile Include="Repositories\IClassRepository.cs" />
-    <Compile Include="Repositories\ITeacherRepository.cs" />
-    <Compile Include="Services\StudentRepository.cs" />
-    <Compile Include="Repositories\IStudentRepository.cs" />
-    <Compile Include="Services\LessonRepository.cs" />
-    <Compile Include="Repositories\ILessonRepository.cs" />
-    <Compile Include="Services\FieldRepository.cs" />
-    <Compile Include="Repositories\IFieldRepository.cs" />
-    <Compile Include="Services\AcademyYearRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ICalenderRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\DayAlternateRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IDayAlternateRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ITimeAlterNateRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ITypeDayRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ITeacherCanTeachLessonRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\ClassRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IClassRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ITeacherRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\StudentRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IStudentRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\LessonRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\ILessonRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\FieldRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IFieldRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\AcademyYearRepository.cs" />
     <Compile Include="Context\IUnitOfWork.cs" />
-    <Compile Include="Repositories\IAcademyYearRepository.cs" />
-    <Compile Include="Repositories\IUnderGraduteRepository.cs" />
-    <Compile Include="Repositories\IGradeRepository.cs" />
-    <Compile Include="Services\BaseRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IAcademyYearRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IUnderGraduteRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IGradeRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\BaseRepository.cs" />
     <Compile Include="DatabaseModel\AcademyYear.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
@@ -117,7 +117,7 @@
     <Compile Include="DatabaseModel\Personal.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\ManagmentInfoMeno\IBaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseModel\Role.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
@@ -171,12 +171,12 @@
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
-    <Compile Include="Services\GradeRepository.cs" />
-    <Compile Include="Services\UnderGraduteRepository.cs" />
-    <Compile Include="Services\TeacherRepository.cs" />
-    <Compile Include="Services\TeacherCanTeachLessonRepository.cs" />
-    <Compile Include="Services\TypeDayRepository.cs" />
-    <Compile Include="Services\TimeAlterNateRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\GradeRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\UnderGraduteRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\TeacherRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\TeacherCanTeachLessonRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\TypeDayRepository.cs" />
+    <Compile Include="Services\ManagmentInfoMeno\TimeAlterNateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
