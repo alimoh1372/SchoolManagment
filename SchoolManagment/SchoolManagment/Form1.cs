@@ -69,10 +69,16 @@ namespace SchoolManagment.App
             frmClass.ShowDialog();
         }
 
-        private void درسهایقابلتدریسمعلمToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTeacherCanTeachLessons formTeacherCanTeachLessons = new FormTeacherCanTeachLessons();
             formTeacherCanTeachLessons.ShowDialog();
+        }
+
+        private void btnCalender_Click(object sender, EventArgs e)
+        {
+            FormCalender frmCalender = new FormCalender();
+            frmCalender.ShowDialog();
         }
     }
 }

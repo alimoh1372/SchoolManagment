@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalenderViewModel.cs" />
     <Compile Include="FieldViewModel\FieldViewModel.cs" />
     <Compile Include="GradeViewModel\GradeGridViewModel.cs" />
     <Compile Include="GradeViewModel\IGradeGridViewModel.cs" />
     <Compile Include="FieldViewModel\IFieldViewModel.cs" />
+    <Compile Include="ICalenderViewModel.cs" />
+    <Compile Include="TimeAlterNateViewModel\ITimeAlterNateViewModel.cs" />
     <Compile Include="StudentViewModel\StudentViewModel.cs" />
     <Compile Include="StudentViewModel\IStudentViewModel.cs" />
     <Compile Include="LessonViewModel\ILessonViewModel.cs" />
     <Compile Include="LessonViewModel\LessonViewModel.cs" />
+    <Compile Include="TimeAlterNateViewModel\TimeAlterNateViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\UnderGradutesViewModel.cs" />
     <Compile Include="UnderGraduteViewModel\IUnderGradutesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

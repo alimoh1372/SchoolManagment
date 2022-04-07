@@ -98,7 +98,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_teacherRepository==null)
+                if (_teacherRepository == null)
                 {
                     _teacherRepository = new TeacherRepository(_db);
                 }
@@ -112,7 +112,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_classRepository==null)
+                if (_classRepository == null)
                 {
                     _classRepository = new ClassRepository(_db);
                 }
@@ -126,11 +126,62 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_teacherCanTeachLessonRepository==null)
+                if (_teacherCanTeachLessonRepository == null)
                 {
                     _teacherCanTeachLessonRepository = new TeacherCanTeachLessonRepository(_db);
                 }
                 return _teacherCanTeachLessonRepository;
+            }
+        }
+
+        private ITypeDayRepository _typeDayRepository;
+        public ITypeDayRepository TypeDayRepository
+        {
+            get
+            {
+                if (_typeDayRepository == null)
+                {
+                    _typeDayRepository = new TypeDayRepository(_db);
+                }
+                return _typeDayRepository;
+            }
+        }
+        private ITimeAlterNateRepository _timeAlterNateRepository;
+
+        public ITimeAlterNateRepository TimeAlterNateRepository
+        {
+            get
+            {
+                if (_timeAlterNateRepository == null)
+                {
+                    _timeAlterNateRepository = new TimeAlterNateRepository(_db);
+                }
+                return _timeAlterNateRepository;
+            }
+        }
+
+        private IDayAlternateRepository _dayAlternateRepository;
+        public IDayAlternateRepository DayAlternateRepository
+        {
+            get
+            {
+                if (_dayAlternateRepository==null)
+                {
+                    _dayAlternateRepository = new DayAlternateRepository(_db);
+                }
+                return _dayAlternateRepository;
+            }
+        }
+        private ICalenderRepository _calenderRepository;
+        public ICalenderRepository CalenderRepository
+        {
+            get
+            {
+                if (_calenderRepository==null)
+                {
+                    _calenderRepository = new CalenderRepository(_db);
+                }
+                return _calenderRepository;
             }
         }
         public void Dispose()

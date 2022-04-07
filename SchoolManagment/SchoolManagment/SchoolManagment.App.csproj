@@ -211,6 +211,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolManagment.Bussiness\SchoolManagment.Bussiness.csproj">
+      <Project>{3b24a343-f30a-49f0-bc3e-e22d69c748b2}</Project>
+      <Name>SchoolManagment.Bussiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolManagment.DataLayer\SchoolManagment.DataLayer.csproj">
       <Project>{78dd2f8e-fc7f-42eb-98f9-d004ddd9d160}</Project>
       <Name>SchoolManagment.DataLayer</Name>

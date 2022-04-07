@@ -84,7 +84,7 @@ namespace SchoolManagment.App
                 {
                     using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
                     {
-                        db.StudentRepository.Delete(Convert.ToInt32(dgvStudent.CurrentRow.Cells["StudentId"].Value));
+                        db.StudentRepository.Delete(Convert.ToInt32(dgvStudent.CurrentRow.Cells["CalenderId"].Value));
                         result = db.Save();
                         if (result > 0)
                         {
@@ -211,6 +211,6 @@ namespace SchoolManagment.App
 
         }
 
-
+     
     }
 }

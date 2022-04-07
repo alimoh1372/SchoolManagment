@@ -17,15 +17,17 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Calender()
         {
-            this.Days = new HashSet<Day>();
             this.TeacherTeachLessonAccordingToCalenders = new HashSet<TeacherTeachLessonAccordingToCalender>();
         }
     
         public int CalenderId { get; set; }
+        public byte FkDayAlterNate { get; set; }
+        public byte FkTimeAlterNateId { get; set; }
         public string CalenderName { get; set; }
+        public string CalenderDescription { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Day> Days { get; set; }
+        public virtual DayAlternate DayAlternate { get; set; }
+        public virtual TimeAlterNate TimeAlterNate { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherTeachLessonAccordingToCalender> TeacherTeachLessonAccordingToCalenders { get; set; }
     }

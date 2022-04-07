@@ -17,13 +17,13 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeDay()
         {
-            this.Days = new HashSet<Day>();
+            this.DayAlternates = new HashSet<DayAlternate>();
         }
     
         public byte PkTypeOfdayId { get; set; }
         public string TypeOfDayDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Day> Days { get; set; }
+        public virtual ICollection<DayAlternate> DayAlternates { get; set; }
     }
 }

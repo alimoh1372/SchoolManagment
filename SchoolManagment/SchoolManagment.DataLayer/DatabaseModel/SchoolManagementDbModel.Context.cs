@@ -29,7 +29,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public virtual DbSet<Calender> Calenders { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<DayAlternate> DayAlternates { get; set; }
-        public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<Field> Fields { get; set; }
         public virtual DbSet<FieldsOfNewYearInUnGradute> FieldsOfNewYearInUnGradutes { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
@@ -49,7 +48,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public virtual DbSet<TeacherTeachLessonAccToCalenderInClass> TeacherTeachLessonAccToCalenderInClasses { get; set; }
         public virtual DbSet<TeacherTeachsLessonsOfNewYearInUnGrade> TeacherTeachsLessonsOfNewYearInUnGrades { get; set; }
         public virtual DbSet<TimeAlterNate> TimeAlterNates { get; set; }
-        public virtual DbSet<TimeInDayAlternate> TimeInDayAlternates { get; set; }
         public virtual DbSet<TypeDay> TypeDays { get; set; }
         public virtual DbSet<UnderGradute> UnderGradutes { get; set; }
         public virtual DbSet<UnderGradutesInNewAcademyYear> UnderGradutesInNewAcademyYears { get; set; }

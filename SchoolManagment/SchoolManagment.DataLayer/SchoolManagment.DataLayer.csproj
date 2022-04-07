@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\CalenderRepository.cs" />
     <Compile Include="DatabaseModel\PersonalRole.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
@@ -62,9 +63,11 @@
     <Compile Include="DatabaseModel\TeacherCanTeachLesson.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModel\TimeInDayAlternate.cs">
-      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repositories\ICalenderRepository.cs" />
+    <Compile Include="Services\DayAlternateRepository.cs" />
+    <Compile Include="Repositories\IDayAlternateRepository.cs" />
+    <Compile Include="Repositories\ITimeAlterNateRepository.cs" />
+    <Compile Include="Repositories\ITypeDayRepository.cs" />
     <Compile Include="Repositories\ITeacherCanTeachLessonRepository.cs" />
     <Compile Include="Services\ClassRepository.cs" />
     <Compile Include="Repositories\IClassRepository.cs" />
@@ -88,9 +91,6 @@
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseModel\Class.cs">
-      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseModel\Day.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseModel\DayAlternate.cs">
@@ -175,6 +175,8 @@
     <Compile Include="Services\UnderGraduteRepository.cs" />
     <Compile Include="Services\TeacherRepository.cs" />
     <Compile Include="Services\TeacherCanTeachLessonRepository.cs" />
+    <Compile Include="Services\TypeDayRepository.cs" />
+    <Compile Include="Services\TimeAlterNateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">

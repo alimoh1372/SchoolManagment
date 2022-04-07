@@ -179,13 +179,14 @@
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
             this.ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.ToolStripMenuItem.Text = "درسهای قابل تدریس معلم";
-            this.ToolStripMenuItem.Click += new System.EventHandler(this.درسهایقابلتدریسمعلمToolStripMenuItem_Click);
+            this.ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // btnCalender
             // 
             this.btnCalender.Name = "btnCalender";
             this.btnCalender.Size = new System.Drawing.Size(207, 22);
             this.btnCalender.Text = "تقویم آموزشی";
+            this.btnCalender.Click += new System.EventHandler(this.btnCalender_Click);
             // 
             // Form1
             // 

@@ -20,7 +20,10 @@
             <PropertyRef Name="CalenderId" />
           </Key>
           <Property Name="CalenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FkDayAlterNate" Type="tinyint" Nullable="false" />
+          <Property Name="FkTimeAlterNateId" Type="tinyint" Nullable="false" />
           <Property Name="CalenderName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CalenderDescription" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Classes">
           <Key>
@@ -36,16 +39,8 @@
             <PropertyRef Name="PkDayAlternateId" />
           </Key>
           <Property Name="PkDayAlternateId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FkTypeDay" Type="tinyint" Nullable="false" />
           <Property Name="DayAlternateDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Days">
-          <Key>
-            <PropertyRef Name="DayId" />
-          </Key>
-          <Property Name="DayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FkCalenderId" Type="int" Nullable="false" />
-          <Property Name="FkTypeDayId" Type="tinyint" Nullable="false" />
-          <Property Name="FkDayAlternate" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Fields">
           <Key>
@@ -180,7 +175,7 @@
           </Key>
           <Property Name="PKTeacherTeachLessonAccordingToCalender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FKTeacherTeachLessonId" Type="int" Nullable="false" />
-          <Property Name="FkCalenderId" Type="int" Nullable="false" />
+          <Property Name="FkCalenderId" Type="int" />
         </EntityType>
         <EntityType Name="TeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -206,14 +201,6 @@
           <Property Name="FromTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="ToTime" Type="time" Precision="7" Nullable="false" />
         </EntityType>
-        <EntityType Name="TimeInDayAlternate">
-          <Key>
-            <PropertyRef Name="PKTimeInDayAlternate" />
-          </Key>
-          <Property Name="PKTimeInDayAlternate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FkDayId" Type="int" Nullable="false" />
-          <Property Name="FkTimeAlternate" Type="tinyint" Nullable="false" />
-        </EntityType>
         <EntityType Name="TypeDays">
           <Key>
             <PropertyRef Name="PkTypeOfdayId" />
@@ -238,27 +225,39 @@
           <Property Name="FkAcademyYearId" Type="int" Nullable="false" />
           <Property Name="FkUnGraduteId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Days_Calender">
-          <End Role="Calender" Type="Self.Calender" Multiplicity="1" />
-          <End Role="Days" Type="Self.Days" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calender">
-              <PropertyRef Name="CalenderId" />
-            </Principal>
-            <Dependent Role="Days">
-              <PropertyRef Name="FkCalenderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Days_DayAlternate">
+        <Association Name="FK_Calender_DayAlternate">
           <End Role="DayAlternate" Type="Self.DayAlternate" Multiplicity="1" />
-          <End Role="Days" Type="Self.Days" Multiplicity="*" />
+          <End Role="Calender" Type="Self.Calender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DayAlternate">
               <PropertyRef Name="PkDayAlternateId" />
             </Principal>
-            <Dependent Role="Days">
-              <PropertyRef Name="FkDayAlternate" />
+            <Dependent Role="Calender">
+              <PropertyRef Name="FkDayAlterNate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calender_TimeAlterNate">
+          <End Role="TimeAlterNate" Type="Self.TimeAlterNate" Multiplicity="1" />
+          <End Role="Calender" Type="Self.Calender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeAlterNate">
+              <PropertyRef Name="PkTimeId" />
+            </Principal>
+            <Dependent Role="Calender">
+              <PropertyRef Name="FkTimeAlterNateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DayAlternate_TypeDays">
+          <End Role="TypeDays" Type="Self.TypeDays" Multiplicity="1" />
+          <End Role="DayAlternate" Type="Self.DayAlternate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDays">
+              <PropertyRef Name="PkTypeOfdayId" />
+            </Principal>
+            <Dependent Role="DayAlternate">
+              <PropertyRef Name="FkTypeDay" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -503,7 +502,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_Calender">
-          <End Role="Calender" Type="Self.Calender" Multiplicity="1" />
+          <End Role="Calender" Type="Self.Calender" Multiplicity="0..1" />
           <End Role="TeacherTeachLessonAccordingToCalender" Type="Self.TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">
@@ -562,42 +561,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TimeInDayAlternate_Days">
-          <End Role="Days" Type="Self.Days" Multiplicity="1" />
-          <End Role="TimeInDayAlternate" Type="Self.TimeInDayAlternate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Days">
-              <PropertyRef Name="DayId" />
-            </Principal>
-            <Dependent Role="TimeInDayAlternate">
-              <PropertyRef Name="FkDayId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TimeInDayAlternate_TimeAlterNate">
-          <End Role="TimeAlterNate" Type="Self.TimeAlterNate" Multiplicity="1" />
-          <End Role="TimeInDayAlternate" Type="Self.TimeInDayAlternate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TimeAlterNate">
-              <PropertyRef Name="PkTimeId" />
-            </Principal>
-            <Dependent Role="TimeInDayAlternate">
-              <PropertyRef Name="FkTimeAlternate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TypeDays_Days">
-          <End Role="TypeDays" Type="Self.TypeDays" Multiplicity="1" />
-          <End Role="Days" Type="Self.Days" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeDays">
-              <PropertyRef Name="PkTypeOfdayId" />
-            </Principal>
-            <Dependent Role="Days">
-              <PropertyRef Name="FkTypeDayId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UnderGradutes_Grades">
           <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
           <End Role="UnderGradutes" Type="Self.UnderGradutes" Multiplicity="*" />
@@ -651,7 +614,6 @@
           <EntitySet Name="Calender" EntityType="Self.Calender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DayAlternate" EntityType="Self.DayAlternate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FieldsOfNewYearInUnGradutes" EntityType="Self.FieldsOfNewYearInUnGradutes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
@@ -671,17 +633,20 @@
           <EntitySet Name="TeacherTeachLessonAccToCalenderInClass" EntityType="Self.TeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="Self.TeacherTeachsLessonsOfNewYearInUnGrades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeAlterNate" EntityType="Self.TimeAlterNate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TimeInDayAlternate" EntityType="Self.TimeInDayAlternate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeDays" EntityType="Self.TypeDays" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnderGradutes" EntityType="Self.UnderGradutes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnderGradutesInNewAcademyYear" EntityType="Self.UnderGradutesInNewAcademyYear" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Days_Calender" Association="Self.FK_Days_Calender">
-            <End Role="Calender" EntitySet="Calender" />
-            <End Role="Days" EntitySet="Days" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Days_DayAlternate" Association="Self.FK_Days_DayAlternate">
+          <AssociationSet Name="FK_Calender_DayAlternate" Association="Self.FK_Calender_DayAlternate">
             <End Role="DayAlternate" EntitySet="DayAlternate" />
-            <End Role="Days" EntitySet="Days" />
+            <End Role="Calender" EntitySet="Calender" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calender_TimeAlterNate" Association="Self.FK_Calender_TimeAlterNate">
+            <End Role="TimeAlterNate" EntitySet="TimeAlterNate" />
+            <End Role="Calender" EntitySet="Calender" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DayAlternate_TypeDays" Association="Self.FK_DayAlternate_TypeDays">
+            <End Role="TypeDays" EntitySet="TypeDays" />
+            <End Role="DayAlternate" EntitySet="DayAlternate" />
           </AssociationSet>
           <AssociationSet Name="FK_Fields_UnderGradutes" Association="Self.FK_Fields_UnderGradutes">
             <End Role="UnderGradutes" EntitySet="UnderGradutes" />
@@ -783,18 +748,6 @@
             <End Role="LessonsOfFileldsOfNewYearInUngrade" EntitySet="LessonsOfFileldsOfNewYearInUngrade" />
             <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
           </AssociationSet>
-          <AssociationSet Name="FK_TimeInDayAlternate_Days" Association="Self.FK_TimeInDayAlternate_Days">
-            <End Role="Days" EntitySet="Days" />
-            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternate" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TimeInDayAlternate_TimeAlterNate" Association="Self.FK_TimeInDayAlternate_TimeAlterNate">
-            <End Role="TimeAlterNate" EntitySet="TimeAlterNate" />
-            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternate" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TypeDays_Days" Association="Self.FK_TypeDays_Days">
-            <End Role="TypeDays" EntitySet="TypeDays" />
-            <End Role="Days" EntitySet="Days" />
-          </AssociationSet>
           <AssociationSet Name="FK_UnderGradutes_Grades" Association="Self.FK_UnderGradutes_Grades">
             <End Role="Grades" EntitySet="Grades" />
             <End Role="UnderGradutes" EntitySet="UnderGradutes" />
@@ -821,7 +774,6 @@
           <EntitySet Name="Calenders" EntityType="SchoolManagmentModel.Calender" />
           <EntitySet Name="Classes" EntityType="SchoolManagmentModel.Class" />
           <EntitySet Name="DayAlternates" EntityType="SchoolManagmentModel.DayAlternate" />
-          <EntitySet Name="Days" EntityType="SchoolManagmentModel.Day" />
           <EntitySet Name="Fields" EntityType="SchoolManagmentModel.Field" />
           <EntitySet Name="FieldsOfNewYearInUnGradutes" EntityType="SchoolManagmentModel.FieldsOfNewYearInUnGradute" />
           <EntitySet Name="Grades" EntityType="SchoolManagmentModel.Grade" />
@@ -841,7 +793,6 @@
           <EntitySet Name="TeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" />
           <EntitySet Name="TeacherTeachsLessonsOfNewYearInUnGrades" EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" />
           <EntitySet Name="TimeAlterNates" EntityType="SchoolManagmentModel.TimeAlterNate" />
-          <EntitySet Name="TimeInDayAlternates" EntityType="SchoolManagmentModel.TimeInDayAlternate" />
           <EntitySet Name="TypeDays" EntityType="SchoolManagmentModel.TypeDay" />
           <EntitySet Name="UnderGradutes" EntityType="SchoolManagmentModel.UnderGradute" />
           <EntitySet Name="UnderGradutesInNewAcademyYears" EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" />
@@ -849,9 +800,13 @@
             <End Role="AcademyYear" EntitySet="AcademyYears" />
             <End Role="UnderGradutesInNewAcademyYear" EntitySet="UnderGradutesInNewAcademyYears" />
           </AssociationSet>
-          <AssociationSet Name="FK_Days_Calender" Association="SchoolManagmentModel.FK_Days_Calender">
+          <AssociationSet Name="FK_Calender_DayAlternate" Association="SchoolManagmentModel.FK_Calender_DayAlternate">
+            <End Role="DayAlternate" EntitySet="DayAlternates" />
             <End Role="Calender" EntitySet="Calenders" />
-            <End Role="Day" EntitySet="Days" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calender_TimeAlterNate" Association="SchoolManagmentModel.FK_Calender_TimeAlterNate">
+            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
+            <End Role="Calender" EntitySet="Calenders" />
           </AssociationSet>
           <AssociationSet Name="FK_TeacherTeachLessonAccordingToCalender_Calender" Association="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender">
             <End Role="Calender" EntitySet="Calenders" />
@@ -861,17 +816,9 @@
             <End Role="Class" EntitySet="Classes" />
             <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Days_DayAlternate" Association="SchoolManagmentModel.FK_Days_DayAlternate">
-            <End Role="DayAlternate" EntitySet="DayAlternates" />
-            <End Role="Day" EntitySet="Days" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TimeInDayAlternate_Days" Association="SchoolManagmentModel.FK_TimeInDayAlternate_Days">
-            <End Role="Day" EntitySet="Days" />
-            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TypeDays_Days" Association="SchoolManagmentModel.FK_TypeDays_Days">
+          <AssociationSet Name="FK_DayAlternate_TypeDays" Association="SchoolManagmentModel.FK_DayAlternate_TypeDays">
             <End Role="TypeDay" EntitySet="TypeDays" />
-            <End Role="Day" EntitySet="Days" />
+            <End Role="DayAlternate" EntitySet="DayAlternates" />
           </AssociationSet>
           <AssociationSet Name="FK_Fields_UnderGradutes" Association="SchoolManagmentModel.FK_Fields_UnderGradutes">
             <End Role="UnderGradute" EntitySet="UnderGradutes" />
@@ -969,10 +916,6 @@
             <End Role="TeacherTeachLessonAccordingToCalender" EntitySet="TeacherTeachLessonAccordingToCalenders" />
             <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
           </AssociationSet>
-          <AssociationSet Name="FK_TimeInDayAlternate_TimeAlterNate" Association="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate">
-            <End Role="TimeAlterNate" EntitySet="TimeAlterNates" />
-            <End Role="TimeInDayAlternate" EntitySet="TimeInDayAlternates" />
-          </AssociationSet>
           <AssociationSet Name="FK_UnderGradutes_UnderGradutes" Association="SchoolManagmentModel.FK_UnderGradutes_UnderGradutes">
             <End Role="UnderGradute" EntitySet="UnderGradutes" />
             <End Role="UnderGradute1" EntitySet="UnderGradutes" />
@@ -998,8 +941,12 @@
             <PropertyRef Name="CalenderId" />
           </Key>
           <Property Name="CalenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkDayAlterNate" Type="Byte" Nullable="false" />
+          <Property Name="FkTimeAlterNateId" Type="Byte" Nullable="false" />
           <Property Name="CalenderName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_Days_Calender" FromRole="Calender" ToRole="Day" />
+          <Property Name="CalenderDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DayAlternate" Relationship="SchoolManagmentModel.FK_Calender_DayAlternate" FromRole="Calender" ToRole="DayAlternate" />
+          <NavigationProperty Name="TimeAlterNate" Relationship="SchoolManagmentModel.FK_Calender_TimeAlterNate" FromRole="Calender" ToRole="TimeAlterNate" />
           <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="Calender" ToRole="TeacherTeachLessonAccordingToCalender" />
         </EntityType>
         <EntityType Name="Class">
@@ -1017,21 +964,10 @@
             <PropertyRef Name="PkDayAlternateId" />
           </Key>
           <Property Name="PkDayAlternateId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkTypeDay" Type="Byte" Nullable="false" />
           <Property Name="DayAlternateDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_Days_DayAlternate" FromRole="DayAlternate" ToRole="Day" />
-        </EntityType>
-        <EntityType Name="Day">
-          <Key>
-            <PropertyRef Name="DayId" />
-          </Key>
-          <Property Name="DayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkCalenderId" Type="Int32" Nullable="false" />
-          <Property Name="FkTypeDayId" Type="Byte" Nullable="false" />
-          <Property Name="FkDayAlternate" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_Days_Calender" FromRole="Day" ToRole="Calender" />
-          <NavigationProperty Name="DayAlternate" Relationship="SchoolManagmentModel.FK_Days_DayAlternate" FromRole="Day" ToRole="DayAlternate" />
-          <NavigationProperty Name="TimeInDayAlternates" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_Days" FromRole="Day" ToRole="TimeInDayAlternate" />
-          <NavigationProperty Name="TypeDay" Relationship="SchoolManagmentModel.FK_TypeDays_Days" FromRole="Day" ToRole="TypeDay" />
+          <NavigationProperty Name="Calenders" Relationship="SchoolManagmentModel.FK_Calender_DayAlternate" FromRole="DayAlternate" ToRole="Calender" />
+          <NavigationProperty Name="TypeDay" Relationship="SchoolManagmentModel.FK_DayAlternate_TypeDays" FromRole="DayAlternate" ToRole="TypeDay" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -1202,7 +1138,7 @@
           </Key>
           <Property Name="PKTeacherTeachLessonAccordingToCalender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FKTeacherTeachLessonId" Type="Int32" Nullable="false" />
-          <Property Name="FkCalenderId" Type="Int32" Nullable="false" />
+          <Property Name="FkCalenderId" Type="Int32" />
           <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="Calender" />
           <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
           <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachLessonAccToCalenderInClass" />
@@ -1237,17 +1173,7 @@
           <Property Name="PkTimeId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FromTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="ToTime" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="TimeInDayAlternates" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate" FromRole="TimeAlterNate" ToRole="TimeInDayAlternate" />
-        </EntityType>
-        <EntityType Name="TimeInDayAlternate">
-          <Key>
-            <PropertyRef Name="PKTimeInDayAlternate" />
-          </Key>
-          <Property Name="PKTimeInDayAlternate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkDayId" Type="Int32" Nullable="false" />
-          <Property Name="FkTimeAlternate" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Day" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_Days" FromRole="TimeInDayAlternate" ToRole="Day" />
-          <NavigationProperty Name="TimeAlterNate" Relationship="SchoolManagmentModel.FK_TimeInDayAlternate_TimeAlterNate" FromRole="TimeInDayAlternate" ToRole="TimeAlterNate" />
+          <NavigationProperty Name="Calenders" Relationship="SchoolManagmentModel.FK_Calender_TimeAlterNate" FromRole="TimeAlterNate" ToRole="Calender" />
         </EntityType>
         <EntityType Name="TypeDay">
           <Key>
@@ -1255,7 +1181,7 @@
           </Key>
           <Property Name="PkTypeOfdayId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeOfDayDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Days" Relationship="SchoolManagmentModel.FK_TypeDays_Days" FromRole="TypeDay" ToRole="Day" />
+          <NavigationProperty Name="DayAlternates" Relationship="SchoolManagmentModel.FK_DayAlternate_TypeDays" FromRole="TypeDay" ToRole="DayAlternate" />
         </EntityType>
         <EntityType Name="UnderGradute">
           <Key>
@@ -1295,20 +1221,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Days_Calender">
-          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
+        <Association Name="FK_Calender_DayAlternate">
+          <End Type="SchoolManagmentModel.DayAlternate" Role="DayAlternate" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Calender">
-              <PropertyRef Name="CalenderId" />
+            <Principal Role="DayAlternate">
+              <PropertyRef Name="PkDayAlternateId" />
             </Principal>
-            <Dependent Role="Day">
-              <PropertyRef Name="FkCalenderId" />
+            <Dependent Role="Calender">
+              <PropertyRef Name="FkDayAlterNate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calender_TimeAlterNate">
+          <End Type="SchoolManagmentModel.TimeAlterNate" Role="TimeAlterNate" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeAlterNate">
+              <PropertyRef Name="PkTimeId" />
+            </Principal>
+            <Dependent Role="Calender">
+              <PropertyRef Name="FkTimeAlterNateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_Calender">
-          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="0..1" />
           <End Type="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Role="TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">
@@ -1331,39 +1269,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Days_DayAlternate">
-          <End Type="SchoolManagmentModel.DayAlternate" Role="DayAlternate" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DayAlternate">
-              <PropertyRef Name="PkDayAlternateId" />
-            </Principal>
-            <Dependent Role="Day">
-              <PropertyRef Name="FkDayAlternate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TimeInDayAlternate_Days">
-          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.TimeInDayAlternate" Role="TimeInDayAlternate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Day">
-              <PropertyRef Name="DayId" />
-            </Principal>
-            <Dependent Role="TimeInDayAlternate">
-              <PropertyRef Name="FkDayId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TypeDays_Days">
+        <Association Name="FK_DayAlternate_TypeDays">
           <End Type="SchoolManagmentModel.TypeDay" Role="TypeDay" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.Day" Role="Day" Multiplicity="*" />
+          <End Type="SchoolManagmentModel.DayAlternate" Role="DayAlternate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeDay">
               <PropertyRef Name="PkTypeOfdayId" />
             </Principal>
-            <Dependent Role="Day">
-              <PropertyRef Name="FkTypeDayId" />
+            <Dependent Role="DayAlternate">
+              <PropertyRef Name="FkTypeDay" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1655,18 +1569,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TimeInDayAlternate_TimeAlterNate">
-          <End Type="SchoolManagmentModel.TimeAlterNate" Role="TimeAlterNate" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.TimeInDayAlternate" Role="TimeInDayAlternate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TimeAlterNate">
-              <PropertyRef Name="PkTimeId" />
-            </Principal>
-            <Dependent Role="TimeInDayAlternate">
-              <PropertyRef Name="FkTimeAlternate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UnderGradutes_UnderGradutes">
           <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute" Multiplicity="0..1" />
           <End Type="SchoolManagmentModel.UnderGradute" Role="UnderGradute1" Multiplicity="*" />
@@ -1711,7 +1613,10 @@
           <EntitySetMapping Name="Calenders">
             <EntityTypeMapping TypeName="SchoolManagmentModel.Calender">
               <MappingFragment StoreEntitySet="Calender">
+                <ScalarProperty Name="CalenderDescription" ColumnName="CalenderDescription" />
                 <ScalarProperty Name="CalenderName" ColumnName="CalenderName" />
+                <ScalarProperty Name="FkTimeAlterNateId" ColumnName="FkTimeAlterNateId" />
+                <ScalarProperty Name="FkDayAlterNate" ColumnName="FkDayAlterNate" />
                 <ScalarProperty Name="CalenderId" ColumnName="CalenderId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1730,17 +1635,8 @@
             <EntityTypeMapping TypeName="SchoolManagmentModel.DayAlternate">
               <MappingFragment StoreEntitySet="DayAlternate">
                 <ScalarProperty Name="DayAlternateDescription" ColumnName="DayAlternateDescription" />
+                <ScalarProperty Name="FkTypeDay" ColumnName="FkTypeDay" />
                 <ScalarProperty Name="PkDayAlternateId" ColumnName="PkDayAlternateId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Days">
-            <EntityTypeMapping TypeName="SchoolManagmentModel.Day">
-              <MappingFragment StoreEntitySet="Days">
-                <ScalarProperty Name="FkDayAlternate" ColumnName="FkDayAlternate" />
-                <ScalarProperty Name="FkTypeDayId" ColumnName="FkTypeDayId" />
-                <ScalarProperty Name="FkCalenderId" ColumnName="FkCalenderId" />
-                <ScalarProperty Name="DayId" ColumnName="DayId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1919,15 +1815,6 @@
                 <ScalarProperty Name="ToTime" ColumnName="ToTime" />
                 <ScalarProperty Name="FromTime" ColumnName="FromTime" />
                 <ScalarProperty Name="PkTimeId" ColumnName="PkTimeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TimeInDayAlternates">
-            <EntityTypeMapping TypeName="SchoolManagmentModel.TimeInDayAlternate">
-              <MappingFragment StoreEntitySet="TimeInDayAlternate">
-                <ScalarProperty Name="FkTimeAlternate" ColumnName="FkTimeAlternate" />
-                <ScalarProperty Name="FkDayId" ColumnName="FkDayId" />
-                <ScalarProperty Name="PKTimeInDayAlternate" ColumnName="PKTimeInDayAlternate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

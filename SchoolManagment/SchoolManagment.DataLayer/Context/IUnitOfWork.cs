@@ -17,6 +17,11 @@ namespace SchoolManagment.DataLayer
         ITeacherRepository TeacherRepository { get; }
         IClassRepository ClassRepository { get; }
         ITeacherCanTeachLessonRepository TeacherCanTeachLessonRepository{get;}
+        ITypeDayRepository TypeDayRepository { get; }
+        ITimeAlterNateRepository TimeAlterNateRepository { get; }
+        IDayAlternateRepository DayAlternateRepository { get; }
+        ICalenderRepository CalenderRepository { get; }
+        
 
         int Save();
 

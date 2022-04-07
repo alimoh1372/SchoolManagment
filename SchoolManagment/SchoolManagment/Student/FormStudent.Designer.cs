@@ -239,6 +239,7 @@
             this.dgvStudent.Size = new System.Drawing.Size(510, 430);
             this.dgvStudent.TabIndex = 0;
             this.dgvStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellClick);
+
             // 
             // StudentId
             // 

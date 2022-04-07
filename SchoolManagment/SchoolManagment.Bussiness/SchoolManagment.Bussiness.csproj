@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\CalenderService\CalenderHandler.cs" />
+    <Compile Include="DataServices\TypeDayService\ITypeDayHandler.cs" />
+    <Compile Include="DataServices\TimeAlterNateService\ITimeAlterNateHandler.cs" />
+    <Compile Include="DataServices\DayAlterNateService\DayAlternateHandler.cs" />
+    <Compile Include="DataServices\DayAlterNateService\IDayAlternateHandler.cs" />
+    <Compile Include="DataServices\CalenderService\ICalenderHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataServices\TypeDayService\TypeDayHandler.cs" />
+    <Compile Include="DataServices\TimeAlterNateService\TimeAlterNateHandler.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolManagment.DataLayer\SchoolManagment.DataLayer.csproj">
+      <Project>{78dd2f8e-fc7f-42eb-98f9-d004ddd9d160}</Project>
+      <Name>SchoolManagment.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolManagment.Utility\SchoolManagment.Utility.csproj">
+      <Project>{2a34cd6e-08cb-43ef-88f8-c3e2736a0674}</Project>
+      <Name>SchoolManagment.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolManagment.ViewModel\SchoolManagment.ViewModel.csproj">
+      <Project>{4ce02685-e78c-495d-a85b-7390aed59827}</Project>
+      <Name>SchoolManagment.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
