@@ -21,14 +21,11 @@ namespace SchoolManagment.App
         {
             InitializeComponent();
             dgvAcademyYears.AutoGenerateColumns = false;
-            dgvAcademyYears.MultiSelect = false;
-            dgvAcademyYears.CurrentCell = null;
+            
             dgvUnderGradutes.AutoGenerateColumns = false;
-            dgvUnderGradutes.MultiSelect = false;
-            dgvUnderGradutes.CurrentCell = null;
+           
             dgvSelectedUnGradeInNewYear.AutoGenerateColumns = false;
-            dgvSelectedUnGradeInNewYear.MultiSelect = false;
-            dgvSelectedUnGradeInNewYear.CurrentCell = null;
+            
         }
 
         private void FormUnderGradutesInNewAcademyYearRepository_Load(object sender, EventArgs e)
@@ -78,8 +75,7 @@ namespace SchoolManagment.App
                 StartDate = ac.StartDate.DateTimeToPersianStringShortDate(),
                 EndDate = ac.EndDate.DateTimeToPersianStringShortDate()
             }).ToList();
-            dgvAcademyYears.MultiSelect = false;
-            dgvAcademyYears.CurrentCell = null;
+            
             IEnumerable<UnderGradutesViewModel> underGradutesViewModels;
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
@@ -95,9 +91,15 @@ namespace SchoolManagment.App
                 });
                 dgvUnderGradutes.DataSource = underGradutesViewModels.ToList();
             }
+            dgvAcademyYears.MultiSelect = false;
+            dgvAcademyYears.CurrentCell = null;
+
+            dgvUnderGradutes.MultiSelect = false;
+            dgvUnderGradutes.CurrentCell = null;
+            
             dgvSelectedUnGradeInNewYear.MultiSelect = false;
             dgvSelectedUnGradeInNewYear.CurrentCell = null;
-            
+           
             dgvSelectedUnGradeInNewYear.DataSource = null;
         }
 

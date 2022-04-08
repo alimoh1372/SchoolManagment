@@ -22,7 +22,8 @@ namespace SchoolManagment.DataLayer
         IDayAlternateRepository DayAlternateRepository { get; }
         ICalenderRepository CalenderRepository { get; }
         IUnderGradutesInNewAcademyYearRepository UnderGradutesInNewAcademyYearRepository { get; }
-        
+        IFieldsOfNewYearInUnGradutesRepository FieldsOfNewYearInUnGradutesRepository { get; }
+
 
         int Save();
 

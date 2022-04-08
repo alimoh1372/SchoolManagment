@@ -134,6 +134,13 @@ namespace SchoolManagment.Bussiness
             return result;
 
         }
+        public int GetUnderGradutesInNewAcademyYearId(int academyId, int underGraduteId)
+        {
+            using (UnitOfWork db =new UnitOfWork(new SchoolManagmentEntities()))
+            {
+               return db.UnderGradutesInNewAcademyYearRepository.GetIdByAcademyAndUngradutes(academyId, underGraduteId);
+            }
+        }
         public void Dispose()
         {
             if (underGradutesViewModels != null)

@@ -14,6 +14,7 @@ namespace SchoolManagment.Bussiness
         int InsertUnGradeToAcademyYear(DataGridView AcademyDataGridView, DataGridView UnderGradutesDataGridView);
         int DeleteUnGradeFromAcademyYear(DataGridView AcademyDataGridView, DataGridView selectedUnGradutedDataGridView);
 
+        int GetUnderGradutesInNewAcademyYearId(int academyId, int underGraduteId);
 
 
     }

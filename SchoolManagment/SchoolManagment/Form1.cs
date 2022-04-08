@@ -92,8 +92,14 @@ namespace SchoolManagment.App
             formUnderGradutesInNewAcademyYearRepository.ShowDialog();
         }
 
-        #endregion
+        private void btnFieldsOfNewYearInUnGradutes_Click(object sender, EventArgs e)
+        {
+            FormFieldsOfNewYearInUnGradutes formFieldsOfNewYearInUnGradutes = new FormFieldsOfNewYearInUnGradutes();
+            formFieldsOfNewYearInUnGradutes.ShowDialog();
 
+        }
+
+        #endregion
 
     }
 }

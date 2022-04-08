@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\FieldsOfNewYearInUnGradutesRepositroy.cs" />
+    <Compile Include="Repositories\IFieldsOfNewYearInUnGradutesRepository.cs" />
     <Compile Include="Repositories\IUnderGradutesInNewAcademyYearRepository.cs" />
     <Compile Include="Services\ManagmentInfoMeno\CalenderRepository.cs" />
     <Compile Include="DatabaseModel\PersonalRole.cs">

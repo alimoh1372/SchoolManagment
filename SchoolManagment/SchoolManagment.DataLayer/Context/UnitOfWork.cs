@@ -196,6 +196,18 @@ namespace SchoolManagment.DataLayer
                 return _underGradutesInNewAcademyYearRepository;
             }
         }
+        private IFieldsOfNewYearInUnGradutesRepository _fieldsOfNewYearInUnGradutesRepository;
+        public IFieldsOfNewYearInUnGradutesRepository FieldsOfNewYearInUnGradutesRepository
+        {
+            get
+            {
+                if (_fieldsOfNewYearInUnGradutesRepository==null)
+                {
+                    _fieldsOfNewYearInUnGradutesRepository = new FieldsOfNewYearInUnGradutesRepositroy(_db);
+                }
+                return _fieldsOfNewYearInUnGradutesRepository;
+            }
+        } 
         public void Dispose()
         {
             _db.Dispose();

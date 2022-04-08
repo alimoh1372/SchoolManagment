@@ -48,11 +48,13 @@
     <Compile Include="DataServices\ManagmentInfoMeno\DayAlterNateService\DayAlternateHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\DayAlterNateService\IDayAlternateHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\CalenderService\ICalenderHandler.cs" />
-    <Compile Include="IUnderGradutesInNewAcademyYearHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\IUnderGradutesInNewAcademyYearHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\IFieldsOfNewYearInUnGradutesHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
-    <Compile Include="UnderGradutesInNewAcademyYearHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

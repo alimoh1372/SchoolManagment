@@ -221,6 +221,7 @@
             this.btnFieldsOfNewYearInUnGradutes.Name = "btnFieldsOfNewYearInUnGradutes";
             this.btnFieldsOfNewYearInUnGradutes.Size = new System.Drawing.Size(309, 22);
             this.btnFieldsOfNewYearInUnGradutes.Text = "رشته های قابل ارائه زیرمقطع";
+            this.btnFieldsOfNewYearInUnGradutes.Click += new System.EventHandler(this.btnFieldsOfNewYearInUnGradutes_Click);
             // 
             // btnLessonsOfFileldsOfNewYearInUngrade
             // 
