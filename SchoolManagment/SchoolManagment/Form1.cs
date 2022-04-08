@@ -17,6 +17,9 @@ namespace SchoolManagment.App
         {
             InitializeComponent();
         }
+        #region ManagementInfoMeno
+
+        
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -80,5 +83,17 @@ namespace SchoolManagment.App
             FormCalender frmCalender = new FormCalender();
             frmCalender.ShowDialog();
         }
+        #endregion
+
+        #region ManagmentNewAcademyYearMeno
+        private void btnUnderGradutesInNewAcademyYear_Click(object sender, EventArgs e)
+        {
+            FormUnderGradutesInNewAcademyYearRepository formUnderGradutesInNewAcademyYearRepository = new FormUnderGradutesInNewAcademyYearRepository();
+            formUnderGradutesInNewAcademyYearRepository.ShowDialog();
+        }
+
+        #endregion
+
+
     }
 }

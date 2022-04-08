@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\IUnderGradutesInNewAcademyYearRepository.cs" />
     <Compile Include="Services\ManagmentInfoMeno\CalenderRepository.cs" />
     <Compile Include="DatabaseModel\PersonalRole.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
@@ -177,6 +178,7 @@
     <Compile Include="Services\ManagmentInfoMeno\TeacherCanTeachLessonRepository.cs" />
     <Compile Include="Services\ManagmentInfoMeno\TypeDayRepository.cs" />
     <Compile Include="Services\ManagmentInfoMeno\TimeAlterNateRepository.cs" />
+    <Compile Include="Services\UnderGradutesInNewAcademyYearRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">

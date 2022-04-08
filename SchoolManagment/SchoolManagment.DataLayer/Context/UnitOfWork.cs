@@ -184,6 +184,18 @@ namespace SchoolManagment.DataLayer
                 return _calenderRepository;
             }
         }
+        private IUnderGradutesInNewAcademyYearRepository _underGradutesInNewAcademyYearRepository;
+        public IUnderGradutesInNewAcademyYearRepository UnderGradutesInNewAcademyYearRepository
+        {
+            get
+            {
+                if (_underGradutesInNewAcademyYearRepository==null)
+                {
+                    _underGradutesInNewAcademyYearRepository = new UnderGradutesInNewAcademyYearRepository(_db);
+                }
+                return _underGradutesInNewAcademyYearRepository;
+            }
+        }
         public void Dispose()
         {
             _db.Dispose();

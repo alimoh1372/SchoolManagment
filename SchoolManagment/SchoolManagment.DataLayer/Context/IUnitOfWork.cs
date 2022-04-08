@@ -21,6 +21,7 @@ namespace SchoolManagment.DataLayer
         ITimeAlterNateRepository TimeAlterNateRepository { get; }
         IDayAlternateRepository DayAlternateRepository { get; }
         ICalenderRepository CalenderRepository { get; }
+        IUnderGradutesInNewAcademyYearRepository UnderGradutesInNewAcademyYearRepository { get; }
         
 
         int Save();

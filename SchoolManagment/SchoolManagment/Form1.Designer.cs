@@ -214,6 +214,7 @@
             this.btnUnderGradutesInNewAcademyYear.Name = "btnUnderGradutesInNewAcademyYear";
             this.btnUnderGradutesInNewAcademyYear.Size = new System.Drawing.Size(309, 22);
             this.btnUnderGradutesInNewAcademyYear.Text = "زیرمقطع ها";
+            this.btnUnderGradutesInNewAcademyYear.Click += new System.EventHandler(this.btnUnderGradutesInNewAcademyYear_Click);
             // 
             // btnFieldsOfNewYearInUnGradutes
             // 
