@@ -221,6 +221,19 @@ namespace SchoolManagment.DataLayer
             }
         }
 
+        private ITeacherTeachsLessonsOfNewYearInUnGradesRepository _teachsLessonsOfNewYearInUnGradesRepository;
+        public ITeacherTeachsLessonsOfNewYearInUnGradesRepository TeacherTeachsLessonsOfNewYearInUnGradesRepository
+        {
+            get
+            {
+                if (_teachsLessonsOfNewYearInUnGradesRepository==null)
+                {
+                    _teachsLessonsOfNewYearInUnGradesRepository = new TeacherTeachsLessonsOfNewYearInUnGradesRepository(_db);
+                }
+                return _teachsLessonsOfNewYearInUnGradesRepository;
+            }
+        }
+
         public void Dispose()
         {
             _db.Dispose();

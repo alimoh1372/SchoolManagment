@@ -53,10 +53,12 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesService\IFieldsOfNewYearInUnGradutesHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeService\ILessonsOfFileldsOfNewYearInUngradeHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeService\LessonsOfFileldsOfNewYearInUngradeHandler.cs" />
+    <Compile Include="ITeacherTeachsLessonsOfNewYearInUnGradesHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearService\UnderGradutesInNewAcademyYearHandler.cs" />
+    <Compile Include="TeacherTeachsLessonsOfNewYearInUnGradesHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

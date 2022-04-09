@@ -103,6 +103,11 @@ namespace SchoolManagment.App
             FormLessonsOfFileldsOfNewYearInUngrade formLessonsOfFileldsOfNewYearInUngrade = new FormLessonsOfFileldsOfNewYearInUngrade();
             formLessonsOfFileldsOfNewYearInUngrade.ShowDialog();
         }
+        private void btnTeacherTeachsLessonsOfNewYearInUnGrades_Click(object sender, EventArgs e)
+        {
+            FormTeacherTeachsLessonsOfNewYearInUnGrades frmTeacherTeachsLessonsOfNewYearInUnGrades = new FormTeacherTeachsLessonsOfNewYearInUnGrades();
+            frmTeacherTeachsLessonsOfNewYearInUnGrades.ShowDialog();
+        }
         #endregion
 
 

@@ -235,6 +235,7 @@
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Name = "btnTeacherTeachsLessonsOfNewYearInUnGrades";
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Size = new System.Drawing.Size(309, 22);
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Text = "انتخاب معلم برای درس قابل ارائه";
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Click += new System.EventHandler(this.btnTeacherTeachsLessonsOfNewYearInUnGrades_Click);
             // 
             // btnTeacherTeachLessonAccordingToCalender
             // 

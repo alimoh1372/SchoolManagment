@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachsLessonsOfNewYearInUnGradesRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ILessonsOfFileldsOfNewYearInUngradeRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesRepositroy.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Services\ManagmentInfoMeno\TypeDayRepository.cs" />
     <Compile Include="Services\ManagmentInfoMeno\TimeAlterNateRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearRepository.cs" />
+    <Compile Include="Services\ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
