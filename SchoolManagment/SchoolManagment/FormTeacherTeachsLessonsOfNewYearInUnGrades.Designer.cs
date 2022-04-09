@@ -37,6 +37,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
+            this.dgvTeacher = new System.Windows.Forms.DataGridView();
+            this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherEducation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSelectedTeacher = new System.Windows.Forms.DataGridView();
+            this.TeacherId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherEducation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PkLessonOfFieldOfNewYearInUnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLessonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLessonIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +56,6 @@
             this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTeacher = new System.Windows.Forms.DataGridView();
-            this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherEducation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSelectedTeacher = new System.Windows.Forms.DataGridView();
-            this.TeacherId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherEducation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -176,89 +176,6 @@
             this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
             this.dgvNewAcademyYearAllLessons.TabIndex = 0;
             // 
-            // PkLessonOfFieldOfNewYearInUnGradeId
-            // 
-            this.PkLessonOfFieldOfNewYearInUnGradeId.DataPropertyName = "PkLessonOfFieldOfNewYearInUnGradeId";
-            this.PkLessonOfFieldOfNewYearInUnGradeId.HeaderText = "کد اصلی درس رشته ی سال تحصیلی در زیر مقطع";
-            this.PkLessonOfFieldOfNewYearInUnGradeId.Name = "PkLessonOfFieldOfNewYearInUnGradeId";
-            this.PkLessonOfFieldOfNewYearInUnGradeId.ReadOnly = true;
-            this.PkLessonOfFieldOfNewYearInUnGradeId.Visible = false;
-            // 
-            // FkLessonId
-            // 
-            this.FkLessonId.DataPropertyName = "FkLessonId";
-            this.FkLessonId.HeaderText = "کد درس";
-            this.FkLessonId.Name = "FkLessonId";
-            this.FkLessonId.ReadOnly = true;
-            this.FkLessonId.Visible = false;
-            // 
-            // FkLessonIdString
-            // 
-            this.FkLessonIdString.DataPropertyName = "FkLessonIdString";
-            this.FkLessonIdString.HeaderText = "درس";
-            this.FkLessonIdString.Name = "FkLessonIdString";
-            this.FkLessonIdString.ReadOnly = true;
-            // 
-            // PkFieldsOfNewYearInUnGradutesId
-            // 
-            this.PkFieldsOfNewYearInUnGradutesId.DataPropertyName = "PkFieldsOfNewYearInUnGradutesId";
-            this.PkFieldsOfNewYearInUnGradutesId.HeaderText = "کد اصلی رشته ی سال تحصیلی جدید در زیرمقطع";
-            this.PkFieldsOfNewYearInUnGradutesId.Name = "PkFieldsOfNewYearInUnGradutesId";
-            this.PkFieldsOfNewYearInUnGradutesId.ReadOnly = true;
-            this.PkFieldsOfNewYearInUnGradutesId.Visible = false;
-            // 
-            // FkFieldId
-            // 
-            this.FkFieldId.DataPropertyName = "FkFieldId";
-            this.FkFieldId.HeaderText = "کد رشته";
-            this.FkFieldId.Name = "FkFieldId";
-            this.FkFieldId.ReadOnly = true;
-            this.FkFieldId.Visible = false;
-            // 
-            // FkFieldIdString
-            // 
-            this.FkFieldIdString.DataPropertyName = "FkFieldIdString";
-            this.FkFieldIdString.HeaderText = "رشته";
-            this.FkFieldIdString.Name = "FkFieldIdString";
-            this.FkFieldIdString.ReadOnly = true;
-            // 
-            // PkUnderGraduteInAcademyYearId
-            // 
-            this.PkUnderGraduteInAcademyYearId.HeaderText = "کد اصلی زیرمقطع در سال تحصیلی جدید";
-            this.PkUnderGraduteInAcademyYearId.Name = "PkUnderGraduteInAcademyYearId";
-            this.PkUnderGraduteInAcademyYearId.ReadOnly = true;
-            this.PkUnderGraduteInAcademyYearId.Visible = false;
-            // 
-            // AcademyYearId
-            // 
-            this.AcademyYearId.DataPropertyName = "AcademyYearId";
-            this.AcademyYearId.HeaderText = "کد سال تحصیلی";
-            this.AcademyYearId.Name = "AcademyYearId";
-            this.AcademyYearId.ReadOnly = true;
-            this.AcademyYearId.Visible = false;
-            // 
-            // AcademyYearName
-            // 
-            this.AcademyYearName.DataPropertyName = "AcademyYearString";
-            this.AcademyYearName.HeaderText = "سال تحصیلی";
-            this.AcademyYearName.Name = "AcademyYearName";
-            this.AcademyYearName.ReadOnly = true;
-            // 
-            // FkUnGraduteId
-            // 
-            this.FkUnGraduteId.DataPropertyName = "FkUnGraduteId";
-            this.FkUnGraduteId.HeaderText = "کد زیرمقطع";
-            this.FkUnGraduteId.Name = "FkUnGraduteId";
-            this.FkUnGraduteId.ReadOnly = true;
-            this.FkUnGraduteId.Visible = false;
-            // 
-            // FkUnGraduteIdString
-            // 
-            this.FkUnGraduteIdString.DataPropertyName = "FkUnGraduteIdString";
-            this.FkUnGraduteIdString.HeaderText = "زیرمقطع";
-            this.FkUnGraduteIdString.Name = "FkUnGraduteIdString";
-            this.FkUnGraduteIdString.ReadOnly = true;
-            // 
             // dgvTeacher
             // 
             this.dgvTeacher.AllowUserToAddRows = false;
@@ -337,6 +254,90 @@
             this.TeacherEducation1.Name = "TeacherEducation1";
             this.TeacherEducation1.ReadOnly = true;
             // 
+            // PkLessonOfFieldOfNewYearInUnGradeId
+            // 
+            this.PkLessonOfFieldOfNewYearInUnGradeId.DataPropertyName = "PkLessonOfFieldOfNewYearInUnGradeId";
+            this.PkLessonOfFieldOfNewYearInUnGradeId.HeaderText = "کد اصلی درس رشته ی سال تحصیلی در زیر مقطع";
+            this.PkLessonOfFieldOfNewYearInUnGradeId.Name = "PkLessonOfFieldOfNewYearInUnGradeId";
+            this.PkLessonOfFieldOfNewYearInUnGradeId.ReadOnly = true;
+            this.PkLessonOfFieldOfNewYearInUnGradeId.Visible = false;
+            // 
+            // FkLessonId
+            // 
+            this.FkLessonId.DataPropertyName = "FkLessonId";
+            this.FkLessonId.HeaderText = "کد درس";
+            this.FkLessonId.Name = "FkLessonId";
+            this.FkLessonId.ReadOnly = true;
+            this.FkLessonId.Visible = false;
+            // 
+            // FkLessonIdString
+            // 
+            this.FkLessonIdString.DataPropertyName = "FkLessonIdString";
+            this.FkLessonIdString.HeaderText = "درس";
+            this.FkLessonIdString.Name = "FkLessonIdString";
+            this.FkLessonIdString.ReadOnly = true;
+            // 
+            // PkFieldsOfNewYearInUnGradutesId
+            // 
+            this.PkFieldsOfNewYearInUnGradutesId.DataPropertyName = "PkFieldsOfNewYearInUnGradutesId";
+            this.PkFieldsOfNewYearInUnGradutesId.HeaderText = "کد اصلی رشته ی سال تحصیلی جدید در زیرمقطع";
+            this.PkFieldsOfNewYearInUnGradutesId.Name = "PkFieldsOfNewYearInUnGradutesId";
+            this.PkFieldsOfNewYearInUnGradutesId.ReadOnly = true;
+            this.PkFieldsOfNewYearInUnGradutesId.Visible = false;
+            // 
+            // FkFieldId
+            // 
+            this.FkFieldId.DataPropertyName = "FkFieldId";
+            this.FkFieldId.HeaderText = "کد رشته";
+            this.FkFieldId.Name = "FkFieldId";
+            this.FkFieldId.ReadOnly = true;
+            this.FkFieldId.Visible = false;
+            // 
+            // FkFieldIdString
+            // 
+            this.FkFieldIdString.DataPropertyName = "FkFieldIdString";
+            this.FkFieldIdString.HeaderText = "رشته";
+            this.FkFieldIdString.Name = "FkFieldIdString";
+            this.FkFieldIdString.ReadOnly = true;
+            // 
+            // PkUnderGraduteInAcademyYearId
+            // 
+            this.PkUnderGraduteInAcademyYearId.DataPropertyName = "PkUnderGraduteInAcademyYearId";
+            this.PkUnderGraduteInAcademyYearId.HeaderText = "کد اصلی زیرمقطع در سال تحصیلی جدید";
+            this.PkUnderGraduteInAcademyYearId.Name = "PkUnderGraduteInAcademyYearId";
+            this.PkUnderGraduteInAcademyYearId.ReadOnly = true;
+            this.PkUnderGraduteInAcademyYearId.Visible = false;
+            // 
+            // AcademyYearId
+            // 
+            this.AcademyYearId.DataPropertyName = "AcademyYearId";
+            this.AcademyYearId.HeaderText = "کد سال تحصیلی";
+            this.AcademyYearId.Name = "AcademyYearId";
+            this.AcademyYearId.ReadOnly = true;
+            this.AcademyYearId.Visible = false;
+            // 
+            // AcademyYearName
+            // 
+            this.AcademyYearName.DataPropertyName = "AcademyYearString";
+            this.AcademyYearName.HeaderText = "سال تحصیلی";
+            this.AcademyYearName.Name = "AcademyYearName";
+            this.AcademyYearName.ReadOnly = true;
+            // 
+            // FkUnGraduteId
+            // 
+            this.FkUnGraduteId.DataPropertyName = "FkUnGraduteId";
+            this.FkUnGraduteId.HeaderText = "کد زیرمقطع";
+            this.FkUnGraduteId.Name = "FkUnGraduteId";
+            this.FkUnGraduteId.ReadOnly = true;
+            this.FkUnGraduteId.Visible = false;
+            // 
+            // FkUnGraduteIdString
+            // 
+            this.FkUnGraduteIdString.DataPropertyName = "FkUnGraduteIdString";
+            this.FkUnGraduteIdString.HeaderText = "زیرمقطع";
+            this.FkUnGraduteIdString.Name = "FkUnGraduteIdString";
+            this.FkUnGraduteIdString.ReadOnly = true;
+            // 
             // FormTeacherTeachsLessonsOfNewYearInUnGrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +350,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "معلم برای رشته های قابل ارائه در سال جدید";
+            this.Load += new System.EventHandler(this.FormTeacherTeachsLessonsOfNewYearInUnGrades_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -373,6 +375,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvNewAcademyYearAllLessons;
+        private System.Windows.Forms.DataGridView dgvSelectedTeacher;
+        private System.Windows.Forms.DataGridView dgvTeacher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherEducation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherEducation1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PkLessonOfFieldOfNewYearInUnGradeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonIdString;
@@ -384,13 +394,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteIdString;
-        private System.Windows.Forms.DataGridView dgvSelectedTeacher;
-        private System.Windows.Forms.DataGridView dgvTeacher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherEducation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherEducation1;
     }
 }

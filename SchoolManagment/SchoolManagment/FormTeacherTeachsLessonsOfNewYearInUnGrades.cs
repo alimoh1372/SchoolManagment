@@ -15,6 +15,30 @@ namespace SchoolManagment.App
         public FormTeacherTeachsLessonsOfNewYearInUnGrades()
         {
             InitializeComponent();
+            dgvNewAcademyYearAllLessons.AutoGenerateColumns = false;
+            dgvSelectedTeacher.AutoGenerateColumns = false;
+            dgvTeacher.AutoGenerateColumns = false;
+        }
+
+        private void FormTeacherTeachsLessonsOfNewYearInUnGrades_Load(object sender, EventArgs e)
+        {
+            RealoadDataAndForm();
+        }
+
+        private void RealoadDataAndForm()
+        {
+            txtSearch.Text = string.Empty;
+            //DatagridView dgvAcademyInAllLesson fill data
+
+
+
+
+            //DataGridview lesson clear Data
+
+
+
+
+            //DataGridView selectedLesson clear Data
         }
     }
 }
