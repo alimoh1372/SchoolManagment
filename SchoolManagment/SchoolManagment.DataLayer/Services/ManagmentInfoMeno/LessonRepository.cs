@@ -20,7 +20,7 @@ namespace SchoolManagment.DataLayer
         public IEnumerable<LessonViewModel> FillViewModel()
         {
             IEnumerable<LessonViewModel> lessonViewModels;
-           lessonViewModels= GetIncludeEntity(c => c.Field).Select(le => new LessonViewModel()
+           lessonViewModels= GetIncludeEntities(c => c.Field).Select(le => new LessonViewModel()
             {
                 PKLessonId = le.PKLessonId,
                 LessonName = le.LessonName,

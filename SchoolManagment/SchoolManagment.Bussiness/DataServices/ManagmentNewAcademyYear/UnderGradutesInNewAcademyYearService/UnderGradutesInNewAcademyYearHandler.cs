@@ -18,7 +18,7 @@ namespace SchoolManagment.Bussiness
         {
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
-                underGradutesInNewAcademyYears = db.UnderGradutesInNewAcademyYearRepository.GetIncludeEntity(tac => tac.UnderGradute);
+                underGradutesInNewAcademyYears = db.UnderGradutesInNewAcademyYearRepository.GetIncludeEntities(tac => tac.UnderGradute);
                 underGradutesViewModels = underGradutesInNewAcademyYears.Where(tac => tac.FkAcademyYearId == AcademyYearId).Select(un => new UnderGradutesViewModel()
                 {
                     PkUnGraduteId = un.UnderGradute.PkUnGraduteId,

@@ -129,7 +129,7 @@ namespace SchoolManagment.App
                         int academyYearId = Convert.ToInt32(dgvAcademyYears.CurrentRow.Cells[0].Value.ToString());
                         int underGradutesId = Convert.ToInt32(dgvSelectedUnGradeInNewYear.CurrentRow.Cells[0].Value.ToString());
                         int unGradutesinvewId = db.UnderGradutesInNewAcademyYearRepository.GetIdByAcademyAndUngradutes(academyYearId, underGradutesId);
-                        IEnumerable<FieldsOfNewYearInUnGradute> fieldsOfNewYearInUnGradutes = db.FieldsOfNewYearInUnGradutesRepository.GetIncludeEntity(t => t.Field).Where(fiu => fiu.FkUnGradutesInNewYearId == unGradutesinvewId);
+                        IEnumerable<FieldsOfNewYearInUnGradute> fieldsOfNewYearInUnGradutes = db.FieldsOfNewYearInUnGradutesRepository.GetIncludeEntities(t => t.Field).Where(fiu => fiu.FkUnGradutesInNewYearId == unGradutesinvewId);
                         selectedFieldInUndergraduteInnewYear = fieldsOfNewYearInUnGradutes.Select(un => new FieldViewModel()
                         {
                             PkFieldId = un.Field.PkFieldId,

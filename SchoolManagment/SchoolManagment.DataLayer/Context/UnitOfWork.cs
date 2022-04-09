@@ -165,7 +165,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_dayAlternateRepository==null)
+                if (_dayAlternateRepository == null)
                 {
                     _dayAlternateRepository = new DayAlternateRepository(_db);
                 }
@@ -177,7 +177,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_calenderRepository==null)
+                if (_calenderRepository == null)
                 {
                     _calenderRepository = new CalenderRepository(_db);
                 }
@@ -189,7 +189,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_underGradutesInNewAcademyYearRepository==null)
+                if (_underGradutesInNewAcademyYearRepository == null)
                 {
                     _underGradutesInNewAcademyYearRepository = new UnderGradutesInNewAcademyYearRepository(_db);
                 }
@@ -201,13 +201,26 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_fieldsOfNewYearInUnGradutesRepository==null)
+                if (_fieldsOfNewYearInUnGradutesRepository == null)
                 {
                     _fieldsOfNewYearInUnGradutesRepository = new FieldsOfNewYearInUnGradutesRepositroy(_db);
                 }
                 return _fieldsOfNewYearInUnGradutesRepository;
             }
-        } 
+        }
+        private ILessonsOfFileldsOfNewYearInUngradeRepository _lessonsOfFileldsOfNewYearInUngradeRepository;
+        public ILessonsOfFileldsOfNewYearInUngradeRepository LessonsOfFileldsOfNewYearInUngradeRepository
+        {
+            get
+            {
+                if (_lessonsOfFileldsOfNewYearInUngradeRepository == null)
+                {
+                    _lessonsOfFileldsOfNewYearInUngradeRepository = new LessonsOfFileldsOfNewYearInUngradeRepository(_db);
+                }
+                return _lessonsOfFileldsOfNewYearInUngradeRepository;
+            }
+        }
+
         public void Dispose()
         {
             _db.Dispose();

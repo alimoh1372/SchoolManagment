@@ -9,7 +9,7 @@ using SchoolManagment.DataLayer.DatabaseModel;
 
 namespace SchoolManagment.DataLayer
 {
-    public class BaseRepository<TEntity>  :  IBaseRepository<TEntity> where TEntity:class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         protected readonly SchoolManagmentEntities _db;
 
@@ -35,12 +35,35 @@ namespace SchoolManagment.DataLayer
             return query.ToList();
         }
 
-        public IEnumerable<TEntity> GetIncludeEntity<LEntity>(Expression<Func<TEntity, LEntity>> include)
+        public IEnumerable<TEntity> GetIncludeEntities<LEntity>(Expression<Func<TEntity, LEntity>> include)
         {
             var query = _dbSet.Include(include);
             return query;
         }
-       
+
+        public IEnumerable<TEntity> GetIncludeEntities<LEntity, FEntity>(Expression<Func<TEntity, FEntity>> include1, Expression<Func<TEntity, FEntity>> include2)
+            where LEntity : class
+            where FEntity : class
+        {
+            var query = _dbSet.Include(include1).Include(include2);
+            return query;
+        }
+
+        public IEnumerable<TEntity> GetIncludeEntities<LEntity, FEntity>(Expression<Func<TEntity, LEntity>> include1, Expression<Func<TEntity, FEntity>> include2)
+    where LEntity : class
+    where FEntity : class
+        {
+            var query = _dbSet.Include(include1).Include(include2);
+            return query;
+        }
+        public IEnumerable<TEntity> GetIncludeEntities<LEntity, FEntity, NEntity>(Expression<Func<TEntity, LEntity>> include1, Expression<Func<TEntity, FEntity>> include2, Expression<Func<TEntity, NEntity>> include3)
+            where LEntity : class
+            where FEntity : class
+            where NEntity : class
+        {
+            var query = _dbSet.Include(include1).Include(include2).Include(include3);
+            return query;
+        }
 
         public virtual void Insert(TEntity entity)
         {
@@ -68,6 +91,7 @@ namespace SchoolManagment.DataLayer
             }
             _db.Entry(entity).State = EntityState.Modified;
         }
+
 
     }
 }

@@ -228,6 +228,7 @@
             this.btnLessonsOfFileldsOfNewYearInUngrade.Name = "btnLessonsOfFileldsOfNewYearInUngrade";
             this.btnLessonsOfFileldsOfNewYearInUngrade.Size = new System.Drawing.Size(309, 22);
             this.btnLessonsOfFileldsOfNewYearInUngrade.Text = "درس های قابل ارائه رشته";
+            this.btnLessonsOfFileldsOfNewYearInUngrade.Click += new System.EventHandler(this.btnLessonsOfFileldsOfNewYearInUngrade_Click);
             // 
             // btnTeacherTeachsLessonsOfNewYearInUnGrades
             // 

@@ -98,8 +98,13 @@ namespace SchoolManagment.App
             formFieldsOfNewYearInUnGradutes.ShowDialog();
 
         }
-
+        private void btnLessonsOfFileldsOfNewYearInUngrade_Click(object sender, EventArgs e)
+        {
+            FormLessonsOfFileldsOfNewYearInUngrade formLessonsOfFileldsOfNewYearInUngrade = new FormLessonsOfFileldsOfNewYearInUngrade();
+            formLessonsOfFileldsOfNewYearInUngrade.ShowDialog();
+        }
         #endregion
+
 
     }
 }

@@ -8,6 +8,7 @@ namespace SchoolManagment.DataLayer
 {
     interface IUnitOfWork : IDisposable
     {
+        #region ManagmentInfoMen
         IGradeRepository GradeRepository { get; }
         IUnderGraduteRepository UnderGraduteRepository { get; }
         IAcademyYearRepository AcademyYearRepository { get; }
@@ -21,9 +22,10 @@ namespace SchoolManagment.DataLayer
         ITimeAlterNateRepository TimeAlterNateRepository { get; }
         IDayAlternateRepository DayAlternateRepository { get; }
         ICalenderRepository CalenderRepository { get; }
+        #endregion
         IUnderGradutesInNewAcademyYearRepository UnderGradutesInNewAcademyYearRepository { get; }
         IFieldsOfNewYearInUnGradutesRepository FieldsOfNewYearInUnGradutesRepository { get; }
-
+        ILessonsOfFileldsOfNewYearInUngradeRepository LessonsOfFileldsOfNewYearInUngradeRepository { get; }
 
         int Save();
 

@@ -55,17 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormFieldsOfNewYearInUnGradutes.cs">
+    <Compile Include="FormLessonsOfFileldsOfNewYearInUngrade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFieldsOfNewYearInUnGradutes.Designer.cs">
+    <Compile Include="FormLessonsOfFileldsOfNewYearInUngrade.Designer.cs">
+      <DependentUpon>FormLessonsOfFileldsOfNewYearInUngrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagmentNewAcademyYear\FormFieldsOfNewYearInUnGradutes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagmentNewAcademyYear\FormFieldsOfNewYearInUnGradutes.Designer.cs">
       <DependentUpon>FormFieldsOfNewYearInUnGradutes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYearRepository.cs">
+    <Compile Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYear.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYearRepository.Designer.cs">
-      <DependentUpon>FormUnderGradutesInNewAcademyYearRepository.cs</DependentUpon>
+    <Compile Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYear.Designer.cs">
+      <DependentUpon>FormUnderGradutesInNewAcademyYear.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagmentInfoMeno\AcademyYear\AcademyYearForm.cs">
       <SubType>Form</SubType>
@@ -165,11 +171,14 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormFieldsOfNewYearInUnGradutes.resx">
+    <EmbeddedResource Include="FormLessonsOfFileldsOfNewYearInUngrade.resx">
+      <DependentUpon>FormLessonsOfFileldsOfNewYearInUngrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagmentNewAcademyYear\FormFieldsOfNewYearInUnGradutes.resx">
       <DependentUpon>FormFieldsOfNewYearInUnGradutes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYearRepository.resx">
-      <DependentUpon>FormUnderGradutesInNewAcademyYearRepository.cs</DependentUpon>
+    <EmbeddedResource Include="ManagmentNewAcademyYear\FormUnderGradutesInNewAcademyYear.resx">
+      <DependentUpon>FormUnderGradutesInNewAcademyYear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagmentInfoMeno\AcademyYear\AcademyYearForm.resx">
       <DependentUpon>AcademyYearForm.cs</DependentUpon>
