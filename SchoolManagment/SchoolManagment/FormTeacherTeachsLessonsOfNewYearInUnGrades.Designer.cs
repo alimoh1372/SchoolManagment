@@ -32,19 +32,19 @@
             this.btnDeleteSelectedTeacher = new System.Windows.Forms.Button();
             this.btnAddNewTeachre = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
-            this.dgvTeacher = new System.Windows.Forms.DataGridView();
-            this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherEducation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSelectedTeacher = new System.Windows.Forms.DataGridView();
             this.TeacherId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherEducation1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvTeacher = new System.Windows.Forms.DataGridView();
+            this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeacherEducation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
             this.PkLessonOfFieldOfNewYearInUnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLessonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLessonIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,12 +58,12 @@
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedTeacher)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedTeacher)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -107,8 +107,47 @@
             this.groupBox5.Size = new System.Drawing.Size(794, 151);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "درس های انتخاب شده برای رشته مورد نظر(رشته از لیست رشته ها باید انتخاب شود برای ن" +
-    "مایش لیست دروس آن)";
+            this.groupBox5.Text = "معلم های انتخاب شده برای درس مورد نظر(درس باید از لیست دروس  جدول انتخاب درس انتخ" +
+    "اب شود)";
+            // 
+            // dgvSelectedTeacher
+            // 
+            this.dgvSelectedTeacher.AllowUserToAddRows = false;
+            this.dgvSelectedTeacher.AllowUserToDeleteRows = false;
+            this.dgvSelectedTeacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSelectedTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectedTeacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TeacherId1,
+            this.TeacherName1,
+            this.TeacherEducation1});
+            this.dgvSelectedTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelectedTeacher.Location = new System.Drawing.Point(3, 17);
+            this.dgvSelectedTeacher.Name = "dgvSelectedTeacher";
+            this.dgvSelectedTeacher.ReadOnly = true;
+            this.dgvSelectedTeacher.Size = new System.Drawing.Size(788, 131);
+            this.dgvSelectedTeacher.TabIndex = 2;
+            // 
+            // TeacherId1
+            // 
+            this.TeacherId1.DataPropertyName = "TeacherId";
+            this.TeacherId1.HeaderText = "کد معلم";
+            this.TeacherId1.Name = "TeacherId1";
+            this.TeacherId1.ReadOnly = true;
+            this.TeacherId1.Visible = false;
+            // 
+            // TeacherName1
+            // 
+            this.TeacherName1.DataPropertyName = "TeacherName";
+            this.TeacherName1.HeaderText = "نام معلم";
+            this.TeacherName1.Name = "TeacherName1";
+            this.TeacherName1.ReadOnly = true;
+            // 
+            // TeacherEducation1
+            // 
+            this.TeacherEducation1.DataPropertyName = "TeacherEducation";
+            this.TeacherEducation1.HeaderText = "تحصیلات معلم";
+            this.TeacherEducation1.Name = "TeacherEducation1";
+            this.TeacherEducation1.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -120,61 +159,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "انتخاب معلم (تمام معلمانی که میتوانند این درس را تدریس کنند در لیست زیر نمایش داد" +
     "ه شده است)-برای نمایش لیست معلمان باید یک درس از لیست بالا انتخاب شود.";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.dgvNewAcademyYearAllLessons);
-            this.groupBox2.Location = new System.Drawing.Point(0, 20);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 232);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "انتخاب درس مورد نظر جهت تخصیص معلم به آن";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(3, 17);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(794, 70);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "جست و جو و فیلتر کردن در لیست نمایش داده شده (بر اساس نام درس،رشته،سال تحصیلی،زیر" +
-    " مقطع ...)";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(140, 33);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(524, 21);
-            this.txtSearch.TabIndex = 0;
-            // 
-            // dgvNewAcademyYearAllLessons
-            // 
-            this.dgvNewAcademyYearAllLessons.AllowUserToAddRows = false;
-            this.dgvNewAcademyYearAllLessons.AllowUserToDeleteRows = false;
-            this.dgvNewAcademyYearAllLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNewAcademyYearAllLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNewAcademyYearAllLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PkLessonOfFieldOfNewYearInUnGradeId,
-            this.FkLessonId,
-            this.FkLessonIdString,
-            this.PkFieldsOfNewYearInUnGradutesId,
-            this.FkFieldId,
-            this.FkFieldIdString,
-            this.PkUnderGraduteInAcademyYearId,
-            this.AcademyYearId,
-            this.AcademyYearName,
-            this.FkUnGraduteId,
-            this.FkUnGraduteIdString});
-            this.dgvNewAcademyYearAllLessons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvNewAcademyYearAllLessons.Location = new System.Drawing.Point(3, 93);
-            this.dgvNewAcademyYearAllLessons.Name = "dgvNewAcademyYearAllLessons";
-            this.dgvNewAcademyYearAllLessons.ReadOnly = true;
-            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
-            this.dgvNewAcademyYearAllLessons.TabIndex = 0;
             // 
             // dgvTeacher
             // 
@@ -215,44 +199,62 @@
             this.TeacherEducation.Name = "TeacherEducation";
             this.TeacherEducation.ReadOnly = true;
             // 
-            // dgvSelectedTeacher
+            // groupBox2
             // 
-            this.dgvSelectedTeacher.AllowUserToAddRows = false;
-            this.dgvSelectedTeacher.AllowUserToDeleteRows = false;
-            this.dgvSelectedTeacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSelectedTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSelectedTeacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TeacherId1,
-            this.TeacherName1,
-            this.TeacherEducation1});
-            this.dgvSelectedTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSelectedTeacher.Location = new System.Drawing.Point(3, 17);
-            this.dgvSelectedTeacher.Name = "dgvSelectedTeacher";
-            this.dgvSelectedTeacher.ReadOnly = true;
-            this.dgvSelectedTeacher.Size = new System.Drawing.Size(788, 131);
-            this.dgvSelectedTeacher.TabIndex = 2;
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.dgvNewAcademyYearAllLessons);
+            this.groupBox2.Location = new System.Drawing.Point(0, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(800, 232);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "انتخاب درس مورد نظر جهت تخصیص معلم به آن";
             // 
-            // TeacherId1
+            // groupBox3
             // 
-            this.TeacherId1.DataPropertyName = "TeacherId";
-            this.TeacherId1.HeaderText = "کد معلم";
-            this.TeacherId1.Name = "TeacherId1";
-            this.TeacherId1.ReadOnly = true;
-            this.TeacherId1.Visible = false;
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 17);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(794, 70);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "جست و جو و فیلتر کردن در لیست نمایش داده شده (بر اساس نام درس،رشته،سال تحصیلی،زیر" +
+    " مقطع ...)";
             // 
-            // TeacherName1
+            // txtSearch
             // 
-            this.TeacherName1.DataPropertyName = "TeacherName";
-            this.TeacherName1.HeaderText = "نام معلم";
-            this.TeacherName1.Name = "TeacherName1";
-            this.TeacherName1.ReadOnly = true;
+            this.txtSearch.Location = new System.Drawing.Point(140, 33);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(524, 21);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // TeacherEducation1
+            // dgvNewAcademyYearAllLessons
             // 
-            this.TeacherEducation1.DataPropertyName = "TeacherEducation";
-            this.TeacherEducation1.HeaderText = "تحصیلات معلم";
-            this.TeacherEducation1.Name = "TeacherEducation1";
-            this.TeacherEducation1.ReadOnly = true;
+            this.dgvNewAcademyYearAllLessons.AllowUserToAddRows = false;
+            this.dgvNewAcademyYearAllLessons.AllowUserToDeleteRows = false;
+            this.dgvNewAcademyYearAllLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNewAcademyYearAllLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNewAcademyYearAllLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PkLessonOfFieldOfNewYearInUnGradeId,
+            this.FkLessonId,
+            this.FkLessonIdString,
+            this.PkFieldsOfNewYearInUnGradutesId,
+            this.FkFieldId,
+            this.FkFieldIdString,
+            this.PkUnderGraduteInAcademyYearId,
+            this.AcademyYearId,
+            this.AcademyYearName,
+            this.FkUnGraduteId,
+            this.FkUnGraduteIdString});
+            this.dgvNewAcademyYearAllLessons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvNewAcademyYearAllLessons.Location = new System.Drawing.Point(3, 93);
+            this.dgvNewAcademyYearAllLessons.Name = "dgvNewAcademyYearAllLessons";
+            this.dgvNewAcademyYearAllLessons.ReadOnly = true;
+            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
+            this.dgvNewAcademyYearAllLessons.TabIndex = 0;
+            this.dgvNewAcademyYearAllLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewAcademyYearAllLessons_CellClick);
             // 
             // PkLessonOfFieldOfNewYearInUnGradeId
             // 
@@ -353,13 +355,13 @@
             this.Load += new System.EventHandler(this.FormTeacherTeachsLessonsOfNewYearInUnGrades_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedTeacher)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedTeacher)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -16,7 +16,7 @@ namespace SchoolManagment.ViewModel
         public string FkFieldIdString { get; set; }
         public int PkUnderGraduteInAcademyYearId { get; set; }
         public int AcademyYearId { get; set; }
-        public int AcademyYearString { get; set; }
+        public string AcademyYearString { get; set; }
         public int FkUnGraduteId { get; set; }
         public string FkUnGraduteIdString { get; set; }
     }

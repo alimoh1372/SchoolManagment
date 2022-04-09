@@ -23,7 +23,7 @@ namespace SchoolManagment.ViewModel
 
         int AcademyYearId { get; set; }
 
-        int AcademyYearString { get; set; }
+        string AcademyYearString { get; set; }
 
         int FkUnGraduteId { get; set; }
 
