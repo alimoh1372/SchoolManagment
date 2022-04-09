@@ -20,8 +20,34 @@ namespace SchoolManagment.App
             InitializeComponent();
             dgvNewAcademyYearAllField.AutoGenerateColumns = false;
             dgvLesson.AutoGenerateColumns = false;
+            dgvSelectedLessons.AutoGenerateColumns = false;
         }
+        private void btnAddNewLesson_Click(object sender, EventArgs e)
+        {
+            int result = -1;
+            using (LessonsOfFileldsOfNewYearInUngradeHandler lsOfHandler = new LessonsOfFileldsOfNewYearInUngradeHandler())
+            {
+                result = lsOfHandler.InsertLessonToFieldOfNewYear(dgvNewAcademyYearAllField, dgvLesson);
+                if (result > 0)
+                {
+                    ReloadDataAndForm();
+                }
+            }
 
+        }
+        private void btnDeleteSelectedLesson_Click(object sender, EventArgs e)
+        {
+            int result = -1;
+            using (LessonsOfFileldsOfNewYearInUngradeHandler lsOfHandler = new LessonsOfFileldsOfNewYearInUngradeHandler())
+            {
+                result = lsOfHandler.DeleteLessonFromFieldOfNewYear(dgvNewAcademyYearAllField, dgvSelectedLessons);
+                if (result > 0)
+                {
+                    ReloadDataAndForm();
+                }
+            }
+
+        }
         private void FormLessonsOfFileldsOfNewYearInUngrade_Load(object sender, EventArgs e)
         {
             ReloadDataAndForm();
@@ -36,6 +62,13 @@ namespace SchoolManagment.App
                 dgvNewAcademyYearAllField.DataSource = fieldsOfNewYearInUnGradutesViewModels;
                 dgvNewAcademyYearAllField.MultiSelect = false;
                 dgvNewAcademyYearAllField.CurrentCell = null;
+                dgvLesson.DataSource = null;
+                dgvLesson.MultiSelect = false;
+                dgvLesson.CurrentCell = null;
+
+                dgvSelectedLessons.DataSource = null;
+                dgvSelectedLessons.MultiSelect = false;
+                dgvSelectedLessons.CurrentCell = null;
             }
 
         }
@@ -68,9 +101,6 @@ namespace SchoolManagment.App
             }
         }
 
-        private void btnAddNewLesson_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

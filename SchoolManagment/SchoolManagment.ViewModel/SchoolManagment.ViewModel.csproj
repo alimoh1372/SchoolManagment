@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesViewModel.cs" />
-    <Compile Include="ManagmentNewAcademyYear\IFieldsOfNewYearInUnGradutesViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesViewModel\FieldsOfNewYearInUnGradutesViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesViewModel\IFieldsOfNewYearInUnGradutesViewModel.cs" />
     <Compile Include="ManagementInfoMeno\CalenderViewMode\CalenderViewModel.cs" />
     <Compile Include="ManagementInfoMeno\FieldViewModel\FieldViewModel.cs" />
     <Compile Include="ManagementInfoMeno\GradeViewModel\GradeGridViewModel.cs" />

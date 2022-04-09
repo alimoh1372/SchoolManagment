@@ -16,5 +16,9 @@ namespace SchoolManagment.Bussiness
         IEnumerable<FieldsOfNewYearInUnGradutesViewModel> FillFieldOfNewYearInUngradeViewModels(Expression<Func<FieldsOfNewYearInUnGradutesViewModel, bool>> where = null);
         IEnumerable<LessonViewModel> FillLessonViewModel(Expression<Func<LessonViewModel, bool>> where = null);
         IEnumerable<LessonViewModel> FillSelectedLessonViewModel(DataGridView dgvNewAcademyYearAllField);
+        int GetIdBylessonIdAndFieldOfnewYearInUngradutes(int lessonId, int fieldsOfNewYearInUnGradutesId);
+        int InsertLessonToFieldOfNewYear(DataGridView dgvNewAcademyYearAllField, DataGridView dgvLesson );
+        int DeleteLessonFromFieldOfNewYear(DataGridView dgvNewAcademyYearAllField, DataGridView dgvSedgvSelectedLessons);
+       
     }
 }

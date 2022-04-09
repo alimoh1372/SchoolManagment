@@ -55,10 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormLessonsOfFileldsOfNewYearInUngrade.cs">
+    <Compile Include="ManagmentNewAcademyYear\FormLessonsOfFileldsOfNewYearInUngrade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLessonsOfFileldsOfNewYearInUngrade.Designer.cs">
+    <Compile Include="ManagmentNewAcademyYear\FormLessonsOfFileldsOfNewYearInUngrade.Designer.cs">
       <DependentUpon>FormLessonsOfFileldsOfNewYearInUngrade.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagmentNewAcademyYear\FormFieldsOfNewYearInUnGradutes.cs">
@@ -171,7 +171,7 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormLessonsOfFileldsOfNewYearInUngrade.resx">
+    <EmbeddedResource Include="ManagmentNewAcademyYear\FormLessonsOfFileldsOfNewYearInUngrade.resx">
       <DependentUpon>FormLessonsOfFileldsOfNewYearInUngrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagmentNewAcademyYear\FormFieldsOfNewYearInUnGradutes.resx">

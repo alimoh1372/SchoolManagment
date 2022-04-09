@@ -51,8 +51,8 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearService\IUnderGradutesInNewAcademyYearHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesService\FieldsOfNewYearInUnGradutesHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesService\IFieldsOfNewYearInUnGradutesHandler.cs" />
-    <Compile Include="ILessonsOfFileldsOfNewYearInUngradeHandler.cs" />
-    <Compile Include="LessonsOfFileldsOfNewYearInUngradeHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeService\ILessonsOfFileldsOfNewYearInUngradeHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeService\LessonsOfFileldsOfNewYearInUngradeHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
