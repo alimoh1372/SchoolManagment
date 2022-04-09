@@ -110,6 +110,7 @@
             this.dgvNewAcademyYearAllField.ReadOnly = true;
             this.dgvNewAcademyYearAllField.Size = new System.Drawing.Size(794, 136);
             this.dgvNewAcademyYearAllField.TabIndex = 0;
+            this.dgvNewAcademyYearAllField.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewAcademyYearAllField_CellClick);
             // 
             // groupBox3
             // 
@@ -282,6 +283,7 @@
             this.btnAddNewLesson.TabIndex = 10;
             this.btnAddNewLesson.Text = "افزودن درس به لیست دروس قابل ارائه در این رشته";
             this.btnAddNewLesson.UseVisualStyleBackColor = true;
+            this.btnAddNewLesson.Click += new System.EventHandler(this.btnAddNewLesson_Click);
             // 
             // FkFieldsOfNewYearInUnGradutesId
             // 
