@@ -175,14 +175,112 @@ namespace SchoolManagment.Bussiness
             {
 
                 _teacherTeachsLessonsOfNewYearInUnGrades = db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Get().AsQueryable();
-               _teachers= _teacherTeachsLessonsOfNewYearInUnGrades.Where(tTL => tTL.LessonsOfFileldsOfNewYearInUngrade.FkLessonId == _fkLessonId).Select(tTL => new Teacher()
+                _teachers = _teacherTeachsLessonsOfNewYearInUnGrades.Where(tTL => tTL.LessonsOfFileldsOfNewYearInUngrade.FkLessonId == _fkLessonId).Select(tTL => new Teacher()
                 {
-                    TeacherId= tTL.Teacher.TeacherId,
-                    TeacherName=tTL.Teacher.TeacherName,
-                    TeacherEducation=tTL.Teacher.TeacherEducation
+                    TeacherId = tTL.Teacher.TeacherId,
+                    TeacherName = tTL.Teacher.TeacherName,
+                    TeacherEducation = tTL.Teacher.TeacherEducation
                 }).ToList();
                 return _teachers;
             }
+        }
+
+        // Insert Selected Teacher From Teacher datagrid view Into The selected teachers for teach lesson
+
+        public virtual int InsertIntoTeacherTeachsLesson(DataGridView dgvNewAcademyYearAllLessons, DataGridView dgvTeacher)
+        {
+
+            int result = -1;
+            string attemMessage;
+            if (dgvTeacher.CurrentCell != null && dgvTeacher.CurrentRow != null && dgvTeacher.SelectedCells.Count > 0)
+            {
+                attemMessage = "آیا از انتخاب معلم  " + dgvTeacher.CurrentRow.Cells[1].Value + "  برای تدریس درس " + dgvNewAcademyYearAllLessons.CurrentRow.Cells[2].Value + " در سال تحصیلی " +
+                dgvNewAcademyYearAllLessons.CurrentRow.Cells["AcademyYearName"].Value + " اطمینان دارید؟";
+                if (RtlMessageBox.Show(attemMessage, "  انتخاب معلم برای تدریس ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int fkLessonOfFieldOfNewYearInUnGradeId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkLessonOfFieldOfNewYearInUnGradeId"].Value.ToString());
+                    int lessonId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkLessonId"].Value.ToString());
+                    int selectedTeacherId = Convert.ToInt32(dgvTeacher.CurrentRow.Cells[0].Value.ToString());
+                    using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
+                    {
+                        bool isExistBefor;
+                        isExistBefor = db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Get(tlo => tlo.FkLessonOfFieldsOfNewYearInUnGrade == fkLessonOfFieldOfNewYearInUnGradeId &&
+                          tlo.LessonsOfFileldsOfNewYearInUngrade.FkLessonId == lessonId
+                          && tlo.FkTeacherId == selectedTeacherId).Any();
+                        if (!isExistBefor)
+                        {
+                            TeacherTeachsLessonsOfNewYearInUnGrade teacherTolesson = new TeacherTeachsLessonsOfNewYearInUnGrade()
+                            {
+                                FkTeacherId = selectedTeacherId,
+                                FkLessonOfFieldsOfNewYearInUnGrade = fkLessonOfFieldOfNewYearInUnGradeId
+                            };
+                            db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Insert(teacherTolesson);
+                            result = db.Save();
+                            if (result <= 0)
+                            {
+                                attemMessage = "خطا در ثبت عملیات در پایگاه داده.لطفا مجددا تلاش فرمائید یا با ادمین خود تماس حاصل فرمایئد.با تشکر";
+                                RtlMessageBox.Show(attemMessage, "خطای پایگاه داده", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            attemMessage = "عدم امکان افزودن معلم تکراری  به لیست معلمینی که میتوانند این درس را تدریس کنند...";
+                            RtlMessageBox.Show(attemMessage, "عدم امکان افزودن معلم تکراری", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+
+            }
+            else
+            {
+                attemMessage = "عدم انتخاب یک معلم برای افزودن به لیست معلمانی که میتوانند این درس را تدریس کنند در سال تحصیلی جدید" +
+                    "(ابتدا باید یک ردیف از جدول درس های ارائه شده در سال تحصیلی جدید انتخاب نمائید)" + "\n" +
+                    "در صورتی که معلمی برای شما نمایش داده نشده" +
+                    "باید از منو مدیریت اطلاعات-->درس های قابل تدریس معلم -->معلمی را به معلم هایی که میتوانند این درس را تدریس کنند اضافه نمائید..";
+                RtlMessageBox.Show(attemMessage, "عدم انتخاب معلم");
+            }
+            return result;
+
+        }
+
+        //Delete the selected teacher from list of teacher teaches the lesson in this year
+
+        public int DeleteTeacherFromTeacherList(DataGridView dgvNewAcademyYearAllLessons, DataGridView dgvdgvSelectedTeacher)
+        {
+            int result = -1;
+            string attemMessage;
+            if (dgvdgvSelectedTeacher.CurrentCell != null && dgvdgvSelectedTeacher.CurrentRow != null && dgvdgvSelectedTeacher.SelectedCells.Count > 0)
+            {
+                attemMessage = "آیا از حذف معلم  " + dgvdgvSelectedTeacher.CurrentRow.Cells[1].Value + "  از لیست معلمانی که میتوانند درس  " + dgvNewAcademyYearAllLessons.CurrentRow.Cells[2].Value + " را در سال تحصیلی " +
+                dgvNewAcademyYearAllLessons.CurrentRow.Cells["AcademyYearName"].Value + "درس بدهند، اطمینان دارید؟";
+                if (RtlMessageBox.Show(attemMessage, "انتخاب معلم برای تدریس", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int fkLessonOfFieldOfNewYearInUnGradeId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkLessonOfFieldOfNewYearInUnGradeId"].Value.ToString());
+                    int lessonId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkLessonId"].Value.ToString());
+                    int selectedTeacherId = Convert.ToInt32(dgvdgvSelectedTeacher.CurrentRow.Cells[0].Value.ToString());
+                    int pkTeacherTeachLesson = -1;
+                    using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
+                    {
+                        pkTeacherTeachLesson = db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Get(tlo => tlo.FkLessonOfFieldsOfNewYearInUnGrade == fkLessonOfFieldOfNewYearInUnGradeId
+                         && tlo.FkTeacherId == selectedTeacherId).First().TeacherTeachLessonId;
+                        db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Delete(pkTeacherTeachLesson);
+                        result= db.Save();
+                        if (result <= 0)
+                        {
+                            attemMessage = "خطا در ثبت عملیات در پایگاه داده.لطفا مجددا تلاش فرمائید یا با ادمین خود تماس حاصل فرمایئد.با تشکر";
+                            RtlMessageBox.Show(attemMessage, "خطای پایگاه داده", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                attemMessage = "عدم انتخاب یک معلم برای حذف از لیست معلمانی که میتوانند این درس را تدریس کنند در سال تحصیلی جدید" +
+                    "(ابتدا باید یک ردیف از جدول معلمان لیست پایین انتخاب نمائید سپس دکمه حذف را بزنید)" + "\n";
+                RtlMessageBox.Show(attemMessage, "عدم انتخاب معلم جهت حذف از لیست پایین");
+            }
+            return result;
         }
         public void Dispose()
         {
@@ -191,7 +289,6 @@ namespace SchoolManagment.Bussiness
                 teacherTeachsLessonsOfNewYearInUnGrades = null;
             }
         }
-
 
     }
 }

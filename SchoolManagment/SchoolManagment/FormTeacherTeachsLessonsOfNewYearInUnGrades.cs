@@ -40,8 +40,9 @@ namespace SchoolManagment.App
             txtSearch.Text = string.Empty;
             //DatagridView dgvAcademyInAllLesson fill data
             dgvNewAcademyYearAllLessons.DataSource = _lessonVM;
-            dgvNewAcademyYearAllLessons.CurrentCell = null;
             dgvNewAcademyYearAllLessons.MultiSelect = false;
+            dgvNewAcademyYearAllLessons.CurrentCell = null;
+           
 
 
             //DataGridview lesson clear Data
@@ -84,6 +85,34 @@ namespace SchoolManagment.App
                 //fill selected teacher for lesson
                 _teachers= tchHandler.FillSelectedTeacherGridview(dgvNewAcademyYearAllLessons);
                 dgvSelectedTeacher.DataSource = _teachers;
+                dgvSelectedTeacher.MultiSelect = false;
+                dgvSelectedTeacher.CurrentCell = null;
+            }
+        }
+
+        private void btnAddNewTeachre_Click(object sender, EventArgs e)
+        {
+            int result = -1;
+            using (TeacherTeachsLessonsOfNewYearInUnGradesHandler tchHandler=new TeacherTeachsLessonsOfNewYearInUnGradesHandler())
+            {
+               result= tchHandler.InsertIntoTeacherTeachsLesson(dgvNewAcademyYearAllLessons, dgvTeacher);
+                if (result>0)
+                {
+                    RealoadDataAndForm();
+                }
+            }
+        }
+
+        private void btnDeleteSelectedTeacher_Click(object sender, EventArgs e)
+        {
+            int result = -1;
+            using (TeacherTeachsLessonsOfNewYearInUnGradesHandler tchHandler = new TeacherTeachsLessonsOfNewYearInUnGradesHandler())
+            {
+                result = tchHandler.DeleteTeacherFromTeacherList(dgvNewAcademyYearAllLessons, dgvSelectedTeacher);
+                if (result > 0)
+                {
+                    RealoadDataAndForm();
+                }
             }
         }
     }

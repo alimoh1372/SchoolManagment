@@ -21,5 +21,9 @@ namespace SchoolManagment.Bussiness
         IEnumerable<Teacher> FillTeachers(IEnumerable<TeacherCanTeachLesson> teacherCanTeachLessons, Expression<Func<Teacher, bool>> where = null);
 
         IEnumerable<Teacher> FillSelectedTeacherGridview(DataGridView dgvNewAcademyYearAllLessons);
+
+        int InsertIntoTeacherTeachsLesson(DataGridView dgvNewAcademyYearAllLessons,DataGridView dgvTeacher);
+
+        int DeleteTeacherFromTeacherList(DataGridView dgvNewAcademyYearAllLessons, DataGridView dgvdgvSelectedTeacher);
     }
 }

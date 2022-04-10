@@ -89,6 +89,7 @@
             this.btnDeleteSelectedTeacher.TabIndex = 11;
             this.btnDeleteSelectedTeacher.Text = "حذف معلم از لیست معلمانی که این درس را تدریس میکنند";
             this.btnDeleteSelectedTeacher.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedTeacher.Click += new System.EventHandler(this.btnDeleteSelectedTeacher_Click);
             // 
             // btnAddNewTeachre
             // 
@@ -98,6 +99,7 @@
             this.btnAddNewTeachre.TabIndex = 10;
             this.btnAddNewTeachre.Text = "تخصیص معلم (معلم ها)برای تدریس درس";
             this.btnAddNewTeachre.UseVisualStyleBackColor = true;
+            this.btnAddNewTeachre.Click += new System.EventHandler(this.btnAddNewTeachre_Click);
             // 
             // groupBox5
             // 
