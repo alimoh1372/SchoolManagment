@@ -233,7 +233,18 @@ namespace SchoolManagment.DataLayer
                 return _teachsLessonsOfNewYearInUnGradesRepository;
             }
         }
-
+        private ITeacherTeachLessonAccordingToCalenderRepository _teacherTeachLessonAccordingToCalenderRepository;
+        public  ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository
+        {
+            get
+            {
+                if (_teacherTeachLessonAccordingToCalenderRepository==null)
+                {
+                    _teacherTeachLessonAccordingToCalenderRepository = new TeacherTeachLessonAccordingToCalenderRepository(_db);
+                }
+                return _teacherTeachLessonAccordingToCalenderRepository;
+            }
+        }
         public void Dispose()
         {
             _db.Dispose();

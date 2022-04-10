@@ -40,9 +40,8 @@ namespace SchoolManagment.App
             txtSearch.Text = string.Empty;
             //DatagridView dgvAcademyInAllLesson fill data
             dgvNewAcademyYearAllLessons.DataSource = _lessonVM;
-            dgvNewAcademyYearAllLessons.MultiSelect = false;
             dgvNewAcademyYearAllLessons.CurrentCell = null;
-           
+            dgvNewAcademyYearAllLessons.MultiSelect = false;
 
 
             //DataGridview lesson clear Data

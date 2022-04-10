@@ -27,6 +27,7 @@ namespace SchoolManagment.DataLayer
         IFieldsOfNewYearInUnGradutesRepository FieldsOfNewYearInUnGradutesRepository { get; }
         ILessonsOfFileldsOfNewYearInUngradeRepository LessonsOfFileldsOfNewYearInUngradeRepository { get; }
         ITeacherTeachsLessonsOfNewYearInUnGradesRepository TeacherTeachsLessonsOfNewYearInUnGradesRepository { get; }
+        ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository { get; }
         int Save();
 
        

@@ -108,8 +108,13 @@ namespace SchoolManagment.App
             FormTeacherTeachsLessonsOfNewYearInUnGrades frmTeacherTeachsLessonsOfNewYearInUnGrades = new FormTeacherTeachsLessonsOfNewYearInUnGrades();
             frmTeacherTeachsLessonsOfNewYearInUnGrades.ShowDialog();
         }
+
         #endregion
 
-
+        private void btnTeacherTeachLessonAccordingToCalender_Click(object sender, EventArgs e)
+        {
+            FormTeacherTeachLessonAccordingToCalender formTeacherTeachLessonAccordingToCalender = new FormTeacherTeachLessonAccordingToCalender();
+            formTeacherTeachLessonAccordingToCalender.ShowDialog();
+        }
     }
 }

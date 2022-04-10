@@ -242,6 +242,7 @@
             this.btnTeacherTeachLessonAccordingToCalender.Name = "btnTeacherTeachLessonAccordingToCalender";
             this.btnTeacherTeachLessonAccordingToCalender.Size = new System.Drawing.Size(309, 22);
             this.btnTeacherTeachLessonAccordingToCalender.Text = "تقویم برای درس ارائه شده(بعد از انتخاب معلم)";
+            this.btnTeacherTeachLessonAccordingToCalender.Click += new System.EventHandler(this.btnTeacherTeachLessonAccordingToCalender_Click);
             // 
             // انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem
             // 

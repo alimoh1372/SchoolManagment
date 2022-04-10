@@ -55,10 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormTeacherTeachsLessonsOfNewYearInUnGrades.cs">
+    <Compile Include="FormTeacherTeachLessonAccordingToCalender.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTeacherTeachsLessonsOfNewYearInUnGrades.Designer.cs">
+    <Compile Include="FormTeacherTeachLessonAccordingToCalender.Designer.cs">
+      <DependentUpon>FormTeacherTeachLessonAccordingToCalender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagmentNewAcademyYear\FormTeacherTeachsLessonsOfNewYearInUnGrades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagmentNewAcademyYear\FormTeacherTeachsLessonsOfNewYearInUnGrades.Designer.cs">
       <DependentUpon>FormTeacherTeachsLessonsOfNewYearInUnGrades.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagmentNewAcademyYear\FormLessonsOfFileldsOfNewYearInUngrade.cs">
@@ -177,7 +183,10 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormTeacherTeachsLessonsOfNewYearInUnGrades.resx">
+    <EmbeddedResource Include="FormTeacherTeachLessonAccordingToCalender.resx">
+      <DependentUpon>FormTeacherTeachLessonAccordingToCalender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagmentNewAcademyYear\FormTeacherTeachsLessonsOfNewYearInUnGrades.resx">
       <DependentUpon>FormTeacherTeachsLessonsOfNewYearInUnGrades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagmentNewAcademyYear\FormLessonsOfFileldsOfNewYearInUngrade.resx">

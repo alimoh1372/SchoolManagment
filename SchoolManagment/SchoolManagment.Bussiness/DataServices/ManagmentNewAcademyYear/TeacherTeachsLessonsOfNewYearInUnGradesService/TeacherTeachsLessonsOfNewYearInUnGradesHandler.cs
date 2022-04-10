@@ -16,7 +16,7 @@ namespace SchoolManagment.Bussiness
         IEnumerable<TeacherTeachsLessonsOfNewYearInUnGradesViewModel> teacherTeachsLessonsOfNewYearInUnGrades;
         public IEnumerable<ITeacherTeachsLessonsOfNewYearInUnGradesViewModel> FillTeacherTeachsLessonsOfNewYearInUnGradesViewModels(Expression<Func<LessonsOfFileldsOfNewYearInUngrade, bool>> where = null)
         {
-            IEnumerable<LessonsOfFileldsOfNewYearInUngrade> lessonsOfFileldsOfNewYearInUngrades;
+            
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
                 var query = db.LessonsOfFileldsOfNewYearInUngradeRepository.Get().AsQueryable();
