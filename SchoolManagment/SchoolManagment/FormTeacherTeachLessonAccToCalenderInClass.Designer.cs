@@ -32,21 +32,21 @@
             this.btnDeleteSelectedClass = new System.Windows.Forms.Button();
             this.btnAddNewClass = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvSelectedClass = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
             this.dgvClass = new System.Windows.Forms.DataGridView();
             this.PkClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
             this.PKTeacherTeachLessonAccordingToCalender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkCalenderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkCalenderIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,12 +66,12 @@
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedClass)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -97,6 +97,7 @@
             this.btnDeleteSelectedClass.TabIndex = 11;
             this.btnDeleteSelectedClass.Text = "حذف کلاس انتخاب شده برای کلاس انتخابی";
             this.btnDeleteSelectedClass.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedClass.Click += new System.EventHandler(this.btnDeleteSelectedClass_Click);
             // 
             // btnAddNewClass
             // 
@@ -106,16 +107,66 @@
             this.btnAddNewClass.TabIndex = 10;
             this.btnAddNewClass.Text = "تخصیص کلاس انتخاب شده برای درس انتخاب شده";
             this.btnAddNewClass.UseVisualStyleBackColor = true;
+            this.btnAddNewClass.Click += new System.EventHandler(this.btnAddNewClass_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Controls.Add(this.dgvSelectedClass);
             this.groupBox5.Location = new System.Drawing.Point(3, 475);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(794, 151);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "کلاس های انتخاب شده برای درس انتخاب شده از لیست درس  ها";
+            // 
+            // dgvSelectedClass
+            // 
+            this.dgvSelectedClass.AllowUserToAddRows = false;
+            this.dgvSelectedClass.AllowUserToDeleteRows = false;
+            this.dgvSelectedClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSelectedClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectedClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dgvSelectedClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelectedClass.Location = new System.Drawing.Point(3, 17);
+            this.dgvSelectedClass.MultiSelect = false;
+            this.dgvSelectedClass.Name = "dgvSelectedClass";
+            this.dgvSelectedClass.ReadOnly = true;
+            this.dgvSelectedClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSelectedClass.Size = new System.Drawing.Size(788, 131);
+            this.dgvSelectedClass.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PkClassId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "کد کلاس";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ClassName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "نام کلاس";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClassLocation";
+            this.dataGridViewTextBoxColumn3.HeaderText = "مکان کلاس";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ClassCapacity";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ظرفیت کلاس";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -126,6 +177,55 @@
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "انتخاب کلاس برای درس";
+            // 
+            // dgvClass
+            // 
+            this.dgvClass.AllowUserToAddRows = false;
+            this.dgvClass.AllowUserToDeleteRows = false;
+            this.dgvClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PkClassId,
+            this.ClassName,
+            this.ClassLocation,
+            this.ClassCapacity});
+            this.dgvClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClass.Location = new System.Drawing.Point(3, 17);
+            this.dgvClass.MultiSelect = false;
+            this.dgvClass.Name = "dgvClass";
+            this.dgvClass.ReadOnly = true;
+            this.dgvClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClass.Size = new System.Drawing.Size(788, 135);
+            this.dgvClass.TabIndex = 1;
+            // 
+            // PkClassId
+            // 
+            this.PkClassId.DataPropertyName = "PkClassId";
+            this.PkClassId.HeaderText = "کد کلاس";
+            this.PkClassId.Name = "PkClassId";
+            this.PkClassId.ReadOnly = true;
+            this.PkClassId.Visible = false;
+            // 
+            // ClassName
+            // 
+            this.ClassName.DataPropertyName = "ClassName";
+            this.ClassName.HeaderText = "نام کلاس";
+            this.ClassName.Name = "ClassName";
+            this.ClassName.ReadOnly = true;
+            // 
+            // ClassLocation
+            // 
+            this.ClassLocation.DataPropertyName = "ClassLocation";
+            this.ClassLocation.HeaderText = "مکان کلاس";
+            this.ClassLocation.Name = "ClassLocation";
+            this.ClassLocation.ReadOnly = true;
+            // 
+            // ClassCapacity
+            // 
+            this.ClassCapacity.DataPropertyName = "ClassCapacity";
+            this.ClassCapacity.HeaderText = "ظرفیت کلاس";
+            this.ClassCapacity.Name = "ClassCapacity";
+            this.ClassCapacity.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -156,6 +256,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(524, 21);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dgvNewAcademyYearAllLessons
             // 
@@ -189,100 +290,7 @@
             this.dgvNewAcademyYearAllLessons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
             this.dgvNewAcademyYearAllLessons.TabIndex = 0;
-            // 
-            // dgvClass
-            // 
-            this.dgvClass.AllowUserToAddRows = false;
-            this.dgvClass.AllowUserToDeleteRows = false;
-            this.dgvClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PkClassId,
-            this.ClassName,
-            this.ClassLocation,
-            this.ClassCapacity});
-            this.dgvClass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClass.Location = new System.Drawing.Point(3, 17);
-            this.dgvClass.Name = "dgvClass";
-            this.dgvClass.ReadOnly = true;
-            this.dgvClass.Size = new System.Drawing.Size(788, 135);
-            this.dgvClass.TabIndex = 1;
-            // 
-            // PkClassId
-            // 
-            this.PkClassId.DataPropertyName = "PkClassId";
-            this.PkClassId.HeaderText = "کد کلاس";
-            this.PkClassId.Name = "PkClassId";
-            this.PkClassId.ReadOnly = true;
-            this.PkClassId.Visible = false;
-            // 
-            // ClassName
-            // 
-            this.ClassName.DataPropertyName = "ClassName";
-            this.ClassName.HeaderText = "نام کلاس";
-            this.ClassName.Name = "ClassName";
-            this.ClassName.ReadOnly = true;
-            // 
-            // ClassLocation
-            // 
-            this.ClassLocation.DataPropertyName = "ClassLocation";
-            this.ClassLocation.HeaderText = "مکان کلاس";
-            this.ClassLocation.Name = "ClassLocation";
-            this.ClassLocation.ReadOnly = true;
-            // 
-            // ClassCapacity
-            // 
-            this.ClassCapacity.DataPropertyName = "ClassCapacity";
-            this.ClassCapacity.HeaderText = "ظرفیت کلاس";
-            this.ClassCapacity.Name = "ClassCapacity";
-            this.ClassCapacity.ReadOnly = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(788, 131);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PkClassId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "کد کلاس";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ClassName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "نام کلاس";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClassLocation";
-            this.dataGridViewTextBoxColumn3.HeaderText = "مکان کلاس";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ClassCapacity";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ظرفیت کلاس";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dgvNewAcademyYearAllLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewAcademyYearAllLessons_CellClick);
             // 
             // PKTeacherTeachLessonAccordingToCalender
             // 
@@ -429,13 +437,13 @@
             this.Load += new System.EventHandler(this.FormTeacherTeachLessonAccToCalenderInClass_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedClass)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -451,7 +459,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvNewAcademyYearAllLessons;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvSelectedClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
