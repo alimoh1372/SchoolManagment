@@ -32,10 +32,14 @@
             this.btnDeleteSelectedTeacher = new System.Windows.Forms.Button();
             this.btnAddNewCalender = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
+            this.dgvSelectedCalenders = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CalenderName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CalenderDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkDayAlterNate1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkDayAlterNateString1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkTimeAlterNateId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkTimeAlterNateIdString1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvCalenders = new System.Windows.Forms.DataGridView();
             this.CalenderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,14 +49,10 @@
             this.FkDayAlterNateString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkTimeAlterNateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkTimeAlterNateIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSelectedCalenders = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CalenderName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CalenderDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkDayAlterNate1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkDayAlterNateString1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkTimeAlterNateId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkTimeAlterNateIdString1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
             this.TeacherTeachLessonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkTeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkTeacherIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,12 +69,12 @@
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedCalenders)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalenders)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCalenders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedCalenders)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -100,6 +100,7 @@
             this.btnDeleteSelectedTeacher.TabIndex = 11;
             this.btnDeleteSelectedTeacher.Text = "حذف تقویم های آموزشی انتخاب شده برای درس";
             this.btnDeleteSelectedTeacher.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedTeacher.Click += new System.EventHandler(this.btnDeleteSelectedTeacher_Click);
             // 
             // btnAddNewCalender
             // 
@@ -109,6 +110,7 @@
             this.btnAddNewCalender.TabIndex = 10;
             this.btnAddNewCalender.Text = "تخصیص تقویم جهت ارائه درس توسط معلم";
             this.btnAddNewCalender.UseVisualStyleBackColor = true;
+            this.btnAddNewCalender.Click += new System.EventHandler(this.btnAddNewCalender_Click);
             // 
             // groupBox5
             // 
@@ -118,150 +120,8 @@
             this.groupBox5.Size = new System.Drawing.Size(794, 151);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "معلم های انتخاب شده برای درس مورد نظر(درس باید از لیست دروس  جدول انتخاب درس انتخ" +
-    "اب شود)";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.dgvNewAcademyYearAllLessons);
-            this.groupBox2.Location = new System.Drawing.Point(0, 20);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 232);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "انتخاب درس مورد نظر جهت تخصیص تقویم آموزشی به آن(تعیین روزهای آموزش )";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(3, 17);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(794, 70);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "جست و جو و فیلتر کردن در لیست نمایش داده شده برای درس ها(جست و جو بر اساس معلم،در" +
-    "س،رشته،سال تحصیلی وزیر مقطع میباشد)";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(140, 33);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(524, 21);
-            this.txtSearch.TabIndex = 0;
-            // 
-            // dgvNewAcademyYearAllLessons
-            // 
-            this.dgvNewAcademyYearAllLessons.AllowUserToAddRows = false;
-            this.dgvNewAcademyYearAllLessons.AllowUserToDeleteRows = false;
-            this.dgvNewAcademyYearAllLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNewAcademyYearAllLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNewAcademyYearAllLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TeacherTeachLessonId,
-            this.FkTeacherId,
-            this.FkTeacherIdString,
-            this.PkLessonOfFieldOfNewYearInUnGradeId,
-            this.FkLessonId,
-            this.FkLessonIdString,
-            this.PkFieldsOfNewYearInUnGradutesId,
-            this.FkFieldId,
-            this.FkFieldIdString,
-            this.PkUnderGraduteInAcademyYearId,
-            this.AcademyYearId,
-            this.AcademyYearName,
-            this.FkUnGraduteId,
-            this.FkUnGraduteIdString});
-            this.dgvNewAcademyYearAllLessons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvNewAcademyYearAllLessons.Location = new System.Drawing.Point(3, 93);
-            this.dgvNewAcademyYearAllLessons.Name = "dgvNewAcademyYearAllLessons";
-            this.dgvNewAcademyYearAllLessons.ReadOnly = true;
-            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
-            this.dgvNewAcademyYearAllLessons.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dgvCalenders);
-            this.groupBox4.Location = new System.Drawing.Point(3, 255);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(794, 155);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "انتخاب تقویم جهت ارائه درس انتخاب شده در آن زمان ها";
-            // 
-            // dgvCalenders
-            // 
-            this.dgvCalenders.AllowUserToAddRows = false;
-            this.dgvCalenders.AllowUserToDeleteRows = false;
-            this.dgvCalenders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCalenders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCalenders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CalenderId,
-            this.CalenderName,
-            this.CalenderDescription,
-            this.FkDayAlterNate,
-            this.FkDayAlterNateString,
-            this.FkTimeAlterNateId,
-            this.FkTimeAlterNateIdString});
-            this.dgvCalenders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCalenders.Location = new System.Drawing.Point(3, 17);
-            this.dgvCalenders.MultiSelect = false;
-            this.dgvCalenders.Name = "dgvCalenders";
-            this.dgvCalenders.ReadOnly = true;
-            this.dgvCalenders.Size = new System.Drawing.Size(788, 135);
-            this.dgvCalenders.TabIndex = 4;
-            // 
-            // CalenderId
-            // 
-            this.CalenderId.DataPropertyName = "CalenderId";
-            this.CalenderId.HeaderText = "کد تقویم";
-            this.CalenderId.Name = "CalenderId";
-            this.CalenderId.ReadOnly = true;
-            this.CalenderId.Visible = false;
-            // 
-            // CalenderName
-            // 
-            this.CalenderName.DataPropertyName = "CalenderName";
-            this.CalenderName.HeaderText = "نام تقویم";
-            this.CalenderName.Name = "CalenderName";
-            this.CalenderName.ReadOnly = true;
-            // 
-            // CalenderDescription
-            // 
-            this.CalenderDescription.DataPropertyName = "CalenderDescription";
-            this.CalenderDescription.HeaderText = "توضیحات";
-            this.CalenderDescription.Name = "CalenderDescription";
-            this.CalenderDescription.ReadOnly = true;
-            // 
-            // FkDayAlterNate
-            // 
-            this.FkDayAlterNate.DataPropertyName = "FkDayAlterNate";
-            this.FkDayAlterNate.HeaderText = "کد تناوب روز";
-            this.FkDayAlterNate.Name = "FkDayAlterNate";
-            this.FkDayAlterNate.ReadOnly = true;
-            this.FkDayAlterNate.Visible = false;
-            // 
-            // FkDayAlterNateString
-            // 
-            this.FkDayAlterNateString.DataPropertyName = "FkDayAlterNateString";
-            this.FkDayAlterNateString.HeaderText = "گردش روز";
-            this.FkDayAlterNateString.Name = "FkDayAlterNateString";
-            this.FkDayAlterNateString.ReadOnly = true;
-            // 
-            // FkTimeAlterNateId
-            // 
-            this.FkTimeAlterNateId.DataPropertyName = "FkTimeAlterNateId";
-            this.FkTimeAlterNateId.HeaderText = "کد زمان";
-            this.FkTimeAlterNateId.Name = "FkTimeAlterNateId";
-            this.FkTimeAlterNateId.ReadOnly = true;
-            this.FkTimeAlterNateId.Visible = false;
-            // 
-            // FkTimeAlterNateIdString
-            // 
-            this.FkTimeAlterNateIdString.DataPropertyName = "FkTimeAlterNateIdString";
-            this.FkTimeAlterNateIdString.HeaderText = "زمان";
-            this.FkTimeAlterNateIdString.Name = "FkTimeAlterNateIdString";
-            this.FkTimeAlterNateIdString.ReadOnly = true;
+            this.groupBox5.Text = "تقویم انتخاب شده برای درس تدریس شده توسط معلم(تقویم باید از لیست انتخاب تقویم انت" +
+    "خاب گردد)";
             // 
             // dgvSelectedCalenders
             // 
@@ -337,6 +197,153 @@
             this.FkTimeAlterNateIdString1.HeaderText = "زمان";
             this.FkTimeAlterNateIdString1.Name = "FkTimeAlterNateIdString1";
             this.FkTimeAlterNateIdString1.ReadOnly = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvCalenders);
+            this.groupBox4.Location = new System.Drawing.Point(3, 255);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(794, 155);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "انتخاب تقویم جهت ارائه درس انتخاب شده در آن زمان ها";
+            // 
+            // dgvCalenders
+            // 
+            this.dgvCalenders.AllowUserToAddRows = false;
+            this.dgvCalenders.AllowUserToDeleteRows = false;
+            this.dgvCalenders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCalenders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCalenders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CalenderId,
+            this.CalenderName,
+            this.CalenderDescription,
+            this.FkDayAlterNate,
+            this.FkDayAlterNateString,
+            this.FkTimeAlterNateId,
+            this.FkTimeAlterNateIdString});
+            this.dgvCalenders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCalenders.Location = new System.Drawing.Point(3, 17);
+            this.dgvCalenders.MultiSelect = false;
+            this.dgvCalenders.Name = "dgvCalenders";
+            this.dgvCalenders.ReadOnly = true;
+            this.dgvCalenders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCalenders.Size = new System.Drawing.Size(788, 135);
+            this.dgvCalenders.TabIndex = 4;
+            // 
+            // CalenderId
+            // 
+            this.CalenderId.DataPropertyName = "CalenderId";
+            this.CalenderId.HeaderText = "کد تقویم";
+            this.CalenderId.Name = "CalenderId";
+            this.CalenderId.ReadOnly = true;
+            this.CalenderId.Visible = false;
+            // 
+            // CalenderName
+            // 
+            this.CalenderName.DataPropertyName = "CalenderName";
+            this.CalenderName.HeaderText = "نام تقویم";
+            this.CalenderName.Name = "CalenderName";
+            this.CalenderName.ReadOnly = true;
+            // 
+            // CalenderDescription
+            // 
+            this.CalenderDescription.DataPropertyName = "CalenderDescription";
+            this.CalenderDescription.HeaderText = "توضیحات";
+            this.CalenderDescription.Name = "CalenderDescription";
+            this.CalenderDescription.ReadOnly = true;
+            // 
+            // FkDayAlterNate
+            // 
+            this.FkDayAlterNate.DataPropertyName = "FkDayAlterNate";
+            this.FkDayAlterNate.HeaderText = "کد تناوب روز";
+            this.FkDayAlterNate.Name = "FkDayAlterNate";
+            this.FkDayAlterNate.ReadOnly = true;
+            this.FkDayAlterNate.Visible = false;
+            // 
+            // FkDayAlterNateString
+            // 
+            this.FkDayAlterNateString.DataPropertyName = "FkDayAlterNateString";
+            this.FkDayAlterNateString.HeaderText = "گردش روز";
+            this.FkDayAlterNateString.Name = "FkDayAlterNateString";
+            this.FkDayAlterNateString.ReadOnly = true;
+            // 
+            // FkTimeAlterNateId
+            // 
+            this.FkTimeAlterNateId.DataPropertyName = "FkTimeAlterNateId";
+            this.FkTimeAlterNateId.HeaderText = "کد زمان";
+            this.FkTimeAlterNateId.Name = "FkTimeAlterNateId";
+            this.FkTimeAlterNateId.ReadOnly = true;
+            this.FkTimeAlterNateId.Visible = false;
+            // 
+            // FkTimeAlterNateIdString
+            // 
+            this.FkTimeAlterNateIdString.DataPropertyName = "FkTimeAlterNateIdString";
+            this.FkTimeAlterNateIdString.HeaderText = "زمان";
+            this.FkTimeAlterNateIdString.Name = "FkTimeAlterNateIdString";
+            this.FkTimeAlterNateIdString.ReadOnly = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.dgvNewAcademyYearAllLessons);
+            this.groupBox2.Location = new System.Drawing.Point(0, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(800, 232);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "انتخاب درس مورد نظر جهت تخصیص تقویم آموزشی به آن(تعیین روزهای آموزش )";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 17);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(794, 70);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "جست و جو و فیلتر کردن در لیست نمایش داده شده برای درس ها(جست و جو بر اساس معلم،در" +
+    "س،رشته،سال تحصیلی وزیر مقطع میباشد)";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(140, 33);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(524, 21);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // dgvNewAcademyYearAllLessons
+            // 
+            this.dgvNewAcademyYearAllLessons.AllowUserToAddRows = false;
+            this.dgvNewAcademyYearAllLessons.AllowUserToDeleteRows = false;
+            this.dgvNewAcademyYearAllLessons.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNewAcademyYearAllLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNewAcademyYearAllLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TeacherTeachLessonId,
+            this.FkTeacherId,
+            this.FkTeacherIdString,
+            this.PkLessonOfFieldOfNewYearInUnGradeId,
+            this.FkLessonId,
+            this.FkLessonIdString,
+            this.PkFieldsOfNewYearInUnGradutesId,
+            this.FkFieldId,
+            this.FkFieldIdString,
+            this.PkUnderGraduteInAcademyYearId,
+            this.AcademyYearId,
+            this.AcademyYearName,
+            this.FkUnGraduteId,
+            this.FkUnGraduteIdString});
+            this.dgvNewAcademyYearAllLessons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvNewAcademyYearAllLessons.Location = new System.Drawing.Point(3, 93);
+            this.dgvNewAcademyYearAllLessons.MultiSelect = false;
+            this.dgvNewAcademyYearAllLessons.Name = "dgvNewAcademyYearAllLessons";
+            this.dgvNewAcademyYearAllLessons.ReadOnly = true;
+            this.dgvNewAcademyYearAllLessons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(794, 136);
+            this.dgvNewAcademyYearAllLessons.TabIndex = 0;
+            this.dgvNewAcademyYearAllLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewAcademyYearAllLessons_CellClick);
             // 
             // TeacherTeachLessonId
             // 
@@ -460,13 +467,13 @@
             this.Load += new System.EventHandler(this.FormTeacherTeachLessonAccordingToCalender_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedCalenders)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalenders)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCalenders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedCalenders)).EndInit();
             this.ResumeLayout(false);
 
         }

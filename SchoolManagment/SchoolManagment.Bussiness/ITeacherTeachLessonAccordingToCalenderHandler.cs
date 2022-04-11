@@ -6,13 +6,22 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolManagment.DataLayer.DatabaseModel;
+using System.Windows.Forms;
 
 namespace SchoolManagment.Bussiness
 {
-   public interface ITeacherTeachLessonAccordingToCalenderHandler:IDisposable
+    public interface ITeacherTeachLessonAccordingToCalenderHandler : IDisposable
     {
-       
-            IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel(Expression<Func<TeacherTeachLessonAccordingToCalender,bool>> where=null);
-        
+
+        IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel(Expression<Func<TeacherTeachLessonAccordingToCalender, bool>> where = null);
+
+        IEnumerable<ICalenderViewModel> FillSelectedCalenderViewModel(DataGridView dgvNewAcademyYearAllLessons, IEnumerable<ICalenderViewModel> calenderViewModels);
+
+        IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FilterSearch(IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> teacherTeachLessonAccordingToCalenderViewModel,
+            TextBox txtSearch);
+
+        int InsertTeacherLessonCalender(DataGridView dgvNewAcademyYearAllLessons, DataGridView dgvCalenders);
+
+        int DeleteFromTeacherLessonCalender(DataGridView dgvNewAcademyYearAllLessons,DataGridView dgvSelectedCalenders);
     }
 }
