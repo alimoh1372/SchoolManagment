@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITeacherTeachLessonAccToCalenderInClassViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\ITeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\ITeacherTeachLessonAccordingToCalenderViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesViewModel\ITeacherTeachsLessonsOfNewYearInUnGradesViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesViewModel\FieldsOfNewYearInUnGradutesViewModel.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesViewModel\TeacherTeachsLessonsOfNewYearInUnGradesViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\TeacherTeachLessonAccordingToCalenderViewModel.cs" />
-    <Compile Include="TeacherTeachLessonAccToCalenderInClassViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\TeacherTeachLessonAccToCalenderInClassViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
