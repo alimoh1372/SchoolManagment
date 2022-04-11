@@ -249,6 +249,7 @@
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Name = "انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem";
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Click += new System.EventHandler(this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem_Click);
             // 
             // Form1
             // 

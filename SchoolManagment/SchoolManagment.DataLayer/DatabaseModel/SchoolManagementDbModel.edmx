@@ -175,7 +175,7 @@
           </Key>
           <Property Name="PKTeacherTeachLessonAccordingToCalender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FKTeacherTeachLessonId" Type="int" Nullable="false" />
-          <Property Name="FkCalenderId" Type="int" />
+          <Property Name="FkCalenderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -502,7 +502,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_Calender">
-          <End Role="Calender" Type="Self.Calender" Multiplicity="0..1" />
+          <End Role="Calender" Type="Self.Calender" Multiplicity="1" />
           <End Role="TeacherTeachLessonAccordingToCalender" Type="Self.TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">
@@ -1138,7 +1138,7 @@
           </Key>
           <Property Name="PKTeacherTeachLessonAccordingToCalender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FKTeacherTeachLessonId" Type="Int32" Nullable="false" />
-          <Property Name="FkCalenderId" Type="Int32" />
+          <Property Name="FkCalenderId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Calender" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_Calender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="Calender" />
           <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
           <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccordingToCalender" FromRole="TeacherTeachLessonAccordingToCalender" ToRole="TeacherTeachLessonAccToCalenderInClass" />
@@ -1246,7 +1246,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TeacherTeachLessonAccordingToCalender_Calender">
-          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="0..1" />
+          <End Type="SchoolManagmentModel.Calender" Role="Calender" Multiplicity="1" />
           <End Type="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Role="TeacherTeachLessonAccordingToCalender" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calender">

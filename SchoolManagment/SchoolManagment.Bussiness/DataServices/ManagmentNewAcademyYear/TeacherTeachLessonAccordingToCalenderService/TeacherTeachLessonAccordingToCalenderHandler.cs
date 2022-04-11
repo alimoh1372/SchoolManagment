@@ -17,51 +17,50 @@ namespace SchoolManagment.Bussiness
 
         private IEnumerable<ITeacherTeachsLessonsOfNewYearInUnGradesViewModel> _teacherTeachsLessonsOfNewYearInUnGradesViewModels;
         //Get ViewModel For Fill MainDataGridView
-        public IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel(Expression<Func<TeacherTeachLessonAccordingToCalender, bool>> where = null)
+        public IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel()
         {
 
 
-            if (where == null)
+
+            using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
-                using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
+                _teacherTeachLessonAccordingToCalenderViewModel = db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Get().Select(tLC => new TeacherTeachLessonAccordingToCalenderViewModel()
                 {
-                    _teacherTeachLessonAccordingToCalenderViewModel = db.TeacherTeachsLessonsOfNewYearInUnGradesRepository.Get().Select(tLC => new TeacherTeachLessonAccordingToCalenderViewModel()
-                    {
-                        TeacherTeachLessonId = tLC.TeacherTeachLessonId,
-                        FkTeacherId = tLC.FkTeacherId,
-                        FkTeacherIdString = tLC.Teacher.TeacherName,
-                        PkLessonOfFieldOfNewYearInUnGradeId = tLC.FkLessonOfFieldsOfNewYearInUnGrade
-                    }).ToList();
+                    TeacherTeachLessonId = tLC.TeacherTeachLessonId,
+                    FkTeacherId = tLC.FkTeacherId,
+                    FkTeacherIdString = tLC.Teacher.TeacherName,
+                    PkLessonOfFieldOfNewYearInUnGradeId = tLC.FkLessonOfFieldsOfNewYearInUnGrade
+                }).ToList();
 
-                    using (TeacherTeachsLessonsOfNewYearInUnGradesHandler teacherLessonHandler = new TeacherTeachsLessonsOfNewYearInUnGradesHandler())
-                    {
-                        _teacherTeachsLessonsOfNewYearInUnGradesViewModels = teacherLessonHandler.FillTeacherTeachsLessonsOfNewYearInUnGradesViewModels().ToList();
+                using (TeacherTeachsLessonsOfNewYearInUnGradesHandler teacherLessonHandler = new TeacherTeachsLessonsOfNewYearInUnGradesHandler())
+                {
+                    _teacherTeachsLessonsOfNewYearInUnGradesViewModels = teacherLessonHandler.FillTeacherTeachsLessonsOfNewYearInUnGradesViewModels().ToList();
 
 
 
-                        _teacherTeachLessonAccordingToCalenderViewModel = (from t in _teacherTeachLessonAccordingToCalenderViewModel
-                                                                           join d in _teacherTeachsLessonsOfNewYearInUnGradesViewModels
-                                                                           on t.PkLessonOfFieldOfNewYearInUnGradeId equals d.PkLessonOfFieldOfNewYearInUnGradeId
-                                                                           select new TeacherTeachLessonAccordingToCalenderViewModel()
-                                                                           {
-                                                                               TeacherTeachLessonId = t.TeacherTeachLessonId,
-                                                                               FkTeacherId = t.FkTeacherId,
-                                                                               FkTeacherIdString = t.FkTeacherIdString,
-                                                                               PkLessonOfFieldOfNewYearInUnGradeId = t.PkLessonOfFieldOfNewYearInUnGradeId,
-                                                                               FkLessonId = d.FkLessonId,
-                                                                               FkLessonIdString = d.FkLessonIdString,
-                                                                               PkFieldsOfNewYearInUnGradutesId = d.PkFieldsOfNewYearInUnGradutesId,
-                                                                               FkFieldId = d.FkFieldId,
-                                                                               FkFieldIdString = d.FkFieldIdString,
-                                                                               PkUnderGraduteInAcademyYearId = d.PkUnderGraduteInAcademyYearId,
-                                                                               AcademyYearId = d.AcademyYearId,
-                                                                               AcademyYearString = d.AcademyYearString,
-                                                                               FkUnGraduteId = d.FkUnGraduteId,
-                                                                               FkUnGraduteIdString = d.FkUnGraduteIdString
-                                                                           }).ToList();
-                    }
+                    _teacherTeachLessonAccordingToCalenderViewModel = (from t in _teacherTeachLessonAccordingToCalenderViewModel
+                                                                       join d in _teacherTeachsLessonsOfNewYearInUnGradesViewModels
+                                                                       on t.PkLessonOfFieldOfNewYearInUnGradeId equals d.PkLessonOfFieldOfNewYearInUnGradeId
+                                                                       select new TeacherTeachLessonAccordingToCalenderViewModel()
+                                                                       {
+                                                                           TeacherTeachLessonId = t.TeacherTeachLessonId,
+                                                                           FkTeacherId = t.FkTeacherId,
+                                                                           FkTeacherIdString = t.FkTeacherIdString,
+                                                                           PkLessonOfFieldOfNewYearInUnGradeId = t.PkLessonOfFieldOfNewYearInUnGradeId,
+                                                                           FkLessonId = d.FkLessonId,
+                                                                           FkLessonIdString = d.FkLessonIdString,
+                                                                           PkFieldsOfNewYearInUnGradutesId = d.PkFieldsOfNewYearInUnGradutesId,
+                                                                           FkFieldId = d.FkFieldId,
+                                                                           FkFieldIdString = d.FkFieldIdString,
+                                                                           PkUnderGraduteInAcademyYearId = d.PkUnderGraduteInAcademyYearId,
+                                                                           AcademyYearId = d.AcademyYearId,
+                                                                           AcademyYearString = d.AcademyYearString,
+                                                                           FkUnGraduteId = d.FkUnGraduteId,
+                                                                           FkUnGraduteIdString = d.FkUnGraduteIdString
+                                                                       }).ToList();
                 }
             }
+
             return _teacherTeachLessonAccordingToCalenderViewModel;
 
         }

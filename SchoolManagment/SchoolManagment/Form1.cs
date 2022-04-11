@@ -116,5 +116,11 @@ namespace SchoolManagment.App
             FormTeacherTeachLessonAccordingToCalender formTeacherTeachLessonAccordingToCalender = new FormTeacherTeachLessonAccordingToCalender();
             formTeacherTeachLessonAccordingToCalender.ShowDialog();
         }
+
+        private void انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTeacherTeachLessonAccToCalenderInClass formTeacherTeachLessonAccToCalenderInClass = new FormTeacherTeachLessonAccToCalenderInClass() ;
+            formTeacherTeachLessonAccToCalenderInClass.ShowDialog();
+        }
     }
 }

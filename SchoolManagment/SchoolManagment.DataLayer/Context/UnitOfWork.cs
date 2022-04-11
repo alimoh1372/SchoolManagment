@@ -226,7 +226,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_teachsLessonsOfNewYearInUnGradesRepository==null)
+                if (_teachsLessonsOfNewYearInUnGradesRepository == null)
                 {
                     _teachsLessonsOfNewYearInUnGradesRepository = new TeacherTeachsLessonsOfNewYearInUnGradesRepository(_db);
                 }
@@ -234,15 +234,27 @@ namespace SchoolManagment.DataLayer
             }
         }
         private ITeacherTeachLessonAccordingToCalenderRepository _teacherTeachLessonAccordingToCalenderRepository;
-        public  ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository
+        public ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository
         {
             get
             {
-                if (_teacherTeachLessonAccordingToCalenderRepository==null)
+                if (_teacherTeachLessonAccordingToCalenderRepository == null)
                 {
                     _teacherTeachLessonAccordingToCalenderRepository = new TeacherTeachLessonAccordingToCalenderRepository(_db);
                 }
                 return _teacherTeachLessonAccordingToCalenderRepository;
+            }
+        }
+        private ITeacherTeachLessonAccToCalenderInClassRepository _teacherTeachLessonAccToCalenderInClassRepository;
+        public ITeacherTeachLessonAccToCalenderInClassRepository TeacherTeachLessonAccToCalenderInClassRepository
+        {
+            get
+            {
+                if (_teacherTeachLessonAccToCalenderInClassRepository==null)
+                {
+                    _teacherTeachLessonAccToCalenderInClassRepository = new TeacherTeachLessonAccToCalenderInClassRepository(_db);
+                }
+                return _teacherTeachLessonAccToCalenderInClassRepository;
             }
         }
         public void Dispose()

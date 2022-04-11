@@ -22,7 +22,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     
         public int PKTeacherTeachLessonAccordingToCalender { get; set; }
         public int FKTeacherTeachLessonId { get; set; }
-        public Nullable<int> FkCalenderId { get; set; }
+        public int FkCalenderId { get; set; }
     
         public virtual Calender Calender { get; set; }
         public virtual TeacherTeachsLessonsOfNewYearInUnGrade TeacherTeachsLessonsOfNewYearInUnGrade { get; set; }

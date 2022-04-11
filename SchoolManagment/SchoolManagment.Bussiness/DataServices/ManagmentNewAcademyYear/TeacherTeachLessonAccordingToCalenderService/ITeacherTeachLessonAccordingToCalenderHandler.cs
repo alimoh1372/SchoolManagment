@@ -13,7 +13,7 @@ namespace SchoolManagment.Bussiness
     public interface ITeacherTeachLessonAccordingToCalenderHandler : IDisposable
     {
 
-        IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel(Expression<Func<TeacherTeachLessonAccordingToCalender, bool>> where = null);
+        IEnumerable<ITeacherTeachLessonAccordingToCalenderViewModel> FillTeacherLessonCalenderViewModel();
 
         IEnumerable<ICalenderViewModel> FillSelectedCalenderViewModel(DataGridView dgvNewAcademyYearAllLessons, IEnumerable<ICalenderViewModel> calenderViewModels);
 
