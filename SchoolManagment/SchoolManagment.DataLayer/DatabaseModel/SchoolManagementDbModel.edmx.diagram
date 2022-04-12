@@ -4,33 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a3bbd886b8624fd383929d7810df8779" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="SchoolManagmentModel.AcademyYear" Width="1.5" PointX="3" PointY="5.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Calender" Width="1.5" PointX="12" PointY="23.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Class" Width="1.5" PointX="14.25" PointY="20.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.DayAlternate" Width="1.5" PointX="9.75" PointY="22.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Field" Width="1.5" PointX="5.25" PointY="12" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Width="1.5" PointX="7.5" PointY="10.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Grade" Width="1.5" PointX="0.75" PointY="9.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Lesson" Width="1.5" PointX="7.5" PointY="18.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Width="1.5" PointX="9.75" PointY="14.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Permission" Width="1.5" PointX="5.75" PointY="1" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.PersonalRole" Width="1.5" PointX="8" PointY="0.75" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Personal" Width="1.5" PointX="5.75" PointY="24.875" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.RolePermission" Width="1.5" PointX="8" PointY="3.75" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Role" Width="1.5" PointX="5.75" PointY="3.875" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" Width="1.5" PointX="14.25" PointY="13.875" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="18.75" PointY="15.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Student" Width="1.5" PointX="7.5" PointY="13.25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherCanTeachLesson" Width="1.5" PointX="9.75" PointY="18.625" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.Teacher" Width="1.5" PointX="9.75" PointY="11.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Width="1.5" PointX="14.25" PointY="17.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="16.5" PointY="17.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Width="1.5" PointX="12" PointY="14.375" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TimeAlterNate" Width="1.5" PointX="9.75" PointY="25" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.TypeDay" Width="1.5" PointX="7.5" PointY="22.5" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradute" Width="1.5" PointX="3" PointY="8.875" />
-        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Width="1.5" PointX="5.25" PointY="8.25" />
+      <Diagram DiagramId="a3bbd886b8624fd383929d7810df8779" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="SchoolManagmentModel.AcademyYear" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Calender" Width="1.5" PointX="12" PointY="3.25" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Class" Width="1.5" PointX="14.25" PointY="9.625" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.DayAlternate" Width="1.5" PointX="9.75" PointY="4.875" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Field" Width="1.5" PointX="5.25" PointY="10.25" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.FieldsOfNewYearInUnGradute" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Grade" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Lesson" Width="1.5" PointX="7.5" PointY="16.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.LessonsOfFileldsOfNewYearInUngrade" Width="1.5" PointX="9.75" PointY="12.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Permission" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.PersonalRole" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Personal" Width="1.5" PointX="0.75" PointY="12.25" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.RolePermission" Width="1.5" PointX="3" PointY="15.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Role" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" Width="1.5" PointX="21" PointY="10.875" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="18.75" PointY="11.875" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.StudentPresent" Width="1.5" PointX="21" PointY="13.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Student" Width="1.5" PointX="7.5" PointY="11.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherCanTeachLesson" Width="1.5" PointX="9.75" PointY="16.625" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.Teacher" Width="1.5" PointX="9.75" PointY="9.625" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccordingToCalender" Width="1.5" PointX="14.25" PointY="12.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachLessonAccToCalenderInClass" Width="1.5" PointX="16.5" PointY="12.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Width="1.5" PointX="12" PointY="12.5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TimeAlterNate" Width="1.5" PointX="9.75" PointY="2.375" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.TypeDay" Width="1.5" PointX="7.5" PointY="5" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradute" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="SchoolManagmentModel.UnderGradutesInNewAcademyYear" Width="1.5" PointX="5.25" PointY="6.375" />
         <AssociationConnector Association="SchoolManagmentModel.FK_UnderGradutesInNewAcademyYear_AcademyYear" />
         <AssociationConnector Association="SchoolManagmentModel.FK_Calender_DayAlternate" />
         <AssociationConnector Association="SchoolManagmentModel.FK_Calender_TimeAlterNate" />
@@ -52,10 +53,10 @@
         <AssociationConnector Association="SchoolManagmentModel.FK_PersonalRoles_Personals" />
         <AssociationConnector Association="SchoolManagmentModel.FK_PersonalRoles_Roles" />
         <AssociationConnector Association="SchoolManagmentModel.FK_RolePermissions_Roles" />
-        <AssociationConnector Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" />
-        <AssociationConnector Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
         <AssociationConnector Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" />
         <AssociationConnector Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" />
+        <AssociationConnector Association="SchoolManagmentModel.FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
         <AssociationConnector Association="SchoolManagmentModel.FK_Students_UnderGradutes" />
         <AssociationConnector Association="SchoolManagmentModel.FK_TeacherCanTeachLessons_Teachers" />
         <AssociationConnector Association="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers" />

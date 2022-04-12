@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseModel\StudentPresent.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachLessonAccordingToCalenderRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachsLessonsOfNewYearInUnGradesRepository.cs" />

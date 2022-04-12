@@ -14,13 +14,22 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     
     public partial class StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
+        {
+            this.ScoreOfStudentsForLessons = new HashSet<ScoreOfStudentsForLesson>();
+            this.StudentPresents = new HashSet<StudentPresent>();
+        }
+    
         public int PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId { get; set; }
         public int FkStudentId { get; set; }
         public int FkTeacherTeachLessonAccToCalenderInClass { get; set; }
-        public Nullable<System.DateTime> DateOfDay { get; set; }
-        public bool StudentPresent { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ScoreOfStudentsForLesson> ScoreOfStudentsForLessons { get; set; }
         public virtual Student Student { get; set; }
         public virtual TeacherTeachLessonAccToCalenderInClass TeacherTeachLessonAccToCalenderInClass { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentPresent> StudentPresents { get; set; }
     }
 }

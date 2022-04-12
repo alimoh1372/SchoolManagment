@@ -12,11 +12,12 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ScoreOfStudentsForLesson
+    public partial class StudentPresent
     {
-        public int PkScoreOfStudentsForLessons { get; set; }
+        public int PkStudentPresents { get; set; }
         public int FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId { get; set; }
-        public decimal ScoreOfLesson { get; set; }
+        public Nullable<bool> StudentIsPresent { get; set; }
+        public System.DateTime DateOfDay { get; set; }
     
         public virtual StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass { get; set; }
     }

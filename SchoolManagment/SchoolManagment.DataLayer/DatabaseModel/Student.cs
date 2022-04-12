@@ -17,7 +17,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.ScoreOfStudentsForLessons = new HashSet<ScoreOfStudentsForLesson>();
             this.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses = new HashSet<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass>();
         }
     
@@ -28,8 +27,6 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public string StudentName { get; set; }
     
         public virtual Field Field { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScoreOfStudentsForLesson> ScoreOfStudentsForLessons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses { get; set; }
         public virtual UnderGradute UnderGradute { get; set; }

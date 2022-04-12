@@ -122,11 +122,14 @@ namespace SchoolManagment.Bussiness
                 if (RtlMessageBox.Show(attemMessage, "  انتخاب کلاس برای درس ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int _fkTeacherTeachLessonAccordingToCalender = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PKTeacherTeachLessonAccordingToCalender"].Value.ToString());
+                    int _fkCalenderId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkCalenderId"].Value.ToString());
                     int _fkClassId = Convert.ToInt32(dgvClass.CurrentRow.Cells[0].Value.ToString());
+                    
                     bool isExistEntity = true;
                     using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
                     {
-                        isExistEntity = db.TeacherTeachLessonAccToCalenderInClassRepository.Get(t => t.FkTeacherTeachLessonAccToCalId == _fkTeacherTeachLessonAccordingToCalender).Any();
+                        isExistEntity = db.TeacherTeachLessonAccToCalenderInClassRepository.Get(t => t.FkClassId==_fkClassId
+                        && t.TeacherTeachLessonAccordingToCalender.FkCalenderId==_fkCalenderId).Any();
                         if (!isExistEntity)
                         {
                             var entity = new TeacherTeachLessonAccToCalenderInClass()
@@ -145,8 +148,8 @@ namespace SchoolManagment.Bussiness
                         }
                         else
                         {
-                            attemMessage = "برای این درس با این تقویم کلاس انتخاب شده وجود دارد.امکان افزودن کلاس تکراری یا کلاس دیگر به جهت تدریس درس در یک زمان وجود ندارد....";
-                            RtlMessageBox.Show(attemMessage, "عدم امکان افزودن کلاس دیگر یا کلاس تکراری", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            attemMessage = "عدم امکان انتخاب یک کلاس با زمان و مکان تکراری (در این زمان کلاس پر میباشد)...";
+                            RtlMessageBox.Show(attemMessage, "عدم امکان افزودن کلاس زمان تکراری(در این تقویم کلاس پر میباشد)", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

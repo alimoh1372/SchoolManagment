@@ -129,8 +129,7 @@
             <PropertyRef Name="PkScoreOfStudentsForLessons" />
           </Key>
           <Property Name="PkScoreOfStudentsForLessons" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FkStudentId" Type="int" Nullable="false" />
-          <Property Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" Type="int" Nullable="false" />
+          <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="int" Nullable="false" />
           <Property Name="ScoreOfLesson" Type="decimal" Precision="2" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
@@ -140,8 +139,15 @@
           <Property Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkStudentId" Type="int" Nullable="false" />
           <Property Name="FkTeacherTeachLessonAccToCalenderInClass" Type="int" Nullable="false" />
-          <Property Name="DateOfDay" Type="date" />
-          <Property Name="StudentPresent" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentPresents">
+          <Key>
+            <PropertyRef Name="PkStudentPresents" />
+          </Key>
+          <Property Name="PkStudentPresents" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="int" Nullable="false" />
+          <Property Name="StudentIsPresent" Type="bit" />
+          <Property Name="DateOfDay" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -393,27 +399,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ScoreOfStudentsForLessons_Students">
-          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+        <Association Name="FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+          <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Type="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
           <End Role="ScoreOfStudentsForLessons" Type="Self.ScoreOfStudentsForLessons" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
-              <PropertyRef Name="StudentId" />
+            <Principal Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+              <PropertyRef Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Principal>
             <Dependent Role="ScoreOfStudentsForLessons">
-              <PropertyRef Name="FkStudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-          <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" Type="Self.TeacherTeachsLessonsOfNewYearInUnGrades" Multiplicity="1" />
-          <End Role="ScoreOfStudentsForLessons" Type="Self.ScoreOfStudentsForLessons" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrades">
-              <PropertyRef Name="TeacherTeachLessonId" />
-            </Principal>
-            <Dependent Role="ScoreOfStudentsForLessons">
-              <PropertyRef Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
+              <PropertyRef Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -438,6 +432,18 @@
             </Principal>
             <Dependent Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
               <PropertyRef Name="FkTeacherTeachLessonAccToCalenderInClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+          <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Type="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
+          <End Role="StudentPresents" Type="Self.StudentPresents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+              <PropertyRef Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
+            </Principal>
+            <Dependent Role="StudentPresents">
+              <PropertyRef Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -626,6 +632,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScoreOfStudentsForLessons" EntityType="Self.ScoreOfStudentsForLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntityType="Self.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentPresents" EntityType="Self.StudentPresents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherCanTeachLessons" EntityType="Self.TeacherCanTeachLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
@@ -692,12 +699,8 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RolePermissions" EntitySet="RolePermissions" />
           </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_Students" Association="Self.FK_ScoreOfStudentsForLessons_Students">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="ScoreOfStudentsForLessons" EntitySet="ScoreOfStudentsForLessons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" Association="Self.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrades" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          <AssociationSet Name="FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Association="Self.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
             <End Role="ScoreOfStudentsForLessons" EntitySet="ScoreOfStudentsForLessons" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" Association="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students">
@@ -707,6 +710,10 @@
           <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" Association="Self.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass">
             <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClass" />
             <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Association="Self.FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+            <End Role="StudentPresents" EntitySet="StudentPresents" />
           </AssociationSet>
           <AssociationSet Name="FK_Students_Grades" Association="Self.FK_Students_Grades">
             <End Role="Fields" EntitySet="Fields" />
@@ -786,6 +793,7 @@
           <EntitySet Name="Roles" EntityType="SchoolManagmentModel.Role" />
           <EntitySet Name="ScoreOfStudentsForLessons" EntityType="SchoolManagmentModel.ScoreOfStudentsForLesson" />
           <EntitySet Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" EntityType="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
+          <EntitySet Name="StudentPresents" EntityType="SchoolManagmentModel.StudentPresent" />
           <EntitySet Name="Students" EntityType="SchoolManagmentModel.Student" />
           <EntitySet Name="TeacherCanTeachLessons" EntityType="SchoolManagmentModel.TeacherCanTeachLesson" />
           <EntitySet Name="Teachers" EntityType="SchoolManagmentModel.Teacher" />
@@ -880,12 +888,8 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="RolePermission" EntitySet="RolePermissions" />
           </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_Students" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="ScoreOfStudentsForLesson" EntitySet="ScoreOfStudentsForLessons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-            <End Role="TeacherTeachsLessonsOfNewYearInUnGrade" EntitySet="TeacherTeachsLessonsOfNewYearInUnGrades" />
+          <AssociationSet Name="FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Association="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
             <End Role="ScoreOfStudentsForLesson" EntitySet="ScoreOfStudentsForLessons" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students">
@@ -895,6 +899,10 @@
           <AssociationSet Name="FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" Association="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass">
             <End Role="TeacherTeachLessonAccToCalenderInClass" EntitySet="TeacherTeachLessonAccToCalenderInClasses" />
             <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Association="SchoolManagmentModel.FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+            <End Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" EntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" />
+            <End Role="StudentPresent" EntitySet="StudentPresents" />
           </AssociationSet>
           <AssociationSet Name="FK_Students_UnderGradutes" Association="SchoolManagmentModel.FK_Students_UnderGradutes">
             <End Role="UnderGradute" EntitySet="UnderGradutes" />
@@ -1080,11 +1088,9 @@
             <PropertyRef Name="PkScoreOfStudentsForLessons" />
           </Key>
           <Property Name="PkScoreOfStudentsForLessons" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkStudentId" Type="Int32" Nullable="false" />
-          <Property Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" Type="Int32" Nullable="false" />
+          <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="Int32" Nullable="false" />
           <Property Name="ScoreOfLesson" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
-          <NavigationProperty Name="Student" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" FromRole="ScoreOfStudentsForLesson" ToRole="Student" />
-          <NavigationProperty Name="TeacherTeachsLessonsOfNewYearInUnGrade" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="ScoreOfStudentsForLesson" ToRole="TeacherTeachsLessonsOfNewYearInUnGrade" />
+          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" FromRole="ScoreOfStudentsForLesson" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1093,10 +1099,20 @@
           <Property Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkStudentId" Type="Int32" Nullable="false" />
           <Property Name="FkTeacherTeachLessonAccToCalenderInClass" Type="Int32" Nullable="false" />
-          <Property Name="DateOfDay" Type="DateTime" Precision="0" />
-          <Property Name="StudentPresent" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="ScoreOfStudentsForLesson" />
           <NavigationProperty Name="Student" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="Student" />
           <NavigationProperty Name="TeacherTeachLessonAccToCalenderInClass" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_TeacherTeachLessonAccToCalenderInClass" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="TeacherTeachLessonAccToCalenderInClass" />
+          <NavigationProperty Name="StudentPresents" Relationship="SchoolManagmentModel.FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" FromRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" ToRole="StudentPresent" />
+        </EntityType>
+        <EntityType Name="StudentPresent">
+          <Key>
+            <PropertyRef Name="PkStudentPresents" />
+          </Key>
+          <Property Name="PkStudentPresents" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="Int32" Nullable="false" />
+          <Property Name="StudentIsPresent" Type="Boolean" />
+          <Property Name="DateOfDay" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Relationship="SchoolManagmentModel.FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" FromRole="StudentPresent" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -1108,7 +1124,6 @@
           <Property Name="StudentNationCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="StudentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Field" Relationship="SchoolManagmentModel.FK_Students_Grades" FromRole="Student" ToRole="Field" />
-          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_Students" FromRole="Student" ToRole="ScoreOfStudentsForLesson" />
           <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses" Relationship="SchoolManagmentModel.FK_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Students" FromRole="Student" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
           <NavigationProperty Name="UnderGradute" Relationship="SchoolManagmentModel.FK_Students_UnderGradutes" FromRole="Student" ToRole="UnderGradute" />
         </EntityType>
@@ -1162,7 +1177,6 @@
           <Property Name="FkTeacherId" Type="Int32" Nullable="false" />
           <Property Name="FkLessonOfFieldsOfNewYearInUnGrade" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LessonsOfFileldsOfNewYearInUngrade" Relationship="SchoolManagmentModel.FK_TeacherTeachsLessonsOfNewYearInUnGrades_LessonsOfFileldsOfNewYearInUngrade" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="LessonsOfFileldsOfNewYearInUngrade" />
-          <NavigationProperty Name="ScoreOfStudentsForLessons" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="ScoreOfStudentsForLesson" />
           <NavigationProperty Name="Teacher" Relationship="SchoolManagmentModel.FK_TeacherTeachLesson_Teachers" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="Teacher" />
           <NavigationProperty Name="TeacherTeachLessonAccordingToCalenders" Relationship="SchoolManagmentModel.FK_TeacherTeachLessonAccordingToCalender_TeacherTeachLesson" FromRole="TeacherTeachsLessonsOfNewYearInUnGrade" ToRole="TeacherTeachLessonAccordingToCalender" />
         </EntityType>
@@ -1461,27 +1475,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ScoreOfStudentsForLessons_Students">
-          <End Type="SchoolManagmentModel.Student" Role="Student" Multiplicity="1" />
+        <Association Name="FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+          <End Type="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
           <End Type="SchoolManagmentModel.ScoreOfStudentsForLesson" Role="ScoreOfStudentsForLesson" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
+            <Principal Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+              <PropertyRef Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Principal>
             <Dependent Role="ScoreOfStudentsForLesson">
-              <PropertyRef Name="FkStudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ScoreOfStudentsForLessons_TeacherTeachsLessonsOfNewYearInUnGrades">
-          <End Type="SchoolManagmentModel.TeacherTeachsLessonsOfNewYearInUnGrade" Role="TeacherTeachsLessonsOfNewYearInUnGrade" Multiplicity="1" />
-          <End Type="SchoolManagmentModel.ScoreOfStudentsForLesson" Role="ScoreOfStudentsForLesson" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TeacherTeachsLessonsOfNewYearInUnGrade">
-              <PropertyRef Name="TeacherTeachLessonId" />
-            </Principal>
-            <Dependent Role="ScoreOfStudentsForLesson">
-              <PropertyRef Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
+              <PropertyRef Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1506,6 +1508,18 @@
             </Principal>
             <Dependent Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
               <PropertyRef Name="FkTeacherTeachLessonAccToCalenderInClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPresents_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+          <End Type="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Multiplicity="1" />
+          <End Type="SchoolManagmentModel.StudentPresent" Role="StudentPresent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
+              <PropertyRef Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
+            </Principal>
+            <Dependent Role="StudentPresent">
+              <PropertyRef Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1736,8 +1750,7 @@
             <EntityTypeMapping TypeName="SchoolManagmentModel.ScoreOfStudentsForLesson">
               <MappingFragment StoreEntitySet="ScoreOfStudentsForLessons">
                 <ScalarProperty Name="ScoreOfLesson" ColumnName="ScoreOfLesson" />
-                <ScalarProperty Name="FkTeahcerTeachLessonsOfNewYearInUnGrades" ColumnName="FkTeahcerTeachLessonsOfNewYearInUnGrades" />
-                <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
+                <ScalarProperty Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" ColumnName="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
                 <ScalarProperty Name="PkScoreOfStudentsForLessons" ColumnName="PkScoreOfStudentsForLessons" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1745,11 +1758,19 @@
           <EntitySetMapping Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClasses">
             <EntityTypeMapping TypeName="SchoolManagmentModel.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
               <MappingFragment StoreEntitySet="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
-                <ScalarProperty Name="StudentPresent" ColumnName="StudentPresent" />
-                <ScalarProperty Name="DateOfDay" ColumnName="DateOfDay" />
                 <ScalarProperty Name="FkTeacherTeachLessonAccToCalenderInClass" ColumnName="FkTeacherTeachLessonAccToCalenderInClass" />
                 <ScalarProperty Name="FkStudentId" ColumnName="FkStudentId" />
                 <ScalarProperty Name="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" ColumnName="PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentPresents">
+            <EntityTypeMapping TypeName="SchoolManagmentModel.StudentPresent">
+              <MappingFragment StoreEntitySet="StudentPresents">
+                <ScalarProperty Name="DateOfDay" ColumnName="DateOfDay" />
+                <ScalarProperty Name="StudentIsPresent" ColumnName="StudentIsPresent" />
+                <ScalarProperty Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" ColumnName="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" />
+                <ScalarProperty Name="PkStudentPresents" ColumnName="PkStudentPresents" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
