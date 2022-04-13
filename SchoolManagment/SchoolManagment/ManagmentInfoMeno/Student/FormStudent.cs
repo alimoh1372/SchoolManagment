@@ -43,7 +43,7 @@ namespace SchoolManagment.App
                         StudentName = txtStudentName.Text,
                         StudentNationCode = txtStudentNationCode.Text.RemoveSpecialCharFromString('-'),
                         FkStudentFieldId = Convert.ToInt32(txtFkFileldId.SelectedValue.ToString()),
-                        FkLastPassedUgraduteId = Convert.ToInt32(txtFkLastPassedUgraduteId.SelectedValue)
+                        FkLastPassedUgraduteId =( Convert.ToInt32(txtFkLastPassedUgraduteId.SelectedValue)==0)?(int ?) null : Convert.ToInt32(txtFkLastPassedUgraduteId.SelectedValue)
                     };
                     attemMessage = "آیا از افزودن دانش آموزی  با مشخصات زیر مطمئن هستید؟" + "\n" +
                    "نام دانش آموز:" + student.StudentName + "\n" +

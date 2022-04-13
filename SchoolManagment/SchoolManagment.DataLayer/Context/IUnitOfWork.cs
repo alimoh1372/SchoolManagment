@@ -29,6 +29,7 @@ namespace SchoolManagment.DataLayer
         ITeacherTeachsLessonsOfNewYearInUnGradesRepository TeacherTeachsLessonsOfNewYearInUnGradesRepository { get; }
         ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository { get; }
         ITeacherTeachLessonAccToCalenderInClassRepository TeacherTeachLessonAccToCalenderInClassRepository { get; }
+        IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository { get; }
         int Save();
 
        

@@ -57,12 +57,14 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderService\ITeacherTeachLessonAccordingToCalenderHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassService\ITeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassService\TeacherTeachLessonAccToCalenderInClassHandler.cs" />
+    <Compile Include="IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearService\UnderGradutesInNewAcademyYearHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesService\TeacherTeachsLessonsOfNewYearInUnGradesHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderService\TeacherTeachLessonAccordingToCalenderHandler.cs" />
+    <Compile Include="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

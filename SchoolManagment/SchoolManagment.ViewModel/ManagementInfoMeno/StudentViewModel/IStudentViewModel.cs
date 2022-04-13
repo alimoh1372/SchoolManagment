@@ -8,6 +8,7 @@ namespace SchoolManagment.ViewModel
 {
     public interface IStudentViewModel
     {
+        bool checkboxSelectStudent { get; set; }
         int StudentId { get; set; }
         string StudentName { get; set; }
 

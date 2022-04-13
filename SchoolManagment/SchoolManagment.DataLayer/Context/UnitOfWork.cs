@@ -250,11 +250,23 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_teacherTeachLessonAccToCalenderInClassRepository==null)
+                if (_teacherTeachLessonAccToCalenderInClassRepository == null)
                 {
                     _teacherTeachLessonAccToCalenderInClassRepository = new TeacherTeachLessonAccToCalenderInClassRepository(_db);
                 }
                 return _teacherTeachLessonAccToCalenderInClassRepository;
+            }
+        }
+        private IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository _studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository;
+        public IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository
+        {
+            get
+            {
+                if (_studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository==null)
+                {
+                    _studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository(_db);
+                }
+                return _studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository;
             }
         }
         public void Dispose()

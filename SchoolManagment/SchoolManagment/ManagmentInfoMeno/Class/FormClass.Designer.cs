@@ -254,8 +254,8 @@
             this.rangeValidator1.ControlToValidate = this.txtClassCapacity;
             this.rangeValidator1.ErrorMessage = "این مورد الزامی میباشد.لطفا یک مقدار بین 1 تا 100 انتخاب نمائید.";
             this.rangeValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("rangeValidator1.Icon")));
-            this.rangeValidator1.MaximumValue = "100";
-            this.rangeValidator1.MinimumValue = "1";
+            this.rangeValidator1.MaximumValue = "25";
+            this.rangeValidator1.MinimumValue = "20";
             this.rangeValidator1.Type = ValidationComponents.ValidationDataType.Integer;
             // 
             // FormClass

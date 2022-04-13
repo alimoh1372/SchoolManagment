@@ -122,5 +122,11 @@ namespace SchoolManagment.App
             FormTeacherTeachLessonAccToCalenderInClass formTeacherTeachLessonAccToCalenderInClass = new FormTeacherTeachLessonAccToCalenderInClass() ;
             formTeacherTeachLessonAccToCalenderInClass.ShowDialog();
         }
+
+        private void btnAssignStudentToClass_Click(object sender, EventArgs e)
+        {
+            FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass formStudenToClasses = new FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass();
+            formStudenToClasses.ShowDialog();
+        }
     }
 }

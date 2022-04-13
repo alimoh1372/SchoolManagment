@@ -50,6 +50,7 @@
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTeacherTeachLessonAccordingToCalender = new System.Windows.Forms.ToolStripMenuItem();
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAssignStudentToClass = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStManagmentInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -204,7 +205,8 @@
             this.btnLessonsOfFileldsOfNewYearInUngrade,
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades,
             this.btnTeacherTeachLessonAccordingToCalender,
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem});
+            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem,
+            this.btnAssignStudentToClass});
             this.tlsManagmentNewAcademyYear.Name = "tlsManagmentNewAcademyYear";
             this.tlsManagmentNewAcademyYear.Size = new System.Drawing.Size(155, 20);
             this.tlsManagmentNewAcademyYear.Text = "مدیریت سال تحصیلی جدید";
@@ -250,6 +252,13 @@
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Click += new System.EventHandler(this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem_Click);
+            // 
+            // btnAssignStudentToClass
+            // 
+            this.btnAssignStudentToClass.Name = "btnAssignStudentToClass";
+            this.btnAssignStudentToClass.Size = new System.Drawing.Size(309, 22);
+            this.btnAssignStudentToClass.Text = "تخصیص دانش آموزان به کلاس";
+            this.btnAssignStudentToClass.Click += new System.EventHandler(this.btnAssignStudentToClass_Click);
             // 
             // Form1
             // 
@@ -297,6 +306,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachsLessonsOfNewYearInUnGrades;
         private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachLessonAccordingToCalender;
         private System.Windows.Forms.ToolStripMenuItem انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnAssignStudentToClass;
     }
 }
 

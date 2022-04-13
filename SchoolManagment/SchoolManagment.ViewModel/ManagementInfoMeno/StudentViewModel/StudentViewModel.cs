@@ -8,6 +8,7 @@ namespace SchoolManagment.ViewModel
 {
     public class StudentViewModel : IStudentViewModel
     {
+        public bool checkboxSelectStudent { get ; set ; }
         public int StudentId { get ; set ; }
         public string StudentName { get ; set ; }
         public string StudentNationCode { get ; set ; }
@@ -15,5 +16,6 @@ namespace SchoolManagment.ViewModel
         public string FkLastPassedUgraduteIdString { get; set; }
         public int FkStudentFieldId { get ; set ; }
         public string FkStudentFieldIdString { get ; set; }
+        
     }
 }
