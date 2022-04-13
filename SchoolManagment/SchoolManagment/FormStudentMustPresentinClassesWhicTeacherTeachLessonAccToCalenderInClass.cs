@@ -17,13 +17,19 @@ namespace SchoolManagment.App
         IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> _classCalenderViewModel;
         IEnumerable<IStudentViewModel> _studentViewModels;
         IEnumerable<IStudentViewModel> _dgvStudentViewModels;
+        IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStudent;
+
+        private bool _isfirstTimeEnded;
+        private bool _isNeedToReloadDgvStudentViewModel;
 
         public FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
         {
             InitializeComponent();
             dgvNewAcademyYearAllLessons.AutoGenerateColumns = false;
             dgvStudent.AutoGenerateColumns = false;
-            dgvSelectedStudentInClass.AutoGenerateColumns = false;
+            dgvStudent.AutoGenerateColumns = false;
+            _isfirstTimeEnded = false;
+            _isNeedToReloadDgvStudentViewModel = false;
         }
 
         private void FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Load(object sender, EventArgs e)
@@ -33,27 +39,36 @@ namespace SchoolManagment.App
 
         private void ReloadFormAndData()
         {
+            
             txtSearch.Text = string.Empty;
             txtSearchStudents.Text = string.Empty;
-            rdbAllStudent.Checked = true;
+
             using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
                     new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
             {
-                //fill Main DataGridView and clear the selection
-                if (_classCalenderViewModel == null)
+                if (!_isfirstTimeEnded)
                 {
+                    //fill Main DataGridView and clear the selection
                     _classCalenderViewModel = studentClassCalenderHandler.FillStudentsClassInCalenderViewModel();
                     dgvNewAcademyYearAllLessons.DataSource = _classCalenderViewModel;
                     dgvNewAcademyYearAllLessons.CurrentCell = null;
-                }
-                //fill the student ViewModel for show on main datagridview cell click
-                if (_studentViewModels == null)
-                {
+
+
+                    //fill the student ViewModel for show on main datagridview cell click
                     _studentViewModels = studentClassCalenderHandler.GetStudentsViewModel();
 
+                    _isfirstTimeEnded = true;
+                }
+                if (_isNeedToReloadDgvStudentViewModel)
+                {
+                    //fill the student ViewModel for show on main datagridview cell click
+                    _studentViewModels = studentClassCalenderHandler.GetStudentsViewModel();
+                    
+                    _isNeedToReloadDgvStudentViewModel = false;
                 }
 
             }
+            rdbAllStudent.Checked = true;
 
         }
 
@@ -78,19 +93,99 @@ namespace SchoolManagment.App
             {
                 _dgvStudentViewModels = studentClassCalenderHandler.FillStudentDataGridView(dgvNewAcademyYearAllLessons, _classCalenderViewModel, _studentViewModels);
                 dgvStudent.DataSource = _dgvStudentViewModels;
+                dgvStudent.CurrentCell = null;
+                rdbAllStudent.Checked = true;
+                selectedStudentForDgvSelectedStudent = studentClassCalenderHandler.GetSelectedStudent(dgvNewAcademyYearAllLessons,_dgvStudentViewModels);
+                dgvSelectedStudentInClass.DataSource = selectedStudentForDgvSelectedStudent.ToList();
+                dgvSelectedStudentInClass.CurrentCell = null;
+
+
             }
         }
 
         private void txtSearchStudents_TextChanged(object sender, EventArgs e)
         {
+
             IEnumerable<IStudentViewModel> thisStudentViewModel;
-            bool? isSelected; 
-            using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
-                   new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+            bool? isSelected;
+            if (_dgvStudentViewModels != null)
             {
-                isSelected = studentClassCalenderHandler.SelectAssignedStudents(rdbAllStudent, rdbSelectedStudent);
-                thisStudentViewModel = studentClassCalenderHandler.FilterSearch(_dgvStudentViewModels, txtSearch, isSelected);
-                dgvStudent.DataSource = thisStudentViewModel;
+                using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
+                       new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+                {
+                    isSelected = studentClassCalenderHandler.SelectAssignedStudents(rdbAllStudent, rdbSelectedStudent);
+                    thisStudentViewModel = studentClassCalenderHandler.FilterSearch(_dgvStudentViewModels, txtSearchStudents, isSelected);
+                    dgvStudent.DataSource = thisStudentViewModel.ToList();
+                }
+            }
+
+        }
+
+        private void rdbAllStudent_CheckedChanged(object sender, EventArgs e)
+        {
+
+            IEnumerable<IStudentViewModel> thisStudentViewModel;
+            bool? isSelected;
+            if (_dgvStudentViewModels != null)
+            {
+                using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
+                       new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+                {
+                    isSelected = studentClassCalenderHandler.SelectAssignedStudents(rdbAllStudent, rdbSelectedStudent);
+                    thisStudentViewModel = studentClassCalenderHandler.FilterSearch(_dgvStudentViewModels, txtSearchStudents, isSelected);
+                    dgvStudent.DataSource = thisStudentViewModel.ToList();
+                }
+            }
+
+        }
+
+        private void rdbSelectedStudent_CheckedChanged(object sender, EventArgs e)
+        {
+
+            IEnumerable<IStudentViewModel> thisStudentViewModel;
+            bool? isSelected;
+            if (_dgvStudentViewModels != null)
+            {
+                using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
+                       new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+                {
+                    isSelected = studentClassCalenderHandler.SelectAssignedStudents(rdbAllStudent, rdbSelectedStudent);
+                    thisStudentViewModel = studentClassCalenderHandler.FilterSearch(_dgvStudentViewModels, txtSearchStudents, isSelected);
+                    dgvStudent.DataSource = thisStudentViewModel.ToList();
+                }
+            }
+
+        }
+
+        private void rdbUnselectedStudent_CheckedChanged(object sender, EventArgs e)
+        {
+
+            IEnumerable<IStudentViewModel> thisStudentViewModel;
+            bool? isSelected;
+            if (_dgvStudentViewModels != null)
+            {
+                using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
+                       new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+                {
+                    isSelected = studentClassCalenderHandler.SelectAssignedStudents(rdbAllStudent, rdbSelectedStudent);
+                    thisStudentViewModel = studentClassCalenderHandler.FilterSearch(_dgvStudentViewModels, txtSearchStudents, isSelected);
+                    dgvStudent.DataSource = thisStudentViewModel.ToList();
+                }
+            }
+
+        }
+
+        private void btnInsertDeleteSync_Click(object sender, EventArgs e)
+        {
+            bool result;
+            using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
+                       new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
+            {
+               result= studentClassCalenderHandler.InsertDeleteSyncStudentsToClass(dgvNewAcademyYearAllLessons, dgvSelectedStudentInClass, _dgvStudentViewModels, selectedStudentForDgvSelectedStudent);
+                if (result)
+                {
+                    ReloadFormAndData();
+                }
             }
         }
     }
