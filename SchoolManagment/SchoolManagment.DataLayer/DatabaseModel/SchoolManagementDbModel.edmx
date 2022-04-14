@@ -130,7 +130,7 @@
           </Key>
           <Property Name="PkScoreOfStudentsForLessons" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="int" Nullable="false" />
-          <Property Name="ScoreOfLesson" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="ScoreOfLesson" Type="decimal" Precision="2" Scale="2" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1089,7 +1089,7 @@
           </Key>
           <Property Name="PkScoreOfStudentsForLessons" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId" Type="Int32" Nullable="false" />
-          <Property Name="ScoreOfLesson" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+          <Property Name="ScoreOfLesson" Type="Decimal" Precision="2" Scale="2" />
           <NavigationProperty Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" Relationship="SchoolManagmentModel.FK_ScoreOfStudentsForLessons_StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" FromRole="ScoreOfStudentsForLesson" ToRole="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">

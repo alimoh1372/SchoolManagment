@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IScoreOfStudentsForLessonsHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\CalenderService\CalenderHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\ITypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\ITimeAlterNateHandler.cs" />
@@ -57,14 +58,15 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderService\ITeacherTeachLessonAccordingToCalenderHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassService\ITeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassService\TeacherTeachLessonAccToCalenderInClassHandler.cs" />
-    <Compile Include="IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\UnderGradutesInNewAcademyYearService\UnderGradutesInNewAcademyYearHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesService\TeacherTeachsLessonsOfNewYearInUnGradesHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderService\TeacherTeachLessonAccordingToCalenderHandler.cs" />
-    <Compile Include="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
+    <Compile Include="DataServices\ManagmentNewAcademyYear\StudentMust_Class\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
+    <Compile Include="ScoreOfStudentsForLessonsHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

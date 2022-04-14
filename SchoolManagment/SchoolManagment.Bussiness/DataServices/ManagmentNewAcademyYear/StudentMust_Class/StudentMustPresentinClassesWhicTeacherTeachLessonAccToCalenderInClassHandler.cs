@@ -232,18 +232,22 @@ namespace SchoolManagment.Bussiness
             IEnumerable<IStudentViewModel> _dgvAllStudentInFieldViewModels,
             IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStudent)
 
-        { 
-        
+        {
+
             bool boolresult = false;
             UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities());
             string attempMessage;
             int[] results = new int[] { 0, 0 };
-            int result = -1;
+            int result = 0;
             int studentId = 0;
             bool isInMustTable;
             bool isInSelectedStudentDgv;
             bool isInStudentDgvSelected;
             int pkPkTeacherTeachLessonAccToCalInClassId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkTeacherTeachLessonAccToCalInClassId"].Value.ToString());
+            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> studentMustListToInsert = new List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass>();
+            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> studentMustListToDelete = new List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass>();
+            List<ScoreOfStudentsForLesson> scoreOfStudentsToInsert = new List<ScoreOfStudentsForLesson>();
+            List<ScoreOfStudentsForLesson> scoreOfStudentsToDelete = new List<ScoreOfStudentsForLesson>();
             if (dgvAllStudentInThisField != null)
             {
                 foreach (DataGridViewRow row in dgvAllStudentInThisField.Rows)
@@ -253,52 +257,81 @@ namespace SchoolManagment.Bussiness
                     isInMustTable = checkIsStudentAssigned(studentId, pkPkTeacherTeachLessonAccToCalInClassId);
                     isInSelectedStudentDgv = selectedStudentForDgvSelectedStudent.Any(s => s.StudentId == studentId);
                     isInStudentDgvSelected = Convert.ToBoolean(row.Cells["checkboxSelectStudent"].Value.ToString());
+
                     if (isInStudentDgvSelected != isInMustTable)
                     {
 
-                        if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv==true || isInStudentDgvSelected == false && isInMustTable == true && isInSelectedStudentDgv == true)
+                        if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == true || isInStudentDgvSelected == false && isInMustTable == true && isInSelectedStudentDgv == true)
                         {
                             StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass();
                             entity = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Get(s => s.FkStudentId == studentId && s.FkTeacherTeachLessonAccToCalenderInClass == pkPkTeacherTeachLessonAccToCalInClassId).First();
-                            db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
-                            results[1]++;
+                            studentMustListToDelete.Add(entity);
+                            ScoreOfStudentsForLesson scoreOfStudentEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+
+                            scoreOfStudentsToDelete.Add(scoreOfStudentEntity);
+                            //db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
+
+
                         }
-                        else  if(isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == false )
+                        else if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == false)
                         {
-                                StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
-                                {
-                                    FkStudentId = studentId,
-                                    FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
-                                };
-                                db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
-                                results[0]++;
+                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
+                            {
+                                FkStudentId = studentId,
+                                FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
+                            };
+                            studentMustListToInsert.Add(entity);
+                            //db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
+                            
                         }
                         else
                         {
-                            attempMessage = " دانش آموز با مشخصات زیر جزو کلاس"+" \"" + dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkClassIdString"].Value+"\" " +
+                            attempMessage = " دانش آموز با مشخصات زیر جزو کلاس" + " \"" + dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkClassIdString"].Value + "\" " +
                                 " نیست و شما نمیتوانید آن را حذف نمایئد.برای این کار ابتدا کلاس  دانش آموز را انتخاب سپس" +
                                 "اقدام به حذف نمائید." + "\n" +
                                 "نام دانش آموز:  " + row.Cells[2].Value + "\n" +
                             "کد ملی دانش آموز: " + row.Cells[3].Value;
                             RtlMessageBox.Show(attempMessage, "عدم امکان حذف دانش آموز از کلاس دیگر");
                         }
-                        
+
                     }
                 }
                 attempMessage = "آیا از ثبت تغییرات ذیل مطمئن هستید؟" + "\n" +
-                    "تعداد حذف شده ها:" + (results[1]) + "\n" +
-                    "تعداد اضافه شده ها" + (results[0]);
-                if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت تغییرات",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    "تعداد حذف شده ها: " + (studentMustListToDelete.Count) + "\n" +
+                    "تعداد اضافه شده ها: " + (studentMustListToInsert.Count);
+                if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت تغییرات", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int sumResults = results[0] + results[1];
-                    result = db.Save();
-                    if (sumResults != result)
+                    int sumResults = studentMustListToInsert.Count+studentMustListToDelete.Count;
+                    
+                    foreach (var entity in studentMustListToInsert)
+                    {
+                        db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
+                        result +=  db.Save();
+                        ScoreOfStudentsForLesson scoreOfStudentEntity = new ScoreOfStudentsForLesson()
+                        {
+                            FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                        };
+                        db.ScoreOfStudentsForLessonsRepository.Insert(scoreOfStudentEntity);
+                        result += db.Save();
+                    }
+                    foreach (var entity in studentMustListToDelete)
+                    {
+                        ScoreOfStudentsForLesson scoreEntity = new ScoreOfStudentsForLesson();
+                        scoreEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+
+                        db.ScoreOfStudentsForLessonsRepository.Delete(scoreEntity);
+                        result += db.Save();
+                        db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
+                        result += db.Save();
+                        
+                    }
+                    if (sumResults != result/2)
                     {
                         attempMessage = "در اعمال تغییرات برخی از دانش آموزان مشکلی پیش آمده است.لطفا بعدا سعی نمائید." +
-                            "تعداد تغییر داده شده ها:" + result;
+                            "تعداد تغییر داده شده ها:" + result/2;
 
                         RtlMessageBox.Show(attempMessage, "خطا در دیتابیس");
-                        
+
                     }
                     else
                     {
@@ -313,6 +346,7 @@ namespace SchoolManagment.Bussiness
                 attempMessage = "هیج دانش آموزی جهت انجام تغییرات وجود ندارد لطفا دانش آموزان این رشته را ثبت نام فرمائید.";
                 RtlMessageBox.Show(attempMessage, "عدم وجود دانش آموز");
             }
+            
             db.Dispose();
             return boolresult;
         }

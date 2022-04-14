@@ -284,6 +284,7 @@
             this.btnSetScore.Name = "btnSetScore";
             this.btnSetScore.Size = new System.Drawing.Size(180, 22);
             this.btnSetScore.Text = "ثبت نمره";
+            this.btnSetScore.Click += new System.EventHandler(this.btnSetScore_Click);
             // 
             // Form1
             // 

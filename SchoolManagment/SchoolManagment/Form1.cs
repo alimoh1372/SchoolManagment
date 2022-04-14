@@ -128,5 +128,11 @@ namespace SchoolManagment.App
             FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass formStudenToClasses = new FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass();
             formStudenToClasses.ShowDialog();
         }
+
+        private void btnSetScore_Click(object sender, EventArgs e)
+        {
+            FormScoreOfStudentsForLessons formScoreOfStudentsForLessons = new FormScoreOfStudentsForLessons();
+            formScoreOfStudentsForLessons.ShowDialog();
+        }
     }
 }

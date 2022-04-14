@@ -16,7 +16,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     {
         public int PkScoreOfStudentsForLessons { get; set; }
         public int FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId { get; set; }
-        public decimal ScoreOfLesson { get; set; }
+        public Nullable<decimal> ScoreOfLesson { get; set; }
     
         public virtual StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass { get; set; }
     }

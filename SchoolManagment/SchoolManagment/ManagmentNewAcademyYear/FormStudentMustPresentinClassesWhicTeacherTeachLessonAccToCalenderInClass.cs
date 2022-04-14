@@ -27,9 +27,10 @@ namespace SchoolManagment.App
             InitializeComponent();
             dgvNewAcademyYearAllLessons.AutoGenerateColumns = false;
             dgvStudent.AutoGenerateColumns = false;
-            dgvStudent.AutoGenerateColumns = false;
+           
             _isfirstTimeEnded = false;
             _isNeedToReloadDgvStudentViewModel = false;
+            dgvSelectedStudentInClass.AutoGenerateColumns = false;
         }
 
         private void FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass_Load(object sender, EventArgs e)

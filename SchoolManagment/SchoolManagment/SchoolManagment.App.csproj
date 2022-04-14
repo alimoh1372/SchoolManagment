@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormScoreOfStudentsForLessons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormScoreOfStudentsForLessons.Designer.cs">
+      <DependentUpon>FormScoreOfStudentsForLessons.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagmentNewAcademyYear\FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormScoreOfStudentsForLessons.resx">
+      <DependentUpon>FormScoreOfStudentsForLessons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagmentNewAcademyYear\FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.resx">
       <DependentUpon>FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs</DependentUpon>
     </EmbeddedResource>
