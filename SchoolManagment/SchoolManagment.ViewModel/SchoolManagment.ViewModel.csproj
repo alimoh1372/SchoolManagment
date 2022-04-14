@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\ITeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\ITeacherTeachLessonAccordingToCalenderViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesViewModel\ITeacherTeachsLessonsOfNewYearInUnGradesViewModel.cs" />
@@ -65,7 +65,7 @@
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachsLessonsOfNewYearInUnGradesViewModel\TeacherTeachsLessonsOfNewYearInUnGradesViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\TeacherTeachLessonAccordingToCalenderViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\TeacherTeachLessonAccToCalenderInClassViewModel.cs" />
-    <Compile Include="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
+    <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

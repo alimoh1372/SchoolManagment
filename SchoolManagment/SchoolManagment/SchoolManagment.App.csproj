@@ -55,10 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs">
+    <Compile Include="ManagmentNewAcademyYear\FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Designer.cs">
+    <Compile Include="ManagmentNewAcademyYear\FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Designer.cs">
       <DependentUpon>FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagmentNewAcademyYear\FormTeacherTeachLessonAccToCalenderInClass.cs">
@@ -195,7 +195,7 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.resx">
+    <EmbeddedResource Include="ManagmentNewAcademyYear\FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.resx">
       <DependentUpon>FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagmentNewAcademyYear\FormTeacherTeachLessonAccToCalenderInClass.resx">
