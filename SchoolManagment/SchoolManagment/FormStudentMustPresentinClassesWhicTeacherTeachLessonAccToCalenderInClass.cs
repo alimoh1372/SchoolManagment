@@ -56,14 +56,14 @@ namespace SchoolManagment.App
 
                     //fill the student ViewModel for show on main datagridview cell click
                     _studentViewModels = studentClassCalenderHandler.GetStudentsViewModel();
-
+                    dgvStudent.DataSource = null;
                     _isfirstTimeEnded = true;
                 }
                 if (_isNeedToReloadDgvStudentViewModel)
                 {
                     //fill the student ViewModel for show on main datagridview cell click
                     _studentViewModels = studentClassCalenderHandler.GetStudentsViewModel();
-                    
+                    dgvSelectedStudentInClass.DataSource = null;
                     _isNeedToReloadDgvStudentViewModel = false;
                 }
 
@@ -181,10 +181,13 @@ namespace SchoolManagment.App
             using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
                        new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
             {
-               result= studentClassCalenderHandler.InsertDeleteSyncStudentsToClass(dgvNewAcademyYearAllLessons, dgvSelectedStudentInClass, _dgvStudentViewModels, selectedStudentForDgvSelectedStudent);
+               result= studentClassCalenderHandler.InsertDeleteSyncStudentsToClass(dgvNewAcademyYearAllLessons, dgvStudent, _dgvStudentViewModels, selectedStudentForDgvSelectedStudent);
                 if (result)
                 {
+                    _isNeedToReloadDgvStudentViewModel = true;
+                    _isfirstTimeEnded = false;
                     ReloadFormAndData();
+                    
                 }
             }
         }

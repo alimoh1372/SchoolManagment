@@ -228,8 +228,8 @@ namespace SchoolManagment.Bussiness
 
         }
         public bool InsertDeleteSyncStudentsToClass(DataGridView dgvNewAcademyYearAllLessons,
-            DataGridView dgvSelectedStudentInClass,
-            IEnumerable<IStudentViewModel> _dgvStudentViewModels,
+            DataGridView dgvAllStudentInThisField,
+            IEnumerable<IStudentViewModel> _dgvAllStudentInFieldViewModels,
             IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStudent)
 
         { 
@@ -240,61 +240,80 @@ namespace SchoolManagment.Bussiness
             int[] results = new int[] { 0, 0 };
             int result = -1;
             int studentId = 0;
-            bool isIndgvStudentViewModels;
-            bool isSelectedInStudentDgv;
+            bool isInMustTable;
+            bool isInSelectedStudentDgv;
+            bool isInStudentDgvSelected;
             int pkPkTeacherTeachLessonAccToCalInClassId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkTeacherTeachLessonAccToCalInClassId"].Value.ToString());
-            if (dgvSelectedStudentInClass != null)
+            if (dgvAllStudentInThisField != null)
             {
-                foreach (DataGridViewRow row in dgvSelectedStudentInClass.Rows)
+                foreach (DataGridViewRow row in dgvAllStudentInThisField.Rows)
                 {
 
                     studentId = Convert.ToInt32(row.Cells[0].Value.ToString());
-                    isSelectedInStudentDgv = selectedStudentForDgvSelectedStudent.Any(s => s.StudentId == studentId);
-                    isIndgvStudentViewModels = Convert.ToBoolean(row.Cells["checkboxSelectStudent"].Value.ToString());
-                    if (isSelectedInStudentDgv != isIndgvStudentViewModels)
+                    isInMustTable = checkIsStudentAssigned(studentId, pkPkTeacherTeachLessonAccToCalInClassId);
+                    isInSelectedStudentDgv = selectedStudentForDgvSelectedStudent.Any(s => s.StudentId == studentId);
+                    isInStudentDgvSelected = Convert.ToBoolean(row.Cells["checkboxSelectStudent"].Value.ToString());
+                    if (isInStudentDgvSelected != isInMustTable)
                     {
 
-                        if (isSelectedInStudentDgv == true && isIndgvStudentViewModels == false)
+                        if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv==true || isInStudentDgvSelected == false && isInMustTable == true && isInSelectedStudentDgv == true)
                         {
                             StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass();
                             entity = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Get(s => s.FkStudentId == studentId && s.FkTeacherTeachLessonAccToCalenderInClass == pkPkTeacherTeachLessonAccToCalInClassId).First();
                             db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
                             results[1]++;
                         }
+                        else  if(isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == false )
+                        {
+                                StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
+                                {
+                                    FkStudentId = studentId,
+                                    FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
+                                };
+                                db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
+                                results[0]++;
+                        }
                         else
                         {
-                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
-                            {
-                                FkStudentId = studentId,
-                                FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
-                            };
-                            db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
-                            results[0]++;
+                            attempMessage = " دانش آموز با مشخصات زیر جزو کلاس"+" \"" + dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkClassIdString"].Value+"\" " +
+                                " نیست و شما نمیتوانید آن را حذف نمایئد.برای این کار ابتدا کلاس  دانش آموز را انتخاب سپس" +
+                                "اقدام به حذف نمائید." + "\n" +
+                                "نام دانش آموز:  " + row.Cells[2].Value + "\n" +
+                            "کد ملی دانش آموز: " + row.Cells[3].Value;
+                            RtlMessageBox.Show(attempMessage, "عدم امکان حذف دانش آموز از کلاس دیگر");
                         }
+                        
                     }
                 }
                 attempMessage = "آیا از ثبت تغییرات ذیل مطمئن هستید؟" + "\n" +
-                    "تعداد حذف شده ها:" + (results[0]) + "\n" +
+                    "تعداد حذف شده ها:" + (results[1]) + "\n" +
                     "تعداد اضافه شده ها" + (results[0]);
-                if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت تغییرات") == DialogResult.Yes)
+                if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت تغییرات",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    int sumResults = results[0] + results[1];
                     result = db.Save();
-                    if ((results[0] + results[1]) != result)
+                    if (sumResults != result)
                     {
                         attempMessage = "در اعمال تغییرات برخی از دانش آموزان مشکلی پیش آمده است.لطفا بعدا سعی نمائید." +
                             "تعداد تغییر داده شده ها:" + result;
 
                         RtlMessageBox.Show(attempMessage, "خطا در دیتابیس");
+                        
+                    }
+                    else
+                    {
                         boolresult = true;
                     }
 
                 }
 
             }
+            else
             {
                 attempMessage = "هیج دانش آموزی جهت انجام تغییرات وجود ندارد لطفا دانش آموزان این رشته را ثبت نام فرمائید.";
                 RtlMessageBox.Show(attempMessage, "عدم وجود دانش آموز");
             }
+            db.Dispose();
             return boolresult;
         }
         public void Dispose()
