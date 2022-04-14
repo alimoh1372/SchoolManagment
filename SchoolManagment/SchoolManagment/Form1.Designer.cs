@@ -51,6 +51,9 @@
             this.btnTeacherTeachLessonAccordingToCalender = new System.Windows.Forms.ToolStripMenuItem();
             this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAssignStudentToClass = new System.Windows.Forms.ToolStripMenuItem();
+            this.TeacherMeno = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPresentsOrNot = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetScore = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStManagmentInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +80,8 @@
             this.mnStManagmentInfo.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.mnStManagmentInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlstManagMentInfo,
-            this.tlsManagmentNewAcademyYear});
+            this.tlsManagmentNewAcademyYear,
+            this.TeacherMeno});
             this.mnStManagmentInfo.Location = new System.Drawing.Point(0, 0);
             this.mnStManagmentInfo.Name = "mnStManagmentInfo";
             this.mnStManagmentInfo.Size = new System.Drawing.Size(852, 24);
@@ -260,6 +264,27 @@
             this.btnAssignStudentToClass.Text = "تخصیص دانش آموزان به کلاس";
             this.btnAssignStudentToClass.Click += new System.EventHandler(this.btnAssignStudentToClass_Click);
             // 
+            // TeacherMeno
+            // 
+            this.TeacherMeno.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnPresentsOrNot,
+            this.btnSetScore});
+            this.TeacherMeno.Name = "TeacherMeno";
+            this.TeacherMeno.Size = new System.Drawing.Size(43, 20);
+            this.TeacherMeno.Text = "معلم";
+            // 
+            // btnPresentsOrNot
+            // 
+            this.btnPresentsOrNot.Name = "btnPresentsOrNot";
+            this.btnPresentsOrNot.Size = new System.Drawing.Size(180, 22);
+            this.btnPresentsOrNot.Text = "حضور غیاب";
+            // 
+            // btnSetScore
+            // 
+            this.btnSetScore.Name = "btnSetScore";
+            this.btnSetScore.Size = new System.Drawing.Size(180, 22);
+            this.btnSetScore.Text = "ثبت نمره";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,6 +332,9 @@
         private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachLessonAccordingToCalender;
         private System.Windows.Forms.ToolStripMenuItem انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAssignStudentToClass;
+        private System.Windows.Forms.ToolStripMenuItem TeacherMeno;
+        private System.Windows.Forms.ToolStripMenuItem btnPresentsOrNot;
+        private System.Windows.Forms.ToolStripMenuItem btnSetScore;
     }
 }
 

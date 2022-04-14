@@ -262,11 +262,24 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository==null)
+                if (_studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository == null)
                 {
                     _studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository(_db);
                 }
                 return _studentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository;
+            }
+        }
+
+        private IScoreOfStudentsForLessonsRepository _scoreOfStudentsForLessonsRepository;
+        public IScoreOfStudentsForLessonsRepository ScoreOfStudentsForLessonsRepository
+        {
+            get
+            {
+                if (_scoreOfStudentsForLessonsRepository==null)
+                {
+                    _scoreOfStudentsForLessonsRepository = new ScoreOfStudentsForLessonsRepository(_db);
+                }
+                return _scoreOfStudentsForLessonsRepository;
             }
         }
         public void Dispose()

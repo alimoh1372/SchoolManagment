@@ -23,6 +23,8 @@ namespace SchoolManagment.DataLayer
         IDayAlternateRepository DayAlternateRepository { get; }
         ICalenderRepository CalenderRepository { get; }
         #endregion
+
+        #region ManagmentNewAcademyYear
         IUnderGradutesInNewAcademyYearRepository UnderGradutesInNewAcademyYearRepository { get; }
         IFieldsOfNewYearInUnGradutesRepository FieldsOfNewYearInUnGradutesRepository { get; }
         ILessonsOfFileldsOfNewYearInUngradeRepository LessonsOfFileldsOfNewYearInUngradeRepository { get; }
@@ -30,6 +32,12 @@ namespace SchoolManagment.DataLayer
         ITeacherTeachLessonAccordingToCalenderRepository TeacherTeachLessonAccordingToCalenderRepository { get; }
         ITeacherTeachLessonAccToCalenderInClassRepository TeacherTeachLessonAccToCalenderInClassRepository { get; }
         IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository { get; }
+
+
+        #endregion
+        IScoreOfStudentsForLessonsRepository ScoreOfStudentsForLessonsRepository { get; }
+
+
         int Save();
 
        
