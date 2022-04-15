@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace SchoolManagment.DataLayer
 {
-    public interface IStudentPresentsRepository : IBaseRepository<StudentPresent>
+   public class StudentPresentsRepository:BaseRepository<StudentPresent>,IStudentPresentsRepository
     {
+        public StudentPresentsRepository(SchoolManagmentEntities db):base(db)
+        {
+
+        }
     }
 }

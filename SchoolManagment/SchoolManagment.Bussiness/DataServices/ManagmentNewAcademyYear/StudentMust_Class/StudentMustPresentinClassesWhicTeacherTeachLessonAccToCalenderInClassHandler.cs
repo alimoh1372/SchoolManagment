@@ -312,20 +312,28 @@ namespace SchoolManagment.Bussiness
                             FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
                         };
                         db.ScoreOfStudentsForLessonsRepository.Insert(scoreOfStudentEntity);
+                        StudentPresent studentPresent = new StudentPresent()
+                        {
+                            FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                        };
+                        db.StudentPresentsRepository.Insert(studentPresent);
                         result += db.Save();
+
                     }
                     foreach (var entity in studentMustListToDelete)
                     {
                         ScoreOfStudentsForLesson scoreEntity = new ScoreOfStudentsForLesson();
                         scoreEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
-
                         db.ScoreOfStudentsForLessonsRepository.Delete(scoreEntity);
                         result += db.Save();
+                        StudentPresent studentPresent = new StudentPresent();
+                        studentPresent = db.StudentPresentsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                        db.StudentPresentsRepository.Delete(studentPresent);
                         db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
                         result += db.Save();
                         
                     }
-                    if (sumResults != result/2)
+                    if (sumResults != result/3)
                     {
                         attempMessage = "در اعمال تغییرات برخی از دانش آموزان مشکلی پیش آمده است.لطفا بعدا سعی نمائید." +
                             "تعداد تغییر داده شده ها:" + result/2;

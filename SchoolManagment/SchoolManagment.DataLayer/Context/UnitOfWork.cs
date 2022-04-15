@@ -282,6 +282,18 @@ namespace SchoolManagment.DataLayer
                 return _scoreOfStudentsForLessonsRepository;
             }
         }
+        private IStudentPresentsRepository _studentPresentsRepository;
+        public IStudentPresentsRepository StudentPresentsRepository
+        {
+            get
+            {
+                if (_studentPresentsRepository==null)
+                {
+                    _studentPresentsRepository = new StudentPresentsRepository(_db);
+                }
+                return _studentPresentsRepository;
+            }
+        }
         public void Dispose()
         {
             _db.Dispose();

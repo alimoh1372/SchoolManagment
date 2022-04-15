@@ -200,6 +200,7 @@
     <Compile Include="Services\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.cs" />
+    <Compile Include="StudentPresentsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">
