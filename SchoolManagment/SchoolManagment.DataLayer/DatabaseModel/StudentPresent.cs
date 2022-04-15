@@ -14,11 +14,17 @@ namespace SchoolManagment.DataLayer.DatabaseModel
     
     public partial class StudentPresent
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StudentPresent()
+        {
+            this.StudenPresentDetails = new HashSet<StudenPresentDetail>();
+        }
+    
         public int PkStudentPresents { get; set; }
         public int FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId { get; set; }
-        public Nullable<bool> StudentIsPresent { get; set; }
-        public System.DateTime DateOfDay { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudenPresentDetail> StudenPresentDetails { get; set; }
         public virtual StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass { get; set; }
     }
 }

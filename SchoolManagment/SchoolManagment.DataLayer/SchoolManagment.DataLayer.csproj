@@ -53,16 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseModel\StudenPresentDetail.cs">
+      <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModel\StudentPresent.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="IScoreOfStudentsForLessonsRepository.cs" />
+    <Compile Include="IStudentPresentsRepository.cs" />
+    <Compile Include="Repositories\TeacherMeno\IScoreOfStudentsForLessonsRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachLessonAccordingToCalenderRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachsLessonsOfNewYearInUnGradesRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ILessonsOfFileldsOfNewYearInUngradeRepository.cs" />
-    <Compile Include="ScoreOfStudentsForLessonsRepository.cs" />
+    <Compile Include="Services\TeacherMeno\ScoreOfStudentsForLessonsRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\LessonsOfFileldsOfNewYearInUngradeRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\FieldsOfNewYearInUnGradutesRepositroy.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\IFieldsOfNewYearInUnGradutesRepository.cs" />

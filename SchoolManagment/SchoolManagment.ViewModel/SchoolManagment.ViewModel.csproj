@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScoreStudentViewModel.cs" />
-    <Compile Include="ITeacherMenoAllLessonsClassViewModel.cs" />
+    <Compile Include="Teachermeno\IScoreStudentViewModel\IScoreStudentViewModel.cs" />
+    <Compile Include="Teachermeno\ITeacherMenoAllLessonsClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\ITeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\ITeacherTeachLessonAccordingToCalenderViewModel.cs" />
@@ -68,8 +68,8 @@
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderViewModel\TeacherTeachLessonAccordingToCalenderViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassViewModel\TeacherTeachLessonAccToCalenderInClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
-    <Compile Include="ScoreStudentViewModel.cs" />
-    <Compile Include="TeacherMenoAllLessonsClassViewModel.cs" />
+    <Compile Include="Teachermeno\IScoreStudentViewModel\ScoreStudentViewModel.cs" />
+    <Compile Include="Teachermeno\TeacherMenoAllLessonsClassViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
