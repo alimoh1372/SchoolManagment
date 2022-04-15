@@ -8,8 +8,8 @@ namespace SchoolManagment.ViewModel
 {
   public  interface IScoreStudentViewModel:IStudentViewModel
     {
-       
-        decimal ScoreOfLesson { get; set; }
+        int PkScoreOfStudentsForLessons { get; set; }
+        decimal? ScoreOfLesson { get; set; }
         int StudentId { get; set; }
         string StudentName { get; set; }
 
