@@ -117,7 +117,7 @@ namespace SchoolManagment.App
             formTeacherTeachLessonAccordingToCalender.ShowDialog();
         }
 
-        private void انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnSelectCalenderToLesson_Click(object sender, EventArgs e)
         {
             FormTeacherTeachLessonAccToCalenderInClass formTeacherTeachLessonAccToCalenderInClass = new FormTeacherTeachLessonAccToCalenderInClass() ;
             formTeacherTeachLessonAccToCalenderInClass.ShowDialog();
@@ -133,6 +133,12 @@ namespace SchoolManagment.App
         {
             FormScoreOfStudentsForLessons formScoreOfStudentsForLessons = new FormScoreOfStudentsForLessons();
             formScoreOfStudentsForLessons.ShowDialog();
+        }
+
+        private void btnPresentsOrNot_Click(object sender, EventArgs e)
+        {
+            FormStudenPresentDetail formStudenPresentDetail = new FormStudenPresentDetail();
+            formStudenPresentDetail.ShowDialog();
         }
     }
 }

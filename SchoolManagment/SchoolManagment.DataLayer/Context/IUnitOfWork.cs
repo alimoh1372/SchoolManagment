@@ -37,6 +37,7 @@ namespace SchoolManagment.DataLayer
         #endregion
         IScoreOfStudentsForLessonsRepository ScoreOfStudentsForLessonsRepository { get; }
         IStudentPresentsRepository StudentPresentsRepository { get; }
+        IStudenPresentDetailRepository StudenPresentDetailRepository { get; }
 
 
 

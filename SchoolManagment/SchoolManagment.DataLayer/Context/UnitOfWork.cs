@@ -275,7 +275,7 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_scoreOfStudentsForLessonsRepository==null)
+                if (_scoreOfStudentsForLessonsRepository == null)
                 {
                     _scoreOfStudentsForLessonsRepository = new ScoreOfStudentsForLessonsRepository(_db);
                 }
@@ -287,11 +287,23 @@ namespace SchoolManagment.DataLayer
         {
             get
             {
-                if (_studentPresentsRepository==null)
+                if (_studentPresentsRepository == null)
                 {
                     _studentPresentsRepository = new StudentPresentsRepository(_db);
                 }
                 return _studentPresentsRepository;
+            }
+        }
+        private IStudenPresentDetailRepository _studenPresentDetailRepository;
+        public IStudenPresentDetailRepository StudenPresentDetailRepository
+        {
+            get
+            {
+                if (_studenPresentDetailRepository==null)
+                {
+                    _studenPresentDetailRepository = new StudenPresentDetailRepostiroy(_db);
+                }
+                return _studenPresentDetailRepository;
             }
         }
         public void Dispose()

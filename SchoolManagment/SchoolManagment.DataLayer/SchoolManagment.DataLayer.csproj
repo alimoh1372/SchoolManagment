@@ -59,7 +59,8 @@
     <Compile Include="DatabaseModel\StudentPresent.cs">
       <DependentUpon>SchoolManagementDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="IStudentPresentsRepository.cs" />
+    <Compile Include="IStudenPresentDetailRepository.cs" />
+    <Compile Include="Repositories\TeacherMeno\IStudentPresentsRepository.cs" />
     <Compile Include="Repositories\TeacherMeno\IScoreOfStudentsForLessonsRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Repositories\ManagmentNewAcademyYear\ITeacherTeachLessonAccToCalenderInClassRepository.cs" />
@@ -200,7 +201,8 @@
     <Compile Include="Services\ManagmentNewAcademyYear\TeacherTeachLessonAccordingToCalenderRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassRepository.cs" />
     <Compile Include="Services\ManagmentNewAcademyYear\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.cs" />
-    <Compile Include="StudentPresentsRepository.cs" />
+    <Compile Include="Services\TeacherMeno\StudentPresentsRepository.cs" />
+    <Compile Include="StudenPresentDetailRepostiroy.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DatabaseModel\SchoolManagementDbModel.edmx">

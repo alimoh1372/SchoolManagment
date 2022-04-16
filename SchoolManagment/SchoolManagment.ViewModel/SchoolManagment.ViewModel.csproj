@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaysListForCalender.cs" />
+    <Compile Include="IDaysListForCalender.cs" />
     <Compile Include="Teachermeno\IScoreStudentViewModel\IScoreStudentViewModel.cs" />
     <Compile Include="Teachermeno\ITeacherMenoAllLessonsClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />
@@ -71,6 +73,11 @@
     <Compile Include="Teachermeno\IScoreStudentViewModel\ScoreStudentViewModel.cs" />
     <Compile Include="Teachermeno\TeacherMenoAllLessonsClassViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolManagment.Utility\SchoolManagment.Utility.csproj">
+      <Project>{2A34CD6E-08CB-43EF-88F8-C3E2736A0674}</Project>
+      <Name>SchoolManagment.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

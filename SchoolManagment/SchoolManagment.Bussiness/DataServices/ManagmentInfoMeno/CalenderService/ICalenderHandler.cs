@@ -17,5 +17,6 @@ namespace SchoolManagment.Bussiness
         int InsertCalenderInfo(ComboBox txtDayAlternate,ComboBox txtTimeAlternate,TextBox ctxtCalenderName,TextBox txtCalenderDescription);
         int DeleteCalender(DataGridViewRow dataGridViewRow);
         int UpdateCalender(DataGridViewRow dataGridViewRow, ComboBox txtDayAlternate, ComboBox txtTimeAlternate, TextBox ctxtCalenderName, TextBox txtCalenderDescription);
+        List<DaysListForCalender> GenerateDayList(int calenderId, int academyYearId);
     }
 }

@@ -49,7 +49,7 @@
             this.btnLessonsOfFileldsOfNewYearInUngrade = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTeacherTeachLessonAccordingToCalender = new System.Windows.Forms.ToolStripMenuItem();
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSelectCalenderToLesson = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAssignStudentToClass = new System.Windows.Forms.ToolStripMenuItem();
             this.TeacherMeno = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPresentsOrNot = new System.Windows.Forms.ToolStripMenuItem();
@@ -209,7 +209,7 @@
             this.btnLessonsOfFileldsOfNewYearInUngrade,
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades,
             this.btnTeacherTeachLessonAccordingToCalender,
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem,
+            this.btnSelectCalenderToLesson,
             this.btnAssignStudentToClass});
             this.tlsManagmentNewAcademyYear.Name = "tlsManagmentNewAcademyYear";
             this.tlsManagmentNewAcademyYear.Size = new System.Drawing.Size(155, 20);
@@ -250,12 +250,12 @@
             this.btnTeacherTeachLessonAccordingToCalender.Text = "تقویم برای درس ارائه شده(بعد از انتخاب معلم)";
             this.btnTeacherTeachLessonAccordingToCalender.Click += new System.EventHandler(this.btnTeacherTeachLessonAccordingToCalender_Click);
             // 
-            // انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem
+            // btnSelectCalenderToLesson
             // 
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Name = "انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem";
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
-            this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem.Click += new System.EventHandler(this.انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem_Click);
+            this.btnSelectCalenderToLesson.Name = "btnSelectCalenderToLesson";
+            this.btnSelectCalenderToLesson.Size = new System.Drawing.Size(309, 22);
+            this.btnSelectCalenderToLesson.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
+            this.btnSelectCalenderToLesson.Click += new System.EventHandler(this.btnSelectCalenderToLesson_Click);
             // 
             // btnAssignStudentToClass
             // 
@@ -278,6 +278,7 @@
             this.btnPresentsOrNot.Name = "btnPresentsOrNot";
             this.btnPresentsOrNot.Size = new System.Drawing.Size(180, 22);
             this.btnPresentsOrNot.Text = "حضور غیاب";
+            this.btnPresentsOrNot.Click += new System.EventHandler(this.btnPresentsOrNot_Click);
             // 
             // btnSetScore
             // 
@@ -331,7 +332,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnLessonsOfFileldsOfNewYearInUngrade;
         private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachsLessonsOfNewYearInUnGrades;
         private System.Windows.Forms.ToolStripMenuItem btnTeacherTeachLessonAccordingToCalender;
-        private System.Windows.Forms.ToolStripMenuItem انتخابکلاسبرایدرسارائهشدهطبقتقویمToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnSelectCalenderToLesson;
         private System.Windows.Forms.ToolStripMenuItem btnAssignStudentToClass;
         private System.Windows.Forms.ToolStripMenuItem TeacherMeno;
         private System.Windows.Forms.ToolStripMenuItem btnPresentsOrNot;

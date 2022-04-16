@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagment.App
 {
-    partial class FormScoreOfStudentsForLessons
+    partial class FormStudenPresentDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnUpdateScores = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtSearchStudents = new System.Windows.Forms.TextBox();
-            this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.PkScoreOfStudentsForLessons = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentNationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkStudentFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkStudentFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkLastPassedUgraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkLastPassedUgraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScoreOfLesson1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -71,14 +59,27 @@
             this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudent = new System.Windows.Forms.DataGridView();
+            this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkboxSelectStudent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StudentNationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkStudentFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkStudentFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkLastPassedUgraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkLastPassedUgraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmbxDateList = new System.Windows.Forms.ComboBox();
+            this.lblDayOfWeek = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -89,51 +90,49 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1214, 611);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(1035, 715);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ثبت نمرات دانش آموزان";
+            this.groupBox1.Text = "ثبت حضور غیاب دانش آموزان";
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnUpdateScores);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(3, 520);
+            this.groupBox6.Location = new System.Drawing.Point(3, 613);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1208, 86);
+            this.groupBox6.Size = new System.Drawing.Size(1020, 95);
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
             // 
             // btnUpdateScores
             // 
-            this.btnUpdateScores.Location = new System.Drawing.Point(512, 20);
+            this.btnUpdateScores.Location = new System.Drawing.Point(420, 25);
             this.btnUpdateScores.Name = "btnUpdateScores";
             this.btnUpdateScores.Size = new System.Drawing.Size(171, 53);
             this.btnUpdateScores.TabIndex = 10;
             this.btnUpdateScores.Text = "ثبت تغییرات نمره ها";
             this.btnUpdateScores.UseVisualStyleBackColor = true;
-            this.btnUpdateScores.Click += new System.EventHandler(this.btnUpdateScores_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.groupBox8);
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.dgvStudent);
+            this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 227);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1208, 293);
+            this.groupBox4.Size = new System.Drawing.Size(1029, 393);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "لیست دانش آموزان کلاس-لطفا در ستون نمره دانش آموز نمره ها را ثبت نمائید.-جهت ثبت " +
-    "اعشار هنگامی که زبان سیستم فارسی است از (اسلش \"/\" ) استفاده شود.";
+            this.groupBox4.Text = "لیست دانش آموزان کلاس-به طور پیش فرض حضور دانش آموز ثبت شده است درصورت غیبت تیک ح" +
+    "ضور آن برداشته شود";
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.txtSearchStudents);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox8.Location = new System.Drawing.Point(3, 17);
+            this.groupBox8.Location = new System.Drawing.Point(3, 112);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1202, 54);
+            this.groupBox8.Size = new System.Drawing.Size(1017, 54);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "جست و جوی دانش آموزان(بر اساس نام دانش آموز نام دانش آموز، کد ملی دانش آموز،رشته " +
@@ -141,120 +140,10 @@
             // 
             // txtSearchStudents
             // 
-            this.txtSearchStudents.Location = new System.Drawing.Point(377, 20);
+            this.txtSearchStudents.Location = new System.Drawing.Point(377, 80);
             this.txtSearchStudents.Name = "txtSearchStudents";
             this.txtSearchStudents.Size = new System.Drawing.Size(524, 21);
             this.txtSearchStudents.TabIndex = 1;
-            this.txtSearchStudents.TextChanged += new System.EventHandler(this.txtSearchStudents_TextChanged);
-            // 
-            // dgvStudent
-            // 
-            this.dgvStudent.AllowUserToAddRows = false;
-            this.dgvStudent.AllowUserToDeleteRows = false;
-            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PkScoreOfStudentsForLessons,
-            this.StudentId,
-            this.StudentName,
-            this.StudentNationCode,
-            this.FkStudentFieldId,
-            this.FkStudentFieldIdString,
-            this.FkLastPassedUgraduteId,
-            this.FkLastPassedUgraduteIdString,
-            this.ScoreOfLesson1});
-            this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvStudent.Location = new System.Drawing.Point(3, 77);
-            this.dgvStudent.Name = "dgvStudent";
-            this.dgvStudent.Size = new System.Drawing.Size(1202, 213);
-            this.dgvStudent.TabIndex = 1;
-            // 
-            // PkScoreOfStudentsForLessons
-            // 
-            this.PkScoreOfStudentsForLessons.DataPropertyName = "PkScoreOfStudentsForLessons";
-            this.PkScoreOfStudentsForLessons.HeaderText = "کد اصلی نمره دانش آموز در درس";
-            this.PkScoreOfStudentsForLessons.Name = "PkScoreOfStudentsForLessons";
-            this.PkScoreOfStudentsForLessons.ReadOnly = true;
-            this.PkScoreOfStudentsForLessons.Visible = false;
-            // 
-            // StudentId
-            // 
-            this.StudentId.DataPropertyName = "StudentId";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.StudentId.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StudentId.FillWeight = 30F;
-            this.StudentId.HeaderText = "کد دانش آموز";
-            this.StudentId.Name = "StudentId";
-            this.StudentId.ReadOnly = true;
-            this.StudentId.Visible = false;
-            // 
-            // StudentName
-            // 
-            this.StudentName.DataPropertyName = "StudentName";
-            this.StudentName.FillWeight = 93.27411F;
-            this.StudentName.HeaderText = "نام دانش آموز";
-            this.StudentName.Name = "StudentName";
-            this.StudentName.ReadOnly = true;
-            // 
-            // StudentNationCode
-            // 
-            this.StudentNationCode.DataPropertyName = "StudentNationCode";
-            this.StudentNationCode.FillWeight = 93.27411F;
-            this.StudentNationCode.HeaderText = "کد ملی دانش آموز";
-            this.StudentNationCode.Name = "StudentNationCode";
-            this.StudentNationCode.ReadOnly = true;
-            // 
-            // FkStudentFieldId
-            // 
-            this.FkStudentFieldId.DataPropertyName = "FkStudentFieldId";
-            this.FkStudentFieldId.HeaderText = "کد رشته دانش آموز";
-            this.FkStudentFieldId.Name = "FkStudentFieldId";
-            this.FkStudentFieldId.ReadOnly = true;
-            this.FkStudentFieldId.Visible = false;
-            // 
-            // FkStudentFieldIdString
-            // 
-            this.FkStudentFieldIdString.DataPropertyName = "FkStudentFieldIdString";
-            this.FkStudentFieldIdString.FillWeight = 93.27411F;
-            this.FkStudentFieldIdString.HeaderText = "رشته دانش آموز";
-            this.FkStudentFieldIdString.Name = "FkStudentFieldIdString";
-            this.FkStudentFieldIdString.ReadOnly = true;
-            // 
-            // FkLastPassedUgraduteId
-            // 
-            this.FkLastPassedUgraduteId.DataPropertyName = "FkLastPassedUgraduteId";
-            this.FkLastPassedUgraduteId.HeaderText = "کد آخرین زیرمقطع گذرانده شده";
-            this.FkLastPassedUgraduteId.Name = "FkLastPassedUgraduteId";
-            this.FkLastPassedUgraduteId.ReadOnly = true;
-            this.FkLastPassedUgraduteId.Visible = false;
-            // 
-            // FkLastPassedUgraduteIdString
-            // 
-            this.FkLastPassedUgraduteIdString.DataPropertyName = "FkLastPassedUgraduteIdString";
-            this.FkLastPassedUgraduteIdString.FillWeight = 93.27411F;
-            this.FkLastPassedUgraduteIdString.HeaderText = "آخرین زیرمقطع گدرانده شده";
-            this.FkLastPassedUgraduteIdString.Name = "FkLastPassedUgraduteIdString";
-            this.FkLastPassedUgraduteIdString.ReadOnly = true;
-            // 
-            // ScoreOfLesson1
-            // 
-            this.ScoreOfLesson1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ScoreOfLesson1.DataPropertyName = "ScoreOfLesson";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Moccasin;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ScoreOfLesson1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ScoreOfLesson1.HeaderText = "نمره دانش آموز";
-            this.ScoreOfLesson1.Name = "ScoreOfLesson1";
-            this.ScoreOfLesson1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ScoreOfLesson1.Width = 101;
             // 
             // groupBox2
             // 
@@ -263,11 +152,11 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1208, 210);
+            this.groupBox2.Size = new System.Drawing.Size(1029, 210);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "انتخاب یک ردیف از جدول زیر جهت نمایش دانش آموزان و ثبت نمرات آنها";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.groupBox2.Text = "انتخاب یک ردیف از جدول زیر و سپس انتخاب یک تاریخ از لیست باز شونده پایین جدول جهت" +
+    " نمایش لیست حضور غیاب دانش آموزان کلاس";
             // 
             // groupBox3
             // 
@@ -275,16 +164,15 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1202, 50);
+            this.groupBox3.Size = new System.Drawing.Size(1023, 50);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "جست و جو و فیلتر کردن در لیست نمایش داده شده برای درس ها(جست و جو بر اساس معلم،در" +
     "س،رشته،سال تحصیلی، تقویم وزیر مقطع میباشد)";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(377, 20);
+            this.txtSearch.Location = new System.Drawing.Point(240, 20);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(524, 21);
             this.txtSearch.TabIndex = 0;
@@ -324,7 +212,7 @@
             this.dgvNewAcademyYearAllLessons.Name = "dgvNewAcademyYearAllLessons";
             this.dgvNewAcademyYearAllLessons.ReadOnly = true;
             this.dgvNewAcademyYearAllLessons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(1202, 136);
+            this.dgvNewAcademyYearAllLessons.Size = new System.Drawing.Size(1023, 136);
             this.dgvNewAcademyYearAllLessons.TabIndex = 0;
             this.dgvNewAcademyYearAllLessons.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewAcademyYearAllLessons_CellClick);
             // 
@@ -491,29 +379,145 @@
             this.FkUnGraduteIdString.Name = "FkUnGraduteIdString";
             this.FkUnGraduteIdString.ReadOnly = true;
             // 
-            // FormScoreOfStudentsForLessons
+            // dgvStudent
+            // 
+            this.dgvStudent.AllowUserToAddRows = false;
+            this.dgvStudent.AllowUserToDeleteRows = false;
+            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentId,
+            this.checkboxSelectStudent,
+            this.StudentName,
+            this.StudentNationCode,
+            this.FkStudentFieldId,
+            this.FkStudentFieldIdString,
+            this.FkLastPassedUgraduteId,
+            this.FkLastPassedUgraduteIdString});
+            this.dgvStudent.Location = new System.Drawing.Point(3, 173);
+            this.dgvStudent.Name = "dgvStudent";
+            this.dgvStudent.Size = new System.Drawing.Size(1017, 213);
+            this.dgvStudent.TabIndex = 3;
+            // 
+            // StudentId
+            // 
+            this.StudentId.DataPropertyName = "StudentId";
+            this.StudentId.FillWeight = 30F;
+            this.StudentId.HeaderText = "کد دانش آموز";
+            this.StudentId.Name = "StudentId";
+            this.StudentId.ReadOnly = true;
+            this.StudentId.Visible = false;
+            // 
+            // checkboxSelectStudent
+            // 
+            this.checkboxSelectStudent.DataPropertyName = "checkboxSelectStudent";
+            this.checkboxSelectStudent.FillWeight = 30F;
+            this.checkboxSelectStudent.HeaderText = "انتخاب";
+            this.checkboxSelectStudent.Name = "checkboxSelectStudent";
+            this.checkboxSelectStudent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // StudentName
+            // 
+            this.StudentName.DataPropertyName = "StudentName";
+            this.StudentName.FillWeight = 93.27411F;
+            this.StudentName.HeaderText = "نام دانش آموز";
+            this.StudentName.Name = "StudentName";
+            this.StudentName.ReadOnly = true;
+            // 
+            // StudentNationCode
+            // 
+            this.StudentNationCode.DataPropertyName = "StudentNationCode";
+            this.StudentNationCode.FillWeight = 93.27411F;
+            this.StudentNationCode.HeaderText = "کد ملی دانش آموز";
+            this.StudentNationCode.Name = "StudentNationCode";
+            this.StudentNationCode.ReadOnly = true;
+            // 
+            // FkStudentFieldId
+            // 
+            this.FkStudentFieldId.DataPropertyName = "FkStudentFieldId";
+            this.FkStudentFieldId.HeaderText = "کد رشته دانش آموز";
+            this.FkStudentFieldId.Name = "FkStudentFieldId";
+            this.FkStudentFieldId.ReadOnly = true;
+            this.FkStudentFieldId.Visible = false;
+            // 
+            // FkStudentFieldIdString
+            // 
+            this.FkStudentFieldIdString.DataPropertyName = "FkStudentFieldIdString";
+            this.FkStudentFieldIdString.FillWeight = 93.27411F;
+            this.FkStudentFieldIdString.HeaderText = "رشته دانش آموز";
+            this.FkStudentFieldIdString.Name = "FkStudentFieldIdString";
+            this.FkStudentFieldIdString.ReadOnly = true;
+            // 
+            // FkLastPassedUgraduteId
+            // 
+            this.FkLastPassedUgraduteId.DataPropertyName = "FkLastPassedUgraduteId";
+            this.FkLastPassedUgraduteId.HeaderText = "کد آخرین زیرمقطع گذرانده شده";
+            this.FkLastPassedUgraduteId.Name = "FkLastPassedUgraduteId";
+            this.FkLastPassedUgraduteId.ReadOnly = true;
+            this.FkLastPassedUgraduteId.Visible = false;
+            // 
+            // FkLastPassedUgraduteIdString
+            // 
+            this.FkLastPassedUgraduteIdString.DataPropertyName = "FkLastPassedUgraduteIdString";
+            this.FkLastPassedUgraduteIdString.FillWeight = 93.27411F;
+            this.FkLastPassedUgraduteIdString.HeaderText = "آخرین زیرمقطع گدرانده شده";
+            this.FkLastPassedUgraduteIdString.Name = "FkLastPassedUgraduteIdString";
+            this.FkLastPassedUgraduteIdString.ReadOnly = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.lblDayOfWeek);
+            this.groupBox5.Controls.Add(this.cmbxDateList);
+            this.groupBox5.Location = new System.Drawing.Point(0, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1020, 75);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "انتخاب تاریخ جهت نمایش لیست حضور غیاب دانش آموزان";
+            // 
+            // cmbxDateList
+            // 
+            this.cmbxDateList.FormattingEnabled = true;
+            this.cmbxDateList.Location = new System.Drawing.Point(243, 30);
+            this.cmbxDateList.Name = "cmbxDateList";
+            this.cmbxDateList.Size = new System.Drawing.Size(524, 21);
+            this.cmbxDateList.TabIndex = 0;
+            this.cmbxDateList.SelectedIndexChanged += new System.EventHandler(this.cmbxDateList_SelectedIndexChanged);
+            // 
+            // lblDayOfWeek
+            // 
+            this.lblDayOfWeek.AutoSize = true;
+            this.lblDayOfWeek.Location = new System.Drawing.Point(797, 33);
+            this.lblDayOfWeek.Name = "lblDayOfWeek";
+            this.lblDayOfWeek.Size = new System.Drawing.Size(75, 13);
+            this.lblDayOfWeek.TabIndex = 1;
+            this.lblDayOfWeek.Text = "lblDayOfWeek";
+            // 
+            // FormStudenPresentDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 611);
+            this.ClientSize = new System.Drawing.Size(1035, 715);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FormScoreOfStudentsForLessons";
+            this.Name = "FormStudenPresentDetail";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ثبت نمره دانش آموزان";
-            this.Load += new System.EventHandler(this.FormScoreOfStudentsForLessons_Load);
+            this.Text = "ثبت حضور غیاب دانش آموزان";
+            this.Load += new System.EventHandler(this.FormStudenPresentDetail_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -521,15 +525,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnUpdateScores;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox txtSearchStudents;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvNewAcademyYearAllLessons;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox txtSearchStudents;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button btnUpdateScores;
         private System.Windows.Forms.DataGridViewTextBoxColumn PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PkTeacherTeachLessonAccToCalInClassId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonIdString;
@@ -551,15 +555,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteIdString;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label lblDayOfWeek;
+        private System.Windows.Forms.ComboBox cmbxDateList;
         private System.Windows.Forms.DataGridView dgvStudent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PkScoreOfStudentsForLessons;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkboxSelectStudent;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentNationCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentFieldId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentFieldIdString;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkLastPassedUgraduteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkLastPassedUgraduteIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreOfLesson1;
     }
 }

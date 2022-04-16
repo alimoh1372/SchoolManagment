@@ -158,10 +158,10 @@ namespace SchoolManagment.Bussiness
             string oldCalDesc;
             string oldCalDayAlterNate;
             string oldCalTimeAlterNate;
-            
+
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
-                Calender calender = db.CalenderRepository.GetById(Convert.ToInt32( dataGridViewRow.Cells["CalenderId"].Value.ToString()));
+                Calender calender = db.CalenderRepository.GetById(Convert.ToInt32(dataGridViewRow.Cells["CalenderId"].Value.ToString()));
                 oldCalName = calender.CalenderName;
                 oldCalDesc = calender.CalenderName;
                 oldCalDayAlterNate = dataGridViewRow.Cells["FkDayAlterNateString"].Value.ToString();
@@ -187,15 +187,15 @@ namespace SchoolManagment.Bussiness
 
                             if (RtlMessageBox.Show(attemMessage, "اطمینان از ثبت تغییرات", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                    db.CalenderRepository.Update(calender);
-                                    result = db.Save();
-                                    if (result < 0)
-                                    {
-                                        attemMessage = "خطا در ثبت عملیات در پایگاه داده.لطفا مجددا تلاش فرمائید یا با ادمین خود تماس حاصل فرمایئد.با تشکر";
-                                        RtlMessageBox.Show(attemMessage, "خطای پایگاه داده", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
+                                db.CalenderRepository.Update(calender);
+                                result = db.Save();
+                                if (result < 0)
+                                {
+                                    attemMessage = "خطا در ثبت عملیات در پایگاه داده.لطفا مجددا تلاش فرمائید یا با ادمین خود تماس حاصل فرمایئد.با تشکر";
+                                    RtlMessageBox.Show(attemMessage, "خطای پایگاه داده", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                            
+
                         }
                         else
                         {
@@ -217,6 +217,125 @@ namespace SchoolManagment.Bussiness
             }
             return result;
 
+        }
+        public List<DaysListForCalender> GenerateDayList(int calenderId,int academyYearId)
+        {
+            int dayAlterNate;
+            DateTime startDateTime;
+            DateTime endDateTime;
+            DateTime _renderDate;
+            Calender calenderEntity;
+            List<DaysListForCalender> days=new List<DaysListForCalender>();
+            DaysListForCalender daysListForCalenderEntity;
+            DayOfWeek dayOfWeek;
+            using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
+            {
+                calenderEntity = db.CalenderRepository.GetById(calenderId);
+                AcademyYear academyYear = db.AcademyYearRepository.GetById(academyYearId);
+                startDateTime = academyYear.StartDate;
+                endDateTime = academyYear.EndDate;
+                _renderDate = startDateTime;
+                if (calenderEntity.DayAlternate.FkTypeDay == 1)
+                {
+                    dayAlterNate = calenderEntity.DayAlternate.PkDayAlternateId - 1;
+                    switch (dayAlterNate)
+                    {
+                        case 0:
+                            dayOfWeek = DayOfWeek.Saturday;
+                            break;
+                        case 1:
+                            dayOfWeek = DayOfWeek.Sunday;
+                            break;
+                        case 2:
+                            dayOfWeek = DayOfWeek.Monday;
+                            break;
+                        case 3:
+                            dayOfWeek = DayOfWeek.Tuesday;
+                            break;
+                        case 4:
+                            dayOfWeek = DayOfWeek.Wednesday;
+                            break;
+                        case 5:
+                            dayOfWeek = DayOfWeek.Thursday;
+                            break;
+                        default :
+                            dayOfWeek = DayOfWeek.Friday;
+                            break;
+                    }
+                    if (_renderDate.DayOfWeek == dayOfWeek)
+                    {
+                        daysListForCalenderEntity = new DaysListForCalender()
+                        {
+                            dateTime = _renderDate
+                        };
+                    }
+                    else
+                    {
+                        while (_renderDate.DayOfWeek != dayOfWeek)
+                        {
+                            _renderDate = _renderDate.AddDays(1);
+                        }
+                        daysListForCalenderEntity = new DaysListForCalender()
+                        {
+                            dateTime = _renderDate
+                        };
+                    }
+                    
+                   
+                    days.Add(daysListForCalenderEntity);
+                    while (_renderDate <= endDateTime)
+                    {
+                        _renderDate = _renderDate.AddDays(7);
+                        daysListForCalenderEntity = new DaysListForCalender()
+                        {
+                            dateTime = _renderDate
+                        };
+                        days.Add(daysListForCalenderEntity);
+                    }
+                }
+                else
+                {
+                    dayAlterNate = calenderEntity.DayAlternate.PkDayAlternateId - 8;
+                    if (_renderDate.Day == dayAlterNate)
+                    {
+                        daysListForCalenderEntity = new DaysListForCalender()
+                        {
+                            dateTime = _renderDate
+                        };
+                    }
+                    else
+                    {
+                        while (_renderDate.Day != dayAlterNate)
+                        {
+                            _renderDate = _renderDate.AddDays(1);
+                        }
+                        daysListForCalenderEntity = new DaysListForCalender()
+                        {
+                            dateTime = _renderDate
+                        };
+                    }
+                    
+                     
+                    days.Add(daysListForCalenderEntity);
+                    while (_renderDate <= endDateTime)
+                    {
+                        _renderDate = _renderDate.AddDays(dayAlterNate);
+                        if (_renderDate <= endDateTime)
+                        {
+                            daysListForCalenderEntity = new DaysListForCalender()
+                            {
+                                dateTime = _renderDate
+                            };
+                            days.Add(daysListForCalenderEntity);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return days;
         }
         public void Dispose()
         {

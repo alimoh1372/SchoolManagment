@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SchoolManagment.Utility
 {
-   public static class UsingStringUtility
+   public static class UsingUtility
     {
         public static string RemoveSpecialCharFromString(this string StringText, char charToRemove)
         {
@@ -18,5 +18,6 @@ namespace SchoolManagment.Utility
 
             return StringText;
         }
+        
     }
 }
