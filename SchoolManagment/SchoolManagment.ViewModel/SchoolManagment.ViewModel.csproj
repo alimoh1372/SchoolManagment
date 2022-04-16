@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStudentReportCardDetailViewModel.cs" />
+    <Compile Include="StudentReportCardDetailViewModel.cs" />
     <Compile Include="Teachermeno\StudentPresentDetailViewModel\DaysListForCalender.cs" />
     <Compile Include="Teachermeno\StudentPresentDetailViewModel\IDaysListForCalender.cs" />
     <Compile Include="Teachermeno\StudentPresentDetailViewModel\IStudenPresentDetailViewModel.cs" />

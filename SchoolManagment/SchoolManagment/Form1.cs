@@ -140,5 +140,11 @@ namespace SchoolManagment.App
             FormStudenPresentDetail formStudenPresentDetail = new FormStudenPresentDetail();
             formStudenPresentDetail.ShowDialog();
         }
+
+        private void btnReportCard_Click(object sender, EventArgs e)
+        {
+            FormStudentReportCardAndDetail formStudentReportCardAndDetail = new FormStudentReportCardAndDetail();
+            formStudentReportCardAndDetail.ShowDialog();
+        }
     }
 }

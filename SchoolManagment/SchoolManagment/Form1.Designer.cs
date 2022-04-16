@@ -54,6 +54,10 @@
             this.TeacherMeno = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPresentsOrNot = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetScore = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnStudentMeno = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReportCard = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnStudentCalenderForYear = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPresentsInYear = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStManagmentInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +85,8 @@
             this.mnStManagmentInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlstManagMentInfo,
             this.tlsManagmentNewAcademyYear,
-            this.TeacherMeno});
+            this.TeacherMeno,
+            this.btnStudentMeno});
             this.mnStManagmentInfo.Location = new System.Drawing.Point(0, 0);
             this.mnStManagmentInfo.Name = "mnStManagmentInfo";
             this.mnStManagmentInfo.Size = new System.Drawing.Size(852, 24);
@@ -287,6 +292,35 @@
             this.btnSetScore.Text = "ثبت نمره";
             this.btnSetScore.Click += new System.EventHandler(this.btnSetScore_Click);
             // 
+            // btnStudentMeno
+            // 
+            this.btnStudentMeno.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReportCard,
+            this.btnStudentCalenderForYear,
+            this.btnPresentsInYear});
+            this.btnStudentMeno.Name = "btnStudentMeno";
+            this.btnStudentMeno.Size = new System.Drawing.Size(69, 20);
+            this.btnStudentMeno.Text = "دانش آموز";
+            // 
+            // btnReportCard
+            // 
+            this.btnReportCard.Name = "btnReportCard";
+            this.btnReportCard.Size = new System.Drawing.Size(263, 22);
+            this.btnReportCard.Text = "مشاهده کارنامه سال تحصیلی";
+            this.btnReportCard.Click += new System.EventHandler(this.btnReportCard_Click);
+            // 
+            // btnStudentCalenderForYear
+            // 
+            this.btnStudentCalenderForYear.Name = "btnStudentCalenderForYear";
+            this.btnStudentCalenderForYear.Size = new System.Drawing.Size(263, 22);
+            this.btnStudentCalenderForYear.Text = "مشاهده تقویم آموزشی دانش آموز";
+            // 
+            // btnPresentsInYear
+            // 
+            this.btnPresentsInYear.Name = "btnPresentsInYear";
+            this.btnPresentsInYear.Size = new System.Drawing.Size(263, 22);
+            this.btnPresentsInYear.Text = "مشاهده حضور غیاب در سال تحصیلی";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +371,10 @@
         private System.Windows.Forms.ToolStripMenuItem TeacherMeno;
         private System.Windows.Forms.ToolStripMenuItem btnPresentsOrNot;
         private System.Windows.Forms.ToolStripMenuItem btnSetScore;
+        private System.Windows.Forms.ToolStripMenuItem btnStudentMeno;
+        private System.Windows.Forms.ToolStripMenuItem btnReportCard;
+        private System.Windows.Forms.ToolStripMenuItem btnStudentCalenderForYear;
+        private System.Windows.Forms.ToolStripMenuItem btnPresentsInYear;
     }
 }
 
