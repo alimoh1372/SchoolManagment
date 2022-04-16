@@ -139,7 +139,6 @@
           <Property Name="PkStudentPresentDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkStudentPresents" Type="int" Nullable="false" />
           <Property Name="DataOfDay" Type="date" Nullable="false" />
-          <Property Name="StudentPresent" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1128,8 +1127,7 @@
           <Property Name="PkStudentPresentDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FkStudentPresents" Type="Int32" Nullable="false" />
           <Property Name="DataOfDay" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="StudentPresent" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="StudentPresent1" Relationship="SchoolManagmentModel.FK_StudenPresentDetail_StudentPresents" FromRole="StudenPresentDetail" ToRole="StudentPresent" />
+          <NavigationProperty Name="StudentPresent" Relationship="SchoolManagmentModel.FK_StudenPresentDetail_StudentPresents" FromRole="StudenPresentDetail" ToRole="StudentPresent" />
         </EntityType>
         <EntityType Name="StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass">
           <Key>
@@ -1808,7 +1806,6 @@
           <EntitySetMapping Name="StudenPresentDetails">
             <EntityTypeMapping TypeName="SchoolManagmentModel.StudenPresentDetail">
               <MappingFragment StoreEntitySet="StudenPresentDetail">
-                <ScalarProperty Name="StudentPresent" ColumnName="StudentPresent" />
                 <ScalarProperty Name="DataOfDay" ColumnName="DataOfDay" />
                 <ScalarProperty Name="FkStudentPresents" ColumnName="FkStudentPresents" />
                 <ScalarProperty Name="PkStudentPresentDetail" ColumnName="PkStudentPresentDetail" />

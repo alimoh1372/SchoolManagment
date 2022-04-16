@@ -28,10 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnUpdateScores = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvStudent = new System.Windows.Forms.DataGridView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lblDayOfWeek = new System.Windows.Forms.Label();
+            this.cmbxDateList = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtSearchStudents = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -59,27 +64,25 @@
             this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PkStudentPresents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkboxSelectStudent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentNationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkStudentFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkStudentFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLastPassedUgraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLastPassedUgraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cmbxDateList = new System.Windows.Forms.ComboBox();
-            this.lblDayOfWeek = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -110,13 +113,14 @@
             this.btnUpdateScores.Name = "btnUpdateScores";
             this.btnUpdateScores.Size = new System.Drawing.Size(171, 53);
             this.btnUpdateScores.TabIndex = 10;
-            this.btnUpdateScores.Text = "ثبت تغییرات نمره ها";
+            this.btnUpdateScores.Text = "ثبت تغییرات لیست حضور غیاب";
             this.btnUpdateScores.UseVisualStyleBackColor = true;
+            this.btnUpdateScores.Click += new System.EventHandler(this.btnUpdateScores_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.dgvStudent);
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(3, 227);
@@ -126,6 +130,58 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "لیست دانش آموزان کلاس-به طور پیش فرض حضور دانش آموز ثبت شده است درصورت غیبت تیک ح" +
     "ضور آن برداشته شود";
+            // 
+            // dgvStudent
+            // 
+            this.dgvStudent.AllowUserToAddRows = false;
+            this.dgvStudent.AllowUserToDeleteRows = false;
+            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PkStudentPresents,
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId,
+            this.checkboxSelectStudent,
+            this.StudentId,
+            this.StudentName,
+            this.StudentNationCode,
+            this.FkStudentFieldId,
+            this.FkStudentFieldIdString,
+            this.FkLastPassedUgraduteId,
+            this.FkLastPassedUgraduteIdString});
+            this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvStudent.Location = new System.Drawing.Point(3, 177);
+            this.dgvStudent.Name = "dgvStudent";
+            this.dgvStudent.Size = new System.Drawing.Size(1023, 213);
+            this.dgvStudent.TabIndex = 5;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.lblDayOfWeek);
+            this.groupBox5.Controls.Add(this.cmbxDateList);
+            this.groupBox5.Location = new System.Drawing.Point(0, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1020, 75);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "انتخاب تاریخ جهت نمایش لیست حضور غیاب دانش آموزان";
+            // 
+            // lblDayOfWeek
+            // 
+            this.lblDayOfWeek.AutoSize = true;
+            this.lblDayOfWeek.Location = new System.Drawing.Point(676, 28);
+            this.lblDayOfWeek.Name = "lblDayOfWeek";
+            this.lblDayOfWeek.Size = new System.Drawing.Size(75, 13);
+            this.lblDayOfWeek.TabIndex = 1;
+            this.lblDayOfWeek.Text = "lblDayOfWeek";
+            // 
+            // cmbxDateList
+            // 
+            this.cmbxDateList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxDateList.FormattingEnabled = true;
+            this.cmbxDateList.Location = new System.Drawing.Point(420, 25);
+            this.cmbxDateList.Name = "cmbxDateList";
+            this.cmbxDateList.Size = new System.Drawing.Size(220, 21);
+            this.cmbxDateList.TabIndex = 0;
+            this.cmbxDateList.SelectedIndexChanged += new System.EventHandler(this.cmbxDateList_SelectedIndexChanged);
             // 
             // groupBox8
             // 
@@ -379,42 +435,45 @@
             this.FkUnGraduteIdString.Name = "FkUnGraduteIdString";
             this.FkUnGraduteIdString.ReadOnly = true;
             // 
-            // dgvStudent
+            // PkStudentPresents
             // 
-            this.dgvStudent.AllowUserToAddRows = false;
-            this.dgvStudent.AllowUserToDeleteRows = false;
-            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StudentId,
-            this.checkboxSelectStudent,
-            this.StudentName,
-            this.StudentNationCode,
-            this.FkStudentFieldId,
-            this.FkStudentFieldIdString,
-            this.FkLastPassedUgraduteId,
-            this.FkLastPassedUgraduteIdString});
-            this.dgvStudent.Location = new System.Drawing.Point(3, 173);
-            this.dgvStudent.Name = "dgvStudent";
-            this.dgvStudent.Size = new System.Drawing.Size(1017, 213);
-            this.dgvStudent.TabIndex = 3;
+            this.PkStudentPresents.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PkStudentPresents.DataPropertyName = "PkStudentPresents";
+            this.PkStudentPresents.HeaderText = "کد اصلی حضورغیاب در کلاس";
+            this.PkStudentPresents.Name = "PkStudentPresents";
+            this.PkStudentPresents.ReadOnly = true;
+            this.PkStudentPresents.Visible = false;
+            this.PkStudentPresents.Width = 165;
+            // 
+            // FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+            // 
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId.DataPropertyName = "FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId";
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId.HeaderText = "کد اصلی جدول کلاس،درس ،معلم  و..";
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId.Name = "FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId";
+            this.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId.Visible = false;
+            // 
+            // checkboxSelectStudent
+            // 
+            this.checkboxSelectStudent.DataPropertyName = "checkboxSelectStudent";
+            this.checkboxSelectStudent.HeaderText = "حضور";
+            this.checkboxSelectStudent.Name = "checkboxSelectStudent";
+            this.checkboxSelectStudent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.checkboxSelectStudent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StudentId
             // 
             this.StudentId.DataPropertyName = "StudentId";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.StudentId.DefaultCellStyle = dataGridViewCellStyle1;
             this.StudentId.FillWeight = 30F;
             this.StudentId.HeaderText = "کد دانش آموز";
             this.StudentId.Name = "StudentId";
             this.StudentId.ReadOnly = true;
             this.StudentId.Visible = false;
-            // 
-            // checkboxSelectStudent
-            // 
-            this.checkboxSelectStudent.DataPropertyName = "checkboxSelectStudent";
-            this.checkboxSelectStudent.FillWeight = 30F;
-            this.checkboxSelectStudent.HeaderText = "انتخاب";
-            this.checkboxSelectStudent.Name = "checkboxSelectStudent";
-            this.checkboxSelectStudent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StudentName
             // 
@@ -464,35 +523,6 @@
             this.FkLastPassedUgraduteIdString.Name = "FkLastPassedUgraduteIdString";
             this.FkLastPassedUgraduteIdString.ReadOnly = true;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.lblDayOfWeek);
-            this.groupBox5.Controls.Add(this.cmbxDateList);
-            this.groupBox5.Location = new System.Drawing.Point(0, 20);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1020, 75);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "انتخاب تاریخ جهت نمایش لیست حضور غیاب دانش آموزان";
-            // 
-            // cmbxDateList
-            // 
-            this.cmbxDateList.FormattingEnabled = true;
-            this.cmbxDateList.Location = new System.Drawing.Point(243, 30);
-            this.cmbxDateList.Name = "cmbxDateList";
-            this.cmbxDateList.Size = new System.Drawing.Size(524, 21);
-            this.cmbxDateList.TabIndex = 0;
-            this.cmbxDateList.SelectedIndexChanged += new System.EventHandler(this.cmbxDateList_SelectedIndexChanged);
-            // 
-            // lblDayOfWeek
-            // 
-            this.lblDayOfWeek.AutoSize = true;
-            this.lblDayOfWeek.Location = new System.Drawing.Point(797, 33);
-            this.lblDayOfWeek.Name = "lblDayOfWeek";
-            this.lblDayOfWeek.Size = new System.Drawing.Size(75, 13);
-            this.lblDayOfWeek.TabIndex = 1;
-            this.lblDayOfWeek.Text = "lblDayOfWeek";
-            // 
             // FormStudenPresentDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,15 +539,15 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -559,8 +589,10 @@
         private System.Windows.Forms.Label lblDayOfWeek;
         private System.Windows.Forms.ComboBox cmbxDateList;
         private System.Windows.Forms.DataGridView dgvStudent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PkStudentPresents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkboxSelectStudent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentNationCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkStudentFieldId;

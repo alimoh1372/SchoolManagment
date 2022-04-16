@@ -67,36 +67,37 @@ namespace SchoolManagment.Bussiness
             int pkTeacherTeachLessonAccToCalInClassId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkTeacherTeachLessonAccToCalInClassId"].Value);
             int fkLastPassedUgraduteId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkUnGraduteId"].Value);
             string fkLastPassedUgraduteIdString = dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkUnGraduteIdString"].Value.ToString();
-            int  fkStudentFieldId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldId"].Value);
-            string fkStudentFieldIdString= dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldIdString"].Value.ToString();
+            int fkStudentFieldId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldId"].Value);
+            string fkStudentFieldIdString = dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldIdString"].Value.ToString();
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
-              scoreStudentViewModels=  db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.FkTeacherTeachLessonAccToCalenderInClass == pkTeacherTeachLessonAccToCalInClassId)
-                    .Select(sc => new ScoreStudentViewModel()
-                    {
-                        PkScoreOfStudentsForLessons=sc.PkScoreOfStudentsForLessons,
-                        ScoreOfLesson=sc.ScoreOfLesson,
-                        StudentId=sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.FkStudentId,
-                        StudentName=sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Student.StudentName,
-                        StudentNationCode=sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Student.StudentNationCode,
-                        FkLastPassedUgraduteId=(int ?)fkLastPassedUgraduteId,
-                        FkLastPassedUgraduteIdString= fkLastPassedUgraduteIdString,
-                        FkStudentFieldId= fkStudentFieldId,
-                        FkStudentFieldIdString= fkStudentFieldIdString
-                    }).ToList();
+                scoreStudentViewModels = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.FkTeacherTeachLessonAccToCalenderInClass == pkTeacherTeachLessonAccToCalInClassId)
+                      .Select(sc => new ScoreStudentViewModel()
+                      {
+                          checkboxSelectStudent = true,
+                          PkScoreOfStudentsForLessons = sc.PkScoreOfStudentsForLessons,
+                          ScoreOfLesson = sc.ScoreOfLesson,
+                          StudentId = sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.FkStudentId,
+                          StudentName = sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Student.StudentName,
+                          StudentNationCode = sc.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Student.StudentNationCode,
+                          FkLastPassedUgraduteId = (int?)fkLastPassedUgraduteId,
+                          FkLastPassedUgraduteIdString = fkLastPassedUgraduteIdString,
+                          FkStudentFieldId = fkStudentFieldId,
+                          FkStudentFieldIdString = fkStudentFieldIdString
+                      }).ToList();
             }
             return scoreStudentViewModels;
         }
 
-        public IEnumerable<ITeacherMenoAllLessonsClassViewModel> FilterDgvAll(IEnumerable<ITeacherMenoAllLessonsClassViewModel> allTeacherMenoViewModels,TextBox txtSearch)
+        public IEnumerable<ITeacherMenoAllLessonsClassViewModel> FilterDgvAll(IEnumerable<ITeacherMenoAllLessonsClassViewModel> allTeacherMenoViewModels, TextBox txtSearch)
         {
             IEnumerable<ITeacherMenoAllLessonsClassViewModel> _allTeacherMenoViewModel;
             string _txtSearchText = txtSearch.Text.Trim().ToLower();
-            if (_txtSearchText!=string.Empty)
+            if (_txtSearchText != string.Empty)
             {
                 _allTeacherMenoViewModel = allTeacherMenoViewModels
                     .Where(
-                    t=>t.AcademyYearString.Trim().ToLower().Contains(_txtSearchText)||
+                    t => t.AcademyYearString.Trim().ToLower().Contains(_txtSearchText) ||
                    t.FkCalenderIdString.Trim().ToLower().Contains(_txtSearchText) ||
                    t.FkClassIdString.Trim().ToLower().Contains(_txtSearchText) ||
                    t.FkFieldIdString.Trim().ToLower().Contains(_txtSearchText) ||
@@ -111,13 +112,13 @@ namespace SchoolManagment.Bussiness
             }
             return _allTeacherMenoViewModel;
         }
-        public IEnumerable<IScoreStudentViewModel> FilterDgvStudent(IEnumerable<IScoreStudentViewModel> scoreStudentViewModels,TextBox txtStudentSearch)
+        public IEnumerable<IScoreStudentViewModel> FilterDgvStudent(IEnumerable<IScoreStudentViewModel> scoreStudentViewModels, TextBox txtStudentSearch)
         {
             IEnumerable<IScoreStudentViewModel> resultStudentViewModel;
             string _txtStudentSearch = txtStudentSearch.Text.Trim().ToLower();
-            if (_txtStudentSearch!=string.Empty)
+            if (_txtStudentSearch != string.Empty)
             {
-                resultStudentViewModel = scoreStudentViewModels.Where(sc=>sc.FkLastPassedUgraduteIdString.Trim().ToLower().Contains(_txtStudentSearch)||
+                resultStudentViewModel = scoreStudentViewModels.Where(sc => sc.FkLastPassedUgraduteIdString.Trim().ToLower().Contains(_txtStudentSearch) ||
                 sc.FkStudentFieldIdString.Trim().ToLower().Contains(_txtStudentSearch) ||
                 sc.StudentName.Trim().ToLower().Contains(_txtStudentSearch) ||
                 sc.StudentNationCode.Trim().ToLower().Contains(_txtStudentSearch));
@@ -128,7 +129,7 @@ namespace SchoolManagment.Bussiness
             }
             return resultStudentViewModel;
         }
-        public bool SetScoreOfStudent( DataGridView dgvStudent, IEnumerable<IScoreStudentViewModel> scoreStudentViewModels)
+        public bool SetScoreOfStudent(DataGridView dgvStudent, IEnumerable<IScoreStudentViewModel> scoreStudentViewModels)
         {
             bool result = false;
             int numberOfChangeDb = -1;
@@ -136,18 +137,18 @@ namespace SchoolManagment.Bussiness
             int pkScoreOfStudentsForLessons;
             decimal? dgvScore;
             UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities());
-            ScoreOfStudentsForLesson scoreStudentEntity ;
-            List<ScoreOfStudentsForLesson> _needToUpdateScoreStudentViewModel =new List<ScoreOfStudentsForLesson>();
-            if (dgvStudent.CurrentCell!=null && dgvStudent!=null)
+            ScoreOfStudentsForLesson scoreStudentEntity;
+            List<ScoreOfStudentsForLesson> _needToUpdateScoreStudentViewModel = new List<ScoreOfStudentsForLesson>();
+            if (dgvStudent.CurrentCell != null && dgvStudent != null)
             {
                 foreach (DataGridViewRow row in dgvStudent.Rows)
                 {
-                    
+
                     pkScoreOfStudentsForLessons = Convert.ToInt32(row.Cells["PkScoreOfStudentsForLessons"].Value);
                     scoreStudentEntity = db.ScoreOfStudentsForLessonsRepository.GetById(pkScoreOfStudentsForLessons);
                     dgvScore = Convert.ToDecimal(row.Cells["ScoreOfLesson1"].Value);
-                    
-                    if (dgvScore!= scoreStudentEntity.ScoreOfLesson)
+
+                    if (dgvScore != scoreStudentEntity.ScoreOfLesson)
                     {
                         scoreStudentEntity.ScoreOfLesson = dgvScore;
                         _needToUpdateScoreStudentViewModel.Add(scoreStudentEntity);
@@ -160,17 +161,17 @@ namespace SchoolManagment.Bussiness
                 RtlMessageBox.Show(attempMessage, "بدون تغییر");
             }
             attempMessage = "آیا از ثبت تغییرات به تعداد " + _needToUpdateScoreStudentViewModel.Count + " مطمئن هستید؟";
-            if (RtlMessageBox.Show(attempMessage,"اطمینان از ثبت نمرات",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت نمرات", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                
+
                 ScoreOfStudentsForLesson scoreOfStudentsForLesson;
                 foreach (ScoreOfStudentsForLesson scoreVM in _needToUpdateScoreStudentViewModel)
                 {
                     db.ScoreOfStudentsForLessonsRepository.Update(scoreVM);
                 }
             }
-             numberOfChangeDb= db.Save();
-            if (numberOfChangeDb ==_needToUpdateScoreStudentViewModel.Count)
+            numberOfChangeDb = db.Save();
+            if (numberOfChangeDb == _needToUpdateScoreStudentViewModel.Count)
             {
                 result = true;
             }

@@ -17,7 +17,7 @@ namespace SchoolManagment.App
         private bool _isNeesToLoadAllLessonViewModel;
         private bool _isNeedToLoadStudentViewModel;
         private IEnumerable<ITeacherMenoAllLessonsClassViewModel> teacherMenoForDgvAllLessonsViewModels;
-        private IEnumerable<IScoreStudentViewModel> scoreStudentViewModels;
+        private IEnumerable<IStudenPresentDetailViewModel> studentPresentDetailViewModels;
         List<DaysListForCalender> _daylist;
 
         public FormStudenPresentDetail()
@@ -25,8 +25,7 @@ namespace SchoolManagment.App
             InitializeComponent();
             _isNeesToLoadAllLessonViewModel = true;
             dgvNewAcademyYearAllLessons.AutoGenerateColumns = false;
-            cmbxDateList.DisplayMember = "persianDate";
-            cmbxDateList.ValueMember = "dateTime";
+            dgvStudent.AutoGenerateColumns = false;
             lblDayOfWeek.Text = "";
         }
 
@@ -41,6 +40,7 @@ namespace SchoolManagment.App
             txtSearch.Text = string.Empty;
             txtSearchStudents.Text = string.Empty;
             lblDayOfWeek.Text = string.Empty;
+            
             cmbxDateList.DataSource = null;
             dgvNewAcademyYearAllLessons.CurrentCell = null;
             if (_isNeesToLoadAllLessonViewModel)
@@ -69,13 +69,7 @@ namespace SchoolManagment.App
         private void dgvNewAcademyYearAllLessons_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            using (ScoreOfStudentsForLessonsHandler scoreStudentHandler = new ScoreOfStudentsForLessonsHandler())
-            {
-                scoreStudentViewModels = scoreStudentHandler.GetScoreStudentViewModels(dgvNewAcademyYearAllLessons);
-                dgvStudent.DataSource = null;
-                cmbxDateList.DataSource = null;
-                
-            }
+           
             using (StudenPresentDetailHandler studenPresentDetailHandler=new StudenPresentDetailHandler())
             {
                 _daylist= studenPresentDetailHandler.GetDaysListViewModel(dgvNewAcademyYearAllLessons).ToList();
@@ -105,10 +99,14 @@ namespace SchoolManagment.App
                         dayOfWeekString = "شنبه";
                         break;
                 }
+                cmbxDateList.DisplayMember = "persianDate";
+                cmbxDateList.ValueMember = "dateTime";
                 lblDayOfWeek.Text = dayOfWeekString ;
                 cmbxDateList.DataSource = _daylist;
+                dgvStudent.DataSource = null;
                 
             }
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -118,9 +116,24 @@ namespace SchoolManagment.App
                 dgvNewAcademyYearAllLessons.DataSource = scoreStudentHandler.FilterDgvAll(teacherMenoForDgvAllLessonsViewModels, txtSearch);
             }
         }
+
         private void cmbxDateList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            using (StudenPresentDetailHandler studentPresentDetailHandler = new StudenPresentDetailHandler())
+            {
+                studentPresentDetailViewModels = studentPresentDetailHandler.GetStudentPresentDetailViewModel(dgvNewAcademyYearAllLessons,cmbxDateList);
+                dgvStudent.DataSource = studentPresentDetailViewModels;
+                dgvStudent.CurrentCell = null;
+            }
+        }
 
+        private void btnUpdateScores_Click(object sender, EventArgs e)
+        {
+            using (StudenPresentDetailHandler studentPresentDetailHandler = new StudenPresentDetailHandler())
+            {
+                studentPresentDetailHandler.SyncTheStudentDgvWithDataBase(dgvStudent, cmbxDateList);
+                ReloadFormAndData();
+            }
         }
     }
 }

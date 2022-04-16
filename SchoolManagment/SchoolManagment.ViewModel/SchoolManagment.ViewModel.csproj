@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DaysListForCalender.cs" />
-    <Compile Include="IDaysListForCalender.cs" />
+    <Compile Include="Teachermeno\StudentPresentDetailViewModel\DaysListForCalender.cs" />
+    <Compile Include="Teachermeno\StudentPresentDetailViewModel\IDaysListForCalender.cs" />
+    <Compile Include="Teachermeno\StudentPresentDetailViewModel\IStudenPresentDetailViewModel.cs" />
+    <Compile Include="Teachermeno\StudentPresentDetailViewModel\StudenPresentDetailViewModel.cs" />
     <Compile Include="Teachermeno\IScoreStudentViewModel\IScoreStudentViewModel.cs" />
     <Compile Include="Teachermeno\ITeacherMenoAllLessonsClassViewModel.cs" />
     <Compile Include="ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel.cs" />

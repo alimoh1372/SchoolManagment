@@ -55,10 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormStudenPresentDetail.cs">
+    <Compile Include="TeacherMeno\FormStudenPresentDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStudenPresentDetail.Designer.cs">
+    <Compile Include="TeacherMeno\FormStudenPresentDetail.Designer.cs">
       <DependentUpon>FormStudenPresentDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="TeacherMeno\FormScoreOfStudentsForLessons.cs">
@@ -207,7 +207,7 @@
     <Compile Include="ManagmentInfoMeno\FormValidatorUserControls\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormStudenPresentDetail.resx">
+    <EmbeddedResource Include="TeacherMeno\FormStudenPresentDetail.resx">
       <DependentUpon>FormStudenPresentDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMeno\FormScoreOfStudentsForLessons.resx">

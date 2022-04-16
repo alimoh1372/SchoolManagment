@@ -17,8 +17,7 @@ namespace SchoolManagment.DataLayer.DatabaseModel
         public int PkStudentPresentDetail { get; set; }
         public int FkStudentPresents { get; set; }
         public System.DateTime DataOfDay { get; set; }
-        public bool StudentPresent { get; set; }
     
-        public virtual StudentPresent StudentPresent1 { get; set; }
+        public virtual StudentPresent StudentPresent { get; set; }
     }
 }
