@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SchoolManagment.ViewModel
 {
-   public interface IStudentReportCardDetailViewModel:ILessonViewModel
+   public interface IScoreOfStudentsForLessonViewModel:ILessonViewModel
     {
         decimal? ScoreOfLesson { get; set; }
         string IsPassedLesson { get;  }
+        int FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId { get; set; }
+        int PkScoreOfStudentsForLessons { get; set; }
         int PKLessonId { get; set; }
 
         string LessonName { get; set; }

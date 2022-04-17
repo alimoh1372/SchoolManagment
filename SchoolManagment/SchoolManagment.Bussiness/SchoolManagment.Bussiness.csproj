@@ -60,6 +60,7 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\TeacherTeachLessonAccToCalenderInClassService\TeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="DataServices\ManagmentNewAcademyYear\StudentMust_Class\IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="DataServices\TeacherMeno\StudenPresentDetailService\IStudenPresentDetailHandler.cs" />
+    <Compile Include="IStudentReportCardDetailHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TypeDayService\TypeDayHandler.cs" />
     <Compile Include="DataServices\ManagmentInfoMeno\TimeAlterNateService\TimeAlterNateHandler.cs" />
@@ -69,6 +70,8 @@
     <Compile Include="DataServices\ManagmentNewAcademyYear\StudentMust_Class\StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler.cs" />
     <Compile Include="DataServices\TeacherMeno\ScoreOfStudentsForLessonHandler\ScoreOfStudentsForLessonsHandler.cs" />
     <Compile Include="DataServices\TeacherMeno\StudenPresentDetailService\StudenPresentDetailHandler.cs" />
+    <Compile Include="ScoreOfStudentsForLessonViewModel.cs" />
+    <Compile Include="StudentReportCardDetailHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
