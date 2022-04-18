@@ -40,7 +40,7 @@ namespace SchoolManagment.App
 
         private void ReloadFormAndData()
         {
-            
+            IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> studentMustTableGroupByField;
             txtSearch.Text = string.Empty;
             txtSearchStudents.Text = string.Empty;
 
@@ -51,7 +51,8 @@ namespace SchoolManagment.App
                 {
                     //fill Main DataGridView and clear the selection
                     _classCalenderViewModel = studentClassCalenderHandler.FillStudentsClassInCalenderViewModel();
-                    dgvNewAcademyYearAllLessons.DataSource = _classCalenderViewModel;
+                    studentMustTableGroupByField = _classCalenderViewModel.GroupBy(c => c.FkFieldId).Select(x=>x.FirstOrDefault());
+                    dgvNewAcademyYearAllLessons.DataSource = studentMustTableGroupByField.ToList();
                     dgvNewAcademyYearAllLessons.CurrentCell = null;
 
 
@@ -182,7 +183,7 @@ namespace SchoolManagment.App
             using (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler studentClassCalenderHandler =
                        new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassHandler())
             {
-               result= studentClassCalenderHandler.InsertDeleteSyncStudentsToClass(dgvNewAcademyYearAllLessons, dgvStudent, _dgvStudentViewModels, selectedStudentForDgvSelectedStudent);
+               result= studentClassCalenderHandler.InsertDeleteSyncStudentsToClass(dgvNewAcademyYearAllLessons, _classCalenderViewModel, dgvStudent, _dgvStudentViewModels, selectedStudentForDgvSelectedStudent);
                 if (result)
                 {
                     _isNeedToReloadDgvStudentViewModel = true;

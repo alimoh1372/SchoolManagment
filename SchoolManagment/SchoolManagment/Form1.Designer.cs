@@ -223,50 +223,50 @@
             // btnUnderGradutesInNewAcademyYear
             // 
             this.btnUnderGradutesInNewAcademyYear.Name = "btnUnderGradutesInNewAcademyYear";
-            this.btnUnderGradutesInNewAcademyYear.Size = new System.Drawing.Size(309, 22);
+            this.btnUnderGradutesInNewAcademyYear.Size = new System.Drawing.Size(335, 22);
             this.btnUnderGradutesInNewAcademyYear.Text = "زیرمقطع ها";
             this.btnUnderGradutesInNewAcademyYear.Click += new System.EventHandler(this.btnUnderGradutesInNewAcademyYear_Click);
             // 
             // btnFieldsOfNewYearInUnGradutes
             // 
             this.btnFieldsOfNewYearInUnGradutes.Name = "btnFieldsOfNewYearInUnGradutes";
-            this.btnFieldsOfNewYearInUnGradutes.Size = new System.Drawing.Size(309, 22);
+            this.btnFieldsOfNewYearInUnGradutes.Size = new System.Drawing.Size(335, 22);
             this.btnFieldsOfNewYearInUnGradutes.Text = "رشته های قابل ارائه زیرمقطع";
             this.btnFieldsOfNewYearInUnGradutes.Click += new System.EventHandler(this.btnFieldsOfNewYearInUnGradutes_Click);
             // 
             // btnLessonsOfFileldsOfNewYearInUngrade
             // 
             this.btnLessonsOfFileldsOfNewYearInUngrade.Name = "btnLessonsOfFileldsOfNewYearInUngrade";
-            this.btnLessonsOfFileldsOfNewYearInUngrade.Size = new System.Drawing.Size(309, 22);
+            this.btnLessonsOfFileldsOfNewYearInUngrade.Size = new System.Drawing.Size(335, 22);
             this.btnLessonsOfFileldsOfNewYearInUngrade.Text = "درس های قابل ارائه رشته";
             this.btnLessonsOfFileldsOfNewYearInUngrade.Click += new System.EventHandler(this.btnLessonsOfFileldsOfNewYearInUngrade_Click);
             // 
             // btnTeacherTeachsLessonsOfNewYearInUnGrades
             // 
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Name = "btnTeacherTeachsLessonsOfNewYearInUnGrades";
-            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Size = new System.Drawing.Size(309, 22);
+            this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Size = new System.Drawing.Size(335, 22);
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Text = "انتخاب معلم برای درس قابل ارائه";
             this.btnTeacherTeachsLessonsOfNewYearInUnGrades.Click += new System.EventHandler(this.btnTeacherTeachsLessonsOfNewYearInUnGrades_Click);
             // 
             // btnTeacherTeachLessonAccordingToCalender
             // 
             this.btnTeacherTeachLessonAccordingToCalender.Name = "btnTeacherTeachLessonAccordingToCalender";
-            this.btnTeacherTeachLessonAccordingToCalender.Size = new System.Drawing.Size(309, 22);
+            this.btnTeacherTeachLessonAccordingToCalender.Size = new System.Drawing.Size(335, 22);
             this.btnTeacherTeachLessonAccordingToCalender.Text = "تقویم برای درس ارائه شده(بعد از انتخاب معلم)";
             this.btnTeacherTeachLessonAccordingToCalender.Click += new System.EventHandler(this.btnTeacherTeachLessonAccordingToCalender_Click);
             // 
             // btnSelectCalenderToLesson
             // 
             this.btnSelectCalenderToLesson.Name = "btnSelectCalenderToLesson";
-            this.btnSelectCalenderToLesson.Size = new System.Drawing.Size(309, 22);
+            this.btnSelectCalenderToLesson.Size = new System.Drawing.Size(335, 22);
             this.btnSelectCalenderToLesson.Text = "انتخاب کلاس برای درس ارائه شده(طبق تقویم)";
             this.btnSelectCalenderToLesson.Click += new System.EventHandler(this.btnSelectCalenderToLesson_Click);
             // 
             // btnAssignStudentToClass
             // 
             this.btnAssignStudentToClass.Name = "btnAssignStudentToClass";
-            this.btnAssignStudentToClass.Size = new System.Drawing.Size(309, 22);
-            this.btnAssignStudentToClass.Text = "تخصیص دانش آموزان به کلاس";
+            this.btnAssignStudentToClass.Size = new System.Drawing.Size(335, 22);
+            this.btnAssignStudentToClass.Text = "تخصیص دانش آموزان به کلاس های ارائه شده رشته";
             this.btnAssignStudentToClass.Click += new System.EventHandler(this.btnAssignStudentToClass_Click);
             // 
             // TeacherMeno
@@ -281,14 +281,14 @@
             // btnPresentsOrNot
             // 
             this.btnPresentsOrNot.Name = "btnPresentsOrNot";
-            this.btnPresentsOrNot.Size = new System.Drawing.Size(180, 22);
+            this.btnPresentsOrNot.Size = new System.Drawing.Size(129, 22);
             this.btnPresentsOrNot.Text = "حضور غیاب";
             this.btnPresentsOrNot.Click += new System.EventHandler(this.btnPresentsOrNot_Click);
             // 
             // btnSetScore
             // 
             this.btnSetScore.Name = "btnSetScore";
-            this.btnSetScore.Size = new System.Drawing.Size(180, 22);
+            this.btnSetScore.Size = new System.Drawing.Size(129, 22);
             this.btnSetScore.Text = "ثبت نمره";
             this.btnSetScore.Click += new System.EventHandler(this.btnSetScore_Click);
             // 

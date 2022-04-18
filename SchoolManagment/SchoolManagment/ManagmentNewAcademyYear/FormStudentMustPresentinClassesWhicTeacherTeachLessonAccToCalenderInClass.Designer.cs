@@ -33,6 +33,15 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnInsertDeleteSync = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvSelectedStudentInClass = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.rdbUnselectedStudent = new System.Windows.Forms.RadioButton();
@@ -53,6 +62,8 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvNewAcademyYearAllLessons = new System.Windows.Forms.DataGridView();
             this.PkTeacherTeachLessonAccToCalInClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FkFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkClassIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkLessonIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,33 +76,22 @@
             this.FkTeacherIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PkLessonOfFieldOfNewYearInUnGradeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PkFieldsOfNewYearInUnGradutesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkFieldId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FkFieldIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PkUnderGraduteInAcademyYearId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcademyYearId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcademyYearName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkUnGraduteIdString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSelectedStudentInClass = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedStudentInClass)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedStudentInClass)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -148,6 +148,94 @@
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "دانش آموزان کلاس انتخاب شده";
+            // 
+            // dgvSelectedStudentInClass
+            // 
+            this.dgvSelectedStudentInClass.AllowUserToAddRows = false;
+            this.dgvSelectedStudentInClass.AllowUserToDeleteRows = false;
+            this.dgvSelectedStudentInClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSelectedStudentInClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectedStudentInClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dgvSelectedStudentInClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelectedStudentInClass.Location = new System.Drawing.Point(3, 17);
+            this.dgvSelectedStudentInClass.Name = "dgvSelectedStudentInClass";
+            this.dgvSelectedStudentInClass.ReadOnly = true;
+            this.dgvSelectedStudentInClass.Size = new System.Drawing.Size(1036, 130);
+            this.dgvSelectedStudentInClass.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "StudentId";
+            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "کد دانش آموز";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "checkboxSelectStudent";
+            this.dataGridViewCheckBoxColumn1.FillWeight = 30F;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "انتخاب";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "StudentName";
+            this.dataGridViewTextBoxColumn2.FillWeight = 93.27411F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "نام دانش آموز";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "StudentNationCode";
+            this.dataGridViewTextBoxColumn3.FillWeight = 93.27411F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "کد ملی دانش آموز";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FkStudentFieldId";
+            this.dataGridViewTextBoxColumn4.HeaderText = "کد رشته دانش آموز";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FkStudentFieldIdString";
+            this.dataGridViewTextBoxColumn5.FillWeight = 93.27411F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "رشته دانش آموز";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "FkLastPassedUgraduteId";
+            this.dataGridViewTextBoxColumn6.HeaderText = "کد آخرین زیرمقطع گذرانده شده";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "FkLastPassedUgraduteIdString";
+            this.dataGridViewTextBoxColumn7.FillWeight = 93.27411F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "آخرین زیرمقطع گدرانده شده";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // groupBox4
             // 
@@ -349,6 +437,8 @@
             this.dgvNewAcademyYearAllLessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNewAcademyYearAllLessons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PkTeacherTeachLessonAccToCalInClassId,
+            this.FkFieldId,
+            this.FkFieldIdString,
             this.FkClassId,
             this.FkClassIdString,
             this.FkLessonIdString,
@@ -361,8 +451,6 @@
             this.FkTeacherIdString,
             this.PkLessonOfFieldOfNewYearInUnGradeId,
             this.PkFieldsOfNewYearInUnGradutesId,
-            this.FkFieldId,
-            this.FkFieldIdString,
             this.PkUnderGraduteInAcademyYearId,
             this.AcademyYearId,
             this.AcademyYearName,
@@ -386,6 +474,21 @@
             this.PkTeacherTeachLessonAccToCalInClassId.ReadOnly = true;
             this.PkTeacherTeachLessonAccToCalInClassId.Visible = false;
             // 
+            // FkFieldId
+            // 
+            this.FkFieldId.DataPropertyName = "FkFieldId";
+            this.FkFieldId.HeaderText = "کد رشته";
+            this.FkFieldId.Name = "FkFieldId";
+            this.FkFieldId.ReadOnly = true;
+            this.FkFieldId.Visible = false;
+            // 
+            // FkFieldIdString
+            // 
+            this.FkFieldIdString.DataPropertyName = "FkFieldIdString";
+            this.FkFieldIdString.HeaderText = "رشته";
+            this.FkFieldIdString.Name = "FkFieldIdString";
+            this.FkFieldIdString.ReadOnly = true;
+            // 
             // FkClassId
             // 
             this.FkClassId.DataPropertyName = "FkClassId";
@@ -400,6 +503,7 @@
             this.FkClassIdString.HeaderText = "کلاس";
             this.FkClassIdString.Name = "FkClassIdString";
             this.FkClassIdString.ReadOnly = true;
+            this.FkClassIdString.Visible = false;
             // 
             // FkLessonIdString
             // 
@@ -407,6 +511,7 @@
             this.FkLessonIdString.HeaderText = "درس";
             this.FkLessonIdString.Name = "FkLessonIdString";
             this.FkLessonIdString.ReadOnly = true;
+            this.FkLessonIdString.Visible = false;
             // 
             // FkLessonId
             // 
@@ -438,6 +543,7 @@
             this.FkCalenderIdString.HeaderText = "تقویم";
             this.FkCalenderIdString.Name = "FkCalenderIdString";
             this.FkCalenderIdString.ReadOnly = true;
+            this.FkCalenderIdString.Visible = false;
             // 
             // TeacherTeachLessonId
             // 
@@ -461,6 +567,7 @@
             this.FkTeacherIdString.HeaderText = "معلم";
             this.FkTeacherIdString.Name = "FkTeacherIdString";
             this.FkTeacherIdString.ReadOnly = true;
+            this.FkTeacherIdString.Visible = false;
             // 
             // PkLessonOfFieldOfNewYearInUnGradeId
             // 
@@ -477,21 +584,6 @@
             this.PkFieldsOfNewYearInUnGradutesId.Name = "PkFieldsOfNewYearInUnGradutesId";
             this.PkFieldsOfNewYearInUnGradutesId.ReadOnly = true;
             this.PkFieldsOfNewYearInUnGradutesId.Visible = false;
-            // 
-            // FkFieldId
-            // 
-            this.FkFieldId.DataPropertyName = "FkFieldId";
-            this.FkFieldId.HeaderText = "کد رشته";
-            this.FkFieldId.Name = "FkFieldId";
-            this.FkFieldId.ReadOnly = true;
-            this.FkFieldId.Visible = false;
-            // 
-            // FkFieldIdString
-            // 
-            this.FkFieldIdString.DataPropertyName = "FkFieldIdString";
-            this.FkFieldIdString.HeaderText = "رشته";
-            this.FkFieldIdString.Name = "FkFieldIdString";
-            this.FkFieldIdString.ReadOnly = true;
             // 
             // PkUnderGraduteInAcademyYearId
             // 
@@ -531,94 +623,6 @@
             this.FkUnGraduteIdString.Name = "FkUnGraduteIdString";
             this.FkUnGraduteIdString.ReadOnly = true;
             // 
-            // dgvSelectedStudentInClass
-            // 
-            this.dgvSelectedStudentInClass.AllowUserToAddRows = false;
-            this.dgvSelectedStudentInClass.AllowUserToDeleteRows = false;
-            this.dgvSelectedStudentInClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSelectedStudentInClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSelectedStudentInClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dgvSelectedStudentInClass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSelectedStudentInClass.Location = new System.Drawing.Point(3, 17);
-            this.dgvSelectedStudentInClass.Name = "dgvSelectedStudentInClass";
-            this.dgvSelectedStudentInClass.ReadOnly = true;
-            this.dgvSelectedStudentInClass.Size = new System.Drawing.Size(1036, 130);
-            this.dgvSelectedStudentInClass.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "StudentId";
-            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "کد دانش آموز";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "checkboxSelectStudent";
-            this.dataGridViewCheckBoxColumn1.FillWeight = 30F;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "انتخاب";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "StudentName";
-            this.dataGridViewTextBoxColumn2.FillWeight = 93.27411F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "نام دانش آموز";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "StudentNationCode";
-            this.dataGridViewTextBoxColumn3.FillWeight = 93.27411F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "کد ملی دانش آموز";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FkStudentFieldId";
-            this.dataGridViewTextBoxColumn4.HeaderText = "کد رشته دانش آموز";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FkStudentFieldIdString";
-            this.dataGridViewTextBoxColumn5.FillWeight = 93.27411F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "رشته دانش آموز";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "FkLastPassedUgraduteId";
-            this.dataGridViewTextBoxColumn6.HeaderText = "کد آخرین زیرمقطع گذرانده شده";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "FkLastPassedUgraduteIdString";
-            this.dataGridViewTextBoxColumn7.FillWeight = 93.27411F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "آخرین زیرمقطع گدرانده شده";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
             // FormStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,6 +640,7 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedStudentInClass)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -644,7 +649,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewAcademyYearAllLessons)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedStudentInClass)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -662,26 +666,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PkTeacherTeachLessonAccToCalInClassId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkClassId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkClassIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PKTeacherTeachLessonAccordingToCalender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkCalenderId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkCalenderIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherTeachLessonId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkTeacherId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkTeacherIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PkLessonOfFieldOfNewYearInUnGradeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PkFieldsOfNewYearInUnGradutesId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkFieldId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkFieldIdString;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PkUnderGraduteInAcademyYearId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteIdString;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.RadioButton rdbUnselectedStudent;
         private System.Windows.Forms.RadioButton rdbSelectedStudent;
@@ -704,5 +688,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PkTeacherTeachLessonAccToCalInClassId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkFieldId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkFieldIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkClassId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkClassIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkLessonId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PKTeacherTeachLessonAccordingToCalender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkCalenderId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkCalenderIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherTeachLessonId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkTeacherId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkTeacherIdString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PkLessonOfFieldOfNewYearInUnGradeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PkFieldsOfNewYearInUnGradutesId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PkUnderGraduteInAcademyYearId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AcademyYearName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FkUnGraduteIdString;
     }
 }

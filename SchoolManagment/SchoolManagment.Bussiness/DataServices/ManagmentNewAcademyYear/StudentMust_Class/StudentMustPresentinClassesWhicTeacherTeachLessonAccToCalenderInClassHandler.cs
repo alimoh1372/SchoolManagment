@@ -227,13 +227,13 @@ namespace SchoolManagment.Bussiness
 
 
         }
-        public bool InsertDeleteSyncStudentsToClass(DataGridView dgvNewAcademyYearAllLessons,
+        public bool InsertDeleteSyncStudentsToClass(DataGridView dgvNewAcademyYearAllLessons, IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> classCalenderViewModel,
             DataGridView dgvAllStudentInThisField,
             IEnumerable<IStudentViewModel> _dgvAllStudentInFieldViewModels,
             IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStudent)
 
         {
-
+            IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> _thisCalenderClassViewModelFilterWithField;
             bool boolresult = false;
             UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities());
             string attempMessage;
@@ -244,10 +244,16 @@ namespace SchoolManagment.Bussiness
             bool isInSelectedStudentDgv;
             bool isInStudentDgvSelected;
             int pkPkTeacherTeachLessonAccToCalInClassId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["PkTeacherTeachLessonAccToCalInClassId"].Value.ToString());
-            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> studentMustListToInsert = new List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass>();
-            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> studentMustListToDelete = new List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass>();
+            int fkFieldId = Convert.ToInt32(dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldId"].Value.ToString());
+            _thisCalenderClassViewModelFilterWithField = classCalenderViewModel.Where(s => s.FkFieldId == fkFieldId);
+            List<Student> studentListToInsert = new List<Student>();
+            List<Student> studentListToDelete = new List<Student>();
             List<ScoreOfStudentsForLesson> scoreOfStudentsToInsert = new List<ScoreOfStudentsForLesson>();
             List<ScoreOfStudentsForLesson> scoreOfStudentsToDelete = new List<ScoreOfStudentsForLesson>();
+            List<StudentPresent> studentPresentsToInsert = new List<StudentPresent>();
+            List<StudentPresent> studentPresentsToDelete = new List<StudentPresent>();
+            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> stMustListToInsert;
+            List<StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass> stMustListToDelete;
             if (dgvAllStudentInThisField != null)
             {
                 foreach (DataGridViewRow row in dgvAllStudentInThisField.Rows)
@@ -263,31 +269,35 @@ namespace SchoolManagment.Bussiness
 
                         if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == true || isInStudentDgvSelected == false && isInMustTable == true && isInSelectedStudentDgv == true)
                         {
-                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass();
-                            entity = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Get(s => s.FkStudentId == studentId && s.FkTeacherTeachLessonAccToCalenderInClass == pkPkTeacherTeachLessonAccToCalInClassId).First();
-                            studentMustListToDelete.Add(entity);
-                            ScoreOfStudentsForLesson scoreOfStudentEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                            //list Of student To Delete
+                            Student entity = new Student();
+                            entity = db.StudentRepository.GetById(studentId);
+                            studentListToDelete.Add(entity);
+                           // ScoreOfStudentsForLesson scoreOfStudentEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
 
-                            scoreOfStudentsToDelete.Add(scoreOfStudentEntity);
+                           // scoreOfStudentsToDelete.Add(scoreOfStudentEntity);
                             //db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
 
 
                         }
                         else if (isInStudentDgvSelected == true && isInMustTable == false && isInSelectedStudentDgv == false)
                         {
-                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
-                            {
-                                FkStudentId = studentId,
-                                FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
-                            };
-                            studentMustListToInsert.Add(entity);
+                            //list of student To insert
+                            //StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass entity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
+                            //{
+                            //    FkStudentId = studentId,
+                            //    FkTeacherTeachLessonAccToCalenderInClass = pkPkTeacherTeachLessonAccToCalInClassId
+                            //};
+                            Student entity = new Student();
+                            entity = db.StudentRepository.GetById(studentId);
+                            studentListToInsert.Add(entity);
                             //db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
                             
                         }
                         else
                         {
-                            attempMessage = " دانش آموز با مشخصات زیر جزو کلاس" + " \"" + dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkClassIdString"].Value + "\" " +
-                                " نیست و شما نمیتوانید آن را حذف نمایئد.برای این کار ابتدا کلاس  دانش آموز را انتخاب سپس" +
+                            attempMessage = " دانش آموز با مشخصات زیر جزو رشته" + " \"" + dgvNewAcademyYearAllLessons.CurrentRow.Cells["FkFieldId"].Value + "\" " +
+                                " نیست و شما نمیتوانید آن را حذف نمایئد.برای این کار ابتدا  دانش آموز را انتخاب سپس" +
                                 "اقدام به حذف نمائید." + "\n" +
                                 "نام دانش آموز:  " + row.Cells[2].Value + "\n" +
                             "کد ملی دانش آموز: " + row.Cells[3].Value;
@@ -297,46 +307,94 @@ namespace SchoolManagment.Bussiness
                     }
                 }
                 attempMessage = "آیا از ثبت تغییرات ذیل مطمئن هستید؟" + "\n" +
-                    "تعداد حذف شده ها: " + (studentMustListToDelete.Count) + "\n" +
-                    "تعداد اضافه شده ها: " + (studentMustListToInsert.Count);
+                    "!!!!! لطفا دقت نمائید بعد از ثبت حضور غیاب برای دانش آموز در کلاس امکان حذف نمیباشد با تشکر" +
+                    "تعداد حذف شده ها: " + (studentListToDelete.Count) + "\n" +
+                    "تعداد اضافه شده ها: " + (studentListToInsert.Count);
                 if (RtlMessageBox.Show(attempMessage, "اطمینان از ثبت تغییرات", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int sumResults = studentMustListToInsert.Count+studentMustListToDelete.Count;
-                    
-                    foreach (var entity in studentMustListToInsert)
-                    {
-                        db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
-                        result +=  db.Save();
-                        ScoreOfStudentsForLesson scoreOfStudentEntity = new ScoreOfStudentsForLesson()
-                        {
-                            FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
-                        };
-                        db.ScoreOfStudentsForLessonsRepository.Insert(scoreOfStudentEntity);
-                        StudentPresent studentPresent = new StudentPresent()
-                        {
-                            FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
-                        };
-                        db.StudentPresentsRepository.Insert(studentPresent);
-                        result += db.Save();
+                    int sumResults = (studentListToInsert.Count + studentListToDelete.Count) * _thisCalenderClassViewModelFilterWithField.Count()*3;
 
-                    }
-                    foreach (var entity in studentMustListToDelete)
+                    foreach (IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel stuMustViewModel in _thisCalenderClassViewModelFilterWithField)
                     {
-                        ScoreOfStudentsForLesson scoreEntity = new ScoreOfStudentsForLesson();
-                        scoreEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
-                        db.ScoreOfStudentsForLessonsRepository.Delete(scoreEntity);
+                        //Insert For Lesson That have Teacher And Calender ANd Class
+                        foreach (Student student in studentListToInsert)
+                        {
+                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass stMustEntity = new StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass()
+                            {
+                                FkStudentId = student.StudentId,
+                                FkTeacherTeachLessonAccToCalenderInClass = stuMustViewModel.PkTeacherTeachLessonAccToCalInClassId
+                            };
+                            db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(stMustEntity);
+                            //result += db.Save();
+                            ScoreOfStudentsForLesson scoreOfStudentsForLessonEntity = new ScoreOfStudentsForLesson()
+                            {
+                                FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId=stMustEntity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                            };
+                            db.ScoreOfStudentsForLessonsRepository.Insert(scoreOfStudentsForLessonEntity);
+                            //result += db.Save();
+                            StudentPresent studentPresent = new StudentPresent()
+                            {
+                                FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = stMustEntity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                            };
+                            db.StudentPresentsRepository.Insert(studentPresent);
+                            result += db.Save();
+                            //result += db.Save();
+                        }
                         result += db.Save();
-                        StudentPresent studentPresent = new StudentPresent();
-                        studentPresent = db.StudentPresentsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
-                        db.StudentPresentsRepository.Delete(studentPresent);
-                        db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
-                        result += db.Save();
+                        //Delete Student From  Lesson of field That have Teacher And Calender ANd Class
+                        foreach (Student student in studentListToDelete)
+                        {
+                            StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass stMustEntity = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository
+                                .Get(s => s.FkStudentId == student.StudentId && s.FkTeacherTeachLessonAccToCalenderInClass == stuMustViewModel.PkTeacherTeachLessonAccToCalInClassId).First();
+
+                            ScoreOfStudentsForLesson scoreOfStudentsForLessonEntity= db.ScoreOfStudentsForLessonsRepository.
+                                Get(s => s.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == stMustEntity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                            db.ScoreOfStudentsForLessonsRepository.Delete(scoreOfStudentsForLessonEntity);
+
+                            StudentPresent studentPresent = db.StudentPresentsRepository.
+                                Get(s => s.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == stMustEntity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                            db.StudentPresentsRepository.Delete(studentPresent);
+
+                            db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(stMustEntity);
+                            result += db.Save();
+                        }
                         
                     }
-                    if (sumResults != result/3)
+                    
+                    //foreach (var entity in studentListToInsert)
+                    //{
+                    //    db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Insert(entity);
+                    //    result +=  db.Save();
+                    //    ScoreOfStudentsForLesson scoreOfStudentEntity = new ScoreOfStudentsForLesson()
+                    //    {
+                    //        FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                    //    };
+                    //    db.ScoreOfStudentsForLessonsRepository.Insert(scoreOfStudentEntity);
+                    //    StudentPresent studentPresent = new StudentPresent()
+                    //    {
+                    //        FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId
+                    //    };
+                    //    db.StudentPresentsRepository.Insert(studentPresent);
+                    //    result += db.Save();
+
+                    //}
+                    //foreach (var entity in studentListToDelete)
+                    //{
+                    //    ScoreOfStudentsForLesson scoreEntity = new ScoreOfStudentsForLesson();
+                    //    scoreEntity = db.ScoreOfStudentsForLessonsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                    //    db.ScoreOfStudentsForLessonsRepository.Delete(scoreEntity);
+                    //    result += db.Save();
+                    //    StudentPresent studentPresent = new StudentPresent();
+                    //    studentPresent = db.StudentPresentsRepository.Get(sc => sc.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId == entity.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId).First();
+                    //    db.StudentPresentsRepository.Delete(studentPresent);
+                    //    db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Delete(entity);
+                    //    result += db.Save();
+                        
+                    //}
+                    if (sumResults != result)
                     {
                         attempMessage = "در اعمال تغییرات برخی از دانش آموزان مشکلی پیش آمده است.لطفا بعدا سعی نمائید." +
-                            "تعداد تغییر داده شده ها:" + result/2;
+                            "تعداد تغییر داده شده ها:" + result/3;
 
                         RtlMessageBox.Show(attempMessage, "خطا در دیتابیس");
 

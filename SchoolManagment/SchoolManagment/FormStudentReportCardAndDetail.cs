@@ -66,7 +66,7 @@ namespace SchoolManagment.App
         {
             StudentReportCardDetailHandler studentReportCardDetailHandler = new StudentReportCardDetailHandler();
             _teacherMenoAllLessonsClassViewModels = studentReportCardDetailHandler.GetAllLessonClassWithPresentForeignKey(dgvStudent);
-            dgvNewAcademyYearAllLessons.DataSource = _teacherMenoAllLessonsClassViewModels;
+            dgvNewAcademyYearAllLessons.DataSource = _teacherMenoAllLessonsClassViewModels.GroupBy(x=>x.AcademyYearId).Select(x=>x.FirstOrDefault()).ToList();
             dgvNewAcademyYearAllLessons.CurrentCell = null;
             dgvScoreLessonRepordCard.DataSource = null;
 
@@ -90,7 +90,7 @@ namespace SchoolManagment.App
             _scoreOfStudentsForLessonViewModels = studentReportCardDetailHandler.GetStudentReportCardLessons(dgvStudent, dgvNewAcademyYearAllLessons);
             dgvScoreLessonRepordCard.DataSource = _scoreOfStudentsForLessonViewModels;
             average = studentReportCardDetailHandler.GetAverageLessons(_scoreOfStudentsForLessonViewModels);
-            txtAverageOfYearlessons.Text = average.ToString();
+            txtAverageOfYearlessons.Text = String.Format(average % 1 == 0 ? "{0:0}" : "{0:0.00}", average);
         }
     }
 }

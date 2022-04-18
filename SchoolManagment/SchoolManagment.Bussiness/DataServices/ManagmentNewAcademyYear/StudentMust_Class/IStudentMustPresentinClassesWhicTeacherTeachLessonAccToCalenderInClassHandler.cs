@@ -26,9 +26,9 @@ namespace SchoolManagment.Bussiness
         IEnumerable<IStudentViewModel> FilterSearch(IEnumerable<IStudentViewModel> AllStudentViewModels, TextBox txtSearch, bool? SelectAssignedStudents = null);
         bool? SelectAssignedStudents(RadioButton rdbAllStudent, RadioButton rdbSelectedStudent);
         IEnumerable<IStudentViewModel> GetSelectedStudent(DataGridView dgvNewAcademyYearAllLessons, IEnumerable<IStudentViewModel> studentDgvStudentViewModel);
-        bool InsertDeleteSyncStudentsToClass(DataGridView dgvNewAcademyYearAllLessons,
-            DataGridView dgvSelectedStudentInClass,
-            IEnumerable<IStudentViewModel> _dgvStudentViewModels,
-            IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStuden);
+        bool InsertDeleteSyncStudentsToClass(DataGridView dgvNewAcademyYearAllLessons, IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> classCalenderViewModel,
+           DataGridView dgvAllStudentInThisField,
+           IEnumerable<IStudentViewModel> _dgvAllStudentInFieldViewModels,
+           IEnumerable<IStudentViewModel> selectedStudentForDgvSelectedStudent);
     }
 }

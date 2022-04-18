@@ -51,7 +51,7 @@ namespace SchoolManagment.Bussiness
 
                 ScoreOfStudentsForLessonsHandler scoreOfHandler = new ScoreOfStudentsForLessonsHandler();
                 teacherMenoAllLessonsClassViewModels = scoreOfHandler.GetAllLessonClassWithPresentForeignKey();
-                studentReportCardDetailViewModels = GetStudentReportCardDetailViewModelsFromScoreTable(st => st.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.Student.StudentId == studentId);
+                studentReportCardDetailViewModels = GetStudentReportCardDetailViewModelsFromScoreTable(st=>st.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass.FkStudentId==studentId);
                 teacherMenoAllLessonsClassViewModels = teacherMenoAllLessonsClassViewModels.Join(studentReportCardDetailViewModels,
                     t => t.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId, s => s.FkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId,
                     (t, s) => t).ToList();
@@ -75,7 +75,8 @@ namespace SchoolManagment.Bussiness
                 }
                 else
                 {
-                    queryStudentReportCardViewModel = db.ScoreOfStudentsForLessonsRepository.Get(where);
+                    queryStudentReportCardViewModel = db.ScoreOfStudentsForLessonsRepository.GetIncludeEntities(g=>g.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClass).AsQueryable().
+                        Where(where).ToList();
                 }
                 studentReportCardViewModel = queryStudentReportCardViewModel.Select(st => new ScoreOfStudentsForLessonViewModel()
                 {

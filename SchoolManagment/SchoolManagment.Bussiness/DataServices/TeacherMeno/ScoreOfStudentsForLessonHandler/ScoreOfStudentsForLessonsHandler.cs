@@ -19,8 +19,7 @@ namespace SchoolManagment.Bussiness
             IEnumerable<IStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassViewModel> studentMustViewModels;
             using (UnitOfWork db = new UnitOfWork(new SchoolManagmentEntities()))
             {
-                allLessonForTeacherMenoViewModels = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Get().GroupBy(sc => sc.FkTeacherTeachLessonAccToCalenderInClass)
-                    .Select(sc => sc.FirstOrDefault())
+                allLessonForTeacherMenoViewModels = db.StudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassRepository.Get()
                     .Select(sc => new TeacherMenoAllLessonsClassViewModel()
                     {
                         PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId = sc.PkStudentMustPresentinClassesWhicTeacherTeachLessonAccToCalenderInClassId,
